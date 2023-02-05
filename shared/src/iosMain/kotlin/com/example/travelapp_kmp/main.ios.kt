@@ -10,7 +10,7 @@ import androidx.compose.ui.window.Application
 import platform.UIKit.UIViewController
 
 fun MainViewController(): UIViewController =
-    Application("Imageviewer") {
+    Application("TravelApp-KMP") {
         Column {
             // To skip upper part of screen.
             Box(

@@ -21,7 +21,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "imageviewer"
+rootProject.name = "TravelApp-KMP"
 
 include(":androidApp")
 include(":shared")
