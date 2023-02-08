@@ -27,8 +27,6 @@ internal fun CommonView() {
             onSurface = TravelAppColors.Foreground
         )
     ) {
-        Box(Modifier.fillMaxSize()) {
-            Text("Hi from Compose UI", Modifier.align(Alignment.Center))
-        }
+        MainScreen()
     }
 }

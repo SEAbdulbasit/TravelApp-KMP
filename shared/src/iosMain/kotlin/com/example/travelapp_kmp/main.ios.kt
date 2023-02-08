@@ -14,7 +14,7 @@ fun MainViewController(): UIViewController =
             // To skip upper part of screen.
             Box(
                 modifier = Modifier
-                    .height(30.dp)
+                    .height(40.dp)
             )
             AppViewiOS()
         }

@@ -1,8 +1,5 @@
 package com.example.traveapp_kmp.style
 
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 object TravelAppColors {
@@ -17,6 +14,8 @@ object TravelAppColors {
     val TranslucentBlack = Color(0, 0, 0, 60)
     val TranslucentWhite = Color(255, 255, 255, 20)
     val Transparent = Color.Transparent
+    val SemiWhite =Color(255, 255, 255, 80)
+
 
     fun buttonBackground(isHover: Boolean) = if (isHover) TranslucentBlack else Transparent
 }
