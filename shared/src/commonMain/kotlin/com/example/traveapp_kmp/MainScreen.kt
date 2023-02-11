@@ -22,11 +22,20 @@ import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import com.example.traveapp_kmp.screennavigation.Screen
+import com.example.traveapp_kmp.screennavigation.ScreensState
 import com.example.traveapp_kmp.style.TravelAppColors
 import com.seiko.imageloader.rememberAsyncImagePainter
 
 @Composable
-internal fun MainScreen() {
+internal fun MainScreen(state: MutableState<ScreensState>) {
+    MainScreenView(onDetailsClicked = {
+        state.value = state.value.copy(screen = Screen.DetailScreen)
+    })
+}
+
+@Composable
+internal fun MainScreenView(onDetailsClicked: (Unit) -> Unit) {
     Box {
         val url = "https://i.postimg.cc/c1vXfhTP/Rectangle-917.png"
         val painter = rememberAsyncImagePainter(url)
@@ -48,7 +57,8 @@ internal fun MainScreen() {
                         "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
                         "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
                         "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
-                    )
+                    ),
+                    onDetailsClicked
                 )
             }
             Box(modifier = Modifier.align(Alignment.End).padding(bottom = 16.dp).fillMaxWidth()) {
@@ -125,9 +135,9 @@ private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (Str
     }
 }
 
-@OptIn(ExperimentalUnitApi::class)
+@OptIn(ExperimentalUnitApi::class, ExperimentalMaterialApi::class)
 @Composable
-internal fun ImageSlider(imagesList: List<String>) {
+internal fun ImageSlider(imagesList: List<String>, onDetailsClicked: (Unit) -> Unit) {
     LazyRow(
         modifier = Modifier.padding(top = 8.dp).fillMaxSize(),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -141,7 +151,8 @@ internal fun ImageSlider(imagesList: List<String>) {
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                     .clip(RoundedCornerShape(20.dp)),
                 contentColor = Color.Transparent,
-                backgroundColor = Color.Transparent
+                backgroundColor = Color.Transparent,
+                onClick = { onDetailsClicked(Unit) }
             ) {
                 Box {
                     Image(

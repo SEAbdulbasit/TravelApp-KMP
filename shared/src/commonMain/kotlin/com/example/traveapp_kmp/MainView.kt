@@ -1,20 +1,21 @@
 package com.example.traveapp_kmp
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import com.example.traveapp_kmp.screennavigation.Screen
+import com.example.traveapp_kmp.screennavigation.ScreensState
 import com.example.traveapp_kmp.style.TravelAppColors
 
 
 @Composable
 internal fun CommonView() {
     isSystemInDarkTheme() // todo check and change colors
+    val state = remember { mutableStateOf(ScreensState()) }
+
     MaterialTheme(
         colors = MaterialTheme.colors.copy(
             primary = TravelAppColors.Foreground,
@@ -27,6 +28,9 @@ internal fun CommonView() {
             onSurface = TravelAppColors.Foreground
         )
     ) {
-        MainScreen()
+        when (state.value.screen) {
+            Screen.DetailScreen -> DetailScreen()
+            Screen.MainScreen -> MainScreen(state)
+        }
     }
 }
