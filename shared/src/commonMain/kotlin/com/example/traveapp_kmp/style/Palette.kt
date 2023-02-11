@@ -13,9 +13,6 @@ object TravelAppColors {
     val Foreground = Color(210, 210, 210)
     val TranslucentBlack = Color(0, 0, 0, 60)
     val TranslucentWhite = Color(255, 255, 255, 20)
-    val Transparent = Color.Transparent
-    val SemiWhite =Color(255, 255, 255, 80)
-
-
-    fun buttonBackground(isHover: Boolean) = if (isHover) TranslucentBlack else Transparent
+    val SemiWhite = Color(255, 255, 255, 30)
+    fun buttonBackground(isHover: Boolean) = if (isHover) TranslucentBlack else Color.Transparent
 }
