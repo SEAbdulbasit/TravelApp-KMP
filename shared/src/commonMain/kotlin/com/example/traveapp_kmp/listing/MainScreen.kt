@@ -14,15 +14,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.BlurredEdgeTreatment
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.ExperimentalUnitApi
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.*
 import com.example.traveapp_kmp.ListScreenViewModel
 import com.example.traveapp_kmp.ListViewModelActions
 import com.example.traveapp_kmp.screennavigation.Screen
@@ -37,8 +35,8 @@ internal fun MainScreen(
     val state = viewMode.state.collectAsState()
     MainScreenView(state = state,
         onDetailsClicked = { navigationState.value = ScreensState(screen = Screen.DetailScreen) },
-        resetFlag = { viewMode.onAction(ListViewModelActions.ResetFlag) },
         onCountrySelected = { viewMode.onAction(ListViewModelActions.OnCountrySelected(it)) },
+        moveToIndex = { viewMode.onAction(ListViewModelActions.MoveToIndex(it)) },
         onItemSwipe = { touristPlace, i ->
             viewMode.onAction(
                 ListViewModelActions.OnItemSwiped(
@@ -53,8 +51,8 @@ internal fun MainScreenView(
     state: State<ListScreenState>,
     onDetailsClicked: (Unit) -> Unit,
     onItemSwipe: (TouristPlace, Int) -> Unit,
-    resetFlag: () -> Unit,
-    onCountrySelected: (Country) -> Unit
+    onCountrySelected: (Country) -> Unit,
+    moveToIndex: (Int) -> Unit
 ) {
     when (val result = state.value) {
         is ListScreenState.Error -> {
@@ -72,8 +70,8 @@ internal fun MainScreenView(
                 state = result,
                 onDetailsClicked = onDetailsClicked,
                 onItemSwipe = onItemSwipe,
-                resetFlag = resetFlag,
-                onCountrySelected = onCountrySelected
+                onCountrySelected = onCountrySelected,
+                moveToIndex = moveToIndex
             )
         }
     }
@@ -84,13 +82,20 @@ internal fun RenderListingScreen(
     state: ListScreenState.Success,
     onDetailsClicked: (Unit) -> Unit,
     onItemSwipe: (TouristPlace, Int) -> Unit,
-    resetFlag: () -> Unit,
-    onCountrySelected: (Country) -> Unit
+    onCountrySelected: (Country) -> Unit,
+    moveToIndex: (Int) -> Unit
 ) {
+    var size by remember { mutableStateOf(Size.Zero) }
+    val listState = rememberLazyListState()
 
-    val scrollToStart = derivedStateOf { state.scrollToStart }
+    LaunchedEffect(state.selectedItemIndex) {
+        println("Select item index ${state.selectedItemIndex}")
+        listState.animateScrollToItem(state.selectedItemIndex)
+    }
+
     Box {
-        val painter = rememberAsyncImagePainter(state.currentTouristPlace.images.first())
+        val painter =
+            rememberAsyncImagePainter(state.selectedCountry.touristPlaces[state.selectedItemIndex].images.first())
         Image(
             painter, null,
             modifier = Modifier.fillMaxSize().blur(
@@ -113,22 +118,24 @@ internal fun RenderListingScreen(
             Box(modifier = Modifier.weight(1f, false)) {
                 ImageSlider(
                     imagesList = state.selectedCountry.touristPlaces,
+                    selectedIndex = state.selectedItemIndex,
                     onDetailsClicked = onDetailsClicked,
-                    scrollToStart = scrollToStart.value,
-                    resetFlag = resetFlag,
-                    onItemSwipe = onItemSwipe
+                    moveToIndex = moveToIndex,
+                    listState = listState,
+                    width = size.width
                 )
             }
             Box(modifier = Modifier.align(Alignment.End).padding(bottom = 16.dp).fillMaxWidth()) {
                 Column {
                     Counter(
-                        destinationsSize = state.countriesList.size,
-                        selectedDestination = state.selectedItemIndex
+                        destinationsSize = state.selectedCountry.touristPlaces.size,
+                        selectedDestination = state.selectedItemIndex,
+                        onItemSwipe = moveToIndex
                     )
                     Line()
                     VisitingPlacesList(
                         state.selectedCountry.touristPlaces.map { it.name },
-                        state.currentTouristPlace.name
+                        state.selectedCountry.touristPlaces[state.selectedItemIndex].name
                     )
                 }
             }
@@ -205,19 +212,14 @@ private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (Str
 @Composable
 internal fun ImageSlider(
     imagesList: List<TouristPlace>,
-    scrollToStart: Boolean,
+    selectedIndex: Int,
     onDetailsClicked: (Unit) -> Unit,
-    onItemSwipe: (TouristPlace, Int) -> Unit,
-    resetFlag: () -> Unit
+    moveToIndex: (Int) -> Unit,
+    listState: LazyListState,
+    width: Float,
 ) {
-    val listState = rememberLazyListState()
-    if (scrollToStart) {
-        LaunchedEffect(scrollToStart) {
-            listState.scrollToItem(0)
-            resetFlag()
-        }
-    }
     var lastIndex = 0
+
     LazyRow(
         modifier = Modifier.padding(top = 8.dp).fillMaxSize(),
         state = listState,
@@ -225,13 +227,13 @@ internal fun ImageSlider(
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         items(items = imagesList) { touristPlace ->
-
             val items = listState.visibleItemsWithThreshold(percentThreshold = 1.0f)
-            if (items.isNotEmpty()) {
-                val visibleItems = items.last()
-                if (visibleItems != lastIndex) {
+            println("Select item index ${items.toString()}")
+            if (items.isNotEmpty() && items.size == 1) {
+                val visibleItems = items.first()
+                if (visibleItems != lastIndex && visibleItems != selectedIndex) {
                     lastIndex = visibleItems
-                    onItemSwipe(imagesList[lastIndex], lastIndex)
+                    //   moveToIndex(lastIndex)
                 }
             }
 
@@ -293,7 +295,7 @@ internal fun ImageSlider(
 
 @OptIn(ExperimentalUnitApi::class)
 @Composable
-internal fun Counter(destinationsSize: Int, selectedDestination: Int) {
+internal fun Counter(destinationsSize: Int, selectedDestination: Int, onItemSwipe: (Int) -> Unit) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxWidth().padding(top = 30.dp, start = 16.dp, end = 16.dp)
@@ -318,12 +320,22 @@ internal fun Counter(destinationsSize: Int, selectedDestination: Int) {
             Icon(
                 imageVector = Icons.Filled.ArrowBack,
                 contentDescription = "Back Arrow",
-                tint = Color.White
+                tint = if (selectedDestination > 0) Color.White else TravelAppColors.SemiWhite,
+                modifier = Modifier.clickable(onClick = {
+                    if (selectedDestination > 0) {
+                        onItemSwipe(selectedDestination - 1)
+                    }
+                })
             )
             Icon(
                 imageVector = Icons.Filled.ArrowForward,
+                tint = if (selectedDestination < (destinationsSize - 1)) Color.White else TravelAppColors.SemiWhite,
                 contentDescription = "Forward Arrow",
-                tint = Color.White
+                modifier = Modifier.clickable(onClick = {
+                    if (selectedDestination < (destinationsSize - 1)) {
+                        onItemSwipe(selectedDestination + 1)
+                    }
+                })
             )
         }
     }
@@ -378,7 +390,6 @@ private fun LazyListState.visibleItemsWithThreshold(percentThreshold: Float): Li
                 if (firstItemIfLeft != null && firstItemIfLeft.offset + (lastItem.size * percentThreshold) < layoutInfo.viewportStartOffset) {
                     fullyVisibleItemsInfo.removeFirst()
                 }
-
                 fullyVisibleItemsInfo.map { it.index }
             }
         }

@@ -7,8 +7,6 @@ sealed interface ListScreenState {
     data class Success(
         val countriesList: List<Country>,
         val selectedCountry: Country,
-        val scrollToStart: Boolean = false,
         val selectedItemIndex: Int = 0,
-        val currentTouristPlace: TouristPlace
     ) : ListScreenState
 }

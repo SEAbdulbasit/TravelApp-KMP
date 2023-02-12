@@ -18,7 +18,6 @@ class ListScreenViewModel {
                 ListScreenState.Success(
                     countriesList = getDefaultCountryList(),
                     selectedCountry = getDefaultCountryList().first(),
-                    currentTouristPlace = getDefaultCountryList().first().touristPlaces.first()
                 )
             )
         }
@@ -33,13 +32,17 @@ class ListScreenViewModel {
                 is ListViewModelActions.OnItemSwiped -> {
                     state.emit(
                         (state.value as ListScreenState.Success).copy(
-                            currentTouristPlace = actions.touristPlace,
                             selectedItemIndex = actions.index
                         )
                     )
                 }
-                ListViewModelActions.ResetFlag -> {
-                    state.emit((state.value as ListScreenState.Success).copy(scrollToStart = false))
+                is ListViewModelActions.MoveToIndex -> {
+                    val previousState = (state.value as ListScreenState.Success)
+                    state.emit(
+                        previousState.copy(
+                            selectedItemIndex = actions.index,
+                        )
+                    )
                 }
             }
         }
@@ -47,9 +50,10 @@ class ListScreenViewModel {
 
     private suspend fun emitNewState(actions: ListViewModelActions.OnCountrySelected) {
         getStateValueWithEmptyState(state.value)?.run {
+            val country = this.countriesList.first { it.name == actions.country.name }
             val latestState = this.copy(
-                selectedCountry = this.countriesList.first { it.name == actions.country.name },
-                scrollToStart = true
+                selectedCountry = country,
+                selectedItemIndex = 0,
             )
             state.emit(latestState)
         }
@@ -67,8 +71,8 @@ class ListScreenViewModel {
 
 sealed interface ListViewModelActions {
     data class OnCountrySelected(val country: Country) : ListViewModelActions
+    data class MoveToIndex(val index: Int) : ListViewModelActions
     data class OnItemSwiped(val touristPlace: TouristPlace, val index: Int) : ListViewModelActions
-    object ResetFlag : ListViewModelActions
 }
 
 fun getDefaultCountryList(): List<Country> {
