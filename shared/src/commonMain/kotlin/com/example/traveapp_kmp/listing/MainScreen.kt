@@ -91,9 +91,6 @@ internal fun RenderListingScreen(
         listState.animateScrollToItem(state.selectedItemIndex)
     }
     var size by remember { mutableStateOf(Size.Zero) }
-    Box(modifier = Modifier.fillMaxSize().onGloballyPositioned { layoutCoordinates ->
-        size = layoutCoordinates.size.toSize()
-    })
 
     Box {
         val painter =
@@ -105,7 +102,11 @@ internal fun RenderListingScreen(
             ),
             contentScale = ContentScale.Crop,
         )
-        Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
+        Box(
+            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi)
+                .onGloballyPositioned {
+                    size = it.size.toSize()
+                })
 
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Column {
@@ -221,17 +222,18 @@ internal fun ImageSlider(
         items(items = imagesList) { touristPlace ->
             val painter = rememberAsyncImagePainter(touristPlace.images.first())
             Card(elevation = 16.dp,
-                modifier = Modifier.width((width).dp)
+                modifier = Modifier.width(width = (width * 0.8).dp)
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                     .clip(RoundedCornerShape(20.dp)),
                 contentColor = Color.Transparent,
-                backgroundColor = Color.Transparent,
                 onClick = { onDetailsClicked(Unit) }) {
                 Box {
                     Image(
                         painter,
                         "imageUrl",
-                        modifier = Modifier.aspectRatio(ratio = (295.0 / 432.0).toFloat()),
+                        modifier = Modifier.width(width = (width * 0.8).dp)
+                            .aspectRatio(ratio = (295.0 / 432.0).toFloat())
+                            .background(TravelAppColors.SemiWhite),
                         contentScale = ContentScale.Crop
                     )
                     Column(
