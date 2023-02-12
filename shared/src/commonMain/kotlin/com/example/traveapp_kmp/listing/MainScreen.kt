@@ -17,6 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
@@ -28,31 +29,26 @@ import com.example.traveapp_kmp.screennavigation.ScreensState
 import com.example.traveapp_kmp.style.TravelAppColors
 import com.seiko.imageloader.rememberAsyncImagePainter
 
+
 @Composable
 internal fun MainScreen(
     navigationState: MutableState<ScreensState>, viewMode: ListScreenViewModel
 ) {
     val state = viewMode.state.collectAsState()
-    MainScreenView(state = state,
+    MainScreenView(
+        state = state,
         onDetailsClicked = { navigationState.value = ScreensState(screen = Screen.DetailScreen) },
         onCountrySelected = { viewMode.onAction(ListViewModelActions.OnCountrySelected(it)) },
         moveToIndex = { viewMode.onAction(ListViewModelActions.MoveToIndex(it)) },
-        onItemSwipe = { touristPlace, i ->
-            viewMode.onAction(
-                ListViewModelActions.OnItemSwiped(
-                    touristPlace, i
-                )
-            )
-        })
+    )
 }
 
 @Composable
 internal fun MainScreenView(
     state: State<ListScreenState>,
     onDetailsClicked: (Unit) -> Unit,
-    onItemSwipe: (TouristPlace, Int) -> Unit,
     onCountrySelected: (Country) -> Unit,
-    moveToIndex: (Int) -> Unit
+    moveToIndex: (Int) -> Unit,
 ) {
     when (val result = state.value) {
         is ListScreenState.Error -> {
@@ -69,9 +65,8 @@ internal fun MainScreenView(
             RenderListingScreen(
                 state = result,
                 onDetailsClicked = onDetailsClicked,
-                onItemSwipe = onItemSwipe,
                 onCountrySelected = onCountrySelected,
-                moveToIndex = moveToIndex
+                moveToIndex = moveToIndex,
             )
         }
     }
@@ -81,17 +76,28 @@ internal fun MainScreenView(
 internal fun RenderListingScreen(
     state: ListScreenState.Success,
     onDetailsClicked: (Unit) -> Unit,
-    onItemSwipe: (TouristPlace, Int) -> Unit,
     onCountrySelected: (Country) -> Unit,
-    moveToIndex: (Int) -> Unit
+    moveToIndex: (Int) -> Unit,
 ) {
-    var size by remember { mutableStateOf(Size.Zero) }
+
     val listState = rememberLazyListState()
 
+    val visibleItems = listState.visibleItemsWithThreshold(percentThreshold = 0.3f)
+    LaunchedEffect(visibleItems) {
+        visibleItems.firstOrNull()?.let { moveToIndex(it) }
+    }
+
     LaunchedEffect(state.selectedItemIndex) {
-        println("Select item index ${state.selectedItemIndex}")
         listState.animateScrollToItem(state.selectedItemIndex)
     }
+
+    var size by remember { mutableStateOf(Size.Zero) }
+
+    Box(Modifier
+        .fillMaxSize()
+        .onGloballyPositioned { coordinates ->
+            size = coordinates.size.toSize()
+        })
 
     Box {
         val painter =
@@ -118,11 +124,9 @@ internal fun RenderListingScreen(
             Box(modifier = Modifier.weight(1f, false)) {
                 ImageSlider(
                     imagesList = state.selectedCountry.touristPlaces,
-                    selectedIndex = state.selectedItemIndex,
                     onDetailsClicked = onDetailsClicked,
-                    moveToIndex = moveToIndex,
                     listState = listState,
-                    width = size.width
+                    width = size.width,
                 )
             }
             Box(modifier = Modifier.align(Alignment.End).padding(bottom = 16.dp).fillMaxWidth()) {
@@ -212,13 +216,10 @@ private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (Str
 @Composable
 internal fun ImageSlider(
     imagesList: List<TouristPlace>,
-    selectedIndex: Int,
     onDetailsClicked: (Unit) -> Unit,
-    moveToIndex: (Int) -> Unit,
     listState: LazyListState,
     width: Float,
 ) {
-    var lastIndex = 0
 
     LazyRow(
         modifier = Modifier.padding(top = 8.dp).fillMaxSize(),
@@ -227,19 +228,10 @@ internal fun ImageSlider(
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         items(items = imagesList) { touristPlace ->
-            val items = listState.visibleItemsWithThreshold(percentThreshold = 1.0f)
-            println("Select item index ${items.toString()}")
-            if (items.isNotEmpty() && items.size == 1) {
-                val visibleItems = items.first()
-                if (visibleItems != lastIndex && visibleItems != selectedIndex) {
-                    lastIndex = visibleItems
-                    //   moveToIndex(lastIndex)
-                }
-            }
-
             val painter = rememberAsyncImagePainter(touristPlace.images.first())
             Card(elevation = 16.dp,
-                modifier = Modifier.aspectRatio(ratio = (295.0 / 432.0).toFloat())
+                modifier = Modifier.width((width * 0.3).dp)
+                    //  .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                     .clip(RoundedCornerShape(20.dp)),
                 contentColor = Color.Transparent,
                 backgroundColor = Color.Transparent,
@@ -249,9 +241,10 @@ internal fun ImageSlider(
                         painter,
                         "imageUrl",
                         modifier = Modifier.aspectRatio(ratio = (295.0 / 432.0).toFloat()),
+                        contentScale = ContentScale.Crop
                     )
                     Column(
-                        modifier = Modifier.padding(16.dp).align(Alignment.BottomCenter)
+                        modifier = Modifier.padding(16.dp).align(Alignment.BottomStart)
                     ) {
                         Text(
                             text = touristPlace.name, style = MaterialTheme.typography.h4.copy(
