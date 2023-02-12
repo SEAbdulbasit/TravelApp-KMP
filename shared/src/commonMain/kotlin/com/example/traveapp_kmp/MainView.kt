@@ -29,7 +29,7 @@ internal fun CommonView() {
         )
     ) {
         when (state.value.screen) {
-            Screen.DetailScreen -> DetailScreen()
+            Screen.DetailScreen -> DetailScreen(state)
             Screen.MainScreen -> MainScreen(state)
         }
     }

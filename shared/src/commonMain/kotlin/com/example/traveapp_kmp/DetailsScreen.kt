@@ -12,18 +12,24 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.ExperimentalUnitApi
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import com.example.traveapp_kmp.screennavigation.ScreensState
 import com.seiko.imageloader.rememberAsyncImagePainter
 
 
+@OptIn(ExperimentalUnitApi::class)
 @Composable
-internal fun DetailScreen() {
+internal fun DetailScreen(state: MutableState<ScreensState>) {
     Box {
         val url = "https://i.postimg.cc/c1vXfhTP/Rectangle-917.png"
         val painter = rememberAsyncImagePainter(url)
@@ -35,11 +41,10 @@ internal fun DetailScreen() {
             modifier = Modifier.padding(top = 16.dp)
                 .verticalScroll(rememberScrollState())
         ) {
-            Icon(
+            Image(
                 imageVector = Icons.Filled.ArrowBack,
                 contentDescription = "New Album",
-                tint = Color.White,
-                modifier = Modifier.padding(start = 16.dp)
+                modifier = Modifier.padding(start = 16.dp),
             )
             val painter = rememberAsyncImagePainter("https://i.postimg.cc/JnfnWbTn/Frame-53.png")
             Card(
@@ -65,7 +70,9 @@ internal fun DetailScreen() {
             Text(
                 text = "Japan’s Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo." + " Commonly called “Fuji-san,” it’s the country’s tallest peak, at 3,776 meters. A pilgrimage site for centu" + "ries, it’s considered one of Japan’s 3 sacred mountains, and summit hikes remain a popular activity. Its iconic" + " profile is the subject of numerous works of art, notably Edo Period prints by Hokusai and Hiroshige.",
                 style = MaterialTheme.typography.subtitle2.copy(
-                    color = Color.White, fontWeight = FontWeight.Normal
+                    color = Color.White, fontWeight = FontWeight.Normal,
+                    letterSpacing = TextUnit(0.1f, TextUnitType.Em),
+                    lineHeight = TextUnit(22f, TextUnitType.Sp)
                 ),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 10.dp)
             )
