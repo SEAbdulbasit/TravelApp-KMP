@@ -1,11 +1,11 @@
 package com.example.traveapp_kmp
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import com.example.traveapp_kmp.listing.MainScreen
 import com.example.traveapp_kmp.screennavigation.Screen
 import com.example.traveapp_kmp.screennavigation.ScreensState
 import com.example.traveapp_kmp.style.TravelAppColors
@@ -13,7 +13,7 @@ import com.example.traveapp_kmp.style.TravelAppColors
 
 @Composable
 internal fun CommonView() {
-    isSystemInDarkTheme() // todo check and change colors
+    val viewMode = ListScreenViewModel()
     val state = remember { mutableStateOf(ScreensState()) }
 
     MaterialTheme(
@@ -30,7 +30,7 @@ internal fun CommonView() {
     ) {
         when (state.value.screen) {
             Screen.DetailScreen -> DetailScreen(state)
-            Screen.MainScreen -> MainScreen(state)
+            Screen.MainScreen -> MainScreen(state, viewMode)
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.traveapp_kmp
+package com.example.traveapp_kmp.listing
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -12,6 +12,8 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.BlurredEdgeTreatment
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -22,50 +24,85 @@ import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import com.example.traveapp_kmp.ListScreenViewModel
+import com.example.traveapp_kmp.ListViewModelActions
 import com.example.traveapp_kmp.screennavigation.Screen
 import com.example.traveapp_kmp.screennavigation.ScreensState
 import com.example.traveapp_kmp.style.TravelAppColors
 import com.seiko.imageloader.rememberAsyncImagePainter
 
 @Composable
-internal fun MainScreen(state: MutableState<ScreensState>) {
-    MainScreenView(onDetailsClicked = {
-        state.value = state.value.copy(screen = Screen.DetailScreen)
+internal fun MainScreen(
+    navigationState: MutableState<ScreensState>, viewMode: ListScreenViewModel
+) {
+    val state = viewMode.state.collectAsState()
+    MainScreenView(state = state.value, onDetailsClicked = {
+        navigationState.value = navigationState.value.copy(screen = Screen.DetailScreen)
+    }, onCountrySelected = { name ->
+        viewMode.onAction(ListViewModelActions.OnCountrySelected(name))
     })
 }
 
 @Composable
-internal fun MainScreenView(onDetailsClicked: (Unit) -> Unit) {
+internal fun MainScreenView(
+    state: ListScreenState, onDetailsClicked: (Unit) -> Unit, onCountrySelected: (String) -> Unit
+) {
+    when (state) {
+        is ListScreenState.Error -> {
+
+        }
+        ListScreenState.Loading -> {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        }
+        is ListScreenState.Success -> {
+            RenderListingScreen(
+                state.data, onCountrySelected, onDetailsClicked
+            )
+        }
+    }
+}
+
+@Composable
+internal fun RenderListingScreen(
+    state: ListScreenSuccessState,
+    onCountrySelected: (String) -> Unit,
+    onDetailsClicked: (Unit) -> Unit
+) {
     Box {
-        val url = "https://i.postimg.cc/c1vXfhTP/Rectangle-917.png"
-        val painter = rememberAsyncImagePainter(url)
+        val painter =
+            rememberAsyncImagePainter(state.selectedCountry.touristPlaces.first().images.first())
         Image(
-            painter, null, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop,
+            painter, null,
+            modifier = Modifier.fillMaxSize().blur(
+                edgeTreatment = BlurredEdgeTreatment(RoundedCornerShape(8.dp)), radius = 10.dp
+            ),
+            contentScale = ContentScale.Crop,
         )
 
         Column(modifier = Modifier.fillMaxSize()) {
             Box(modifier = Modifier.align(Alignment.Start)) {
                 Column {
                     WeatherView()
-                    ListCountryChips(listOf("Japan", "South Koria", "Italy", "Vietnam"))
+                    ListCountryChips(
+                        state.countriesList.map { it.name },
+                        state.selectedCountry.name,
+                        onCountrySelected = onCountrySelected
+                    )
                 }
             }
             Box(modifier = Modifier.weight(1f, false)) {
                 ImageSlider(
-                    listOf(
-                        "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
-                        "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
-                        "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
-                        "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
-                    ),
-                    onDetailsClicked
+                    imagesList = state.selectedCountry.touristPlaces,
+                    onDetailsClicked = onDetailsClicked
                 )
             }
             Box(modifier = Modifier.align(Alignment.End).padding(bottom = 16.dp).fillMaxWidth()) {
                 Column {
                     Counter()
                     Line()
-                    VisitingPlacesList(listOf("Japan", "South Koria", "Italy", "Vietnam"))
+                    VisitingPlacesList(state.selectedCountry.touristPlaces.map { it.name })
                 }
             }
         }
@@ -104,11 +141,12 @@ internal fun WeatherView() {
 }
 
 @Composable
-private fun ListCountryChips(list: List<String>) {
-    var state by remember { mutableStateOf(list.first()) }
+private fun ListCountryChips(
+    list: List<String>, selectedCountry: String, onCountrySelected: (String) -> Unit
+) {
     LazyRow(contentPadding = PaddingValues(8.dp), modifier = Modifier.padding(top = 16.dp)) {
         items(items = list) { name ->
-            CountryChips(name, state == name) { state = it }
+            CountryChips(name, selectedCountry == name) { onCountrySelected(name) }
         }
     }
 }
@@ -137,40 +175,36 @@ private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (Str
 
 @OptIn(ExperimentalUnitApi::class, ExperimentalMaterialApi::class)
 @Composable
-internal fun ImageSlider(imagesList: List<String>, onDetailsClicked: (Unit) -> Unit) {
+internal fun ImageSlider(imagesList: List<TouristPlace>, onDetailsClicked: (Unit) -> Unit) {
     LazyRow(
         modifier = Modifier.padding(top = 8.dp).fillMaxSize(),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
-        items(items = imagesList) { imageUrl ->
-            val painter = rememberAsyncImagePainter(imageUrl)
-            Card(
-                elevation = 16.dp,
-                modifier = Modifier
-                    .aspectRatio(ratio = (295.0 / 432.0).toFloat())
+        items(items = imagesList) { touristPlace ->
+            val painter = rememberAsyncImagePainter(touristPlace.images.first())
+            Card(elevation = 16.dp,
+                modifier = Modifier.aspectRatio(ratio = (295.0 / 432.0).toFloat())
                     .clip(RoundedCornerShape(20.dp)),
                 contentColor = Color.Transparent,
                 backgroundColor = Color.Transparent,
-                onClick = { onDetailsClicked(Unit) }
-            ) {
+                onClick = { onDetailsClicked(Unit) }) {
                 Box {
                     Image(
                         painter,
-                        imageUrl,
-                        modifier = Modifier
-                            .aspectRatio(ratio = (295.0 / 432.0).toFloat()),
+                        "imageUrl",
+                        modifier = Modifier.aspectRatio(ratio = (295.0 / 432.0).toFloat()),
                     )
                     Column(
                         modifier = Modifier.padding(16.dp).align(Alignment.BottomCenter)
                     ) {
                         Text(
-                            text = "Tokyo", style = MaterialTheme.typography.h4.copy(
+                            text = touristPlace.name, style = MaterialTheme.typography.h4.copy(
                                 color = Color.White, fontWeight = FontWeight.Medium
                             )
                         )
                         Text(
-                            text = "Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods.",
+                            text = touristPlace.shortDescription,
                             style = MaterialTheme.typography.caption.copy(
                                 color = Color.White,
                                 letterSpacing = TextUnit(0.1f, TextUnitType.Em),
