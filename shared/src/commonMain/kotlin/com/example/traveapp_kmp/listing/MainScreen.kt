@@ -90,14 +90,10 @@ internal fun RenderListingScreen(
     LaunchedEffect(state.selectedItemIndex) {
         listState.animateScrollToItem(state.selectedItemIndex)
     }
-
     var size by remember { mutableStateOf(Size.Zero) }
-
-    Box(Modifier
-        .fillMaxSize()
-        .onGloballyPositioned { coordinates ->
-            size = coordinates.size.toSize()
-        })
+    Box(modifier = Modifier.fillMaxSize().onGloballyPositioned { layoutCoordinates ->
+        size = layoutCoordinates.size.toSize()
+    })
 
     Box {
         val painter =
@@ -110,38 +106,32 @@ internal fun RenderListingScreen(
             contentScale = ContentScale.Crop,
         )
 
-        Column(modifier = Modifier.fillMaxSize()) {
-            Box(modifier = Modifier.align(Alignment.Start)) {
-                Column {
-                    WeatherView()
-                    ListCountryChips(
-                        state.countriesList,
-                        state.selectedCountry.name,
-                        onCountrySelected = onCountrySelected
-                    )
-                }
-            }
-            Box(modifier = Modifier.weight(1f, false)) {
-                ImageSlider(
-                    imagesList = state.selectedCountry.touristPlaces,
-                    onDetailsClicked = onDetailsClicked,
-                    listState = listState,
-                    width = size.width,
+        Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+            Column {
+                WeatherView()
+                ListCountryChips(
+                    state.countriesList,
+                    state.selectedCountry.name,
+                    onCountrySelected = onCountrySelected
                 )
             }
-            Box(modifier = Modifier.align(Alignment.End).padding(bottom = 16.dp).fillMaxWidth()) {
-                Column {
-                    Counter(
-                        destinationsSize = state.selectedCountry.touristPlaces.size,
-                        selectedDestination = state.selectedItemIndex,
-                        onItemSwipe = moveToIndex
-                    )
-                    Line()
-                    VisitingPlacesList(
-                        state.selectedCountry.touristPlaces.map { it.name },
-                        state.selectedCountry.touristPlaces[state.selectedItemIndex].name
-                    )
-                }
+            ImageSlider(
+                imagesList = state.selectedCountry.touristPlaces,
+                onDetailsClicked = onDetailsClicked,
+                listState = listState,
+                width = (size.width * 0.32).toFloat(),
+            )
+            Column {
+                Counter(
+                    destinationsSize = state.selectedCountry.touristPlaces.size,
+                    selectedDestination = state.selectedItemIndex,
+                    onItemSwipe = moveToIndex
+                )
+                Line()
+                VisitingPlacesList(
+                    state.selectedCountry.touristPlaces.map { it.name },
+                    state.selectedCountry.touristPlaces[state.selectedItemIndex].name
+                )
             }
         }
     }
@@ -230,8 +220,8 @@ internal fun ImageSlider(
         items(items = imagesList) { touristPlace ->
             val painter = rememberAsyncImagePainter(touristPlace.images.first())
             Card(elevation = 16.dp,
-                modifier = Modifier.width((width * 0.3).dp)
-                    //  .aspectRatio(ratio = (295.0 / 432.0).toFloat())
+                modifier = Modifier.width((width).dp)
+                    .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                     .clip(RoundedCornerShape(20.dp)),
                 contentColor = Color.Transparent,
                 backgroundColor = Color.Transparent,

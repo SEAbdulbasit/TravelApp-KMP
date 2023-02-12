@@ -28,6 +28,7 @@ internal fun CommonView() {
             onSurface = TravelAppColors.Foreground
         )
     ) {
+
         when (screenNavigationState.value.screen) {
             Screen.DetailScreen -> DetailScreen(screenNavigationState)
             Screen.MainScreen -> MainScreen(screenNavigationState, viewMode)
