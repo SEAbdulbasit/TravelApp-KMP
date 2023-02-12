@@ -68,7 +68,7 @@ internal fun DetailScreen(state: MutableState<ScreensState>) {
                 ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
             )
             Text(
-                text = "Japan’s Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo." + " Commonly called “Fuji-san,” it’s the country’s tallest peak, at 3,776 meters. A pilgrimage site for centu" + "ries, it’s considered one of Japan’s 3 sacred mountains, and summit hikes remain a popular activity. Its iconic" + " profile is the subject of numerous works of art, notably Edo Period prints by Hokusai and Hiroshige.",
+                text = "Japan’s Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo." + " Commonly called “Fuji-san,” it’s the TouristPlace’s tallest peak, at 3,776 meters. A pilgrimage site for centu" + "ries, it’s considered one of Japan’s 3 sacred mountains, and summit hikes remain a popular activity. Its iconic" + " profile is the subject of numerous works of art, notably Edo Period prints by Hokusai and Hiroshige.",
                 style = MaterialTheme.typography.subtitle2.copy(
                     color = Color.White, fontWeight = FontWeight.Normal,
                     letterSpacing = TextUnit(0.1f, TextUnitType.Em),

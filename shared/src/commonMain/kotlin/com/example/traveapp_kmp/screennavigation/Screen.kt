@@ -5,5 +5,4 @@ sealed interface Screen {
     object DetailScreen : Screen
 }
 
-
 data class ScreensState(val screen: Screen = Screen.MainScreen)
