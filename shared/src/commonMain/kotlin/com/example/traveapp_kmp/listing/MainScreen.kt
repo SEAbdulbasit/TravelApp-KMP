@@ -105,6 +105,7 @@ internal fun RenderListingScreen(
             ),
             contentScale = ContentScale.Crop,
         )
+        Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
 
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Column {
