@@ -2,8 +2,7 @@ package com.example.traveapp_kmp.listing
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -49,7 +48,9 @@ internal fun MainScreenView(
 ) {
     when (state) {
         is ListScreenState.Error -> {
-
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text(text = state.message)
+            }
         }
         ListScreenState.Loading -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -92,17 +93,27 @@ internal fun RenderListingScreen(
                     )
                 }
             }
+            var selectedDestinationIndex by remember { mutableStateOf(0) }
+            var selectedDestination by remember { mutableStateOf(state.selectedCountry.touristPlaces.first()) }
+
             Box(modifier = Modifier.weight(1f, false)) {
                 ImageSlider(
                     imagesList = state.selectedCountry.touristPlaces,
-                    onDetailsClicked = onDetailsClicked
+                    onDetailsClicked = onDetailsClicked,
+                    onItemSwipe = { touristPlace, index ->
+                        selectedDestination = touristPlace
+                        selectedDestinationIndex = index
+                    }
                 )
             }
             Box(modifier = Modifier.align(Alignment.End).padding(bottom = 16.dp).fillMaxWidth()) {
                 Column {
-                    Counter()
+                    Counter(state.countriesList.size, selectedDestinationIndex)
                     Line()
-                    VisitingPlacesList(state.selectedCountry.touristPlaces.map { it.name })
+                    VisitingPlacesList(
+                        state.selectedCountry.touristPlaces.map { it.name },
+                        selectedDestination.name
+                    )
                 }
             }
         }
@@ -175,13 +186,30 @@ private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (Str
 
 @OptIn(ExperimentalUnitApi::class, ExperimentalMaterialApi::class)
 @Composable
-internal fun ImageSlider(imagesList: List<TouristPlace>, onDetailsClicked: (Unit) -> Unit) {
+internal fun ImageSlider(
+    imagesList: List<TouristPlace>,
+    onDetailsClicked: (Unit) -> Unit,
+    onItemSwipe: (TouristPlace, Int) -> Unit
+) {
+    val state = rememberLazyListState()
+    var lastIndex = -1
     LazyRow(
         modifier = Modifier.padding(top = 8.dp).fillMaxSize(),
+        state = state,
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         items(items = imagesList) { touristPlace ->
+
+            val items = state.visibleItemsWithThreshold(percentThreshold = 1.0f)
+            if (items.isNotEmpty()) {
+                val visibleItems = items.last() + 1
+                if (visibleItems != lastIndex) {
+                    lastIndex = visibleItems
+                    onItemSwipe(imagesList[lastIndex - 1], lastIndex)
+                }
+            }
+
             val painter = rememberAsyncImagePainter(touristPlace.images.first())
             Card(elevation = 16.dp,
                 modifier = Modifier.aspectRatio(ratio = (295.0 / 432.0).toFloat())
@@ -226,7 +254,7 @@ internal fun ImageSlider(imagesList: List<TouristPlace>, onDetailsClicked: (Unit
                             Icon(
                                 imageVector = Icons.Filled.ArrowForward,
                                 tint = Color.White,
-                                contentDescription = "New Album",
+                                contentDescription = "Explore details",
                                 modifier = Modifier.size(24.dp).padding(start = 8.dp)
                                     .align(Alignment.Top)
                             )
@@ -240,21 +268,21 @@ internal fun ImageSlider(imagesList: List<TouristPlace>, onDetailsClicked: (Unit
 
 @OptIn(ExperimentalUnitApi::class)
 @Composable
-internal fun Counter() {
+internal fun Counter(destinationsSize: Int, selectedDestination: Int) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxWidth().padding(top = 30.dp, start = 16.dp, end = 16.dp)
     ) {
         Row(horizontalArrangement = Arrangement.Center) {
             Text(
-                "01", style = MaterialTheme.typography.subtitle2.copy(
+                selectedDestination.toString(), style = MaterialTheme.typography.subtitle2.copy(
                     color = Color.White, fontSize = TextUnit(
                         24f, TextUnitType.Sp
                     )
                 ), modifier = Modifier.align(Alignment.Bottom).padding(0.dp)
             )
             Text(
-                "/01",
+                "/$destinationsSize",
                 style = MaterialTheme.typography.subtitle2.copy(color = Color.White),
                 modifier = Modifier.align(Alignment.Bottom)
             )
@@ -262,12 +290,12 @@ internal fun Counter() {
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             Icon(
                 imageVector = Icons.Filled.ArrowBack,
-                contentDescription = "New Album",
+                contentDescription = "Back Arrow",
                 tint = Color.White
             )
             Icon(
                 imageVector = Icons.Filled.ArrowForward,
-                contentDescription = "New Album",
+                contentDescription = "Forward Arrow",
                 tint = Color.White
             )
         }
@@ -284,20 +312,50 @@ internal fun Line() {
 }
 
 @Composable
-internal fun VisitingPlacesList(list: List<String>) {
-    val isSelected = true
+internal fun VisitingPlacesList(list: List<String>, name: String) {
     LazyRow(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)) {
         items(list) {
             Text(
                 it,
                 style = MaterialTheme.typography.body1.copy(
-                    color = if (isSelected) Color.White else Color.White.copy(
+                    color = if (it == name) Color.White else Color.White.copy(
                         alpha = 0.7f
-                    ), fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal
+                    ), fontWeight = if (it == name) FontWeight.SemiBold else FontWeight.Normal
                 ),
                 modifier = Modifier.padding(start = 8.dp, top = 8.dp, bottom = 8.dp, end = 8.dp)
                     .background(Color.Transparent),
             )
         }
     }
+}
+
+@Composable
+private fun LazyListState.visibleItemsWithThreshold(percentThreshold: Float): List<Int> {
+
+    return remember(this) {
+        derivedStateOf {
+            val visibleItemsInfo = layoutInfo.visibleItemsInfo
+            if (layoutInfo.totalItemsCount == 0) {
+                emptyList()
+            } else {
+                val fullyVisibleItemsInfo = visibleItemsInfo.toMutableList()
+                val lastItem = fullyVisibleItemsInfo.last()
+
+                val viewportHeight = layoutInfo.viewportEndOffset + layoutInfo.viewportStartOffset
+
+                if (lastItem.offset + (lastItem.size * percentThreshold) > viewportHeight) {
+                    fullyVisibleItemsInfo.removeLast()
+                }
+
+                val firstItemIfLeft = fullyVisibleItemsInfo.firstOrNull()
+                if (firstItemIfLeft != null &&
+                    firstItemIfLeft.offset + (lastItem.size * percentThreshold) < layoutInfo.viewportStartOffset
+                ) {
+                    fullyVisibleItemsInfo.removeFirst()
+                }
+
+                fullyVisibleItemsInfo.map { it.index }
+            }
+        }
+    }.value
 }
