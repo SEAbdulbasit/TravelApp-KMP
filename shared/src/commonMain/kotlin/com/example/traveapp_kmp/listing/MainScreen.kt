@@ -11,8 +11,6 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.BlurredEdgeTreatment
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -97,9 +95,7 @@ internal fun RenderListingScreen(
             rememberAsyncImagePainter(state.selectedCountry.touristPlaces[state.selectedItemIndex].images.first())
         Image(
             painter, null,
-            modifier = Modifier.fillMaxSize().blur(
-                edgeTreatment = BlurredEdgeTreatment(RoundedCornerShape(8.dp)), radius = 10.dp
-            ),
+            modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
         )
         Box(
