@@ -1,12 +1,10 @@
 package com.example.traveapp_kmp
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -17,36 +15,40 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.ExperimentalUnitApi
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.*
+import com.example.traveapp_kmp.listing.TouristPlace
+import com.example.traveapp_kmp.screennavigation.Screen
 import com.example.traveapp_kmp.screennavigation.ScreensState
+import com.example.traveapp_kmp.style.TravelAppColors
 import com.seiko.imageloader.rememberAsyncImagePainter
 
 
 @OptIn(ExperimentalUnitApi::class)
 @Composable
-internal fun DetailScreen(state: MutableState<ScreensState>) {
+internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPlace: TouristPlace) {
     Box {
-        val url = "https://i.postimg.cc/c1vXfhTP/Rectangle-917.png"
-        val painter = rememberAsyncImagePainter(url)
+        val painter = rememberAsyncImagePainter(touristPlace.images.first())
         Image(
             painter, null, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop,
         )
+        Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
 
         Column(
-            modifier = Modifier.padding(top = 16.dp)
-                .verticalScroll(rememberScrollState())
+            modifier = Modifier.padding(top = 16.dp).verticalScroll(rememberScrollState())
         ) {
             Image(
                 imageVector = Icons.Filled.ArrowBack,
-                contentDescription = "New Album",
-                modifier = Modifier.padding(start = 16.dp),
+                contentDescription = touristPlace.images.first(),
+                modifier = Modifier.padding(start = 16.dp).clickable(onClick = {
+                    navigationState.value = ScreensState(
+                        Screen.MainScreen
+                    )
+                }),
+                colorFilter = ColorFilter.tint(color = Color.White),
             )
-            val painter = rememberAsyncImagePainter("https://i.postimg.cc/JnfnWbTn/Frame-53.png")
             Card(
                 elevation = 16.dp,
                 modifier = Modifier.aspectRatio(ratio = 335f / 280f).clip(RoundedCornerShape(15.dp))
@@ -63,14 +65,15 @@ internal fun DetailScreen(state: MutableState<ScreensState>) {
             }
             PlaceInfo()
             Text(
-                text = "Mount Fuji, Japan", style = MaterialTheme.typography.h5.copy(
+                text = touristPlace.name, style = MaterialTheme.typography.h5.copy(
                     fontWeight = FontWeight.Medium, color = Color.White
                 ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
             )
             Text(
-                text = "Japan’s Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo." + " Commonly called “Fuji-san,” it’s the TouristPlace’s tallest peak, at 3,776 meters. A pilgrimage site for centu" + "ries, it’s considered one of Japan’s 3 sacred mountains, and summit hikes remain a popular activity. Its iconic" + " profile is the subject of numerous works of art, notably Edo Period prints by Hokusai and Hiroshige.",
+                text = touristPlace.longDescription,
                 style = MaterialTheme.typography.subtitle2.copy(
-                    color = Color.White, fontWeight = FontWeight.Normal,
+                    color = Color.White,
+                    fontWeight = FontWeight.Normal,
                     letterSpacing = TextUnit(0.1f, TextUnitType.Em),
                     lineHeight = TextUnit(22f, TextUnitType.Sp)
                 ),
@@ -81,11 +84,7 @@ internal fun DetailScreen(state: MutableState<ScreensState>) {
                     fontWeight = FontWeight.Medium, color = Color.White
                 ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
             )
-            ImageGallery(listOf(
-                "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
-                "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
-                "https://i.postimg.cc/JnfnWbTn/Frame-53.png"
-            ), {})
+            ImageGallery(touristPlace.images, {})
         }
     }
 }
@@ -146,7 +145,8 @@ internal fun ImageGallery(imagesList: List<String>, onDetailsClicked: (Unit) -> 
                 Image(
                     painter = painter,
                     contentDescription = imageUrl,
-                    modifier = Modifier.aspectRatio(ratio = (139.0 / 210.0).toFloat())
+                    modifier = Modifier.aspectRatio(ratio = (139.0 / 210.0).toFloat()),
+                    contentScale = ContentScale.Crop
                 )
             }
         }

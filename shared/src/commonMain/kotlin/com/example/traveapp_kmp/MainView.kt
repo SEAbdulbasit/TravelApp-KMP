@@ -29,8 +29,11 @@ internal fun CommonView() {
         )
     ) {
 
-        when (screenNavigationState.value.screen) {
-            Screen.DetailScreen -> DetailScreen(screenNavigationState)
+        when (val state = screenNavigationState.value.screen) {
+            is Screen.DetailScreen -> DetailScreen(
+                navigationState = screenNavigationState,
+                touristPlace = state.touristPlace
+            )
             Screen.MainScreen -> MainScreen(screenNavigationState, viewMode)
         }
     }

@@ -6,7 +6,7 @@ object TravelAppColors {
     val Gray = Color.DarkGray
     val LightGray = Color(100, 100, 100)
     val DarkGray = Color(32, 32, 32)
-    val DarkGraySemi = Color(32, 32, 32,60)
+    val DarkGraySemi = Color(32, 32, 32,80)
     val PreviewImageAreaHoverColor = Color(45, 45, 45)
     val ToastBackground = Color(23, 23, 23)
     val MiniatureColor = Color(50, 50, 50)

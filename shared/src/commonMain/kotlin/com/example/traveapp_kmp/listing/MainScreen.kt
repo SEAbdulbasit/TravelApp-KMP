@@ -35,7 +35,9 @@ internal fun MainScreen(
     val state = viewMode.state.collectAsState()
     MainScreenView(
         state = state,
-        onDetailsClicked = { navigationState.value = ScreensState(screen = Screen.DetailScreen) },
+        onDetailsClicked = {
+            navigationState.value = ScreensState(screen = Screen.DetailScreen(it))
+        },
         onCountrySelected = { viewMode.onAction(ListViewModelActions.OnCountrySelected(it)) },
         moveToIndex = { viewMode.onAction(ListViewModelActions.MoveToIndex(it)) },
     )
@@ -44,7 +46,7 @@ internal fun MainScreen(
 @Composable
 internal fun MainScreenView(
     state: State<ListScreenState>,
-    onDetailsClicked: (Unit) -> Unit,
+    onDetailsClicked: (TouristPlace) -> Unit,
     onCountrySelected: (Country) -> Unit,
     moveToIndex: (Int) -> Unit,
 ) {
@@ -73,7 +75,7 @@ internal fun MainScreenView(
 @Composable
 internal fun RenderListingScreen(
     state: ListScreenState.Success,
-    onDetailsClicked: (Unit) -> Unit,
+    onDetailsClicked: (TouristPlace) -> Unit,
     onCountrySelected: (Country) -> Unit,
     moveToIndex: (Int) -> Unit,
 ) {
@@ -117,7 +119,7 @@ internal fun RenderListingScreen(
                 imagesList = state.selectedCountry.touristPlaces,
                 onDetailsClicked = onDetailsClicked,
                 listState = listState,
-                width = (size.width * 0.32).toFloat(),
+                width = (size.width * 0.40).toFloat(),
             )
             Column {
                 Counter(
@@ -204,7 +206,7 @@ private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (Str
 @Composable
 internal fun ImageSlider(
     imagesList: List<TouristPlace>,
-    onDetailsClicked: (Unit) -> Unit,
+    onDetailsClicked: (TouristPlace) -> Unit,
     listState: LazyListState,
     width: Float,
 ) {
@@ -217,12 +219,13 @@ internal fun ImageSlider(
     ) {
         items(items = imagesList) { touristPlace ->
             val painter = rememberAsyncImagePainter(touristPlace.images.first())
-            Card(elevation = 16.dp,
+            Card(
+                elevation = 16.dp,
                 modifier = Modifier.width(width = (width * 0.8).dp)
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                     .clip(RoundedCornerShape(20.dp)),
                 contentColor = Color.Transparent,
-                onClick = { onDetailsClicked(Unit) }) {
+            ) {
                 Box {
                     Image(
                         painter,
@@ -248,11 +251,15 @@ internal fun ImageSlider(
                                 lineHeight = TextUnit(19f, TextUnitType.Sp)
                             ),
                             modifier = Modifier.padding(top = 16.dp),
-                            maxLines = 3,
                             overflow = TextOverflow.Ellipsis
                         )
                         Row(Modifier.padding(top = 20.dp)) {
                             Text(
+                                modifier = Modifier.clickable(onClick = {
+                                    onDetailsClicked(
+                                        touristPlace
+                                    )
+                                }),
                                 text = "Discover Place",
                                 style = MaterialTheme.typography.subtitle2.copy(
                                     textDecoration = TextDecoration.Underline,
