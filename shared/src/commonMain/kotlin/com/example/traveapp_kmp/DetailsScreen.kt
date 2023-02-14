@@ -32,7 +32,10 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
     Box {
         val painter = rememberAsyncImagePainter(touristPlace.images.first())
         Image(
-            painter, null, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop,
+            painter,
+            null,
+            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi),
+            contentScale = ContentScale.Crop,
         )
         Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
 
@@ -51,17 +54,18 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
             )
             Card(
                 elevation = 16.dp,
-                modifier = Modifier.aspectRatio(ratio = 335f / 280f).clip(RoundedCornerShape(15.dp))
-                    .padding(top = 16.dp, start = 16.dp, end = 16.dp),
+                modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                    .aspectRatio(ratio = 335f / 280f).clip(RoundedCornerShape(15.dp)),
                 contentColor = Color.Transparent,
-                backgroundColor = Color.Transparent
             ) {
-                Image(
-                    painter,
-                    "https://i.postimg.cc/JnfnWbTn/Frame-53.png",
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop,
-                )
+                Box {
+                    Image(
+                        painter = painter,
+                        contentDescription = touristPlace.images.first(),
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
             }
             PlaceInfo()
             Text(
@@ -131,23 +135,27 @@ internal fun IconWithText() {
 internal fun ImageGallery(imagesList: List<String>, onDetailsClicked: (Unit) -> Unit) {
     LazyRow(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         items(items = imagesList) { imageUrl ->
             val painter = rememberAsyncImagePainter(imageUrl)
-            Card(elevation = 16.dp,
+            Card(
+                elevation = 16.dp,
                 modifier = Modifier.height(210.dp).aspectRatio(ratio = (139.0 / 210.0).toFloat())
-                    .clip(RoundedCornerShape(20.dp)),
+                    .clip(RoundedCornerShape(16.dp)),
                 contentColor = Color.Transparent,
-                backgroundColor = Color.Transparent,
-                onClick = { onDetailsClicked(Unit) }) {
-                Image(
-                    painter = painter,
-                    contentDescription = imageUrl,
-                    modifier = Modifier.aspectRatio(ratio = (139.0 / 210.0).toFloat()),
-                    contentScale = ContentScale.Crop
-                )
+            ) {
+                Box {
+                    Image(
+                        painter = painter,
+                        contentDescription = imageUrl,
+                        modifier = Modifier.height(210.dp)
+                            .aspectRatio(ratio = (139.0 / 210.0).toFloat())
+                            .background(TravelAppColors.SemiWhite),
+                        contentScale = ContentScale.Crop
+                    )
+                }
             }
         }
     }

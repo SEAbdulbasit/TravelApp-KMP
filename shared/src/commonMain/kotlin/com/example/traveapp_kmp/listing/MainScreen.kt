@@ -119,7 +119,7 @@ internal fun RenderListingScreen(
                 imagesList = state.selectedCountry.touristPlaces,
                 onDetailsClicked = onDetailsClicked,
                 listState = listState,
-                width = (size.width * 0.40).toFloat(),
+                width = (size.width * 0.36).toFloat(),
             )
             Column {
                 Counter(
@@ -228,8 +228,7 @@ internal fun ImageSlider(
             ) {
                 Box {
                     Image(
-                        painter,
-                        "imageUrl",
+                        painter, touristPlace.images.first(),
                         modifier = Modifier.width(width = (width * 0.8).dp)
                             .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                             .background(TravelAppColors.SemiWhite),
