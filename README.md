@@ -6,6 +6,11 @@ The support for iOS on Compose Multiplatform is still in experimental phase.
 
 This is just a demonstration, the code is still not in perfect form.
 
+For rest api, I am using [Makoon](https://mockoon.com/)
+
+## Running the App:
+For running the app, you need an api to feed data. For Rest api, I am using [Makoon](https://mockoon.com/). You can create a local enviroment and add countrieslist api. Here you can find the sample response here: https://github.com/SEAbdulbasit/TravelApp-KMP/blob/master/TravelApp-KMM.json 
+
 ## on iOS
 
 <table>
