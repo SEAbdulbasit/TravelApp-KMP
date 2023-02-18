@@ -24,4 +24,5 @@ pluginManagement {
 rootProject.name = "TravelApp-KMP"
 
 include(":androidApp")
+include(":desktopApp")
 include(":shared")

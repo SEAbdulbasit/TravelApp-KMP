@@ -229,7 +229,7 @@ internal fun ImageSlider(
                 Box {
                     Image(
                         painter, touristPlace.images.first(),
-                        modifier = Modifier.width(width = (width * 0.8).dp)
+                        modifier = Modifier.fillParentMaxWidth()
                             .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                             .background(TravelAppColors.SemiWhite),
                         contentScale = ContentScale.Crop

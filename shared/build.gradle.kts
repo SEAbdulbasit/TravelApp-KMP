@@ -13,6 +13,7 @@ kotlin {
     android()
     ios()
     iosSimulatorArm64()
+    jvm("desktop")
 
     cocoapods {
         summary = "Shared code for the sample"
@@ -62,6 +63,14 @@ kotlin {
         }
         val iosSimulatorArm64Test by getting {
             dependsOn(iosTest)
+        }
+
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.common)
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.4")
+                implementation("io.ktor:ktor-client-cio:$ktorVersion")
+            }
         }
     }
 }
