@@ -20,8 +20,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.*
-import com.example.traveapp_kmp.ListScreenViewModel
-import com.example.traveapp_kmp.ListViewModelActions
 import com.example.traveapp_kmp.screennavigation.Screen
 import com.example.traveapp_kmp.screennavigation.ScreensState
 import com.example.traveapp_kmp.style.TravelAppColors
@@ -56,11 +54,13 @@ internal fun MainScreenView(
                 Text(text = result.message)
             }
         }
+
         ListScreenState.Loading -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 CircularProgressIndicator()
             }
         }
+
         is ListScreenState.Success -> {
             RenderListingScreen(
                 state = result,
@@ -221,16 +221,20 @@ internal fun ImageSlider(
             val painter = rememberAsyncImagePainter(touristPlace.images.first())
             Card(
                 elevation = 16.dp,
-                modifier = Modifier.width(width = (width * 0.8).dp)
+                modifier = Modifier
+                    .widthIn(max = (width * 0.8).dp, min = (width * 0.8).dp)
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
+                    .width(width = (width * 0.8).dp)
                     .clip(RoundedCornerShape(20.dp)),
                 contentColor = Color.Transparent,
             ) {
                 Box {
                     Image(
                         painter, touristPlace.images.first(),
-                        modifier = Modifier.fillParentMaxWidth()
+                        modifier = Modifier
+                            .widthIn(max = (width * 0.8).dp, min = (width * 0.8).dp)
                             .aspectRatio(ratio = (295.0 / 432.0).toFloat())
+                            .width(width = (width * 0.8).dp)
                             .background(TravelAppColors.SemiWhite),
                         contentScale = ContentScale.Crop
                     )
