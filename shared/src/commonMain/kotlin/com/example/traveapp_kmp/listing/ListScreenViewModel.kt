@@ -1,8 +1,5 @@
-package com.example.traveapp_kmp
+package com.example.traveapp_kmp.listing
 
-import com.example.traveapp_kmp.listing.Country
-import com.example.traveapp_kmp.listing.ListScreenState
-import com.example.traveapp_kmp.listing.TouristPlace
 import com.example.traveapp_kmp.network.CountriesApiImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -37,6 +34,7 @@ class ListScreenViewModel {
                 is ListViewModelActions.OnCountrySelected -> {
                     emitNewState(actions)
                 }
+
                 is ListViewModelActions.OnItemSwiped -> {
                     state.emit(
                         (state.value as ListScreenState.Success).copy(
@@ -44,6 +42,7 @@ class ListScreenViewModel {
                         )
                     )
                 }
+
                 is ListViewModelActions.MoveToIndex -> {
                     val previousState = (state.value as ListScreenState.Success)
                     state.emit(

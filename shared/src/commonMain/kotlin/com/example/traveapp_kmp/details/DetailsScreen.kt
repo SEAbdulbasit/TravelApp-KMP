@@ -1,4 +1,4 @@
-package com.example.traveapp_kmp
+package com.example.traveapp_kmp.details
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
