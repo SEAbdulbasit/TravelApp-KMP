@@ -222,7 +222,7 @@ internal fun ImageSlider(
             Card(
                 elevation = 16.dp,
                 modifier = Modifier
-                    .widthIn(max = (width * 0.8).dp, min = (width * 0.8).dp)
+                    .widthIn(min = 200.dp, max = 500.dp)
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                     .width(width = (width * 0.8).dp)
                     .clip(RoundedCornerShape(20.dp)),
@@ -232,7 +232,7 @@ internal fun ImageSlider(
                     Image(
                         painter, touristPlace.images.first(),
                         modifier = Modifier
-                            .widthIn(max = (width * 0.8).dp, min = (width * 0.8).dp)
+                            .widthIn(min = 200.dp, max = 500.dp)
                             .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                             .width(width = (width * 0.8).dp)
                             .background(TravelAppColors.SemiWhite),
