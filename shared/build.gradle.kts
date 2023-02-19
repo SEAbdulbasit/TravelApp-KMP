@@ -54,10 +54,13 @@ kotlin {
                 implementation(compose.material)
                 implementation(compose.runtime)
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
-                api("io.github.qdsfdhvh:image-loader:1.2.8")
+                // api("io.github.qdsfdhvh:image-loader:1.2.8")
             }
         }
 
@@ -80,6 +83,13 @@ kotlin {
                 implementation(compose.desktop.common)
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.4")
                 implementation("io.ktor:ktor-client-cio:$ktorVersion")
+            }
+        }
+
+        val jsMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-js:2.2.1")
+                implementation("io.ktor:ktor-client-json-js:2.1.0")
             }
         }
 
