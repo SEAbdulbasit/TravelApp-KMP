@@ -4,5 +4,5 @@ import androidx.compose.runtime.Composable
 
 @Composable
 internal fun TravelAppTheme(content: @Composable () -> Unit) {
-    CommonView()
+    content()
 }

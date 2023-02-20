@@ -60,7 +60,8 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
-                // api("io.github.qdsfdhvh:image-loader:1.2.8")
+                api("io.github.qdsfdhvh:image-loader:1.2.8")
+//                api("io.github.qdsfdhvh:image-loader-extension-imageio:1.2.8")
             }
         }
 
@@ -90,6 +91,8 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-client-js:2.2.1")
                 implementation("io.ktor:ktor-client-json-js:2.1.0")
+                api("io.github.qdsfdhvh:image-loader:1.2.8")
+//                api("io.github.qdsfdhvh:image-loader-extension-imageio:1.2.8")
             }
         }
 
