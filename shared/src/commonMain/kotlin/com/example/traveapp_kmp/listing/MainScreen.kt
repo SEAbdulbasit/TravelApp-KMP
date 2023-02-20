@@ -12,10 +12,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
@@ -28,11 +26,12 @@ import com.seiko.imageloader.rememberAsyncImagePainter
 
 @Composable
 internal fun MainScreen(
-    navigationState: MutableState<ScreensState>, viewMode: ListScreenViewModel
+    navigationState: MutableState<ScreensState>, viewMode: ListScreenViewModel, imageWidth: Float
 ) {
     val state = viewMode.state.collectAsState()
     MainScreenView(
         state = state,
+        width = imageWidth,
         onDetailsClicked = {
             navigationState.value = ScreensState(screen = Screen.DetailScreen(it))
         },
@@ -44,6 +43,7 @@ internal fun MainScreen(
 @Composable
 internal fun MainScreenView(
     state: State<ListScreenState>,
+    width: Float,
     onDetailsClicked: (TouristPlace) -> Unit,
     onCountrySelected: (Country) -> Unit,
     moveToIndex: (Int) -> Unit,
@@ -67,6 +67,7 @@ internal fun MainScreenView(
                 onDetailsClicked = onDetailsClicked,
                 onCountrySelected = onCountrySelected,
                 moveToIndex = moveToIndex,
+                width = width
             )
         }
     }
@@ -75,6 +76,7 @@ internal fun MainScreenView(
 @Composable
 internal fun RenderListingScreen(
     state: ListScreenState.Success,
+    width: Float,
     onDetailsClicked: (TouristPlace) -> Unit,
     onCountrySelected: (Country) -> Unit,
     moveToIndex: (Int) -> Unit,
@@ -90,7 +92,6 @@ internal fun RenderListingScreen(
     LaunchedEffect(state.selectedItemIndex) {
         listState.animateScrollToItem(state.selectedItemIndex)
     }
-    var size by remember { mutableStateOf(Size.Zero) }
 
     Box {
         val painter =
@@ -100,11 +101,6 @@ internal fun RenderListingScreen(
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
         )
-        Box(
-            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi)
-                .onGloballyPositioned {
-                    size = it.size.toSize()
-                })
 
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Column {
@@ -119,7 +115,7 @@ internal fun RenderListingScreen(
                 imagesList = state.selectedCountry.touristPlaces,
                 onDetailsClicked = onDetailsClicked,
                 listState = listState,
-                width = (size.width * 0.36).toFloat(),
+                width = width,
             )
             Column {
                 Counter(
@@ -222,7 +218,7 @@ internal fun ImageSlider(
             Card(
                 elevation = 16.dp,
                 modifier = Modifier
-                    .widthIn(min = 200.dp, max = 500.dp)
+                    .widthIn(max = (width * 0.8).dp)
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                     .width(width = (width * 0.8).dp)
                     .clip(RoundedCornerShape(20.dp)),
@@ -232,7 +228,7 @@ internal fun ImageSlider(
                     Image(
                         painter, touristPlace.images.first(),
                         modifier = Modifier
-                            .widthIn(min = 200.dp, max = 500.dp)
+                            .widthIn(max = (width * 0.8).dp)
                             .aspectRatio(ratio = (295.0 / 432.0).toFloat())
                             .width(width = (width * 0.8).dp)
                             .background(TravelAppColors.SemiWhite),

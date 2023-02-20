@@ -17,7 +17,7 @@ fun main() = application {
         title = "TravelApp-KMP",
         state = WindowState(
             position = WindowPosition.Aligned(Alignment.Center),
-            size = getPreferredWindowSize(800, 700)
+            size = getPreferredWindowSize(1000, 1000)
         ),
     ) {
         AppViewDesktop()

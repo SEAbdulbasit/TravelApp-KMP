@@ -11,6 +11,8 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,12 +32,14 @@ import com.seiko.imageloader.rememberAsyncImagePainter
 @Composable
 internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPlace: TouristPlace) {
     Box {
-        val painter = rememberAsyncImagePainter(touristPlace.images.first())
+        val backgroundImage = remember { mutableStateOf(touristPlace.images.first()) }
+        val painter = rememberAsyncImagePainter(backgroundImage.value)
+
         Image(
             painter,
             null,
             modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi),
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.FillBounds,
         )
         Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
 
@@ -88,7 +92,7 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                     fontWeight = FontWeight.Medium, color = Color.White
                 ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
             )
-            ImageGallery(touristPlace.images, {})
+            ImageGallery(touristPlace.images) { backgroundImage.value = it }
         }
     }
 }
@@ -132,7 +136,7 @@ internal fun IconWithText() {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-internal fun ImageGallery(imagesList: List<String>, onDetailsClicked: (Unit) -> Unit) {
+internal fun ImageGallery(imagesList: List<String>, onDetailsClicked: (String) -> Unit) {
     LazyRow(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -152,8 +156,10 @@ internal fun ImageGallery(imagesList: List<String>, onDetailsClicked: (Unit) -> 
                         contentDescription = imageUrl,
                         modifier = Modifier.height(210.dp)
                             .aspectRatio(ratio = (139.0 / 210.0).toFloat())
-                            .background(TravelAppColors.SemiWhite),
-                        contentScale = ContentScale.Crop
+                            .background(TravelAppColors.SemiWhite).clickable(
+                                onClick = { onDetailsClicked(imageUrl) }
+                            ),
+                        contentScale = ContentScale.Crop,
                     )
                 }
             }

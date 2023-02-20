@@ -14,7 +14,7 @@ import com.example.traveapp_kmp.style.TravelAppColors
 
 
 @Composable
-internal fun CommonView() {
+internal fun CommonView(width: Float = 200f) {
     val viewMode = ListScreenViewModel()
     val screenNavigationState = remember { mutableStateOf(ScreensState()) }
 
@@ -30,13 +30,14 @@ internal fun CommonView() {
             onSurface = TravelAppColors.Foreground
         )
     ) {
-
         when (val state = screenNavigationState.value.screen) {
             is Screen.DetailScreen -> DetailScreen(
                 navigationState = screenNavigationState,
                 touristPlace = state.touristPlace
             )
-            Screen.MainScreen -> MainScreen(screenNavigationState, viewMode)
+            Screen.MainScreen -> MainScreen(screenNavigationState, viewMode, width)
         }
+
     }
 }
+

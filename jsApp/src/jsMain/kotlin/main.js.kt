@@ -6,7 +6,7 @@ import org.jetbrains.skiko.wasm.onWasmReady
 
 fun main() {
     onWasmReady {
-        Window("Chat") {
+        Window("Travel App") {
             Column(modifier = Modifier.fillMaxSize()) {
                 MainView()
             }
