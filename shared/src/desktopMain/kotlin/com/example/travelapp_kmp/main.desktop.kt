@@ -13,10 +13,5 @@ import com.example.traveapp_kmp.CommonView
 
 @Composable
 fun AppViewDesktop() {
-    val size = remember { mutableStateOf(IntSize.Zero) }
-    Box(Modifier.fillMaxSize().onGloballyPositioned { coordinates ->
-        size.value = coordinates.size
-    }) {
-        CommonView(400.toFloat())
-    }
+    CommonView(400.toFloat())
 }
