@@ -1,17 +1,22 @@
 # TravepApp-KMP
 
-This is an exploration app for Compose Multiplatform UI. Currently this app have Android and iOS part. Will be adding Desktop and Web Apps.
-For more details on Compose Multiplatform UI visit: https://github.com/JetBrains/compose-jb/
+This is an exploration app for Compose Multiplatform UI. Currently this app have Android, iOS, Web and Desktop part and it is 100% Compose UI. For more details on Compose Multiplatform UI visit: https://github.com/JetBrains/compose-jb/
 The support for iOS on Compose Multiplatform is still in experimental phase.
 
 This is just a demonstration, the code is still not in perfect form.
 
 For rest api, I am using [Makoon](https://mockoon.com/)
 
+Current supported Platforms are:
+1. Android
+2. iOS
+3. Web
+4. Desktop
+
 ## Running the App:
 For running the app, you need an api to feed data. For Rest api, I am using [Makoon](https://mockoon.com/). You can create a local enviroment and add countrieslist api. Here you can find the sample response here: https://github.com/SEAbdulbasit/TravelApp-KMP/blob/master/TravelApp-KMM.json 
 
-## on iOS
+## iOS
 
 <table>
 <tr>
@@ -36,8 +41,19 @@ For running the app, you need an api to feed data. For Rest api, I am using [Mak
 </table>
 
 
-## on Android
+## Android
 
 
 https://user-images.githubusercontent.com/33172684/218650285-2872c54e-e6cf-4888-8199-ab60f109e27a.mp4
+
+
+## Desktop
+
+![image](https://user-images.githubusercontent.com/33172684/220402597-fc7f3c28-fc2d-45a8-87d1-cbc73a7cccec.png)
+
+
+## Web
+
+![image](https://user-images.githubusercontent.com/33172684/220402927-a89e75ae-7ea2-45de-b97f-99a47c1e8b52.png)
+
 
