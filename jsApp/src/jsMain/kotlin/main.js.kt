@@ -8,7 +8,7 @@ fun main() {
     onWasmReady {
         Window("Travel App") {
             Column(modifier = Modifier.fillMaxSize()) {
-                MainView()
+                MainViewWeb()
             }
         }
     }

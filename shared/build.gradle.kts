@@ -88,11 +88,12 @@ kotlin {
         }
 
         val jsMain by getting {
+            dependsOn(commonMain)
             dependencies {
                 implementation("io.ktor:ktor-client-js:2.2.1")
                 implementation("io.ktor:ktor-client-json-js:2.1.0")
-                api("io.github.qdsfdhvh:image-loader:1.2.8")
-//                api("io.github.qdsfdhvh:image-loader-extension-imageio:1.2.8")
+                implementation(compose.web.core)
+                implementation(compose.runtime)
             }
         }
 
