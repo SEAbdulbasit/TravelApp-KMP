@@ -44,12 +44,12 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
         Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
 
         Column(
-            modifier = Modifier.padding(top = 16.dp).verticalScroll(rememberScrollState())
+            modifier = Modifier.widthIn(max = 500.dp).padding(top = 16.dp).verticalScroll(rememberScrollState())
         ) {
             Image(
                 imageVector = Icons.Filled.ArrowBack,
                 contentDescription = touristPlace.images.first(),
-                modifier = Modifier.padding(start = 16.dp).clickable(onClick = {
+                modifier = Modifier.padding(start = 16.dp).widthIn(max = 500.dp).clickable(onClick = {
                     navigationState.value = ScreensState(
                         Screen.MainScreen
                     )
