@@ -11,21 +11,20 @@ import com.seiko.imageloader.util.LogPriority
 
 @Composable
 fun MainViewWeb() {
-    CompositionLocalProvider(
-        LocalImageLoader provides ImageLoader {
-            logger = DebugLogger(LogPriority.VERBOSE)
-            components {
-                setupDefaultComponents(imageScope)
-            }
-            interceptor {
-                memoryCacheConfig {
-                    maxSizePercent(0.25)
-                }
-            }
-        },
-    ) {
+//    CompositionLocalProvider(
+//        LocalImageLoader provides ImageLoader {
+//            components {
+//                setupDefaultComponents(imageScope)
+//            }
+//            interceptor {
+//                memoryCacheConfig {
+//                    maxSizePercent(0.25)
+//                }
+//            }
+//        },
+//    ) {
         CommonView(400.toFloat())
-    }
+ //   }
 }
 
 
