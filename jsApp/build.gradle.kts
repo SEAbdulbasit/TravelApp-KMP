@@ -9,9 +9,11 @@ kotlin {
         binaries.executable()
     }
     sourceSets {
-        val jsMain by getting  {
+        val jsMain by getting {
             dependencies {
                 implementation(project(":shared"))
+                implementation(npm("path-browserify", "^1.0.1"))
+                implementation(npm("os-browserify", "^0.3.0"))
             }
         }
     }
