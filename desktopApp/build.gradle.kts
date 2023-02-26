@@ -25,7 +25,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "Falling Balls"
+            packageName = "Travel-App"
             packageVersion = "1.0.0"
 
             windows {
