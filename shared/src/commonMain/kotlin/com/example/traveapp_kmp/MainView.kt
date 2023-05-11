@@ -30,7 +30,6 @@ internal fun CommonView() {
             onSurface = TravelAppColors.Foreground
         )
     ) {
-
         when (val state = screenNavigationState.value.screen) {
             is Screen.DetailScreen -> DetailScreen(
                 navigationState = screenNavigationState,

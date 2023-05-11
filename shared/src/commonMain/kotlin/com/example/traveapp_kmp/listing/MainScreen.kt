@@ -12,10 +12,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
@@ -90,7 +89,12 @@ internal fun RenderListingScreen(
     LaunchedEffect(state.selectedItemIndex) {
         listState.animateScrollToItem(state.selectedItemIndex)
     }
-    var size by remember { mutableStateOf(Size.Zero) }
+
+    val imageWidth = with(LocalDensity.current) {
+        val screenWidth =
+            MaterialTheme.typography.body1.fontSize * 40 // or any other way to get screen width
+        (screenWidth * 0.85f)
+    }
 
     Box {
         val painter =
@@ -100,11 +104,6 @@ internal fun RenderListingScreen(
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
         )
-        Box(
-            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi)
-                .onGloballyPositioned {
-                    size = it.size.toSize()
-                })
 
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Column {
@@ -119,7 +118,7 @@ internal fun RenderListingScreen(
                 imagesList = state.selectedCountry.touristPlaces,
                 onDetailsClicked = onDetailsClicked,
                 listState = listState,
-                width = (size.width * 0.36).toFloat(),
+                width = (imageWidth.value),
             )
             Column {
                 Counter(
@@ -210,7 +209,6 @@ internal fun ImageSlider(
     listState: LazyListState,
     width: Float,
 ) {
-
     LazyRow(
         modifier = Modifier.padding(top = 8.dp).fillMaxSize(),
         state = listState,
@@ -222,9 +220,8 @@ internal fun ImageSlider(
             Card(
                 elevation = 16.dp,
                 modifier = Modifier
-                    .widthIn(min = 200.dp, max = 500.dp)
+                    .width(width = (width * 0.62).dp)
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
-                    .width(width = (width * 0.8).dp)
                     .clip(RoundedCornerShape(20.dp)),
                 contentColor = Color.Transparent,
             ) {
@@ -232,9 +229,7 @@ internal fun ImageSlider(
                     Image(
                         painter, touristPlace.images.first(),
                         modifier = Modifier
-                            .widthIn(min = 200.dp, max = 500.dp)
                             .aspectRatio(ratio = (295.0 / 432.0).toFloat())
-                            .width(width = (width * 0.8).dp)
                             .background(TravelAppColors.SemiWhite),
                         contentScale = ContentScale.Crop
                     )
