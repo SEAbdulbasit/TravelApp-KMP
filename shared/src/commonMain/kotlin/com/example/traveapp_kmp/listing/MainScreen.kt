@@ -192,12 +192,15 @@ private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (Str
         ),
         color = if (isSelected) TravelAppColors.SemiWhite else Color.Transparent,
         onClick = { onItemSelected(name) }) {
-        Text(
-            name,
-            style = MaterialTheme.typography.body1.copy(color = Color.Black),
-            modifier = Modifier.padding(start = 24.dp, top = 8.dp, bottom = 8.dp, end = 24.dp)
-                .background(Color.Transparent),
-        )
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text(
+                name,
+                style = MaterialTheme.typography.body1.copy(color = Color.Black),
+                modifier = Modifier.padding(start = 24.dp, end = 24.dp)
+                    .background(Color.Transparent),
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }
 
