@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import com.example.traveapp_kmp.details.DetailScreen
+import com.example.traveapp_kmp.details.DetailScreenWeb
 import com.example.traveapp_kmp.listing.ListScreenViewModel
 import com.example.traveapp_kmp.listing.MainScreen
 import com.example.traveapp_kmp.screennavigation.Screen
@@ -14,7 +15,7 @@ import com.example.traveapp_kmp.style.TravelAppColors
 
 
 @Composable
-internal fun CommonView(width: Float = 200f) {
+internal fun CommonView() {
     val viewMode = ListScreenViewModel()
     val screenNavigationState = remember { mutableStateOf(ScreensState()) }
 
@@ -35,9 +36,9 @@ internal fun CommonView(width: Float = 200f) {
                 navigationState = screenNavigationState,
                 touristPlace = state.touristPlace
             )
-            Screen.MainScreen -> MainScreen(screenNavigationState, viewMode, width)
-        }
 
+            Screen.MainScreen -> MainScreen(screenNavigationState, viewMode)
+        }
     }
 }
 
