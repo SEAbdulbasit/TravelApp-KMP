@@ -2,7 +2,6 @@ package com.example.traveapp_kmp.network
 
 import com.example.traveapp_kmp.listing.Country
 import io.ktor.client.*
-import io.ktor.client.call.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
@@ -11,9 +10,7 @@ import io.ktor.serialization.kotlinx.json.*
 
 class CountriesApiImpl : CountriesApi {
     override suspend fun getCountriesList(): List<Country> {
-        return client.get {
-            countries("countrieslist")
-        }.body()
+        return getRestCountriesList()
     }
 
     private val client = HttpClient {
