@@ -1,16 +1,10 @@
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.window.Window
-import org.jetbrains.skiko.wasm.onWasmReady
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.window.CanvasBasedWindow
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    onWasmReady {
-        Window("Travel App") {
-            Column(modifier = Modifier.fillMaxSize()) {
-                MainViewWeb()
-            }
-        }
+    CanvasBasedWindow("Travel App") {
+        MainViewWeb()
     }
 }
 
