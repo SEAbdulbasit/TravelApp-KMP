@@ -1,6 +1,6 @@
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import com.example.traveapp_kmp.CommonView
+import com.example.travelapp_kmp.CommonView
 import com.seiko.imageloader.ImageLoader
 import com.seiko.imageloader.LocalImageLoader
 import com.seiko.imageloader.cache.memory.maxSizePercent

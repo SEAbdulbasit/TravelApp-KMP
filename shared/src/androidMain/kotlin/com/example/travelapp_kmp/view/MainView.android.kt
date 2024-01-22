@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.toSize
-import com.example.traveapp_kmp.CommonView
+import com.example.travelapp_kmp.CommonView
 
 @Composable
 fun AppViewAndroid() {
