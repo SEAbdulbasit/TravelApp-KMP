@@ -1,35 +1,70 @@
 package com.example.travelapp_kmp.listing
 
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Card
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Divider
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.*
+import androidx.compose.ui.unit.ExperimentalUnitApi
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
+import androidx.compose.ui.unit.dp
 import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
-import com.example.travelapp_kmp.toImageBitmap
 import com.seiko.imageloader.rememberAsyncImagePainter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.resource
+import org.jetbrains.compose.resources.painterResource
+
+//import org.jetbrains.compose.resources.resource
 
 
 @Composable
@@ -88,7 +123,6 @@ internal fun RenderListingScreen(
 ) {
 
     val listState = rememberLazyListState()
-    val scope = rememberCoroutineScope()
 
     val visibleItems = listState.visibleItemsWithThreshold(percentThreshold = 0.3f)
     LaunchedEffect(visibleItems) {
@@ -106,20 +140,20 @@ internal fun RenderListingScreen(
     }
 
     Box {
-        val touristPlaceImage = mutableStateOf<ImageBitmap?>(null)
-        scope.launch(Dispatchers.Unconfined) {
-            touristPlaceImage.value =
-                resource(state.selectedCountry.touristPlaces[state.selectedItemIndex].images[0]).readBytes()
-                    .toImageBitmap()
-        }
-        touristPlaceImage.value!!.run {
-            Image(
-                bitmap = this,
-                contentDescription = state.selectedCountry.touristPlaces[state.selectedItemIndex].images.first(),
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop,
-            )
-        }
+        Image(
+            painter = painterResource(state.selectedCountry.touristPlaces[state.selectedItemIndex].images[0]),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize().blur(32.dp),
+            colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
+                setToScale(
+                    0.9f,
+                    0.9f,
+                    0.9f,
+                    1f
+                )
+            }),
+            contentScale = ContentScale.Crop,
+        )
 
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Column {
@@ -131,7 +165,6 @@ internal fun RenderListingScreen(
                 )
             }
             ImageSlider(
-                scope = scope,
                 imagesList = state.selectedCountry.touristPlaces,
                 onDetailsClicked = onDetailsClicked,
                 listState = listState,
@@ -225,7 +258,6 @@ internal fun ImageSlider(
     onDetailsClicked: (TouristPlace) -> Unit,
     listState: LazyListState,
     width: Float,
-    scope: CoroutineScope,
 ) {
     LazyRow(
         modifier = Modifier.padding(top = 8.dp).fillMaxSize(),
@@ -234,11 +266,6 @@ internal fun ImageSlider(
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         items(items = imagesList, key = { item: TouristPlace -> item.name }) { touristPlace ->
-            val touristPlaceImage = mutableStateOf<ImageBitmap?>(null)
-            scope.launch(Dispatchers.Default) {
-                touristPlaceImage.value = resource(touristPlace.images.first()).readBytes().toImageBitmap()
-            }
-
             Card(
                 elevation = 16.dp,
                 modifier = Modifier
@@ -248,16 +275,15 @@ internal fun ImageSlider(
                 contentColor = Color.Transparent,
             ) {
                 Box {
-                    touristPlaceImage.value?.run {
-                        Image(
-                            bitmap = this,
-                            contentDescription = touristPlace.images.first(),
-                            modifier = Modifier
-                                .aspectRatio(ratio = (295.0 / 432.0).toFloat())
-                                .background(TravelAppColors.SemiWhite),
-                            contentScale = ContentScale.Crop
-                        )
-                    }
+                    Image(
+                        painter = painterResource(touristPlace.images.first()),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .aspectRatio(ratio = (295.0 / 432.0).toFloat())
+                            .background(TravelAppColors.SemiWhite),
+                        contentScale = ContentScale.Crop
+                    )
+
                     Column(
                         modifier = Modifier.padding(16.dp).align(Alignment.BottomStart)
                     ) {

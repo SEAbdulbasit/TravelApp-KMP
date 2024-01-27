@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.ExperimentalUnitApi
@@ -24,42 +23,38 @@ import com.example.travelapp_kmp.listing.TouristPlace
 import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
-import com.example.travelapp_kmp.toImageBitmap
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.resource
+import org.jetbrains.compose.resources.painterResource
+
+//import org.jetbrains.compose.resources.resource
 
 
 @OptIn(ExperimentalUnitApi::class, ExperimentalResourceApi::class)
 @Composable
-internal fun DetailScreenWeb(navigationState: MutableState<ScreensState>, touristPlace: TouristPlace) {
+internal fun DetailScreenWeb(
+    navigationState: MutableState<ScreensState>,
+    touristPlace: TouristPlace
+) {
     val scope = rememberCoroutineScope()
     val backgroundImage = remember { mutableStateOf(touristPlace.images.first()) }
-    val backgroundImageBitmap = remember { mutableStateOf<ImageBitmap?>(null) }
     Box {
+        Image(
+            painter = painterResource(backgroundImage.value),
+            null,
+            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi),
+            contentScale = ContentScale.Crop,
+        )
 
-        scope.launch(Dispatchers.Unconfined) {
-            backgroundImageBitmap.value = resource(backgroundImage.value).readBytes().toImageBitmap()
-        }
-
-        backgroundImageBitmap.value?.let {
-            Image(
-                it,
-                null,
-                modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi),
-                contentScale = ContentScale.Crop,
-            )
-        }
         Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
 
         Row {
             Column(
-                modifier = Modifier.weight(1f).padding(top = 16.dp).verticalScroll(rememberScrollState())
+                modifier = Modifier.weight(1f).padding(top = 16.dp)
+                    .verticalScroll(rememberScrollState())
             ) {
                 Image(
                     imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = touristPlace.images.first(),
+                    contentDescription = "Back arrow",
                     modifier = Modifier.padding(start = 16.dp).clickable(onClick = {
                         navigationState.value = ScreensState(
                             Screen.MainScreen
@@ -74,17 +69,16 @@ internal fun DetailScreenWeb(navigationState: MutableState<ScreensState>, touris
                     contentColor = Color.Transparent,
                 ) {
                     Box {
-                        backgroundImageBitmap.value?.let {
-                            Image(
-                                bitmap = it,
-                                contentDescription = touristPlace.images.first(),
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier.fillMaxSize()
-                            )
-                        }
+                        Image(
+                            painter = painterResource(backgroundImage.value),
+                            null,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop,
+                        )
                     }
+
                 }
-                ImageGallery(touristPlace.images, scope) { backgroundImage.value = it }
+                ImageGallery(touristPlace.images) { backgroundImage.value = it }
             }
 
             Column(modifier = Modifier.weight(1f)) {

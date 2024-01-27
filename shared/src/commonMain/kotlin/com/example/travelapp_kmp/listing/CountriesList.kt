@@ -1,17 +1,16 @@
 package com.example.travelapp_kmp.listing
 
-import kotlinx.serialization.Serializable
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 
-@Serializable
 data class Country(
     val name: String,
     val touristPlaces: List<TouristPlace>
 )
 
-@Serializable
-data class TouristPlace(
+data class TouristPlace @OptIn(ExperimentalResourceApi::class) constructor(
     val name: String,
     val shortDescription: String,
     val longDescription: String,
-    val images: List<String>
+    val images: List<DrawableResource>
 )
