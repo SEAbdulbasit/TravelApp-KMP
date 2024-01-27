@@ -33,9 +33,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.ExperimentalUnitApi
@@ -49,6 +51,7 @@ import com.example.travelapp_kmp.style.TravelAppColors
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import kotlin.random.Random
 
 
 @OptIn(ExperimentalUnitApi::class, ExperimentalResourceApi::class)
@@ -60,8 +63,13 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
         Image(
             painter = painterResource(backgroundImage.value),
             null,
-            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi),
+            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi).blur(32.dp),
             contentScale = ContentScale.FillBounds,
+            colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
+                setToScale(
+                    0.9f, 0.9f, 0.9f, 1f
+                )
+            }),
         )
 
         Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
@@ -163,16 +171,14 @@ internal fun IconWithText() {
 @OptIn(ExperimentalMaterialApi::class, ExperimentalResourceApi::class)
 @Composable
 internal fun ImageGallery(
-    imagesList: List<DrawableResource>,
-    onDetailsClicked: (DrawableResource) -> Unit
+    imagesList: List<DrawableResource>, onDetailsClicked: (DrawableResource) -> Unit
 ) {
     LazyRow(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
-        items(items = imagesList, key = { item: DrawableResource -> item }) { imageUrl ->
-
+        items(items = imagesList, key = { item -> Random.nextInt() }) { imageUrl ->
             Card(
                 elevation = 16.dp,
                 modifier = Modifier.height(210.dp).aspectRatio(ratio = (139.0 / 210.0).toFloat())
@@ -185,9 +191,8 @@ internal fun ImageGallery(
                         contentDescription = null,
                         modifier = Modifier.height(210.dp)
                             .aspectRatio(ratio = (139.0 / 210.0).toFloat())
-                            .background(TravelAppColors.SemiWhite).clickable(
-                                onClick = { onDetailsClicked(imageUrl) }
-                            ),
+                            .background(TravelAppColors.SemiWhite)
+                            .clickable(onClick = { onDetailsClicked(imageUrl) }),
                         contentScale = ContentScale.Crop,
                     )
                 }
