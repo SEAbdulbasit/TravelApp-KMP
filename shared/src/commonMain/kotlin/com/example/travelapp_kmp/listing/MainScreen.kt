@@ -32,6 +32,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.runtime.Composable
@@ -60,7 +61,7 @@ import androidx.compose.ui.unit.dp
 import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
-import com.seiko.imageloader.rememberAsyncImagePainter
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -157,7 +158,7 @@ internal fun RenderListingScreen(
 
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Column {
-                WeatherView()
+                WeatherView(state.selectedCountry.touristPlaces[state.selectedItemIndex].images[0])
                 ListCountryChips(
                     state.countriesList,
                     state.selectedCountry.name,
@@ -187,16 +188,16 @@ internal fun RenderListingScreen(
 }
 
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
-internal fun WeatherView() {
+internal fun WeatherView(drawableResource: DrawableResource) {
     Row(
         Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 56.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        val url = "https://i.postimg.cc/c1vXfhTP/Rectangle-917.png"
-        val painter = rememberAsyncImagePainter(url)
+
         Image(
-            painter = painter,
+            painter = painterResource(drawableResource),
             contentDescription = null,
             contentScale = ContentScale.FillWidth,
             modifier = Modifier.size(48.dp).clip(RoundedCornerShape(16.dp))
@@ -317,7 +318,7 @@ internal fun ImageSlider(
                                 ),
                             )
                             Icon(
-                                imageVector = Icons.Filled.ArrowForward,
+                                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
                                 tint = Color.White,
                                 contentDescription = "Explore details",
                                 modifier = Modifier.size(24.dp).padding(start = 8.dp)
