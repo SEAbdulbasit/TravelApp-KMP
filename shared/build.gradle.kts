@@ -10,9 +10,10 @@ version = "1.0-SNAPSHOT"
 val ktorVersion = extra["ktor.version"]
 
 kotlin {
-    android()
+    androidTarget()
     jvm("desktop")
-    ios()
+    iosX64()
+    iosArm64()
     iosSimulatorArm64()
 
     js(IR) {
@@ -46,7 +47,7 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
                 implementation(compose.ui)
                 implementation(compose.foundation)
@@ -60,51 +61,33 @@ kotlin {
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
-                api("io.github.qdsfdhvh:image-loader:1.2.8")
-//                api("io.github.qdsfdhvh:image-loader-extension-imageio:1.2.8")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
             }
         }
 
-        val androidMain by getting {
+        androidMain {
             dependencies {
-                implementation("com.google.android.material:material:1.7.0")
+                implementation("com.google.android.material:material:1.11.0")
             }
         }
-        val iosMain by getting
-        val iosTest by getting
-        val iosSimulatorArm64Main by getting {
-            dependsOn(iosMain)
-        }
-        val iosSimulatorArm64Test by getting {
-            dependsOn(iosTest)
+
+        iosMain {
+
         }
 
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3")
                 implementation("io.ktor:ktor-client-cio:$ktorVersion")
             }
         }
 
-        val jsMain by getting {
+        jsMain {
             dependencies {
-                implementation("io.ktor:ktor-client-js:2.2.1")
-                implementation("io.ktor:ktor-client-json-js:2.1.0")
-                api("io.github.qdsfdhvh:image-loader:1.2.8")
-//                api("io.github.qdsfdhvh:image-loader-extension-imageio:1.2.8")
+                implementation("io.ktor:ktor-client-js:2.2.3")
+                implementation("io.ktor:ktor-client-json-js:2.2.1")
             }
-        }
-
-        val macosMain by creating {
-            dependsOn(commonMain)
-        }
-        val macosX64Main by getting {
-            dependsOn(macosMain)
-        }
-        val macosArm64Main by getting {
-            dependsOn(macosMain)
         }
     }
 }
@@ -115,10 +98,16 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 24
-        targetSdk = 34
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.0"
+    }
+}
+
+compose {
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.20")
 }
