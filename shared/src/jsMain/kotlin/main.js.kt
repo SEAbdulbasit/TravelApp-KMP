@@ -4,7 +4,7 @@ import com.example.travelapp_kmp.CommonView
 
 @Composable
 fun MainViewWeb() {
-    CommonView()
+    CommonView(true)
 }
 
 

@@ -5,5 +5,5 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun AppViewDesktop() {
-    CommonView()
+    CommonView(isLargeScreen = true)
 }

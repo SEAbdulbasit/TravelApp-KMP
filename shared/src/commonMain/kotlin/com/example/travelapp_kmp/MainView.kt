@@ -15,7 +15,7 @@ import com.example.travelapp_kmp.style.TravelAppColors
 
 
 @Composable
-internal fun CommonView() {
+internal fun CommonView(isLargeScreen: Boolean = false) {
     val viewMode = ListScreenViewModel()
     val screenNavigationState = remember { mutableStateOf(ScreensState()) }
 
@@ -32,10 +32,17 @@ internal fun CommonView() {
         )
     ) {
         when (val state = screenNavigationState.value.screen) {
-            is Screen.DetailScreen -> DetailScreenWeb(
-                navigationState = screenNavigationState,
-                touristPlace = state.touristPlace
-            )
+            is Screen.DetailScreen -> if (isLargeScreen) {
+                DetailScreenWeb(
+                    navigationState = screenNavigationState,
+                    touristPlace = state.touristPlace
+                )
+            } else {
+                DetailScreen(
+                    navigationState = screenNavigationState,
+                    touristPlace = state.touristPlace
+                )
+            }
 
             Screen.MainScreen -> MainScreen(screenNavigationState, viewMode)
         }
