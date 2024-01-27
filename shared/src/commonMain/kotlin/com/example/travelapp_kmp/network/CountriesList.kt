@@ -3,7 +3,7 @@ package com.example.travelapp_kmp.network
 import com.example.travelapp_kmp.listing.Country
 import com.example.travelapp_kmp.listing.TouristPlace
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import travelapp_kmp.shared.generated.resources.Res
+import travelappkmp.shared.generated.resources.Res
 
 
 /**
