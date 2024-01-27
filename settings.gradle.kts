@@ -23,7 +23,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "TravelApp-KMP"
+rootProject.name = "TravelAppKMP"
 
 include(":desktopApp")
 include(":jsApp")
