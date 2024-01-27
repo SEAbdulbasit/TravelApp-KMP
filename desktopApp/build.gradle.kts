@@ -6,11 +6,9 @@ plugins {
 }
 
 kotlin {
-    jvm {
-        withJava()
-    }
+    jvm()
     sourceSets {
-        val jvmMain by getting {
+        val jvmMain by getting  {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(project(":shared"))
@@ -21,19 +19,11 @@ kotlin {
 
 compose.desktop {
     application {
-        mainClass = "example.travelapp_kmp.main"
-
+        mainClass = "MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "Travel-App"
+            packageName = "KotlinMultiplatformComposeDesktopApplication"
             packageVersion = "1.0.0"
-
-            windows {
-                menuGroup = "Travel App KMP"
-                // see https://wixtoolset.org/documentation/manual/v3/howtos/general/generate_guids.html
-                upgradeUuid = "Travel-App-KMP"
-            }
         }
     }
 }
-
