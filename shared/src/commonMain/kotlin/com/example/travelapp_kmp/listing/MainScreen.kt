@@ -179,7 +179,7 @@ internal fun WeatherView(drawableResource: DrawableResource) {
             contentScale = ContentScale.Crop,
             modifier = Modifier.size(48.dp).clip(RoundedCornerShape(16.dp))
         )
-        Column(Modifier.padding(start = 8.dp)) {
+        Column(Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)) {
             Text(
                 "Friday, April 15", style = MaterialTheme.typography.caption.copy(
                     color = Color.White, fontWeight = FontWeight.Normal
@@ -198,7 +198,7 @@ internal fun WeatherView(drawableResource: DrawableResource) {
 private fun ListCountryChips(
     list: List<Country>, selectedCountry: String, onCountrySelected: (Country) -> Unit
 ) {
-    LazyRow(contentPadding = PaddingValues(8.dp), modifier = Modifier.padding(top = 16.dp)) {
+    LazyRow(contentPadding = PaddingValues(8.dp), modifier = Modifier.padding(8.dp)) {
         items(items = list) { country ->
             CountryChips(
                 country.name, selectedCountry == country.name
@@ -211,7 +211,7 @@ private fun ListCountryChips(
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (String) -> Unit) {
-    Surface(modifier = Modifier.background(Color.Transparent).height(36.dp),
+    Surface(modifier = Modifier.background(Color.Transparent),
         shape = RoundedCornerShape(20.dp),
         border = if (isSelected) BorderStroke(
             width = 1.dp, color = Color.White
