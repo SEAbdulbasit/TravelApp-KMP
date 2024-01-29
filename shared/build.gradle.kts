@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
@@ -59,6 +61,11 @@ kotlin {
                 implementation(compose.runtime)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                //implementation("media.kamel:kamel-image:0.9.1")
+//                implementation("io.coil-kt:coil:2.5.0")
+//                api("io.github.qdsfdhvh:image-loader:1.7.3")
+
+
 //                implementation("io.ktor:ktor-client-core:$ktorVersion")
 //                implementation("io.ktor:ktor-client-json:$ktorVersion")
 //                implementation("io.ktor:ktor-client-logging:$ktorVersion")
