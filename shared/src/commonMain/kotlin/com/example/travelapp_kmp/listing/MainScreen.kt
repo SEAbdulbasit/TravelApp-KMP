@@ -169,7 +169,7 @@ internal fun RenderListingScreen(
 @Composable
 internal fun WeatherView(drawableResource: DrawableResource) {
     Row(
-        Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 16.dp),
+        Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 64.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
