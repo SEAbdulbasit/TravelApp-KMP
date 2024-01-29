@@ -18,11 +18,13 @@ pluginManagement {
         id("com.android.application").version(agpVersion)
         id("com.android.library").version(agpVersion)
         id("org.jetbrains.compose").version(composeVersion)
+        id("com.android.application") version "8.2.1"
     }
 }
 
-rootProject.name = "TravelApp-KMP"
+rootProject.name = "TravelAppKMP"
 
-include(":androidApp")
 include(":desktopApp")
+include(":webApp")
 include(":shared")
+include(":androidApp")

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
@@ -10,10 +12,34 @@ version = "1.0-SNAPSHOT"
 val ktorVersion = extra["ktor.version"]
 
 kotlin {
-    android()
-    ios()
-    iosSimulatorArm64()
+    androidTarget()
     jvm("desktop")
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
+    js(IR) {
+        browser()
+    }
+
+    wasmJs {
+        browser()
+    }
+
+    macosX64 {
+        binaries {
+            executable {
+                entryPoint = "main"
+            }
+        }
+    }
+    macosArm64 {
+        binaries {
+            executable {
+                entryPoint = "main"
+            }
+        }
+    }
 
     cocoapods {
         summary = "Shared code for the sample"
@@ -24,68 +50,77 @@ kotlin {
             baseName = "shared"
             isStatic = true
         }
-        extraSpecAttributes["resources"] =
-            "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                //implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation(compose.runtime)
+                implementation(compose.ui)
                 implementation(compose.foundation)
                 implementation(compose.material)
-                implementation("org.jetbrains.compose.components:components-resources:1.3.0-beta04-dev879")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
-                api("io.github.qdsfdhvh:image-loader:1.2.8")
+                implementation(compose.runtime)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+                //implementation("media.kamel:kamel-image:0.9.1")
+//                implementation("io.coil-kt:coil:2.5.0")
+//                api("io.github.qdsfdhvh:image-loader:1.7.3")
 
+
+//                implementation("io.ktor:ktor-client-core:$ktorVersion")
+//                implementation("io.ktor:ktor-client-json:$ktorVersion")
+//                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+//                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+//                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+//                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+//                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
             }
         }
-        val androidMain by getting {
+
+        androidMain {
             dependencies {
-                implementation("androidx.appcompat:appcompat:1.5.1")
-                implementation("androidx.core:core-ktx:1.9.0")
-                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+                implementation("com.google.android.material:material:1.11.0")
+//                implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
-        val iosMain by getting {
-            dependencies {
-                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
-                implementation("io.ktor:ktor-client-ios:$ktorVersion")
-            }
-        }
-        val iosTest by getting
-        val iosSimulatorArm64Main by getting {
-            dependsOn(iosMain)
-        }
-        val iosSimulatorArm64Test by getting {
-            dependsOn(iosTest)
+
+        iosMain {
+
         }
 
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.4")
-                implementation("io.ktor:ktor-client-cio:$ktorVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3")
+//                implementation("io.ktor:ktor-client-cio:$ktorVersion")
             }
         }
+
+        jsMain {
+            dependencies {
+//                implementation("io.ktor:ktor-client-js:2.2.3")
+//                implementation("io.ktor:ktor-client-json-js:2.2.1")
+            }
+        }
+
     }
 }
 
 android {
-    compileSdk = 33
+    compileSdk = 34
+    namespace = "com.example.travelapp_kmp"
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDir("src/commonMain/resources")
     defaultConfig {
         minSdk = 24
-        targetSdk = 33
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.0"
+    }
+}
+
+compose {
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.20")
 }
