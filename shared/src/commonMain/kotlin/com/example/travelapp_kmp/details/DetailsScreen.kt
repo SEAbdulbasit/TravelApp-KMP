@@ -41,7 +41,6 @@ import kotlin.random.Random
 internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPlace: TouristPlace) {
     Box {
         val backgroundImage = remember { mutableStateOf(touristPlace.images.first()) }
-
         Image(
             painter = painterResource(backgroundImage.value),
             null,
@@ -57,7 +56,7 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
         Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
 
         Column(
-            modifier = Modifier.widthIn(max = 500.dp).padding(top = 16.dp)
+            modifier = Modifier.widthIn(max = 500.dp).padding(top = 64.dp)
                 .verticalScroll(rememberScrollState())
         ) {
             Image(

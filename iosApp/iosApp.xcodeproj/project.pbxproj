@@ -41,6 +41,7 @@
 				7555FF7C242A565900829871 /* Products */,
 				E1DAFBE8E1CFC0878361EF0E /* Pods */,
 				B62309C7396AD7BF607A63B2 /* Frameworks */,
+				D11322E641713CC188F673C8 /* xcschemes */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +76,14 @@
 				8DE96E47030356CE6AD9794A /* Pods_iosApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D11322E641713CC188F673C8 /* xcschemes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = xcschemes;
+			path = iosApp.xcworkspace/xcuserdata/abdulbasit.xcuserdatad/xcschemes;
 			sourceTree = "<group>";
 		};
 		E1DAFBE8E1CFC0878361EF0E /* Pods */ = {
