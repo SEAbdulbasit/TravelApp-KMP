@@ -7,8 +7,11 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -35,7 +38,6 @@ internal fun DetailScreenWeb(
     navigationState: MutableState<ScreensState>,
     touristPlace: TouristPlace
 ) {
-    val scope = rememberCoroutineScope()
     val backgroundImage = remember { mutableStateOf(touristPlace.images.first()) }
     Box {
         Image(
@@ -53,7 +55,7 @@ internal fun DetailScreenWeb(
                     .verticalScroll(rememberScrollState())
             ) {
                 Image(
-                    imageVector = Icons.Filled.ArrowBack,
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "Back arrow",
                     modifier = Modifier.padding(start = 16.dp).clickable(onClick = {
                         navigationState.value = ScreensState(

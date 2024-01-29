@@ -20,6 +20,10 @@ kotlin {
         browser()
     }
 
+    wasmJs {
+        browser()
+    }
+
     macosX64 {
         binaries {
             executable {
@@ -79,7 +83,7 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
-//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3")
 //                implementation("io.ktor:ktor-client-cio:$ktorVersion")
             }
         }
@@ -90,6 +94,7 @@ kotlin {
 //                implementation("io.ktor:ktor-client-json-js:2.2.1")
             }
         }
+
     }
 }
 
