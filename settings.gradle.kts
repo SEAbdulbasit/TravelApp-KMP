@@ -19,7 +19,6 @@ pluginManagement {
         id("com.android.library").version(agpVersion)
         id("org.jetbrains.compose").version(composeVersion)
         id("com.android.application") version "8.2.1"
-        id("org.jetbrains.kotlin.android")
     }
 }
 
