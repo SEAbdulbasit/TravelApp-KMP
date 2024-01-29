@@ -9,9 +9,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -45,6 +44,7 @@ import org.jetbrains.compose.resources.painterResource
 //import org.jetbrains.compose.resources.resource
 
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun MainScreen(
     navigationState: MutableState<ScreensState>, viewMode: ListScreenViewModel
@@ -117,7 +117,7 @@ internal fun RenderListingScreen(
         (screenWidth * 0.85f)
     }
 
-    Box {
+    Box(modifier = Modifier.fillMaxWidth()) {
         Image(
             painter = painterResource(state.selectedCountry.touristPlaces[state.selectedItemIndex].images[0]),
             contentDescription = null,
@@ -169,7 +169,7 @@ internal fun RenderListingScreen(
 @Composable
 internal fun WeatherView(drawableResource: DrawableResource) {
     Row(
-        Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 56.dp),
+        Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
@@ -334,7 +334,7 @@ internal fun Counter(destinationsSize: Int, selectedDestination: Int, onItemSwip
         }
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             Icon(
-                imageVector = Icons.Filled.ArrowBack,
+                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = "Back Arrow",
                 tint = if (selectedDestination > 0) Color.White else TravelAppColors.SemiWhite,
                 modifier = Modifier.clickable(onClick = {
@@ -344,7 +344,7 @@ internal fun Counter(destinationsSize: Int, selectedDestination: Int, onItemSwip
                 })
             )
             Icon(
-                imageVector = Icons.Filled.ArrowForward,
+                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
                 tint = if (selectedDestination < (destinationsSize - 1)) Color.White else TravelAppColors.SemiWhite,
                 contentDescription = "Forward Arrow",
                 modifier = Modifier.clickable(onClick = {
