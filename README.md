@@ -13,6 +13,9 @@ Current supported Platforms are:
 3. Web
 4. Desktop
 
+## Live 
+You can view it live [here](https://seabdulbasit.github.io/TravelApp-KMP/)
+
 ## Running the App:
 For running the app, you need an api to feed data. For Rest api, I am using [Makoon](https://mockoon.com/). You can create a local enviroment and add countrieslist api. Here you can find the sample response here: https://github.com/SEAbdulbasit/TravelApp-KMP/blob/master/TravelApp-KMM.json 
 
