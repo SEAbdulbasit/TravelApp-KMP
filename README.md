@@ -1,4 +1,4 @@
-# TravelApp-KMP (Compose Multiplatform_
+# TravelApp-KMP (Compose Multiplatform)
 
 This is an exploration app for Compose Multiplatform UI. Currently this app have Android, iOS, Web and Desktop part and it is 100% Compose UI. For more details on Compose Multiplatform UI visit: https://github.com/JetBrains/compose-jb/
 The support for iOS on Compose Multiplatform is still in experimental phase.
