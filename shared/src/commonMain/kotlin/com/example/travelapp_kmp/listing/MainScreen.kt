@@ -240,8 +240,8 @@ internal fun ImageSlider(
     LazyRow(
         modifier = Modifier.padding(top = 8.dp).fillMaxSize(),
         state = listState,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp)
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         items(items = imagesList, key = { item: TouristPlace -> item.name }) { touristPlace ->
             Card(
@@ -344,14 +344,11 @@ internal fun Counter(destinationsSize: Int, selectedDestination: Int, onItemSwip
                 })
             )
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                tint = if (selectedDestination < (destinationsSize - 1)) Color.White else TravelAppColors.SemiWhite,
-                contentDescription = "Forward Arrow",
-                modifier = Modifier.clickable(onClick = {
+                imageVector = Icons.AutoMirrored.Filled.ArrowForward, contentDescription = "Forward Arrow", modifier = Modifier.clickable(onClick = {
                     if (selectedDestination < (destinationsSize - 1)) {
                         onItemSwipe(selectedDestination + 1)
                     }
-                })
+                }), tint = if (selectedDestination < (destinationsSize - 1)) Color.White else TravelAppColors.SemiWhite
             )
         }
     }

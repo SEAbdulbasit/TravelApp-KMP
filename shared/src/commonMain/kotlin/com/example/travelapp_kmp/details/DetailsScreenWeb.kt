@@ -41,8 +41,8 @@ internal fun DetailScreenWeb(
     val backgroundImage = remember { mutableStateOf(touristPlace.images.first()) }
     Box {
         Image(
-            painter = painterResource(backgroundImage.value),
-            null,
+            painter = painterResource(resource = backgroundImage.value),
+            contentDescription = null,
             modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi),
             contentScale = ContentScale.Crop,
         )
