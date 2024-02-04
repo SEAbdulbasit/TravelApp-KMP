@@ -3,7 +3,7 @@ import androidx.compose.ui.window.application
 import com.example.travelapp_kmp.AppViewDesktop
 
 fun main() = application {
-    Window(title = "TravelApp", onCloseRequest = ::exitApplication) {
+    Window(title = "Travel App", onCloseRequest = ::exitApplication) {
         AppViewDesktop()
     }
 }

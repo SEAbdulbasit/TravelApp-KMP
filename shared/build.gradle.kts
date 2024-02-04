@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+@file:Suppress("OPT_IN_USAGE")
 
 plugins {
     kotlin("native.cocoapods")
@@ -8,8 +8,7 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-version = "1.0-SNAPSHOT"
-val ktorVersion = extra["ktor.version"]
+version = "1.0"
 
 kotlin {
     androidTarget()
@@ -61,25 +60,12 @@ kotlin {
                 implementation(compose.runtime)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
-                //implementation("media.kamel:kamel-image:0.9.1")
-//                implementation("io.coil-kt:coil:2.5.0")
-//                api("io.github.qdsfdhvh:image-loader:1.7.3")
-
-
-//                implementation("io.ktor:ktor-client-core:$ktorVersion")
-//                implementation("io.ktor:ktor-client-json:$ktorVersion")
-//                implementation("io.ktor:ktor-client-logging:$ktorVersion")
-//                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-//                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-//                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-//                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
             }
         }
 
         androidMain {
             dependencies {
                 implementation("com.google.android.material:material:1.11.0")
-//                implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
 
@@ -91,14 +77,11 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.common)
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3")
-//                implementation("io.ktor:ktor-client-cio:$ktorVersion")
             }
         }
 
         jsMain {
             dependencies {
-//                implementation("io.ktor:ktor-client-js:2.2.3")
-//                implementation("io.ktor:ktor-client-json-js:2.2.1")
             }
         }
 
