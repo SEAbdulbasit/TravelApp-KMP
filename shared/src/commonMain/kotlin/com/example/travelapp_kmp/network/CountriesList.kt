@@ -34,6 +34,17 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.py_3,
                     Res.drawable.py_4,
                 )
+            ),
+            TouristPlace(
+                name = "Citadel of Saladin",
+                shortDescription = "The Citadel of Cairo or Citadel of Saladin (Qalaʿat Salāḥ ad-Dīn) is an Islamic-era fortification in Cairo, Egypt, built by Salah ad-Din and further developed by subsequent Egyptian rulers. It was the seat of government in Egypt and the residence of its rulers for nearly 700 years from the 13th century until the construction of Abdeen Palace in the 19th century.",
+                longDescription = "The Citadel was built on a promontory beneath the Muqattam Hills, a setting that made it difficult to attack. The efficacy of the Citadel's location is further demonstrated by the fact that it remained the heart of Egyptian government until the 19th century. During this long period, the layout and structure of the Citadel was repeatedly altered and adapted to suit the designs of new rulers and new regimes, which makes it difficult to reconstitute its original plan or even its plan in subsequent periods. There have been three major construction periods leading to the Citadel's current form: 12th-century Ayyubid (starting with Saladin), 14th-century Mamluk (under al-Nasir Muhammad), and in the 19th century under Muhammad Ali. The Citadel stopped being the seat of government when Egypt's ruler, Khedive Ismail, moved to his newly built Abdin Palace in the new downtown Cairo in 1874. Despite its elaborate defenses, the Citadel never ended up being subjected to a true siege, though it was implicated on various occasions in the political conflicts within Cairo or Egypt.",
+                images = listOf(
+                    Res.drawable.ca_salah,
+                    Res.drawable.ca_salah_1,
+                    Res.drawable.ca_salah_2,
+                    Res.drawable.ca_salah_3,
+                )
             )
         )
     ),
@@ -105,6 +116,60 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.mont_saint_michel_4,
                     Res.drawable.mont_saint_michel_5,
                     Res.drawable.mont_saint_michel_6,
+                )
+            )
+        )
+    ),
+    Country(
+        name = "Bangladesh",
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Cox's Bazar",
+                shortDescription = "TCox’s Bazar is a town on the southeast coast of Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island.",
+                longDescription = "Cox's Bazar (Bengali: কক্সবাজার) is a city, fishing port, tourism centre, and district headquarters in southeastern Bangladesh. The iconic Cox's Bazar Beach, one of the most popular tourist attractions in Bangladesh, is the longest uninterrupted beach in the world. It is located 150 km (93 mi) south of the city of Chittagong. Cox's Bazar is also known by the name Panowa, which translates literally as \"yellow flower.\" An old name was \"Palongkee\". Kutupalong refugee camp with more than a million Rohingya refugees is in Cox's Bazar.",
+                images = listOf(
+                    Res.drawable.bangladesh_coxs_bazar_1,
+                    Res.drawable.bangladesh_coxs_bazar_2,
+                    Res.drawable.bangladesh_coxs_bazar_3,
+                    Res.drawable.bangladesh_coxs_bazar_4,
+                    Res.drawable.bangladesh_coxs_bazar_5
+                )
+            ),
+            TouristPlace(
+                name = "St. Martin's Island (Saint Martin)",
+                shortDescription = "Saint Martin is part of the Leeward Islands in the Caribbean Sea. It comprises 2 separate countries, divided between its northern French side, called Saint-Martin, and its southern Dutch side, Sint Maarten. The island is home to busy resort beaches and secluded coves. It's also known for fusion cuisine, vibrant nightlife and duty-free shops selling jewelry and liquor.",
+                longDescription = "Saint Martin Island (Bengali: সেন্টমার্টিন দ্বীপ) is a small island (area only 3 km2) in the northeastern part of the Bay of Bengal, about 9 km south of the tip of the Cox's Bazar-Teknaf peninsula, and forming the southernmost part of Bangladesh. There is a small adjoining island that is separated at high tide, called Chera Dwip. It is about 8 kilometres (5 miles) west of the northwest coast of Myanmar, at the mouth of the Naf River.",
+                images = listOf(
+                    Res.drawable.bangladesh_saint_martin_1,
+                    Res.drawable.bangladesh_saint_martin_2,
+                    Res.drawable.bangladesh_saint_martin_3,
+                    Res.drawable.bangladesh_saint_martin_4,
+                    Res.drawable.bangladesh_saint_martin_5,
+                    Res.drawable.bangladesh_saint_martin_6,
+                    Res.drawable.bangladesh_saint_martin_7,
+                    Res.drawable.bangladesh_saint_martin_8
+                )
+            ),
+            TouristPlace(
+                name = "Rangamati",
+                shortDescription = "Rangamati is the administrative headquarter and town of Rangamati Hill District in the Chittagong Hill Tracts of Bangladesh. The town is located at 22°37'60N 92°12'0E and has an altitude of 14 metres. It is also where Ropuiliani, a Mizo chieftess, was jailed and died, during the British rule in Mizoram.",
+                longDescription = "Rangamati (Bengali: রাঙ্গামাটি;) is the administrative headquarter and town of Rangamati Hill District in the Chittagong Hill Tracts of Bangladesh. The town is located at 22°37'60N 92°12'0E and has an altitude of 14 metres (46 ft). It is also where Ropuiliani, a Mizo chieftess, was jailed and died, during the British rule in Mizoram.\nFrom Chittagong a 77 kilometres (48 mi) road leads to Rangamati. The township is located on the western bank of the Kaptai lake. Rangamati is a holiday destination because of its landscape, scenery, lake, indigenous groups (Chakma, Marma, Mizo, Tripuri, Tanchangya, etc.), flora and fauna, indigenous museum and hanging bridge.",
+                images = listOf(
+                    Res.drawable.bangladesh_rangamati_1,
+                    Res.drawable.bangladesh_rangamati_2,
+                    Res.drawable.bangladesh_rangamati_3,
+                    Res.drawable.bangladesh_rangamati_4
+                )
+            ),
+            TouristPlace(
+                name = "Bandarban",
+                shortDescription = "It is one of the three hill districts of Bangladesh and a part of the Chittagong Hill Tracts, the others being Rangamati District and Khagrachhari District.",
+                longDescription = "Bandarban (Bengali: বান্দরবান, Chakma: \uD804\uDD1D\uD804\uDD1A\uD804\uDD34\uD804\uDD18\uD804\uDD27\uD804\uDD22\uD804\uDD34\uD804\uDD1D\uD804\uDD1A\uD804\uDD34) is a district in South-Eastern Bangladesh, and a part of the Chittagong Division. It is one of the three hill districts of Bangladesh and a part of the Chittagong Hill Tracts, the others being Rangamati District and Khagrachhari District. Bandarban district (4,479 km2) is not only the most remote district of the country, but also the least populous (population 388,000). There is an army contingent at Bandarban Cantonment.",
+                images = listOf(
+                    Res.drawable.bangladesh_bandarban_1,
+                    Res.drawable.bangladesh_bandarban_2,
+                    Res.drawable.bangladesh_bandarban_3,
+                    Res.drawable.bangladesh_bandarban_4
                 )
             )
         )
