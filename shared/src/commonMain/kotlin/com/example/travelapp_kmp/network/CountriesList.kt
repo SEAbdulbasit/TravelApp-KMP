@@ -34,6 +34,17 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.py_3,
                     Res.drawable.py_4,
                 )
+            ),
+            TouristPlace(
+                name = "Citadel of Saladin",
+                shortDescription = "The Citadel of Cairo or Citadel of Saladin (Qalaʿat Salāḥ ad-Dīn) is an Islamic-era fortification in Cairo, Egypt, built by Salah ad-Din and further developed by subsequent Egyptian rulers. It was the seat of government in Egypt and the residence of its rulers for nearly 700 years from the 13th century until the construction of Abdeen Palace in the 19th century.",
+                longDescription = "The Citadel was built on a promontory beneath the Muqattam Hills, a setting that made it difficult to attack. The efficacy of the Citadel's location is further demonstrated by the fact that it remained the heart of Egyptian government until the 19th century. During this long period, the layout and structure of the Citadel was repeatedly altered and adapted to suit the designs of new rulers and new regimes, which makes it difficult to reconstitute its original plan or even its plan in subsequent periods. There have been three major construction periods leading to the Citadel's current form: 12th-century Ayyubid (starting with Saladin), 14th-century Mamluk (under al-Nasir Muhammad), and in the 19th century under Muhammad Ali. The Citadel stopped being the seat of government when Egypt's ruler, Khedive Ismail, moved to his newly built Abdin Palace in the new downtown Cairo in 1874. Despite its elaborate defenses, the Citadel never ended up being subjected to a true siege, though it was implicated on various occasions in the political conflicts within Cairo or Egypt.",
+                images = listOf(
+                    Res.drawable.ca_salah,
+                    Res.drawable.ca_salah_1,
+                    Res.drawable.ca_salah_2,
+                    Res.drawable.ca_salah_3,
+                )
             )
         )
     ),
