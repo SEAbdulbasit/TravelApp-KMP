@@ -14,6 +14,7 @@ import travelappkmp.shared.generated.resources.Res
 fun getRestCountriesList() = listOf(
     Country(
         name = "Egypt",
+        flagIcon = Res.drawable.eg,
         touristPlaces = listOf(
             TouristPlace(
                 name = "Al-Azhar Masjid",
@@ -39,6 +40,7 @@ fun getRestCountriesList() = listOf(
     ),
     Country(
         name = "Japan",
+        flagIcon = Res.drawable.jp,
         touristPlaces = listOf(
             TouristPlace(
                 name = "Tokyo Skytree",
@@ -83,6 +85,7 @@ fun getRestCountriesList() = listOf(
     ),
     Country(
         name = "France",
+        flagIcon = Res.drawable.fr,
         touristPlaces = listOf(
             TouristPlace(
                 name = "Eiffel Tower",
@@ -111,6 +114,7 @@ fun getRestCountriesList() = listOf(
     ),
     Country(
         name = "Bangladesh",
+        flagIcon = Res.drawable.bd,
         touristPlaces = listOf(
             TouristPlace(
                 name = "Cox's Bazar",
@@ -162,5 +166,42 @@ fun getRestCountriesList() = listOf(
                 )
             )
         )
+    ),
+    Country(
+        name = "Pakistan",
+        flagIcon = Res.drawable.pk,
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Badshahi Mosque, Lahore",
+                shortDescription = "An iconic symbol of Mughal architecture in Lahore, Pakistan.",
+                longDescription = "The Badshahi Mosque, commissioned by Emperor Aurangzeb in 1671, is a marvel of Mughal architecture. With its grand red sandstone and white marble structure, adorned with intricate calligraphy and stunning geometric patterns, it stands as a testament to the opulence of the Mughal era. The mosque's expansive courtyard and regal aura make it a cultural and historical gem, offering panoramic views of Lahore. Visitors are transported to a bygone era, marveling at the artistry and spirituality that permeate this magnificent structure.",
+                images = listOf(
+                    Res.drawable.pakistan_badshahi_mosque_1,
+                    Res.drawable.pakistan_badshahi_mosque_2,
+                    Res.drawable.pakistan_badshahi_mosque_3
+                )
+            ),
+
+            TouristPlace(
+                name = "Shangrila Resort, Skardu",
+                shortDescription = "A paradise nestled in the mesmerizing landscapes of Skardu, Pakistan.",
+                longDescription = "Shangrila Resort, also known as Lower Kachura Lake, is a breathtaking escape surrounded by the Karakoram Range in Skardu. Offering panoramic views of snow-capped peaks, the resort features enchanting gardens and a serene lake. The unique boat-shaped restaurant adds to the charm, allowing visitors to dine with a view. Shangrila Resort is a haven for outdoor enthusiasts, providing opportunities for boating, fishing, and trekking in the nearby valleys. Guests can immerse themselves in nature's beauty and find tranquility in the heart of Skardu.",
+                images = listOf(
+                    Res.drawable.pakistan_shangrila_resort_1,
+                    Res.drawable.pakistan_shangrila_resort_2
+                )
+            ),
+
+            TouristPlace(
+                name = "Hunza Valley",
+                shortDescription = "A mesmerizing valley in the Gilgit-Baltistan region, offering breathtaking vistas.",
+                longDescription = "Hunza Valley, nestled in the heart of the Karakoram Range, is a paradise for nature lovers and adventure seekers. Surrounded by majestic mountains, including Rakaposhi and Ultar Sar, the valley boasts stunning landscapes, vibrant meadows, and serene rivers. The ancient Baltit Fort and Altit Fort add a touch of history to this picturesque region. Visitors can engage in trekking, explore traditional villages, and experience the warm hospitality of the locals. Hunza Valley is a gateway to unparalleled beauty and cultural richness in the Gilgit-Baltistan region of Pakistan.",
+                images = listOf(
+                    Res.drawable.pakistan_hunza_valley_1,
+                    Res.drawable.pakistan_hunza_valley_2,
+                )
+            )
+        )
+
     )
 )
