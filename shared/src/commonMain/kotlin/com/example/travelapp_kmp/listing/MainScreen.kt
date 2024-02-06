@@ -268,10 +268,7 @@ internal fun ImageSlider(
                 modifier = Modifier
                     .width(width = (width * 0.62).dp)
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
-                    .clip(RoundedCornerShape(20.dp))
-                    .clickable { onDetailsClicked(
-                        touristPlace
-                    ) },
+                    .clip(RoundedCornerShape(20.dp)),
                 contentColor = Color.Transparent,
             ) {
                 Box {
