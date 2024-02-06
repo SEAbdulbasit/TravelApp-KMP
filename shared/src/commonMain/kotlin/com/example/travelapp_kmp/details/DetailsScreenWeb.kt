@@ -1,8 +1,17 @@
 package com.example.travelapp_kmp.details
 
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -83,7 +92,9 @@ internal fun DetailScreenWeb(
                 ImageGallery(touristPlace.images) { backgroundImage.value = it }
             }
 
-            Column(modifier = Modifier.weight(1f)) {
+            Column(
+                modifier = Modifier.weight(1f).verticalScroll(rememberScrollState())
+            ) {
                 Text(
                     text = touristPlace.name, style = MaterialTheme.typography.h5.copy(
                         fontWeight = FontWeight.Medium, color = Color.White
@@ -98,11 +109,6 @@ internal fun DetailScreenWeb(
                         lineHeight = TextUnit(22f, TextUnitType.Sp)
                     ),
                     modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 10.dp)
-                )
-                Text(
-                    text = "Photos", style = MaterialTheme.typography.subtitle1.copy(
-                        fontWeight = FontWeight.Medium, color = Color.White
-                    ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
                 )
             }
         }
