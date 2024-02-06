@@ -194,6 +194,7 @@ internal fun WeatherView(drawableResource: DrawableResource) {
     }
 }
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun ListCountryChips(
     list: List<Country>, selectedCountry: String, onCountrySelected: (Country) -> Unit
@@ -201,16 +202,21 @@ private fun ListCountryChips(
     LazyRow(contentPadding = PaddingValues(8.dp), modifier = Modifier.padding(8.dp)) {
         items(items = list) { country ->
             CountryChips(
-                country.name, selectedCountry == country.name
+                country.name, country.flagIcon, selectedCountry == country.name
             ) { onCountrySelected(country) }
         }
     }
 }
 
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class, ExperimentalResourceApi::class)
 @Composable
-private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (String) -> Unit) {
+private fun CountryChips(
+    name: String,
+    flagIcon: DrawableResource?,
+    isSelected: Boolean,
+    onItemSelected: (String) -> Unit
+) {
     Surface(modifier = Modifier.background(Color.Transparent),
         shape = RoundedCornerShape(20.dp),
         border = if (isSelected) BorderStroke(
@@ -220,12 +226,25 @@ private fun CountryChips(name: String, isSelected: Boolean, onItemSelected: (Str
         ),
         color = if (isSelected) TravelAppColors.SemiWhite else Color.Transparent,
         onClick = { onItemSelected(name) }) {
-        Text(
-            name,
-            style = MaterialTheme.typography.body1.copy(color = Color.Black),
-            modifier = Modifier.padding(start = 24.dp, top = 8.dp, bottom = 8.dp, end = 24.dp)
-                .background(Color.Transparent),
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            flagIcon?.let {
+                Image(
+                    painter = painterResource(flagIcon),
+                    contentDescription = name,
+                    modifier = Modifier.padding(start = 24.dp, end = 8.dp)
+                        .width(30.dp)
+                        .aspectRatio((2.0/3.0).toFloat()),
+                )
+            }
+            Text(
+                name,
+                style = MaterialTheme.typography.body1.copy(color = Color.Black),
+                modifier = Modifier.padding(end = 24.dp)
+                    .background(Color.Transparent),
+            )
+        }
     }
 }
 
