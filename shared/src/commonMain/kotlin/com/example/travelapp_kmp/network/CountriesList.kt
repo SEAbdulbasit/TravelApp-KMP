@@ -407,5 +407,67 @@ fun getRestCountriesList() = listOf(
                 )
             )
         )
+    ),
+    Country(
+        name = "Algeria",
+        flagIcon = Res.drawable.dz,
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Kasbah of Algiers",
+                shortDescription = "The Kasbah is a unique kind of medina, or Islamic city. It stands in one of the finest coastal sites on the Mediterranean, overlooking the islands where a Carthaginian trading-post was established in the 4th century BC. There are the remains of the citadel, old mosques and Ottoman-style palaces as well as the remains of a traditional urban structure associated with a deep-rooted sense of community.",
+                longDescription = "The Kasbah of Algiers is founded on the ruins of old Icosium in the 10th century. It was a city built on a hill, stretching towards the sea, divided into the \"High city\" and the \"Low city\". One finds there masonry and mosques dating from the 17th century: Ketchaoua Mosque (built in 1794 by the Dey Baba Hassan) flanked by two minarets; Djama’a al-Djedid (1660, at the time of the Ottomans) with its large finished ovoid cupola points some and its four cupolas; Djamaâ el Kebir (the oldest of the mosques), built by Almoravid ruler Yusuf ibn Tashfin; and Ali Bitchin Mosque (Raïs, 1623). The Kasbah also contained several palaces, including Dar Aziza, Dar Mustapha Pacha, Palace of the Dey, and Dar Hassan Pacha which was built in 1791 to house the Pasha, who lived there for eight years.[4]\n" +
+                        "\n" +
+                        "In 1839, shortly after the French conquest, the French governor moved into Dar Hassan Pacha. In 1860, Napoleon III and Eugénie de Montijo visited.[4] Before French rule, the kasbah contained around 13 Jama Masjids, 109 mosques, 32 mausoleums and 12 Zawiyas, total of 166 religious-related buildings. However, the majority of these religious buildings were destroyed during the occupation. In 1862, there were only nine Jama Masjids, 19 mosques, 15 mausoleums and five Zawiyas left. Many mosques such as Ketchauoua Mosque and Berrani Mosque were converted into building with non-Islamic purposes, such as military barracks and churches.[5]\n" +
+                        "\n" +
+                        "The kasbah played a central role during the Algerian War of Independence (1954–1962). During the early years of the war, the kasbah was the epicenter of the insurgency planning of the National Liberation Front (FLN), from which it planned and executed attacks against French citizens and law enforcement agents in Algeria at the time. In order to counter their efforts, the French authorities launched operations in the kasbah during the Battle of Algiers. ",
+                images = listOf(
+                    Res.drawable.algeria_kasba_1,
+                    Res.drawable.algeria_kasba_2,
+                    Res.drawable.algeria_kasba_3,
+                    Res.drawable.algeria_kasba_4,
+                    Res.drawable.algeria_kasba_5,
+                    Res.drawable.algeria_kasba_6,
+                    Res.drawable.algeria_kasba_7,
+                    Res.drawable.algeria_kasba_8,
+                )
+            ),
+
+            TouristPlace(
+                name = "Timgad",
+                shortDescription = "It was a Roman city in the Aurès Mountains of Algeria. It was founded by the Roman Emperor Trajan around 100 CE.",
+                longDescription = "The city was founded as a military colony by the emperor Trajan in the year 100. It was intended to serve primarily as a Roman bastion against the Berbers in the nearby Aures Mountains, and it was originally populated largely by Roman veterans and colonists.",
+                images = listOf(
+                    Res.drawable.algeria_timgad_1,
+                    Res.drawable.algeria_timgad_2,
+                    Res.drawable.algeria_timgad_3,
+                    Res.drawable.algeria_timgad_4,
+                    Res.drawable.algeria_timgad_5,
+                    Res.drawable.algeria_timgad_6,
+                )
+            ),
+
+            TouristPlace(
+                name = "Botanical Garden of Hamma",
+                shortDescription = "A 32-hectare (79-acre) botanical garden (38 hectares (94 acres) of gardens and 20 hectares (49 acres) of arboretum).",
+                longDescription = "In 1832, Pierre Genty De Bussy, the Civil Intendant, and General Antoine Avisard, interim governor, decided to drain the marshes at the foot of the Arcades hill. The Botanical Garden of Hamma was then created on a 5 hectares (12 acres) area, to make not only a model farm but also a test garden.\n" +
+                        "\n" +
+                        "In 1837, the organization bought a 18-hectare (44-acre) site under the Fountain of Plane Trees. The garden grew westwards and became the Central Nursery of the Government. The initial site was renamed Little Test Garden until its exchange in 1848 for another piece of land inside the Nursery.\n" +
+                        "\n" +
+                        "The garden's principal activity is to provide trees to public organisations and to European settlers. From 1833, production of carmine was added.\n" +
+                        "\n" +
+                        "Auguste Hardy was named director of the Botanical Garden in 1842. Many animal species were introduced to the garden at that time, and it expanded several times. As well as the animal and vegetable produce, industry relating to new technology occupied a lot of space, and employed a lot of people.\n" +
+                        "\n" +
+                        "Between 1848 and 1867 the garden expanded several times, until it arrived at its current configuration. In 1860, a lake was created and an exterior boulevard constructed. The garden was renamed the Acclimatization Garden (French: Jardin d'Acclimatation) in 1861. In 1867, an estimated 8,214 species could " +
+                        "be found in the garden. Between 2001 and 2009 the garden was closed for restoration work. Reopened in 2009, it is now home to the Algerian National Institute of Agronomical Research, and was opened to visitors.",
+                images = listOf(
+                    Res.drawable.the_botanical_garden_1,
+                    Res.drawable.the_botanical_garden_2,
+                    Res.drawable.the_botanical_garden_3,
+                    Res.drawable.the_botanical_garden_4,
+                    Res.drawable.the_botanical_garden_5,
+                    Res.drawable.the_botanical_garden_6,
+                )
+            )
+        )
     )
 )
