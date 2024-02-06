@@ -180,6 +180,7 @@ fun getRestCountriesList() = listOf(
     ),
     Country(
         name = "India",
+        flagIcon = Res.drawable.india,
         touristPlaces = listOf(
             TouristPlace(
                 name = "Taj Mahal",
