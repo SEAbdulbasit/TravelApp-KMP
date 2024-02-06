@@ -162,5 +162,198 @@ fun getRestCountriesList() = listOf(
                 )
             )
         )
+    ),
+    Country(
+        name = "India",
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Taj Mahal",
+                shortDescription = "The Taj Mahal, an ivory-white marble monument in Agra, India, embodies eternal love. Built by Mughal emperor Shah Jahan in memory of his third wife Mumtaz Mahal, it's a UNESCO World Heritage Site and one of the New Seven Wonders of the World. Its symmetrical design, intricate carvings, and lush gardens mesmerize visitors. From its white brilliance at dawn to its golden glow at sunset, the Taj Mahal reflects beauty, grief, and architectural excellence.",
+                longDescription = "Rising majestically on the banks of the Yamuna river, the Taj Mahal is a timeless ode to love. Mughal emperor Shah Jahan, heartbroken by the loss of his beloved wife Mumtaz Mahal in 1631, commissioned this architectural marvel as her final resting place. Construction began in 1632, employing over 20,000 artisans for over 20 years.\n" +
+                        "\n" +
+                        "The Taj Mahal's beauty lies in its perfect symmetry and intricate details. White marble, sourced from Rajasthan, gleams under the sun, inlaid with semi-precious stones like lapis lazuli and carnelian forming captivating floral patterns. Calligraphic inscriptions from the Quran adorn the arches and doorways, adding a spiritual dimension. Four minarets gracefully flank the main mausoleum, reflecting in the reflecting pool below, creating a breathtaking mirror image.\n" +
+                        "\n" +
+                        "Inside, the cenotaphs of Mumtaz Mahal and Shah Jahan, encased in intricately carved marble screens, lie amidst floral designs and precious stones. The octagonal chamber resonates with a serene atmosphere, a testament to the love story etched in its every detail.\n" +
+                        "\n" +
+                        "Beyond the mausoleum, lush gardens adorned with fountains and pools extend along the Yamuna, symbolizing the path to paradise. The entire complex, including the mosque and guest house, stands as a magnificent example of Mughal architecture, blending Persian, Indian, and Islamic influences.\n" +
+                        "\n" +
+                        "The Taj Mahal transcends its role as a mausoleum. It's a symbol of love, loss, and artistic brilliance, captivating hearts and imaginations for centuries. Its ever-changing hues throughout the day, from soft pink at dawn to ethereal white in the afternoon, and golden yellow under the moonlight, add to its magic.\n" +
+                        "\n" +
+                        "Visiting the Taj Mahal is an unforgettable experience, a journey through history, love, and architectural wonder. It's a reminder that even in the face of grief, beauty can endure, leaving an eternal mark on the world.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.india_taj_mahal_1,
+                    Res.drawable.india_taj_mahal_2,
+                    Res.drawable.india_taj_mahal_3,
+                    Res.drawable.india_taj_mahal_4,
+                    Res.drawable.india_taj_mahal_5
+                )
+            ),
+            TouristPlace(
+                name = "Varanasi",
+                shortDescription = "Varanasi, also known as Kashi, is an ancient city in India located on the banks of the holy Ganges River. It's considered the spiritual capital of India and one of the seven sacred cities in Hinduism. Renowned for its vibrant culture, rich history, and spiritual significance, Varanasi attracts millions of pilgrims and tourists every year. The city pulsates with life along the numerous ghats (bathing steps) where pilgrims perform rituals and devotees offer prayers. Witnessing the sunrise over the Ganges and the evening aarti ceremony is a mesmerizing experience. From bustling bazaars to serene temples, Varanasi offers a unique blend of spirituality, tradition, and modernity.",
+                longDescription = "Varanasi, steeped in history and mythology, is believed to be one of the oldest continuously inhabited cities in the world. Dating back to the 11th century BC, it has witnessed the rise and fall of empires, the evolution of cultures, and the enduring spirit of Hinduism. Fondly called Kashi, the city embodies the essence of India's spiritual heritage.\n" +
+                        "\n" +
+                        "The Ganges River, considered sacred by Hindus, forms the very lifeblood of Varanasi. The numerous ghats along its banks come alive with pilgrims performing pujas (worship rituals), taking dips in the holy water, and offering diyas (earthen lamps) in the evening aarti ceremony, creating a mesmerizing spectacle. The air resonates with chants, prayers, and the rhythmic clanging of temple bells.\n" +
+                        "\n" +
+                        "Wandering through the narrow lanes and bustling bazaars of Varanasi is an immersive experience. The aroma of spices fills the air, and shops overflow with colorful silk sarees, handcrafted souvenirs, and mouthwatering street food. The Kashi Vishwanath Temple, dedicated to Lord Shiva, is one of the holiest Hindu shrines, attracting devotees from all walks of life.\n" +
+                        "\n" +
+                        "Beyond the religious significance, Varanasi is a vibrant center of art, music, and culture. Classical music performances, traditional dance forms like Kathak, and vibrant folk art showcase the city's rich cultural tapestry. From witnessing the sunrise over the Ganges to exploring the ancient temples and bustling markets, Varanasi offers a unique and unforgettable experience for every visitor.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.india_varanasi_1,
+                    Res.drawable.india_varanasi_2,
+                    Res.drawable.india_varanasi_3,
+                    Res.drawable.india_varanasi_4,
+                    Res.drawable.india_varanasi_5,
+                    Res.drawable.india_varanasi_6,
+                    Res.drawable.india_varanasi_7,
+                )
+            ),
+            TouristPlace(
+                name = "Munnar",
+                shortDescription = "Munnar, nestled amidst the rolling hills of the Western Ghats in Kerala, is a postcard-perfect hill station adorned with emerald tea plantations, cascading waterfalls, and breathtaking vistas. Renowned for its cool climate, scenic beauty, and rich biodiversity, it's an ideal escape for nature lovers and adventure seekers. Explore sprawling tea estates, trek through lush forests, boat on serene lakes, or witness the majestic Anamudi peak, South India's highest. From cascading Echo Point to the aromatic spice markets, Munnar offers a delightful blend of nature's charm and cultural heritage.",
+                longDescription = "Embraced by the cool embrace of the Western Ghats, Munnar paints a canvas of breathtaking beauty in Kerala. This idyllic hill station, named after the confluence of three mountain streams (meaning \"three rivers\" in Malayalam), was once a favored summer retreat for the British Raj. Today, it attracts travelers seeking solace in nature's embrace.\n" +
+                        "\n" +
+                        "Carpeted with emerald tea plantations that stretch as far as the eye can see, Munnar exudes a refreshing aroma. Wander through these manicured estates, witness the tea plucking process, and indulge in a cup of locally brewed tea - a true sensory experience. Nature enthusiasts can trek through Shola forests teeming with diverse flora and fauna, spot Nilgiri tahr grazing on the slopes, or embark on an adventurous jeep safari.\n" +
+                        "\n" +
+                        "Waterfalls like Echo Point and Attukal cascade down verdant hills, creating mesmerizing spectacles. Serene lakes like Kundala invite boat rides amidst breathtaking scenery. For panoramic views, head to Anamudi Peak, South India's highest, or witness the sunrise paint the sky with vibrant hues at Top Station.\n" +
+                        "\n" +
+                        "Beyond its natural beauty, Munnar offers a glimpse into Kerala's rich heritage. Explore spice plantations overflowing with cardamom, pepper, and cinnamon, their pungent aromas filling the air. Visit the historic Mattupetty Dam, built by the British, or delve into the ancient traditions of local tribes.\n" +
+                        "\n" +
+                        "Whether you seek tranquility amidst rolling hills, adventure in the wilderness, or a cultural immersion, Munnar has something for everyone. Come, experience the magic of this enchanting hill station and create memories that will last a lifetime.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.india_munnar_1,
+                    Res.drawable.india_munnar_2,
+                    Res.drawable.india_munnar_3,
+                    Res.drawable.india_munnar_4,
+                    Res.drawable.india_munnar_5,
+                    Res.drawable.india_munnar_6,
+                    Res.drawable.india_munnar_7,
+                )
+            ),
+            TouristPlace(
+                name = "Amber Palace",
+                shortDescription = "Amber Palace, also known as Amer Fort, stands majestically atop a hill near Jaipur, showcasing a stunning blend of Rajput and Mughal architecture. Built in the 16th century, it served as the royal residence for centuries. Climb the fortified walls, adorned with intricate carvings, and explore opulent palaces, serene courtyards, and the breathtaking Sheesh Mahal (Mirror Palace). Witnessing the sunset over the Maota Lake paints an unforgettable picture.",
+                longDescription = "Rising like a golden mirage against the Aravalli Hills, Amber Palace (Amer Fort) whispers tales of grandeur and bygone eras. This magnificent fort, just outside Jaipur, served as the seat of power for the Kachwaha Rajput rulers for centuries, dating back to the 16th century. Today, it stands as a UNESCO World Heritage Site, captivating visitors with its architectural splendor and rich history.\n" +
+                        "\n" +
+                        "As you ascend the fortified walls, intricately carved elephants guarding the majestic Suraj Pol (Sun Gate) welcome you. Inside, a labyrinth of courtyards, palaces, and gardens unfolds. Marvel at the Diwan-e-Aam (Hall of Public Audience), where the Maharaja held court, and the Diwan-e-Khas (Hall of Private Audience), adorned with precious stones and delicate mirrorwork.\n" +
+                        "\n" +
+                        "Climb the Painted Passage, its walls showcasing vibrant murals depicting battles and processions. Be awestruck by the Sheesh Mahal (Mirror Palace), where thousands of tiny mirrors create a mesmerizing kaleidoscope effect. Wander through the Sukh Mahal (Hall of Pleasure), with its cool and refreshing water channels, and imagine royal life unfold before you.\n" +
+                        "\n" +
+                        "Beyond the architectural marvels, the fort offers breathtaking views. Gaze upon the Maota Lake, shimmering below, and capture the unforgettable scene as the sun dips behind the Aravalli Hills, painting the sky in vibrant hues. Explore the hidden tunnels connecting Amber Palace to Jaigarh Fort, and delve deeper into the fort's fascinating history.\n" +
+                        "\n" +
+                        "Whether you're an architecture enthusiast, history buff, or simply seeking a glimpse into India's royal past, Amber Palace provides an unforgettable experience. It's a testament to the artistry and grandeur of a bygone era, where every step whispers stories of opulence, power, and the rich tapestry of Indian history.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.india_amber_palace_1,
+                    Res.drawable.india_amber_palace_2,
+                    Res.drawable.india_amber_palace_3,
+                    Res.drawable.india_amber_palace_4,
+                )
+            ),
+            TouristPlace(
+                name = "Dudhsagar Waterfalls",
+                shortDescription = "Dudhsagar Waterfalls, cascading amidst the lush Western Ghats in Goa, is a majestic spectacle. India's highest waterfall plunges 310 meters, creating a breathtaking sight and refreshing mist. Hike through verdant forests, take a jeep safari, or witness the falls' grandeur from a train passing over a bridge offering stunning views. Dudhsagar is a haven for nature lovers and adventure seekers.",
+                longDescription = "In the heart of the verdant Western Ghats, Goa, lies Dudhsagar Waterfalls, a cascading marvel that leaves visitors spellbound. Cascading down a staggering 310 meters, it earns the title of India's highest waterfall, creating a breathtaking spectacle that enthralls nature enthusiasts and adventure seekers alike.\n" +
+                        "\n" +
+                        "Reaching Dudhsagar is an adventure in itself. Hike through lush forests teeming with diverse flora and fauna, their vibrant colors contrasting with the gushing waters. For a thrilling experience, embark on a jeep safari, navigating through challenging terrain and offering glimpses of the hidden beauty of the region.\n" +
+                        "\n" +
+                        "As you arrive at the base of the falls, prepare to be mesmerized. The gushing water crashes down from a seemingly endless height, creating a powerful roar and sending refreshing mist into the air. Take a dip in the cool pool beneath the falls, feeling the invigorating power of nature. For a different perspective, board a train that passes over a bridge offering stunning views of the cascading wonder from above.\n" +
+                        "\n" +
+                        "Beyond its visual grandeur, Dudhsagar holds ecological significance. The surrounding forests are home to a rich variety of plant and animal life, including endangered species like the Malabar langur and the lion-tailed macaque. Spotting these creatures amidst the lush greenery adds another layer to the experience.\n" +
+                        "\n" +
+                        "Whether you're seeking a refreshing escape, an adrenaline-pumping adventure, or a connection with nature, Dudhsagar Waterfalls offers something for everyone. Its cascading beauty, diverse ecosystem, and accessible adventures make it a must-visit for travelers exploring the vibrant state of Goa.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.india_dudhsagar_waterfalls_1,
+                    Res.drawable.india_dudhsagar_waterfalls_2,
+                    Res.drawable.india_dudhsagar_waterfalls_3,
+                    Res.drawable.india_dudhsagar_waterfalls_4,
+                    Res.drawable.india_dudhsagar_waterfalls_5,
+                    Res.drawable.india_dudhsagar_waterfalls_6,
+                    Res.drawable.india_dudhsagar_waterfalls_7,
+                )
+            ),
+            TouristPlace(
+                name = "Manali",
+                shortDescription = "Manali, nestled amidst the majestic Himalayas, is a picturesque hill station in Himachal Pradesh. Renowned for its snow-capped peaks, verdant valleys, and adventure activities, it's a haven for nature lovers and thrill-seekers. Hike through apple orchards, soak in hot springs, or witness the panoramic views from Rohtang Pass. Manali's charm lies in its blend of natural beauty, Tibetan culture, and adventure opportunities.",
+                longDescription = "Manali, cradled in the lap of the majestic Himalayas in Himachal Pradesh, paints a picture of breathtaking beauty and adventure. This picturesque hill station, perched at an altitude of 6,769 feet, has long been a magnet for travelers seeking solace in nature's embrace and adrenaline-pumping activities.\n" +
+                        "\n" +
+                        "Carpeted with lush valleys and snow-capped peaks, Manali offers a feast for the eyes. Hike through apple orchards bursting with vibrant hues, breathe in the crisp mountain air, and witness the majestic Himalayas paint the sky with a kaleidoscope of colors at sunrise or sunset.\n" +
+                        "\n" +
+                        "Adventure enthusiasts rejoice in Manali's playground. Embark on a thrilling trek to Rohtang Pass, offering panoramic views of the surrounding peaks. Go white-water rafting on the Beas River, feeling the rush of adrenaline as you navigate through rapids. Or, try your hand at paragliding, soaring above the valleys and experiencing the world from a bird's-eye view.\n" +
+                        "\n" +
+                        "Manali's cultural tapestry is woven with Tibetan influences. Explore the serene monasteries like the Gadhan Thekchok Kyong Gompa, where monks chant and prayer flags flutter in the wind. Immerse yourself in the vibrant Tibetan markets, overflowing with colorful handicrafts and souvenirs. Savor the local cuisine, with momos and Thukpa warming your soul on chilly evenings.\n" +
+                        "\n" +
+                        "Beyond its natural beauty and adventure, Manali offers a chance to unwind and reconnect with nature. Soak in the rejuvenating hot springs at Vashisht, believed to have medicinal properties. Take a leisurely stroll along the Beas River, listening to its soothing gurgling and feeling the sun's warmth on your skin.\n" +
+                        "\n" +
+                        "Whether you're seeking a breathtaking escape, an adrenaline-pumping adventure, or a cultural immersion, Manali has something for everyone. Come, experience the magic of this enchanting hill station and create memories that will last a lifetime.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.india_manali_1,
+                    Res.drawable.india_manali_2,
+                    Res.drawable.india_manali_3,
+                    Res.drawable.india_manali_4,
+                    Res.drawable.india_manali_5,
+                    Res.drawable.india_manali_6,
+                    Res.drawable.india_manali_7,
+                    Res.drawable.india_manali_8,
+                    Res.drawable.india_manali_9,
+                )
+            ),
+            TouristPlace(
+                name = "Darjeeling",
+                shortDescription = "Darjeeling, perched amidst the Himalayas, is a charming hill station renowned for its breathtaking views, verdant tea plantations, and iconic toy train. Witnessing sunrise over Kanchenjunga peak, exploring bustling Chowrasta market, and riding the Darjeeling Himalayan Railway are unforgettable experiences. Darjeeling offers a unique blend of colonial charm, breathtaking beauty, and aromatic teas, making it a must-visit for any India adventure.",
+                longDescription = "Nestled amidst the majestic Himalayas, Darjeeling, fondly called the \"Queen of Hills,\" captivates visitors with its breathtaking beauty, colonial charm, and aromatic tea estates. This hill station in West Bengal, perched at an altitude of 6,700 feet, offers a unique blend of experiences that linger long after your visit.\n" +
+                        "\n" +
+                        "Start your day by witnessing the magical sunrise over the snow-capped Kanchenjunga peak, the world's third highest mountain. The golden hues paint the sky, creating a spectacle that leaves you awestruck. Explore the sprawling tea plantations, their emerald slopes stretching as far as the eye can see. Breathe in the invigorating aroma of freshly brewed Darjeeling tea, savoring its delicate flavor at a local tea house.\n" +
+                        "\n" +
+                        "Step back in time as you wander through Chowrasta, the bustling heart of Darjeeling. This historic market overflows with colorful souvenirs, traditional Tibetan handicrafts, and local delicacies. Ride the iconic Darjeeling Himalayan Railway, a UNESCO World Heritage Site, experiencing the scenic beauty of the hills on this charming toy train.\n" +
+                        "\n" +
+                        "Beyond the tourist attractions, Darjeeling offers a glimpse into its rich history and culture. Visit the Himalayan Mountaineering Institute, commemorating the spirit of adventure, or delve deeper into Tibetan traditions at the Mahakal Temple and Ghoom Monastery. For an off-the-beaten-path experience, hike through the Senchal Wildlife Sanctuary, spotting diverse flora and fauna.\n" +
+                        "\n" +
+                        "Whether you're seeking breathtaking panoramas, a nostalgic journey through colonial history, or a connection with nature and local culture, Darjeeling has something for everyone. Come, experience the magic of this enchanting hill station and create memories that will warm your heart like a cup of Darjeeling tea.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.india_darjeeling_1,
+                    Res.drawable.india_darjeeling_2,
+                    Res.drawable.india_darjeeling_3,
+                    Res.drawable.india_darjeeling_4,
+                    Res.drawable.india_darjeeling_5,
+                    Res.drawable.india_darjeeling_6,
+                    Res.drawable.india_darjeeling_7,
+                    Res.drawable.india_darjeeling_8,
+                    Res.drawable.india_darjeeling_9,
+                )
+            ),
+            TouristPlace(
+                name = "Dal Lake",
+                shortDescription = "Dal Lake, also known as \"Srinagar's Jewel,\" is a mesmerizing expanse of freshwater nestled amidst the majestic Himalayas in Kashmir, India. Shikara boats glide across its tranquil waters, passing by floating gardens, houseboats, and vibrant markets. Witnessing the breathtaking sunrise over the lake and experiencing the serene beauty of its surrounding mountains is an unforgettable experience.",
+                longDescription = "Dal Lake, a glittering jewel nestled amidst the snow-capped peaks of the Himalayas in Srinagar, Kashmir, India, enchants visitors with its serene beauty and vibrant culture. Revered as \"Srinagar's Jewel,\" this freshwater lake pulsates with life, offering a unique and unforgettable experience.\n" +
+                        "\n" +
+                        "Imagine gliding across the calm waters in a traditional Shikara boat, feeling the cool breeze caress your face as you navigate past floating gardens bursting with colorful flowers. The gentle lapping of water creates a tranquil symphony, contrasting with the lively chatter of vendors selling fresh produce and handcrafted souvenirs in floating markets.\n" +
+                        "\n" +
+                        "Dal Lake transforms into a magical canvas each dawn and dusk. Witness the first rays of sunlight cast a golden glow on the snow-capped peaks surrounding the lake, painting the sky in mesmerizing hues of orange and pink. As the sun dips below the horizon, the water reflects the vibrant colors of the setting sun, creating a breathtaking spectacle.\n" +
+                        "\n" +
+                        "Beyond its scenic beauty, Dal Lake offers a glimpse into the rich culture and traditions of Kashmir. Houseboats, intricately adorned with Kashmiri wood carvings, provide a unique and comfortable stay on the lake. Savor delicious local cuisine, featuring fresh fish and aromatic spices, served on the houseboats by warm and hospitable families.\n" +
+                        "\n" +
+                        "For a deeper cultural immersion, visit the Hazratbal Shrine, a revered Islamic pilgrim site located on the banks of the lake. Explore the bustling markets along the ghats, overflowing with colorful spices, hand-woven shawls, and traditional Kashmiri handicrafts.\n" +
+                        "\n" +
+                        "Whether you seek serenity on the Shikara, adventure on the surrounding mountains, or a cultural immersion in Kashmiri traditions, Dal Lake has something for everyone. Come, experience the magic of this enchanting lake and create memories that will last a lifetime.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.india_dal_lake_1,
+                    Res.drawable.india_dal_lake_2,
+                    Res.drawable.india_dal_lake_3,
+                    Res.drawable.india_dal_lake_4,
+                    Res.drawable.india_dal_lake_5,
+                    Res.drawable.india_dal_lake_6,
+                    Res.drawable.india_dal_lake_7,
+                    Res.drawable.india_dal_lake_8,
+                )
+            ),
+        )
     )
 )
