@@ -27,7 +27,11 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.ExperimentalUnitApi
@@ -235,7 +239,7 @@ private fun CountryChips(
                     contentDescription = name,
                     modifier = Modifier.padding(start = 24.dp, end = 8.dp)
                         .width(30.dp)
-                        .aspectRatio((2.0/3.0).toFloat()),
+                        .aspectRatio((2.0 / 3.0).toFloat()),
                 )
             }
             Text(
@@ -282,7 +286,9 @@ internal fun ImageSlider(
                     )
 
                     Column(
-                        modifier = Modifier.padding(16.dp).align(Alignment.BottomStart)
+                        modifier = Modifier.align(Alignment.BottomStart).background(
+                            Color.Black.copy(alpha = 0.4f)
+                        ).padding(16.dp)
                     ) {
                         Text(
                             text = touristPlace.name, style = MaterialTheme.typography.h4.copy(
@@ -296,10 +302,11 @@ internal fun ImageSlider(
                                 letterSpacing = TextUnit(0.1f, TextUnitType.Em),
                                 lineHeight = TextUnit(19f, TextUnitType.Sp)
                             ),
-                            modifier = Modifier.padding(top = 16.dp),
+                            maxLines = 3,
+                            modifier = Modifier.padding(top = 4.dp),
                             overflow = TextOverflow.Ellipsis
                         )
-                        Row(Modifier.padding(top = 20.dp)) {
+                        Row(Modifier.padding(top = 8.dp)) {
                             Text(
                                 modifier = Modifier.clickable(onClick = {
                                     onDetailsClicked(
@@ -326,6 +333,19 @@ internal fun ImageSlider(
             }
         }
     }
+}
+
+@Composable
+fun TransparentText(text: String, style: TextStyle, height: Int = 25) {
+    val textMeasure = rememberTextMeasurer()
+    Canvas(modifier = Modifier.wrapContentSize().height(height = height.dp), onDraw = {
+        drawText(
+            textMeasurer = textMeasure,
+            text = AnnotatedString(text),
+            style = style,
+            blendMode = androidx.compose.ui.graphics.BlendMode.Xor,
+        )
+    })
 }
 
 @OptIn(ExperimentalUnitApi::class)
@@ -363,11 +383,14 @@ internal fun Counter(destinationsSize: Int, selectedDestination: Int, onItemSwip
                 })
             )
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForward, contentDescription = "Forward Arrow", modifier = Modifier.clickable(onClick = {
+                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                contentDescription = "Forward Arrow",
+                modifier = Modifier.clickable(onClick = {
                     if (selectedDestination < (destinationsSize - 1)) {
                         onItemSwipe(selectedDestination + 1)
                     }
-                }), tint = if (selectedDestination < (destinationsSize - 1)) Color.White else TravelAppColors.SemiWhite
+                }),
+                tint = if (selectedDestination < (destinationsSize - 1)) Color.White else TravelAppColors.SemiWhite
             )
         }
     }
