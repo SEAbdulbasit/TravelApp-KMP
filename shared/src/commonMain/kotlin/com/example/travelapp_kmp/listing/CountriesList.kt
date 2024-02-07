@@ -5,7 +5,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 data class Country @OptIn(ExperimentalResourceApi::class) constructor(
     val name: String,
-    val flagIcon: DrawableResource? = null,
+    val flagIcon: String? = null,
     val touristPlaces: List<TouristPlace>
 )
 
