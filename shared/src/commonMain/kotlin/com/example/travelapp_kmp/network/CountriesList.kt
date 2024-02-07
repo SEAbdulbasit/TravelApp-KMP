@@ -465,7 +465,112 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.the_botanical_garden_3,
                     Res.drawable.the_botanical_garden_4,
                     Res.drawable.the_botanical_garden_5,
-                    Res.drawable.the_botanical_garden_6,
+                    Res.drawable.the_botanical_garden_6)
+            ),
+             Country(
+        name = "Germany",
+        flagIcon = Res.drawable.germany,
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Brandenburg Gate",
+                shortDescription = "The Brandenburg Gate is an iconic neoclassical monument in Berlin, Germany, standing as a symbol of unity and peace. Built in the 18th century, it is one of the city's most important landmarks and a must-visit historical site that once marked the division between East and West Berlin.",
+                longDescription = "The Brandenburg Gate is an iconic neoclassical monument in Berlin, Germany, renowned as a symbol of peace and unity. Designed by Carl Gotthard Langhans and completed in the late 18th century, it draws inspiration from the Acropolis in Athens, embodying the architectural elegance of the era. \n" +
+                        "\n" +
+                        "The gate is crowned with the Quadriga, a sculpture of a chariot drawn by four horses, led by Victoria, the Roman goddess of victory, symbolizing peace.\n" +
+                        "\n" +
+                        "Throughout its history, the Brandenburg Gate has stood witness to many of Germany's key historical moments, including Napoleon's conquests and the tumultuous events of the 20th century.\n" +
+                        "\n" +
+                        "Originally marking the boundary of Berlin, the Brandenburg Gate became a symbol of division during the Cold War, as it was situated just behind the Berlin Wall, separating East from West Berlin.\n" +
+                        "\n" +
+                        "With the fall of the Berlin Wall in 1989, the gate transformed into a powerful emblem of German reunification and is now celebrated as a monument to freedom and reconciliation. \n" +
+                        "\n" +
+                        "Today, it attracts visitors from around the globe, serving as a poignant reminder of Berlin's past struggles and its enduring hope for peace.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.germany_brandenburg_gate_1,
+                    Res.drawable.germany_brandenburg_gate_2,
+                    Res.drawable.germany_brandenburg_gate_3,
+                    Res.drawable.germany_brandenburg_gate_4,
+                    Res.drawable.germany_brandenburg_gate_5
+                )
+            ),
+            TouristPlace(
+                name = "Neuschwanstein Castle",
+                shortDescription = "Neuschwanstein Castle is a fairy-tale castle in Bavaria, Germany, that inspired Disney’s Sleeping Beauty Castle. Built in the 19th century by King Ludwig II of Bavaria, this picturesque castle stands atop rugged cliffs against the scenic backdrop of the Alps, embodying the romantic spirit of the era and drawing millions of visitors yearly.",
+                longDescription = "Neuschwanstein Castle, set amidst the breathtaking landscapes of Bavaria, Germany, is a quintessential symbol of Romantic architecture and the dreamlike fantasies of King Ludwig II. Constructed in the late 19th century, the castle was designed as a personal refuge for the reclusive king, but also as a homage to Richard Wagner, the king’s muse and inspiration. \n" +
+                        "\n" +
+                        "Neuschwanstein’s design reflects the medieval Gothic revival, yet it incorporates modern technology of the time, including central heating, running water, and even an electric bell system for summoning servants.\n" +
+                        "\n" +
+                        "Its interiors are adorned with intricate murals depicting legends and tales that were dear to Ludwig, further enhancing its mystical allure.\n" +
+                        "\n" +
+                        "The castle’s location is as dramatic as its architecture, perched on a rugged hill above the village of Hohenschwangau near Füssen, in southwest Bavaria. It offers stunning views of the surrounding alpine landscapes, making it a picturesque masterpiece that looks like it has been lifted from the pages of a storybook.\n" +
+                        "\n" +
+                        "Despite King Ludwig II's death in 1886 before the castle’s completion, Neuschwanstein became a symbol of opulence and fantasy, attracting over a million visitors each year. It is not only a monument to the king’s imagination but also a testament to the allure of the Romantic era, making it one of the most visited and recognizable castles in the world.\n",
+                images = listOf(
+                    Res.drawable.germany_neuschwanstein_castle_1,
+                    Res.drawable.germany_neuschwanstein_castle_2,
+                    Res.drawable.germany_neuschwanstein_castle_3,
+                    Res.drawable.germany_neuschwanstein_castle_4,
+                    Res.drawable.germany_neuschwanstein_castle_5,
+                )
+            ),
+            TouristPlace(
+                name = "Cologne Cathedral",
+                shortDescription = "Cologne Cathedral, a masterpiece of Gothic architecture, stands as a monumental landmark in Cologne, Germany. Known for its awe-inspiring spires, intricate façades, and the Shrine of the Three Kings, this UNESCO World Heritage site is not only a place of worship but also a symbol of German resilience and faith.",
+                longDescription = "Cologne Cathedral (Kölner Dom), with its soaring twin spires dominating the skyline of Cologne, is one of the most significant Gothic structures in Europe. Construction began in 1248 to house the relics of the Three Wise Men and, despite centuries of intermittent work, was not completed until 1880.\n" +
+                        "\n" +
+                        "The cathedral showcases remarkable Gothic architectural elements, including flying buttresses, large clerestory windows, and a stunningly detailed façade. Inside, it houses a wealth of art, most notably the Shrine of the Three Kings, a gilded sarcophagus believed to contain the remains of the Magi.\n" +
+                        "\n" +
+                        "This majestic cathedral has withstood the test of time, surviving the devastation of World War II almost unscathed amidst the heavily bombed city of Cologne, which stands as a testament to its symbolic significance.\n" +
+                        "\n" +
+                        "oday, it attracts millions of visitors and pilgrims annually, drawn not only to its spiritual significance but also to its architectural beauty and historical art pieces. \n" +
+                        "\n" +
+                        "The Cologne Cathedral, standing as a beacon of faith, Gothic artistry, and German heritage, continues to fascinate and inspire awe in all who visit.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.germany_cologne_cathedral_1,
+                    Res.drawable.germany_cologne_cathedral_2,
+                    Res.drawable.germany_cologne_cathedral_3,
+                    Res.drawable.germany_cologne_cathedral_4,
+                    Res.drawable.germany_cologne_cathedral_5,
+                )
+            ),
+            TouristPlace(
+                name = "Berliner Fernsehturm",
+                shortDescription = "The Berliner Fernsehturm (Berlin TV Tower) is a prominent landmark and television tower located in central Berlin, Germany. At a staggering height of 368 meters, it is the tallest structure in Germany, offering panoramic views of the city from its observation deck and revolving restaurant, making it a must-visit for tourists.",
+                longDescription = "The Berliner Fernsehturm, situated near Alexanderplatz in Mitte, is not just an iconic silhouette on Berlin's skyline but also a symbol of the city's history and technological advancement. Constructed between 1965 and 1969 by the German Democratic Republic (GDR), the tower was intended as a demonstration of the strength and efficiency of the socialist party system.\n" +
+                        "\n" +
+                        "Today, it serves as a poignant reminder of Berlin's Cold War era while standing as a beacon of modernity and reunification.\n" +
+                        "\n" +
+                        "With its spherical observation deck and revolving restaurant located 207 meters above ground, the Berliner Fernsehturm offers visitors unparalleled 360-degree views of Berlin, encompassing historical sites, modern landmarks, and the lush greenery surrounding the city.\n" +
+                        "\n" +
+                        "The tower's design and engineering have earned it a place among the most famous television towers worldwide. Its presence in East Berlin's cityscape has made it a central point of reference for both locals and tourists alike, symbolizing Berlin's resilience and its continuous stride towards the future. \n" +
+                        "\n" +
+                        "Whether viewed from the cobblestone streets of the city or the heights of its observation deck, the Berliner Fernsehturm captivates with its history, architecture, and the sweeping vistas it provides.\n" +
+                        "\n",
+                images = listOf(
+                    Res.drawable.germany_berlin_fernsehtrum_1,
+                    Res.drawable.germany_berlin_fernsehtrum_2,
+                    Res.drawable.germany_berlin_fernsehtrum_3,
+
+                    )
+            ),
+            TouristPlace(
+                name = "Zugspitze",
+                shortDescription = "The Zugspitze is Germany's highest peak, soaring 2,962 meters above sea level in the Bavarian Alps. Renowned for its breathtaking panoramas, the mountain offers a unique blend of natural beauty, outdoor adventure, and cultural experiences, making it a premier destination for tourists and mountaineers alike.",
+                longDescription = "As the pinnacle of the German Alps, the Zugspitze presents visitors with unparalleled views that stretch across four countries on clear days. The journey to the summit can be achieved via cogwheel train and cable car, offering a memorable experience as one ascends through diverse alpine landscapes.\n" +
+                        "\n" +
+                        "Upon reaching the top, visitors are greeted by the striking contrast of rugged mountain peaks and the gentle undulation of the valleys below. The summit hosts three glaciers, including the largest glacier in Germany, the Schneeferner, adding to the Zugspitze's allure as a natural wonder.\n" +
+                        "\n" +
+                        "The Zugspitze is not only a haven for skiers and snowboarders, with its snowy slopes offering some of the best winter sports conditions in Germany, but also a summer retreat for hikers and climbers who seek to explore its challenging trails and enjoy the alpine flora and fauna. \n" +
+                        "\n" +
+                        "Additionally, the Zugspitze straddles the border between Germany and Austria, allowing visitors to effortlessly experience the culture and hospitality of two nations. With its breathtaking scenery, diverse activities, and the unique opportunity to stand at the highest point in Germany, the Zugspitze captivates all who venture to its summit, embodying the majestic spirit of the Alps.\n",
+                images = listOf(
+                    Res.drawable.germany_zugspitzbahn_1,
+                    Res.drawable.germany_zugspitzbahn_2,
+                    Res.drawable.germany_zugspitzbahn_3,
+                    Res.drawable.germany_zugspitzbahn_4,
+                    Res.drawable.germany_zugspitsbahn_5,
                 )
             )
         )
