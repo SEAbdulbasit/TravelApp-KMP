@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
@@ -217,7 +218,7 @@ private fun ListCountryChips(
 @Composable
 private fun CountryChips(
     name: String,
-    flagIcon: DrawableResource?,
+    flagIcon: String?,
     isSelected: Boolean,
     onItemSelected: (String) -> Unit
 ) {
@@ -234,12 +235,10 @@ private fun CountryChips(
             verticalAlignment = Alignment.CenterVertically
         ) {
             flagIcon?.let {
-                Image(
-                    painter = painterResource(flagIcon),
-                    contentDescription = name,
-                    modifier = Modifier.padding(start = 24.dp, end = 8.dp)
-                        .width(30.dp)
-                        .aspectRatio((2.0 / 3.0).toFloat()),
+                Text(
+                    text = flagIcon,
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(start = 24.dp, end = 8.dp),
                 )
             }
             Text(
