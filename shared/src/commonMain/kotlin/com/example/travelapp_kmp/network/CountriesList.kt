@@ -1,6 +1,7 @@
 package com.example.travelapp_kmp.network
 
 import com.example.travelapp_kmp.listing.Country
+import com.example.travelapp_kmp.listing.CountryFlags
 import com.example.travelapp_kmp.listing.TouristPlace
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import travelappkmp.shared.generated.resources.Res
@@ -10,10 +11,11 @@ import travelappkmp.shared.generated.resources.Res
  * Created by abdulbasit on 30/05/2023.
  */
 
+
 @OptIn(ExperimentalResourceApi::class)
 fun getRestCountriesList() = listOf(
     Country(
-        name = "Egypt", flagIcon = Res.drawable.eg, touristPlaces = listOf(
+        name = "Egypt", flagIcon = CountryFlags.getCountryFlag("eg"), touristPlaces = listOf(
             TouristPlace(
                 name = "Al-Azhar Masjid",
                 shortDescription = "Al-Azhar Masjid is one of the most important historical strongholds for spreading and teaching Islam in Egypt and the Islamic world. It was built in 378 AH / 970 AD, And is located in Cairo, Egypt.",
@@ -46,7 +48,7 @@ fun getRestCountriesList() = listOf(
         )
     ),
     Country(
-        name = "Japan", flagIcon = Res.drawable.jp, touristPlaces = listOf(
+        name = "Japan", flagIcon = CountryFlags.getCountryFlag("jp"), touristPlaces = listOf(
             TouristPlace(
                 name = "Tokyo Skytree",
                 shortDescription = "The Tokyo Skytree is a towering communications and observation tower located in Tokyo, Japan. At 634 meters tall, it is the tallest structure in Japan and offers breathtaking views of the city from its observation deck.",
@@ -87,13 +89,15 @@ fun getRestCountriesList() = listOf(
         )
     ),
     Country(
-        name = "France", flagIcon = Res.drawable.fr, touristPlaces = listOf(
+        name = "France", flagIcon = CountryFlags.getCountryFlag("fr"), touristPlaces = listOf(
             TouristPlace(
                 name = "Eiffel Tower",
                 shortDescription = "The Eiffel Tower is a landmark iron lattice tower located in Paris, France. Standing at 324 meters tall, it is the tallest structure in Paris and one of the most recognizable symbols of France.",
                 longDescription = "The Eiffel Tower is an iconic symbol of France and one of the most recognizable landmarks in the world. Located in Paris, the tower stands at 324 meters tall and was built as the centerpiece of the 1889 Exposition Universelle, a world's fair held in Paris to commemorate the 100th anniversary of the French Revolution. Designed by Gustave Eiffel, the tower is constructed of iron lattice work and was the tallest structure in the world when it was completed. Today, the Eiffel Tower is one of the most popular tourist destinations in Paris, attracting millions of visitors each year. Visitors can take the stairs or an elevator to the top of the tower, where they can enjoy stunning views of Paris and its landmarks, including the Seine River, Notre-Dame Cathedral, and the Louvre Museum. The tower is also a popular spot for picnics and romantic evenings, as the city lights up below. In addition to its stunning views, the Eiffel Tower is also an important cultural and historical landmark, representing the technological achievements of the late 19th century and serving as a symbol of France and Paris for over a century. Overall, the Eiffel Tower is a must-visit destination for anyone traveling to Paris, offering a unique combination of natural beauty, cultural significance, and breathtaking views of the city.",
                 images = listOf(
-                    Res.drawable.eiffel_tower_2, Res.drawable.eiffel_tower_3, Res.drawable.eiffel_tower_4
+                    Res.drawable.eiffel_tower_2,
+                    Res.drawable.eiffel_tower_3,
+                    Res.drawable.eiffel_tower_4
                 )
             ), TouristPlace(
                 name = "Mont Saint Michel",
@@ -111,7 +115,7 @@ fun getRestCountriesList() = listOf(
         )
     ),
     Country(
-        name = "Bangladesh", flagIcon = Res.drawable.bd, touristPlaces = listOf(
+        name = "Bangladesh", flagIcon = CountryFlags.getCountryFlag("bd"), touristPlaces = listOf(
             TouristPlace(
                 name = "Cox's Bazar",
                 shortDescription = "TCox’s Bazar is a town on the southeast coast of Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island.",
@@ -161,7 +165,7 @@ fun getRestCountriesList() = listOf(
         )
     ),
     Country(
-        name = "India", flagIcon = Res.drawable.india, touristPlaces = listOf(
+        name = "India", flagIcon = CountryFlags.getCountryFlag("in"), touristPlaces = listOf(
             TouristPlace(
                 name = "Taj Mahal",
                 shortDescription = "The Taj Mahal, an ivory-white marble monument in Agra, India, embodies eternal love. Built by Mughal emperor Shah Jahan in memory of his third wife Mumtaz Mahal, it's a UNESCO World Heritage Site and one of the New Seven Wonders of the World. Its symmetrical design, intricate carvings, and lush gardens mesmerize visitors. From its white brilliance at dawn to its golden glow at sunset, the Taj Mahal reflects beauty, grief, and architectural excellence.",
@@ -277,7 +281,7 @@ fun getRestCountriesList() = listOf(
         )
     ),
     Country(
-        name = "Pakistan", flagIcon = Res.drawable.pk, touristPlaces = listOf(
+        name = "Pakistan", flagIcon = CountryFlags.getCountryFlag("pk"), touristPlaces = listOf(
             TouristPlace(
                 name = "Badshahi Mosque, Lahore",
                 shortDescription = "An iconic symbol of Mughal architecture in Lahore, Pakistan.",
@@ -294,7 +298,8 @@ fun getRestCountriesList() = listOf(
                 shortDescription = "A paradise nestled in the mesmerizing landscapes of Skardu, Pakistan.",
                 longDescription = "Shangrila Resort, also known as Lower Kachura Lake, is a breathtaking escape surrounded by the Karakoram Range in Skardu. Offering panoramic views of snow-capped peaks, the resort features enchanting gardens and a serene lake. The unique boat-shaped restaurant adds to the charm, allowing visitors to dine with a view. Shangrila Resort is a haven for outdoor enthusiasts, providing opportunities for boating, fishing, and trekking in the nearby valleys. Guests can immerse themselves in nature's beauty and find tranquility in the heart of Skardu.",
                 images = listOf(
-                    Res.drawable.pakistan_shangrila_resort_1, Res.drawable.pakistan_shangrila_resort_2
+                    Res.drawable.pakistan_shangrila_resort_1,
+                    Res.drawable.pakistan_shangrila_resort_2
                 )
             ),
 
@@ -310,7 +315,7 @@ fun getRestCountriesList() = listOf(
         )
     ),
     Country(
-        name = "Algeria", flagIcon = Res.drawable.dz,
+        name = "Algeria", flagIcon = CountryFlags.getCountryFlag("dz"),
         touristPlaces = listOf(
             TouristPlace(
                 name = "Kasbah of Algiers",
@@ -357,7 +362,7 @@ fun getRestCountriesList() = listOf(
         )
     ),
     Country(
-        name = "Germany", flagIcon = Res.drawable.germany, touristPlaces = listOf(
+        name = "Germany", flagIcon = CountryFlags.getCountryFlag("de"), touristPlaces = listOf(
             TouristPlace(
                 name = "Brandenburg Gate",
                 shortDescription = "The Brandenburg Gate is an iconic neoclassical monument in Berlin, Germany, standing as a symbol of unity and peace. Built in the 18th century, it is one of the city's most important landmarks and a must-visit historical site that once marked the division between East and West Berlin.",
@@ -415,5 +420,40 @@ fun getRestCountriesList() = listOf(
 
             )
         )
+    ),
+
+    Country(
+        name = "Switzerland", flagIcon = CountryFlags.getCountryFlag("ch"),
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Interlaken",
+                shortDescription = "Interlaken's unique location between two lakes – Lake Brienz and Lake Thun – makes it a breathtaking spot for a vacation. Here, you can spend hours hiking various trails, taking in the castle-studded shores of Lake Thun on a boat cruise or gazing at the surrounding mountains from the Harder Kulm observation deck (accessible via a funicular).",
+                longDescription = "Interlaken is a Swiss town and municipality in the Interlaken-Oberhasli administrative district in the canton of Bern. It is an important and well-known tourist destination in the Bernese Oberland region of the Swiss Alps, and the main transport gateway to the mountains and lakes of that region. The town is located on flat alluvial land called Bödeli between two lakes, Brienz to the east and Thun to the west, and alongside the river Aare, which flows between them. Transport routes to the east and west alongside the lakes are complemented by a route southwards into the near mountain resorts and high mountains, e.g. the famous high Alpine peaks of Eiger, Mönch, and Jungfrau, following upwards the Lütschine.",
+                images = listOf(
+                    Res.drawable.swiss_interlaken_1,
+                    Res.drawable.swiss_interlaken_2,
+                    Res.drawable.swiss_interlaken_3,
+                )
+            ), TouristPlace(
+                name = "Zermatt",
+                shortDescription = "Zermatt is a car-free village in the upper Valais, one of the alpine cantons of Switzerland. It's probably best known as a platform for skiing and mountaineering, especially on the mountain which towers above the village, the Matterhorn. The surroundings are breathtaking but this comes at a price: Accommodation in Zermatt is among the most expensive in Switzerland.",
+                longDescription ="Zermatt is surrounded by a range of fabulous mountains, among which the highest of Switzerland: Monte Rosa, but it is famous for the Matterhorn. It was one of the last alpine mountains to be conquered (in 1865), and the first expedition that reached the top ended dramatically (only 3 of the 7 climbers survived). If you've never experienced a car-free city of any size then Zermatt could be a bit of a surprise: during the high season, nearly 20,000 people live in a town with only 5 or 6 streets and more significantly almost no internal combustion vehicles except very occasional outside delivery and specialist services. This means that you can leave a noisy bar or party, and a few minutes later on foot find yourself in utter tranquility. You can sit on the hotel balcony and listen to dozens of varieties of songbirds while watching the sunset on one of the most striking mountains in the western world. Wake up with the sun in a room or a canvas tent to the sound of the aforementioned birds, crickets, church bells, and children's laughter.",
+                images = listOf(
+                    Res.drawable.swiss_zermatt_1,
+                    Res.drawable.swiss_zermatt_2,
+                    Res.drawable.swiss_zermatt_3,
+
+                )
+            ), TouristPlace(
+                name = "Basel",
+                shortDescription = "Basel is Switzerland's oldest university city. Historic landmarks of the city include the large market square with its richly decorated red sandstone town hall and the late Romanesque-Gothic cathedral. During a walk through the old town, past small boutiques, antique book shops but also shops of modern designers, a visit to the \"Läckerli Huus\" to try the traditional Basel honey cake is well worth your while. ",
+                longDescription = "Basel is tradition-conscious and open-minded at the same time, a fact born out by several modern buildings designed by renowned architects such as Herzog & de Meuron, Mario Botta, Diener & Diener and Richard Meyer.\n"+ "Almost 40 museums make Basel the city with the highest density of museums in the country. Internationally known museums, such as the Basel Art Museum, the museum devoted to the iron sculptor Jean Tinguely, the Fondation Beyeler and the Museum of Cultures attract a great many visitors, as do several galleries and playhouses. Basel is among other things home to the symphony orchestra and the chamber orchestra as well as the musical theatre featuring international productions. And a wide range of classical and contemporary productions are shown on the stages of the Basel Theatre and the Playhouse.\n" + " \n" + "Basel is a green city. The Botanical Gardens, the Merian Gärten and the banks of the Rhine are perfect places to relax and linger for a while. And the Etoscha House at the zoo Basel offers spectacular insights into the Namibian Savannah.\n" + "You can easily explore Basel on foot or by bike. There are four Rhine ferries that connect Grossbasel with Kleinbasel.\n" + "\n" + "At nearby Augusta Raurica near Augst impressive ruins and a great many finds at the museum bear testimony to the busy lives of the Romans in the region in the past. The charming countryside of the Basel region with its many cherry trees in spring boasts a particularly beautiful display of blooms. Germany and France, the Black Forest and Vosges Mountains are only a stone's throw away from the border city of Basel.",
+                images = listOf(
+                    Res.drawable.swiss_basel_1,
+                    Res.drawable.swiss_basel_2,
+                    Res.drawable.swiss_basel_3,
+                )
+            )
+        )
     )
-)
+).sortedBy { it.name }
