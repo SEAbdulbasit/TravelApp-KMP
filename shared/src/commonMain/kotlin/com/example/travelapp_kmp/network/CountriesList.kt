@@ -415,5 +415,37 @@ fun getRestCountriesList() = listOf(
 
             )
         )
+    ),
+    Country(
+        name = "United Kingdom", flagIcon = Res.drawable.uk, touristPlaces = listOf(
+            TouristPlace(
+                name = "Tower of London",
+                shortDescription = "A historic castle on the banks of the River Thames known for its rich history and housing the Crown Jewels.",
+                longDescription = "The Tower of London, founded by William the Conqueror in the 11th century, has served as a royal palace, prison, and treasury. Visitors can explore its medieval architecture, view the Crown Jewels, and learn about its role in English history.",
+                images = listOf(
+                    Res.drawable.uk_tower_of_london,
+                    Res.drawable.uk_tower_of_london_2,
+                )
+            ), TouristPlace(
+                name = "Buckingham Palace",
+                shortDescription = "The official residence of the British monarch in London, known for the Changing of the Guard ceremony.",
+                longDescription = "Buckingham Palace, built in the 18th century, is the monarch's primary residence. Visitors can witness the iconic Changing of the Guard, explore the State Rooms during the summer months, and enjoy the vast gardens.",
+                images = listOf(
+                    Res.drawable.uk_buckingham_palace,
+                    Res.drawable.uk_buckingham_palace_2,
+                    Res.drawable.uk_buckingham_palace_3,
+                )
+            ), TouristPlace(
+                name = "Stonehenge",
+                shortDescription = "A prehistoric monument in Wiltshire featuring a circle of massive standing stones.",
+                longDescription = "Stonehenge, dating back to around 3000 BC, remains one of the world's most famous archaeological sites. Its purpose and construction methods continue to be subjects of speculation, adding to its mystique.",
+                images = listOf(
+                    Res.drawable.uk_stonehenge,
+                    Res.drawable.uk_stonehenge_2,
+                    Res.drawable.uk_stonehenge_3,
+                    Res.drawable.uk_stonehenge_4,
+                )
+            )
+        )
     )
 )
