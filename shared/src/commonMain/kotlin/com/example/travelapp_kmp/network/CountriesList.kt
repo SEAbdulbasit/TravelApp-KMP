@@ -416,10 +416,40 @@ fun getRestCountriesList() = listOf(
             )
         )
     ),
-
     Country(
-        name = "Switzerland", flagIcon = CountryFlags.getCountryFlag("ch"),
-        touristPlaces = listOf(
+        name = "United Kingdom", flagIcon = Res.drawable.uk, touristPlaces = listOf(
+            TouristPlace(
+                name = "Tower of London",
+                shortDescription = "A historic castle on the banks of the River Thames known for its rich history and housing the Crown Jewels.",
+                longDescription = "The Tower of London, founded by William the Conqueror in the 11th century, has served as a royal palace, prison, and treasury. Visitors can explore its medieval architecture, view the Crown Jewels, and learn about its role in English history.",
+                images = listOf(
+                    Res.drawable.uk_tower_of_london,
+                    Res.drawable.uk_tower_of_london_2,
+                )
+            ), TouristPlace(
+                name = "Buckingham Palace",
+                shortDescription = "The official residence of the British monarch in London, known for the Changing of the Guard ceremony.",
+                longDescription = "Buckingham Palace, built in the 18th century, is the monarch's primary residence. Visitors can witness the iconic Changing of the Guard, explore the State Rooms during the summer months, and enjoy the vast gardens.",
+                images = listOf(
+                    Res.drawable.uk_buckingham_palace,
+                    Res.drawable.uk_buckingham_palace_2,
+                    Res.drawable.uk_buckingham_palace_3,
+                )
+            ), TouristPlace(
+                name = "Stonehenge",
+                shortDescription = "A prehistoric monument in Wiltshire featuring a circle of massive standing stones.",
+                longDescription = "Stonehenge, dating back to around 3000 BC, remains one of the world's most famous archaeological sites. Its purpose and construction methods continue to be subjects of speculation, adding to its mystique.",
+                images = listOf(
+                    Res.drawable.uk_stonehenge,
+                    Res.drawable.uk_stonehenge_2,
+                    Res.drawable.uk_stonehenge_3,
+                    Res.drawable.uk_stonehenge_4,
+                )
+            )
+        )
+    ),
+    Country(
+        name = "Switzerland", flagIcon = CountryFlags.getCountryFlag("ch"), touristPlaces = listOf(
             TouristPlace(
                 name = "Interlaken",
                 shortDescription = "Interlaken's unique location between two lakes – Lake Brienz and Lake Thun – makes it a breathtaking spot for a vacation. Here, you can spend hours hiking various trails, taking in the castle-studded shores of Lake Thun on a boat cruise or gazing at the surrounding mountains from the Harder Kulm observation deck (accessible via a funicular).",
@@ -432,7 +462,7 @@ fun getRestCountriesList() = listOf(
             ), TouristPlace(
                 name = "Zermatt",
                 shortDescription = "Zermatt is a car-free village in the upper Valais, one of the alpine cantons of Switzerland. It's probably best known as a platform for skiing and mountaineering, especially on the mountain which towers above the village, the Matterhorn. The surroundings are breathtaking but this comes at a price: Accommodation in Zermatt is among the most expensive in Switzerland.",
-                longDescription ="Zermatt is surrounded by a range of fabulous mountains, among which the highest of Switzerland: Monte Rosa, but it is famous for the Matterhorn. It was one of the last alpine mountains to be conquered (in 1865), and the first expedition that reached the top ended dramatically (only 3 of the 7 climbers survived). If you've never experienced a car-free city of any size then Zermatt could be a bit of a surprise: during the high season, nearly 20,000 people live in a town with only 5 or 6 streets and more significantly almost no internal combustion vehicles except very occasional outside delivery and specialist services. This means that you can leave a noisy bar or party, and a few minutes later on foot find yourself in utter tranquility. You can sit on the hotel balcony and listen to dozens of varieties of songbirds while watching the sunset on one of the most striking mountains in the western world. Wake up with the sun in a room or a canvas tent to the sound of the aforementioned birds, crickets, church bells, and children's laughter.",
+                longDescription = "Zermatt is surrounded by a range of fabulous mountains, among which the highest of Switzerland: Monte Rosa, but it is famous for the Matterhorn. It was one of the last alpine mountains to be conquered (in 1865), and the first expedition that reached the top ended dramatically (only 3 of the 7 climbers survived). If you've never experienced a car-free city of any size then Zermatt could be a bit of a surprise: during the high season, nearly 20,000 people live in a town with only 5 or 6 streets and more significantly almost no internal combustion vehicles except very occasional outside delivery and specialist services. This means that you can leave a noisy bar or party, and a few minutes later on foot find yourself in utter tranquility. You can sit on the hotel balcony and listen to dozens of varieties of songbirds while watching the sunset on one of the most striking mountains in the western world. Wake up with the sun in a room or a canvas tent to the sound of the aforementioned birds, crickets, church bells, and children's laughter.",
                 images = listOf(
                     Res.drawable.swiss_zermatt_1,
                     Res.drawable.swiss_zermatt_2,
@@ -442,7 +472,7 @@ fun getRestCountriesList() = listOf(
             ), TouristPlace(
                 name = "Basel",
                 shortDescription = "Basel is Switzerland's oldest university city. Historic landmarks of the city include the large market square with its richly decorated red sandstone town hall and the late Romanesque-Gothic cathedral. During a walk through the old town, past small boutiques, antique book shops but also shops of modern designers, a visit to the \"Läckerli Huus\" to try the traditional Basel honey cake is well worth your while. ",
-                longDescription = "Basel is tradition-conscious and open-minded at the same time, a fact born out by several modern buildings designed by renowned architects such as Herzog & de Meuron, Mario Botta, Diener & Diener and Richard Meyer.\n"+ "Almost 40 museums make Basel the city with the highest density of museums in the country. Internationally known museums, such as the Basel Art Museum, the museum devoted to the iron sculptor Jean Tinguely, the Fondation Beyeler and the Museum of Cultures attract a great many visitors, as do several galleries and playhouses. Basel is among other things home to the symphony orchestra and the chamber orchestra as well as the musical theatre featuring international productions. And a wide range of classical and contemporary productions are shown on the stages of the Basel Theatre and the Playhouse.\n" + " \n" + "Basel is a green city. The Botanical Gardens, the Merian Gärten and the banks of the Rhine are perfect places to relax and linger for a while. And the Etoscha House at the zoo Basel offers spectacular insights into the Namibian Savannah.\n" + "You can easily explore Basel on foot or by bike. There are four Rhine ferries that connect Grossbasel with Kleinbasel.\n" + "\n" + "At nearby Augusta Raurica near Augst impressive ruins and a great many finds at the museum bear testimony to the busy lives of the Romans in the region in the past. The charming countryside of the Basel region with its many cherry trees in spring boasts a particularly beautiful display of blooms. Germany and France, the Black Forest and Vosges Mountains are only a stone's throw away from the border city of Basel.",
+                longDescription = "Basel is tradition-conscious and open-minded at the same time, a fact born out by several modern buildings designed by renowned architects such as Herzog & de Meuron, Mario Botta, Diener & Diener and Richard Meyer.\n" + "Almost 40 museums make Basel the city with the highest density of museums in the country. Internationally known museums, such as the Basel Art Museum, the museum devoted to the iron sculptor Jean Tinguely, the Fondation Beyeler and the Museum of Cultures attract a great many visitors, as do several galleries and playhouses. Basel is among other things home to the symphony orchestra and the chamber orchestra as well as the musical theatre featuring international productions. And a wide range of classical and contemporary productions are shown on the stages of the Basel Theatre and the Playhouse.\n" + " \n" + "Basel is a green city. The Botanical Gardens, the Merian Gärten and the banks of the Rhine are perfect places to relax and linger for a while. And the Etoscha House at the zoo Basel offers spectacular insights into the Namibian Savannah.\n" + "You can easily explore Basel on foot or by bike. There are four Rhine ferries that connect Grossbasel with Kleinbasel.\n" + "\n" + "At nearby Augusta Raurica near Augst impressive ruins and a great many finds at the museum bear testimony to the busy lives of the Romans in the region in the past. The charming countryside of the Basel region with its many cherry trees in spring boasts a particularly beautiful display of blooms. Germany and France, the Black Forest and Vosges Mountains are only a stone's throw away from the border city of Basel.",
                 images = listOf(
                     Res.drawable.swiss_basel_1,
                     Res.drawable.swiss_basel_2,
