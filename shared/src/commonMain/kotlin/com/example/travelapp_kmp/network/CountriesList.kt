@@ -415,5 +415,40 @@ fun getRestCountriesList() = listOf(
 
             )
         )
+    ),
+
+    Country(
+        name = "Switzerland", flagIcon = CountryFlags.getCountryFlag("ch"),
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Interlaken",
+                shortDescription = "Interlaken's unique location between two lakes – Lake Brienz and Lake Thun – makes it a breathtaking spot for a vacation. Here, you can spend hours hiking various trails, taking in the castle-studded shores of Lake Thun on a boat cruise or gazing at the surrounding mountains from the Harder Kulm observation deck (accessible via a funicular).",
+                longDescription = "Interlaken is a Swiss town and municipality in the Interlaken-Oberhasli administrative district in the canton of Bern. It is an important and well-known tourist destination in the Bernese Oberland region of the Swiss Alps, and the main transport gateway to the mountains and lakes of that region. The town is located on flat alluvial land called Bödeli between two lakes, Brienz to the east and Thun to the west, and alongside the river Aare, which flows between them. Transport routes to the east and west alongside the lakes are complemented by a route southwards into the near mountain resorts and high mountains, e.g. the famous high Alpine peaks of Eiger, Mönch, and Jungfrau, following upwards the Lütschine.",
+                images = listOf(
+                    Res.drawable.swiss_interlaken_1,
+                    Res.drawable.swiss_interlaken_2,
+                    Res.drawable.swiss_interlaken_3,
+                )
+            ), TouristPlace(
+                name = "Zermatt",
+                shortDescription = "Zermatt is a car-free village in the upper Valais, one of the alpine cantons of Switzerland. It's probably best known as a platform for skiing and mountaineering, especially on the mountain which towers above the village, the Matterhorn. The surroundings are breathtaking but this comes at a price: Accommodation in Zermatt is among the most expensive in Switzerland.",
+                longDescription ="Zermatt is surrounded by a range of fabulous mountains, among which the highest of Switzerland: Monte Rosa, but it is famous for the Matterhorn. It was one of the last alpine mountains to be conquered (in 1865), and the first expedition that reached the top ended dramatically (only 3 of the 7 climbers survived). If you've never experienced a car-free city of any size then Zermatt could be a bit of a surprise: during the high season, nearly 20,000 people live in a town with only 5 or 6 streets and more significantly almost no internal combustion vehicles except very occasional outside delivery and specialist services. This means that you can leave a noisy bar or party, and a few minutes later on foot find yourself in utter tranquility. You can sit on the hotel balcony and listen to dozens of varieties of songbirds while watching the sunset on one of the most striking mountains in the western world. Wake up with the sun in a room or a canvas tent to the sound of the aforementioned birds, crickets, church bells, and children's laughter.",
+                images = listOf(
+                    Res.drawable.swiss_zermatt_1,
+                    Res.drawable.swiss_zermatt_2,
+                    Res.drawable.swiss_zermatt_3,
+
+                    )
+            ), TouristPlace(
+                name = "Basel",
+                shortDescription = "Basel is Switzerland's oldest university city. Historic landmarks of the city include the large market square with its richly decorated red sandstone town hall and the late Romanesque-Gothic cathedral. During a walk through the old town, past small boutiques, antique book shops but also shops of modern designers, a visit to the \"Läckerli Huus\" to try the traditional Basel honey cake is well worth your while. ",
+                longDescription = "Basel is tradition-conscious and open-minded at the same time, a fact born out by several modern buildings designed by renowned architects such as Herzog & de Meuron, Mario Botta, Diener & Diener and Richard Meyer.\n"+ "Almost 40 museums make Basel the city with the highest density of museums in the country. Internationally known museums, such as the Basel Art Museum, the museum devoted to the iron sculptor Jean Tinguely, the Fondation Beyeler and the Museum of Cultures attract a great many visitors, as do several galleries and playhouses. Basel is among other things home to the symphony orchestra and the chamber orchestra as well as the musical theatre featuring international productions. And a wide range of classical and contemporary productions are shown on the stages of the Basel Theatre and the Playhouse.\n" + " \n" + "Basel is a green city. The Botanical Gardens, the Merian Gärten and the banks of the Rhine are perfect places to relax and linger for a while. And the Etoscha House at the zoo Basel offers spectacular insights into the Namibian Savannah.\n" + "You can easily explore Basel on foot or by bike. There are four Rhine ferries that connect Grossbasel with Kleinbasel.\n" + "\n" + "At nearby Augusta Raurica near Augst impressive ruins and a great many finds at the museum bear testimony to the busy lives of the Romans in the region in the past. The charming countryside of the Basel region with its many cherry trees in spring boasts a particularly beautiful display of blooms. Germany and France, the Black Forest and Vosges Mountains are only a stone's throw away from the border city of Basel.",
+                images = listOf(
+                    Res.drawable.swiss_basel_1,
+                    Res.drawable.swiss_basel_2,
+                    Res.drawable.swiss_basel_3,
+                )
+            )
+        )
     )
 )
