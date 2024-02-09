@@ -481,4 +481,54 @@ fun getRestCountriesList() = listOf(
             )
         )
     )
+,
+   Country(
+        name = "Alyemen", flagIcon = Res.drawable.ye, touristPlaces = listOf(
+            TouristPlace(
+                name = "Old City of Sanaa",
+                shortDescription = "The old, walled city has been inhabited for more than 2,500 years and contains a wealth of intact architectural gems.",
+                longDescription = "Sana'a, the capital of Yemen, is a city of remarkable beauty and historical significance. Its Old City, a UNESCO World Heritage Site, is a testament to the city's rich past and vibrant culture.\n" +
+                        "\n" +
+                        "Architectural Marvels: Sana'a's Old City is home to a number of stunning historical buildings, including mosques, palaces, and bathhouses. These structures feature unique designs and impressive architecture, reflecting Yemen's rich architectural traditions.\n" +
+                        "\n" +
+                        "Souqs and Markets: The Old City is renowned for its vibrant souqs, or markets, which offer a diverse array of local goods and handicrafts. Visitors can wander through these bustling marketplaces and explore a wide range of products, including colorful textiles, aromatic spices, and unique antiques.\n" +
+                        "\n" +
+                        "Great Mosque of Sana'a: The Great Mosque of Sana'a is one of the oldest and largest mosques in the world. Built in the 7th century AD, it boasts magnificent architecture and intricate designs. The Great Mosque stands as a prominent landmark in the Old City, attracting visitors from around the globe.\n" +
+                        "\n" +
+                        "Bab al-Yemen: Bab al-Yemen, or the Gate of Yemen, serves as the main entrance to the Old City of Sana'a. Constructed in the 17th century AD, it features stunning architecture and towering minarets. Bab al-Yemen is an iconic symbol of the city and a popular tourist attraction for visitors worldwide.\n" +
+                        "\n" +
+                        "Warm and Welcoming People: The people of Sana'a's Old City are known for their warm hospitality and welcoming nature. They take pride in their heritage and culture and are delighted to share it with visitors from all corners of the world."   ,
+                images = listOf(
+                    Res.drawable.alyemen_sanaa_1,
+                    Res.drawable.alyemen_sanaa_2,
+
+                )
+            ), TouristPlace(
+                name = "Socotra Island" ,
+                shortDescription = " Socotra Island is an ideal tourist destination for nature lovers and adventurers. ",
+                longDescription = "  Socotra is a unique and fascinating island located in the Arabian Sea, off the coast of Somalia. It is renowned for its stunning natural beauty, diverse wildlife, and rich cultural heritage. With its pristine beaches, towering mountains, and lush forests, Socotra offers a truly unforgettable experience for travelers seeking adventure and tranquility.\n" +
+                        "\n" +
+                        "Here are some highlights of Socotra that make it a must-visit destination:\n" +
+                        "\n" +
+                        "Unique Flora and Fauna: Socotra is home to a remarkable array of endemic species, including the iconic dragon's blood tree, which is found nowhere else in the world. The island's diverse ecosystem supports a wide variety of birds, reptiles, and marine life, making it a paradise for nature enthusiasts.\n" +
+                        "\n" +
+                        "Stunning Landscapes: Socotra's landscapes are as diverse as they are breathtaking. From the white-sand beaches of Dihamri to the towering peaks of the Haghier Mountains, the island offers a feast for the eyes. Visitors can explore hidden canyons, swim in crystal-clear waters, and marvel at the unique rock formations that dot the island.\n" +
+                        "\n" +
+                        "Rich Cultural Heritage: Socotra has a rich cultural heritage that is deeply intertwined with its natural environment. The island's inhabitants, the Socotri people, have a unique way of life that has been shaped by centuries of isolation. Visitors can learn about their traditions, customs, and crafts, and experience their warm hospitality firsthand.\n" +
+                        "\n" +
+                        "Adventure and Exploration: Socotra is a haven for adventure seekers. With its rugged terrain and diverse landscapes, the island offers ample opportunities for hiking, camping, snorkeling, and diving. Visitors can explore hidden caves, climb towering peaks, and discover secluded beaches that are accessible only by foot or boat.\n" +
+                        "\n" +
+                        "Tranquility and Relaxation: Despite its growing popularity, Socotra remains a relatively unspoiled destination. Visitors can escape the hustle and bustle of everyday life and immerse themselves in the island's tranquil atmosphere. With its serene beaches, clear waters, and starry night skies, Socotra is the perfect place to relax, rejuvenate, and reconnect with nature.\n" +
+                        "\n"   ,
+                images = listOf(
+                    Res.drawable.alyemen_socotra_1,
+                    Res.drawable.alyemen_socotra_2,
+                    Res.drawable.alyemen_socotra_3,
+
+                )
+            )
+
+        )
+    )
+
 )
