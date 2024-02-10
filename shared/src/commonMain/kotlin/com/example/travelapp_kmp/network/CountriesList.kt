@@ -93,7 +93,9 @@ fun getRestCountriesList() = listOf(
                 shortDescription = "The Eiffel Tower is a landmark iron lattice tower located in Paris, France. Standing at 324 meters tall, it is the tallest structure in Paris and one of the most recognizable symbols of France.",
                 longDescription = "The Eiffel Tower is an iconic symbol of France and one of the most recognizable landmarks in the world. Located in Paris, the tower stands at 324 meters tall and was built as the centerpiece of the 1889 Exposition Universelle, a world's fair held in Paris to commemorate the 100th anniversary of the French Revolution. Designed by Gustave Eiffel, the tower is constructed of iron lattice work and was the tallest structure in the world when it was completed. Today, the Eiffel Tower is one of the most popular tourist destinations in Paris, attracting millions of visitors each year. Visitors can take the stairs or an elevator to the top of the tower, where they can enjoy stunning views of Paris and its landmarks, including the Seine River, Notre-Dame Cathedral, and the Louvre Museum. The tower is also a popular spot for picnics and romantic evenings, as the city lights up below. In addition to its stunning views, the Eiffel Tower is also an important cultural and historical landmark, representing the technological achievements of the late 19th century and serving as a symbol of France and Paris for over a century. Overall, the Eiffel Tower is a must-visit destination for anyone traveling to Paris, offering a unique combination of natural beauty, cultural significance, and breathtaking views of the city.",
                 images = listOf(
-                    Res.drawable.eiffel_tower_2, Res.drawable.eiffel_tower_3, Res.drawable.eiffel_tower_4
+                    Res.drawable.eiffel_tower_2,
+                    Res.drawable.eiffel_tower_3,
+                    Res.drawable.eiffel_tower_4
                 )
             ), TouristPlace(
                 name = "Mont Saint Michel",
@@ -294,7 +296,8 @@ fun getRestCountriesList() = listOf(
                 shortDescription = "A paradise nestled in the mesmerizing landscapes of Skardu, Pakistan.",
                 longDescription = "Shangrila Resort, also known as Lower Kachura Lake, is a breathtaking escape surrounded by the Karakoram Range in Skardu. Offering panoramic views of snow-capped peaks, the resort features enchanting gardens and a serene lake. The unique boat-shaped restaurant adds to the charm, allowing visitors to dine with a view. Shangrila Resort is a haven for outdoor enthusiasts, providing opportunities for boating, fishing, and trekking in the nearby valleys. Guests can immerse themselves in nature's beauty and find tranquility in the heart of Skardu.",
                 images = listOf(
-                    Res.drawable.pakistan_shangrila_resort_1, Res.drawable.pakistan_shangrila_resort_2
+                    Res.drawable.pakistan_shangrila_resort_1,
+                    Res.drawable.pakistan_shangrila_resort_2
                 )
             ),
 
@@ -558,9 +561,8 @@ fun getRestCountriesList() = listOf(
                 )
             )
         )
-    )
-,
-   Country(
+    ),
+    Country(
         name = "Alyemen", flagIcon = Res.drawable.ye, touristPlaces = listOf(
             TouristPlace(
                 name = "Old City of Sanaa",
@@ -575,14 +577,14 @@ fun getRestCountriesList() = listOf(
                         "\n" +
                         "Bab al-Yemen: Bab al-Yemen, or the Gate of Yemen, serves as the main entrance to the Old City of Sana'a. Constructed in the 17th century AD, it features stunning architecture and towering minarets. Bab al-Yemen is an iconic symbol of the city and a popular tourist attraction for visitors worldwide.\n" +
                         "\n" +
-                        "Warm and Welcoming People: The people of Sana'a's Old City are known for their warm hospitality and welcoming nature. They take pride in their heritage and culture and are delighted to share it with visitors from all corners of the world."   ,
+                        "Warm and Welcoming People: The people of Sana'a's Old City are known for their warm hospitality and welcoming nature. They take pride in their heritage and culture and are delighted to share it with visitors from all corners of the world.",
                 images = listOf(
                     Res.drawable.alyemen_sanaa_1,
                     Res.drawable.alyemen_sanaa_2,
 
-                )
+                    )
             ), TouristPlace(
-                name = "Socotra Island" ,
+                name = "Socotra Island",
                 shortDescription = " Socotra Island is an ideal tourist destination for nature lovers and adventurers. ",
                 longDescription = "  Socotra is a unique and fascinating island located in the Arabian Sea, off the coast of Somalia. It is renowned for its stunning natural beauty, diverse wildlife, and rich cultural heritage. With its pristine beaches, towering mountains, and lush forests, Socotra offers a truly unforgettable experience for travelers seeking adventure and tranquility.\n" +
                         "\n" +
@@ -597,12 +599,58 @@ fun getRestCountriesList() = listOf(
                         "Adventure and Exploration: Socotra is a haven for adventure seekers. With its rugged terrain and diverse landscapes, the island offers ample opportunities for hiking, camping, snorkeling, and diving. Visitors can explore hidden caves, climb towering peaks, and discover secluded beaches that are accessible only by foot or boat.\n" +
                         "\n" +
                         "Tranquility and Relaxation: Despite its growing popularity, Socotra remains a relatively unspoiled destination. Visitors can escape the hustle and bustle of everyday life and immerse themselves in the island's tranquil atmosphere. With its serene beaches, clear waters, and starry night skies, Socotra is the perfect place to relax, rejuvenate, and reconnect with nature.\n" +
-                        "\n"   ,
+                        "\n",
                 images = listOf(
                     Res.drawable.alyemen_socotra_1,
                     Res.drawable.alyemen_socotra_2,
                     Res.drawable.alyemen_socotra_3,
 
+                    )
+            )
+
+        )
+    ),
+    Country(
+        name = "Lithuania", flagIcon = Res.drawable.li_lithuania_flag, touristPlaces = listOf(
+            TouristPlace(
+                name = "Vilnius Old Town",
+                shortDescription = "The Old Town of Vilnius, one of the largest surviving medieval old towns in Northern Europe",
+                longDescription = "The Old Town of Vilnius has an area of 3.59 square kilometres (887 acres). It encompasses 74 quarters, with 70 streets and lanes numbering 1487 buildings with a total floor area of 1,497,000 square meters. It was founded by the Lithuanian Grand Duke and King of Poland Jogaila in 1387 on the Magdeburg rights the oldest part of the Lithuanian capital of Vilnius, it had been developed over the course of many centuries, and has been shaped by the city's history and a constantly changing cultural influence. It is a place where some of Europe's greatest architectural styles—gothic, renaissance, baroque and neoclassical—stand side by side and complement each other. There are many Catholic, Lutheran and Orthodox churches, residential houses, cultural and architectural monuments, museums in the Old Town.\n" +
+                        "\n" +
+                        "Pilies Street is the Old Town's main artery and the hub of cafe and street market life. The main street of Vilnius, Gediminas Avenue, is partially located in the Old Town. The central squares in the Old Town are the Cathedral Square and the Town Hall Square.\n" +
+                        "\n" +
+                        "One of the most elaborate architectural complexes is the Vilnius University Architectural Ensemble, which occupies a large part of the Old Town and has 13 courtyards. It was selected to represent Lithuania in the Mini-Europe Park in Brussels.",
+
+                images = listOf(
+                    Res.drawable.li_vilnius_old_town,
+                    Res.drawable.li_vilnius_old_town_2,
+                    Res.drawable.li_vilnius_old_town_3,
+                )
+            ),
+            TouristPlace(
+                name = "Curonian Spit National Park",
+                shortDescription = "Curonian Spit National Park is one of the five national parks in Lithuania. It was established in 1991 to protect the unique ecosystems of the Curonian Spit and Curonian Lagoon.",
+                longDescription = "The Curonian Spit is a unique and vulnerable, sandy and wooded cultural landscape on a coastal spit which features small Curonian lagoon settlements. The Spit was formed by the sea, wind and human activity and continues to be shaped by them. Rich with an abundance of unique natural and cultural features, it has retained its social and cultural importance. Local communities adapted to the changes in the natural environment in order to survive. This interaction between humans and nature shaped the Curonian Spit cultural landscape.\n" +
+                        "\n" +
+                        "The history of the Curonian Spit is dramatic: 5,000 years ago, a narrow peninsula (98 km in length and 0.4-3.8 km in width), the Great Dune Ridge separating the Baltic Sea from the Curonian Lagoon, was formed on moraine islands from sand transported by currents, and later covered by forest. After intensive logging in the 17th and 18th centuries, the dunes began moving towards the Curonian Lagoon, burying the oldest settlements.",
+
+                images = listOf(
+                    Res.drawable.li_curonian_spit_national_park,
+                    Res.drawable.li_curonian_spit_national_park_2,
+                    Res.drawable.li_curonian_spit_national_park_3,
+                )
+            ),
+
+            TouristPlace(
+                name = "Trakai Island Castle",
+                shortDescription = "Trakai Island Castle is an island castle located in Trakai, Lithuania, on an island in Lake Galvė.",
+                longDescription = "The castle was built in the 14th century and served as a residence for the Grand Dukes of Lithuania. However, the structure fell into disarray in the 17th century and was only rebuilt in 1951. In 1962, the castle became a part of the Trakai History Museum.\n" +
+                        "\n" +
+                        "The castle is famous for its gothic architecture and its special location – it stands on an island on Lake Galve, one of the deepest lakes in Lithuania. The view of the historic structure is straight out of a fairy tale. You can reach the castle by crossing the long wooden bridge. In the winter the lake freezes over and becomes a natural skating rink. You can also take in a special view of the castle from a yacht.",
+                images = listOf(
+                    Res.drawable.li_trakai_island_castle,
+                    Res.drawable.li_trakai_island_castle_2,
+                    Res.drawable.li_trakai_island_castle_3,
                 )
             )
 
