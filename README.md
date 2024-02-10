@@ -77,3 +77,7 @@ Following is the list of countries that are being added to the app:
 14. Indonesia
 
 
+## How to contribute?
+To add a new country, follow this [guide](https://github.com/SEAbdulbasit/TravelApp-KMP/wiki/How-to-add-a-new-Country)
+
+
