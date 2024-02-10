@@ -607,6 +607,80 @@ fun getRestCountriesList() = listOf(
             )
 
         )
+    ),
+    Country(
+        name = "Indonesia", flagIcon = Res.drawable.id, touristPlaces = listOf(
+            TouristPlace(
+                name = "Bali",
+                shortDescription = "Bali, embodies a harmonious blend of natural beauty, cultural richness, and spiritual serenity that captivates visitors from around the world. Nestled in the Indonesian archipelago, this island paradise is renowned for its lush landscapes, including verdant rice terraces, cascading waterfalls, and rugged volcanic peaks that rise dramatically against the skyline. From the sun-kissed beaches of Kuta and Seminyak to the tranquil shores of Sanur and Lovina, Bali's coastline offers endless opportunities for relaxation, water sports, and unforgettable sunsets.",
+                longDescription = "Bali, embodies a harmonious blend of natural beauty, cultural richness, and spiritual serenity that captivates visitors from around the world. Nestled in the Indonesian archipelago, this island paradise is renowned for its lush landscapes, including verdant rice terraces, cascading waterfalls, and rugged volcanic peaks that rise dramatically against the skyline. From the sun-kissed beaches of Kuta and Seminyak to the tranquil shores of Sanur and Lovina, Bali's coastline offers endless opportunities for relaxation, water sports, and unforgettable sunsets. Beyond its stunning scenery, Bali is steeped in a vibrant cultural heritage that permeates every facet of daily life. The island's Hindu traditions are evident in its ornate temples, elaborate ceremonies, and colorful festivals, where locals and visitors alike come together to celebrate spirituality and community. From the iconic sea temple of Tanah Lot to the sacred sanctuary of Ubud's Monkey Forest, Bali's spiritual landmarks provide a glimpse into the island's ancient past and enduring traditions. Moreover, Bali's cultural vibrancy is showcased through its traditional dance performances, intricate batik and wood carvings, and delectable cuisine that tantalizes the taste buds with a fusion of flavors and spices. In essence, Bali is a destination where travelers can immerse themselves in a tapestry of natural wonders, cultural treasures, and spiritual experiences that leave an indelible mark on the soul.",
+                images = listOf(
+                    Res.drawable.indonesia_bali_1,
+                    Res.drawable.indonesia_bali_2,
+                    Res.drawable.indonesia_bali_3,
+                    Res.drawable.indonesia_bali_4,
+                    Res.drawable.indonesia_bali_5,
+                )
+            ),
+            TouristPlace(
+                name = "Komodo Park",
+                shortDescription = "Komodo National Park, situated in the Lesser Sunda Islands of Indonesia, is a pristine wilderness that encompasses a chain of volcanic islands, rugged coastlines, and rich marine ecosystems. Renowned as the habitat of the iconic Komodo dragon, the world's largest lizard species, this UNESCO World Heritage Site is a haven for biodiversity and natural wonders. The park's diverse landscapes range from lush forests and savannah plains to vibrant coral reefs and crystal-clear waters teeming with marine life, making it a paradise for nature enthusiasts, adventurers, and conservationists alike.",
+                longDescription = "Komodo National Park, situated in the Lesser Sunda Islands of Indonesia, is a pristine wilderness that encompasses a chain of volcanic islands, rugged coastlines, and rich marine ecosystems. Renowned as the habitat of the iconic Komodo dragon, the world's largest lizard species, this UNESCO World Heritage Site is a haven for biodiversity and natural wonders. The park's diverse landscapes range from lush forests and savannah plains to vibrant coral reefs and crystal-clear waters teeming with marine life, making it a paradise for nature enthusiasts, adventurers, and conservationists alike. Exploring Komodo National Park offers a glimpse into a world untouched by time, where prehistoric creatures roam freely amidst landscapes of unparalleled beauty and ecological significance. Visitors can embark on guided treks through rugged terrain to encounter Komodo dragons in their natural habitat, witnessing firsthand the awe-inspiring spectacle of these ancient reptiles in the wild. Beneath the waves, the park's marine treasures await discovery, with some of the world's most biodiverse coral reefs providing sanctuary to a dazzling array of marine species, including manta rays, sea turtles, and colorful reef fish. Whether diving, snorkeling, hiking, or simply soaking in the breathtaking scenery, Komodo National Park offers a truly immersive and unforgettable experience, where the wonders of nature unfold at every turn, leaving a lasting impression on all who venture into its pristine wilderness.",
+                images = listOf(
+                    Res.drawable.indonesia_comodo_island_1,
+                    Res.drawable.indonesia_comodo_island_2,
+                    Res.drawable.indonesia_comodo_island_3,
+                    Res.drawable.indonesia_comodo_island_4,
+                )
+            ),
+            TouristPlace(
+                name = "Lombok",
+                shortDescription = "Lombok is a hidden gem in the Indonesian archipelago, offering a tranquil escape from the bustling crowds of neighboring Bali. With its pristine beaches, rugged landscapes, and rich cultural heritage, Lombok beckons travelers seeking adventure, relaxation, and authentic experiences. The island is renowned for its stunning beaches, including the powdery white sands of Kuta Beach and the turquoise waters of the Gili Islands, which offer world-class snorkeling, diving, and surfing opportunities amidst vibrant coral reefs and marine life.",
+                longDescription = "Lombok is a hidden gem in the Indonesian archipelago, offering a tranquil escape from the bustling crowds of neighboring Bali. With its pristine beaches, rugged landscapes, and rich cultural heritage, Lombok beckons travelers seeking adventure, relaxation, and authentic experiences. The island is renowned for its stunning beaches, including the powdery white sands of Kuta Beach and the turquoise waters of the Gili Islands, which offer world-class snorkeling, diving, and surfing opportunities amidst vibrant coral reefs and marine life. Beyond its coastal allure, Lombok boasts a diverse terrain that encompasses lush rice paddies, towering volcanoes, and cascading waterfalls waiting to be explored. The majestic Mount Rinjani, Indonesia's second-highest volcano, is a hiker's paradise, offering challenging treks that reward adventurers with panoramic views of crater lakes and lush valleys. In addition to its natural wonders, Lombok is home to a rich tapestry of cultures, with Sasak traditions and customs shaping the island's unique identity. Visitors can immerse themselves in local life by exploring traditional Sasak villages, witnessing age-old weaving techniques, and savoring authentic culinary delights such as ayam taliwang and plecing kangkung. In essence, Lombok embodies the essence of tropical paradise, where pristine landscapes, cultural authenticity, and warm hospitality converge to create an unforgettable island getaway.",
+                images = listOf(
+                    Res.drawable.indonesia_bromo_1,
+                    Res.drawable.indonesia_bromo_2,
+                    Res.drawable.indonesia_bromo_3,
+                    Res.drawable.indonesia_bromo_4,
+                    Res.drawable.indonesia_bromo_5,
+                )
+            ),
+            TouristPlace(
+                name = "Borobudur Temple",
+                shortDescription = "Borobudur Temple located on the island of Java in Indonesia, stands as one of the world's most magnificent religious monuments and a testament to Indonesia's rich cultural heritage. This UNESCO World Heritage Site is a masterpiece of Buddhist architecture and artistry, dating back to the 9th century during the Sailendra dynasty. Rising majestically amidst lush greenery and volcanic landscapes, Borobudur is a monumental stone structure comprised of nine stacked platforms, adorned with over 2,500 intricately carved relief panels and 504 Buddha statues.",
+                longDescription = "Borobudur Temple located on the island of Java in Indonesia, stands as one of the world's most magnificent religious monuments and a testament to Indonesia's rich cultural heritage. This UNESCO World Heritage Site is a masterpiece of Buddhist architecture and artistry, dating back to the 9th century during the Sailendra dynasty. Rising majestically amidst lush greenery and volcanic landscapes, Borobudur is a monumental stone structure comprised of nine stacked platforms, adorned with over 2,500 intricately carved relief panels and 504 Buddha statues. As visitors ascend its terraces, they embark on a symbolic journey towards enlightenment, following the path of Buddhist cosmology depicted through the temple's intricate carvings and sculptures. Each level represents a stage in the Buddhist spiritual journey, culminating in the central dome, which is crowned by a large stupa symbolizing Nirvana. From its panoramic vantage points, Borobudur offers breathtaking views of the surrounding countryside, including mist-shrouded mountains, verdant rice fields, and distant volcanoes, creating an atmosphere of tranquility and spiritual awe. At sunrise or sunset, the temple's stone stupas cast dramatic silhouettes against the sky, providing visitors with a truly magical and unforgettable experience amidst the ancient grandeur of Borobudur Temple.",
+                images = listOf(
+                    Res.drawable.indonesia_candi_brob_1,
+                    Res.drawable.indonesia_candi_brob_2,
+                    Res.drawable.indonesia_candi_brob_3,
+                    Res.drawable.indonesia_candi_brob_4,
+                )
+            ),
+            TouristPlace(
+                name = "Raja Ampat",
+                shortDescription = "Raja Ampat, located in the heart of the Coral Triangle in Indonesia's West Papua province, is a pristine marine paradise renowned for its unparalleled biodiversity and stunning natural beauty. Comprising over 1,500 small islands, cays, and shoals, Raja Ampat's crystalline waters are home to an astonishing array of marine life, including vibrant coral reefs, majestic manta rays, and elusive whale sharks. ",
+                longDescription = "Raja Ampat, located in the heart of the Coral Triangle in Indonesia's West Papua province, is a pristine marine paradise renowned for its unparalleled biodiversity and stunning natural beauty. Comprising over 1,500 small islands, cays, and shoals, Raja Ampat's crystalline waters are home to an astonishing array of marine life, including vibrant coral reefs, majestic manta rays, and elusive whale sharks. Divers and snorkelers flock to this remote archipelago to explore its underwater wonders, which boast some of the most biodiverse marine ecosystems on the planet. From the kaleidoscopic coral gardens of Misool to the adrenaline-inducing drift dives of the Dampier Strait, Raja Ampat offers a diverse range of diving experiences suitable for both beginners and experienced enthusiasts alike. Above the surface, Raja Ampat's emerald-green islands are adorned with lush rainforests, hidden lagoons, and secluded beaches that beckon adventurers and nature lovers to explore their pristine shores. Visitors can embark on jungle treks to discover rare bird species, such as the iconic Birds of Paradise, or kayak through mangrove forests teeming with wildlife. Cultural encounters with the indigenous Papuan communities offer insights into traditional way of life, where ancient customs and rituals are still preserved amidst the remote islands of Raja Ampat. As a beacon of conservation and ecotourism, Raja Ampat serves as a reminder of the extraordinary beauty and fragility of our natural world, inspiring visitors to protect and preserve these precious marine ecosystems for generations to come.",
+                images = listOf(
+                    Res.drawable.indonesia_raja_ampat_1,
+                    Res.drawable.indonesia_raja_ampat_2,
+                    Res.drawable.indonesia_raja_ampat_3,
+                    Res.drawable.indonesia_raja_ampat_4,
+                    Res.drawable.indonesia_raja_ampat_5,
+                )
+            ),
+            TouristPlace(
+                name = "Bromo",
+                shortDescription = "Bromo, a majestic volcanic complex situated in East Java, Indonesia, is a mesmerizing testament to the forces of nature and a beacon of adventure for travelers seeking to explore Indonesia's rugged landscapes. Surrounded by the Bromo Tengger Semeru National Park, this geological wonder comprises a series of volcanic cones, with the active Bromo volcano standing as the centerpiece of the region. Rising 2,329 meters (7,641 feet) above sea level, Bromo's stark beauty and dramatic scenery have made it an iconic destination for adventurers, photographers, and nature enthusiasts alike.",
+                longDescription = "Bromo, a majestic volcanic complex situated in East Java, Indonesia, is a mesmerizing testament to the forces of nature and a beacon of adventure for travelers seeking to explore Indonesia's rugged landscapes. Surrounded by the Bromo Tengger Semeru National Park, this geological wonder comprises a series of volcanic cones, with the active Bromo volcano standing as the centerpiece of the region. Rising 2,329 meters (7,641 feet) above sea level, Bromo's stark beauty and dramatic scenery have made it an iconic destination for adventurers, photographers, and nature enthusiasts alike. The journey to Bromo unfolds amidst a backdrop of breathtaking vistas and diverse ecosystems. Travelers embark on an adventure that winds through verdant forests, rugged terrain, and ancient villages, immersing themselves in the rich tapestry of Javanese culture and tradition. As visitors approach the volcanic complex, they are greeted by the surreal landscape of the Tengger Caldera, where vast plains of volcanic sand stretch as far as the eye can see. The ascent to Bromo's crater rim offers a sense of anticipation and wonder, culminating in awe-inspiring views of the surrounding landscape and the smoking crater below. At sunrise, the horizon ignites with hues of crimson and gold, casting an ethereal glow over Bromo and its neighboring peaks, creating a moment of pure magic amidst the untamed wilderness of Indonesia's volcanic realm.",
+                images = listOf(
+                    Res.drawable.indonesia_bromo_1,
+                    Res.drawable.indonesia_bromo_2,
+                    Res.drawable.indonesia_bromo_3,
+                    Res.drawable.indonesia_bromo_4,
+                    Res.drawable.indonesia_bromo_5,
+                )
+            ),
+        )
     )
 
 )
