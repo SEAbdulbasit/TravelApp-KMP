@@ -60,3 +60,26 @@ https://user-images.githubusercontent.com/33172684/218650285-2872c54e-e6cf-4888-
 ![image](https://user-images.githubusercontent.com/33172684/220402927-a89e75ae-7ea2-45de-b97f-99a47c1e8b52.png)
 
 
+## How to contribute?
+To add a new country, follow this [guide](https://github.com/SEAbdulbasit/TravelApp-KMP/wiki/How-to-add-a-new-Country)
+
+## Added countries list
+Following is the list of countries that are being added to the app:
+1. Egypt
+2. Japan
+3. France
+4. Bangladesh
+5. India
+6. Pakistan
+7. Algeria
+8. Germany
+9. United Kingdom
+10. Switzerland
+11. Costa Rica
+12. Alyemen
+13. Lithuania
+14. Indonesia
+
+
+
+
