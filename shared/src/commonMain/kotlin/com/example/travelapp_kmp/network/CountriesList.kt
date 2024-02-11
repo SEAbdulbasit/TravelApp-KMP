@@ -186,6 +186,16 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_ahsan_manzil_2,
                     Res.drawable.bangladesh_ahsan_manzil_3
                 )
+            ), TouristPlace(
+                name = "Sajek Valley",
+                shortDescription = "Sajek Valley is one of the most popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District. The valley is 2,000 feet above sea level. Sajek Valley is known as the Queen of Hills & Roof of Rangamati.",
+                longDescription = "Sajek Valley is one of the most popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District. The valley is 2,000 feet (610 m) above sea level. Sajek Valley is known as the Queen of Hills & Roof of Rangamati. ",
+                images = listOf(
+                    Res.drawable.bangladesh_sajek_valley_1,
+                    Res.drawable.bangladesh_sajek_valley_2,
+                    Res.drawable.bangladesh_sajek_valley_3,
+                    Res.drawable.bangladesh_sajek_valley_4,
+                )
             )
         )
     ),
