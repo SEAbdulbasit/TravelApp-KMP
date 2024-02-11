@@ -159,6 +159,20 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_bandarban_3,
                     Res.drawable.bangladesh_bandarban_4
                 )
+            ), TouristPlace(
+                name = "Lalbagh Fort",
+                shortDescription = "Lalbagh Fort is a fort in the old city of Dhaka, Bangladesh. Its name is derived from its neighborhood Lalbagh, which means Red Garden. The term Lalbagh refers to reddish and pinkish architecture from the Mughal period. The original fort was called Fort Aurangabad.",
+                longDescription = "Lalbagh Fort (Bengali: লালবাগ কেল্লা) is a fort in the old city of Dhaka, Bangladesh. Its name is derived from its neighborhood Lalbagh, which means Red Garden. The term Lalbagh refers to reddish and pinkish architecture from the Mughal period. The original fort was called Fort Aurangabad. Its construction was started by Prince Muhammad Azam Shah, who was the son of Emperor Aurangzeb and a future Mughal emperor himself. After the prince was recalled by his father, the fort's construction was overseen by Shaista Khan. The death of Shaista Khan's daughter Pari Bibi (Fairy Lady) resulted in a halt to the construction process, apparently due to Shaista Khan's superstition that the fort brought bad omen. Pari Bibi was buried inside the fort.\n" +
+                        "\n" +
+                        "Lalbagh Fort was built as the official residence of the governor of the Mughal province of Bengal, Bihar and Orissa. The complex includes the Mughal governor's house, the tomb of Pari Bibi and a mosque. It is covered by lawns, fountains and water channels. Its two south gates were previously grand arches. The original grand complex covered the governor's house and the two archways. The tomb of Pari Bibi was later added. Lalbagh Fort was modelled as a miniature version of great Mughal forts like the Red Fort and Fatehpur Sikri. During the reign of Emperor Aurangzeb, Mughal Bengal became the economic engine of the empire. Emperor Aurangzeb called Bengal the Paradise of Nations. Dhaka grew into an imperial city with one of the richest elites in the Mughal Empire, including members of the imperial family. Mughal artillery guarded the fort. Once located beside the Buriganga River, the river has retreated from the vicinity of the fort. The fort was depicted in European paintings during the 18th and 19th centuries.\n" +
+                        "\n" +
+                        "Today, Lalbagh Fort is one of the most visited sites in Dhaka. Several pieces of artillery are kept inside the fort. The Ambassadors Fund for Cultural Preservation is funding a restoration project for parts of the fort. Lalbagh Fort is one of the most recognized symbols of Mughal rule in Bengal. ",
+                images = listOf(
+                    Res.drawable.bangladesh_lalbagh_1,
+                    Res.drawable.bangladesh_lalbagh_2,
+                    Res.drawable.bangladesh_lalbagh_3,
+                    Res.drawable.bangladesh_lalbagh_4
+                )
             )
         )
     ),
