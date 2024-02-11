@@ -89,7 +89,10 @@ internal fun DetailScreenWeb(
                     }
 
                 }
-                ImageGallery(touristPlace.images) { backgroundImage.value = it }
+                ImageGallery(
+                    imagesList = touristPlace.images,
+                    onDetailsClicked = { backgroundImage.value = it },
+                    onDetailsLongClicked = { backgroundImage.value = it })
             }
 
             Column(
