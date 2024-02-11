@@ -173,6 +173,19 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_lalbagh_3,
                     Res.drawable.bangladesh_lalbagh_4
                 )
+            ), TouristPlace(
+                name = "Ahsan Manzil Museum",
+                shortDescription = "Ahsan Manzil is a palace located in the Kumartoli area of Dhaka, Bangladesh. It was formerly the residence and seat of the Nawab of Dhaka and has been designated an Old Dhaka Heritage Site. It now serves as a museum.",
+                longDescription = "During the Mughal Empire, Sheikh Enayet Ullah, Zamindar of the Jamalpur Porgona district, had a garden house on this property and later added a palace, which he called Rongmohol. He was buried on the northeast corner of the palace yard but his gravesite was ruined at the beginning of the 20th century. His son Sheikh Moti Ullah sold the property to French traders, who erected a trading house beside the property. After changing hands a number of times over the next several centuries, the property was purchased by Khwaja Alimullah in the 1800s. Alimullah renovated the property, turning the trading house into a residence and adding a stable and family mosque. After his death, his son Khwaja Abdul Ghani named the property Ahsan Manzil after his son, Khwaja Ahsanullah. He continued renovations; the old building was renamed Ondor Mohol and the new building was called Rangmahal.\n" +
+                        "\n" +
+                        "On 7 April 1888, a tornado severely damaged Ahsan Manzil and it was temporarily abandoned. With the exception of Rangmahal, which only required repairs, all buildings had to be rebuilt. Abdul Ghani and Ahsanullah continued renovations. What was previously the French trading house was rebuilt as a two-storey building similar to the Rangmahal. A wooden bridge connected the first floors of the two buildings. The palace was repaired again following the 1897 Assam earthquake. After Ahsanullah's death in 1901, the property again changed hands due in part to disagreements within the family. It was a slum for a period before the government acquired it in 1952 under the East Bengal Estate Acquisition Act.\n" +
+                        "\n" +
+                        "The Government of Bangladesh acquired the palace and property in 1985 and began renovating it, taking care to preserve the remaining structure. Renovations were completed in 1992 and ownership was transferred to the Bangladesh National Museum. Part of the northern side of the property was given to the Dhaka City Corporation while half of the Andarmahal and the Nawab residential area were beyond acquisition.[clarification needed] Just under 5 acres (220,000 sq ft) was then used for the museum.",
+                images = listOf(
+                    Res.drawable.bangladesh_ahsan_manzil_1,
+                    Res.drawable.bangladesh_ahsan_manzil_2,
+                    Res.drawable.bangladesh_ahsan_manzil_3
+                )
             )
         )
     ),
