@@ -729,6 +729,103 @@ fun getRestCountriesList() = listOf(
                 )
             ),
         )
+    ),
+//    marshes_1
+    Country(
+        name = "Iraq", flagIcon = Res.drawable.iraq,
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Baghdad",
+                shortDescription = "The capital city of Iraq, known for its rich history, cultural sites, and bustling markets.",
+                longDescription = "Baghdad, located on the Tigris River, is one of the oldest continuously inhabited cities in the world. It boasts a wealth of historical landmarks, including the Al-Mustansiriya School, the Al-Shaheed Monument, and the Baghdad Tower. Visitors can explore vibrant markets like the Al-Mutanabbi Street book market and experience the city's diverse cuisine and vibrant culture.",
+                images = listOf(
+                    Res.drawable.bagdad_1,
+                    Res.drawable.bagdad_2,
+                    Res.drawable.bagdad_3,
+                    Res.drawable.bagdad_4,
+                    Res.drawable.bagdad_5,
+                )
+            ),
+            TouristPlace(
+                name = "Erbil Citadel",
+                shortDescription = "An ancient citadel located in Erbil, considered one of the oldest continuously inhabited cities in the world.",
+                longDescription = "The Erbil Citadel is a UNESCO World Heritage Site and a symbol of Erbil's rich history. It dates back over 6,000 years and has been continuously occupied since ancient times. The citadel features archaeological sites, museums, and historic buildings, offering visitors a glimpse into the region's past.",
+                images = listOf(
+                    Res.drawable.erbil_1,
+                    Res.drawable.erbil_2,
+                    Res.drawable.erbil_3,
+                )
+            ),
+            TouristPlace(
+                name = "Karbala",
+                shortDescription = "A sacred city for Shia Muslims, known for the Shrine of Imam Hussein and the Battle of Karbala.",
+                longDescription = "Karbala holds immense religious significance for Shia Muslims as the site of the Battle of Karbala in 680 AD, where Imam Hussein, the grandson of Prophet Muhammad, was martyred. The city is home to the grand Shrine of Imam Hussein, a pilgrimage destination visited by millions of Shia Muslims annually. Karbala also features other religious sites, including the Shrine of Abbas ibn Ali and historic mosques.",
+                images = listOf(
+                    Res.drawable.karbala_1,
+                    Res.drawable.karbala_2,
+                    Res.drawable.karbala_3,
+                    Res.drawable.karbala_4,
+                    Res.drawable.karbala_5,
+                    Res.drawable.karbala_6,
+                )
+            ),
+
+            TouristPlace(
+                name = "Hatra",
+                shortDescription = "An ancient city in northern Iraq, renowned for its well-preserved ruins and unique architecture.",
+                longDescription = "Hatra is an archaeological site dating back to the 2nd century BCE. It was the capital of the Kingdom of Hatra and is known for its impressive defensive walls, temples, and statues. Despite being damaged by conflicts, many of its structures remain intact, providing insight into ancient Mesopotamian culture and architecture.",
+                images = listOf(
+                    Res.drawable.hatra_1,
+                    Res.drawable.hatra_2,
+                    Res.drawable.hatra_3,
+                )
+            ),
+            TouristPlace(
+                name = "Marshes of Southern Iraq",
+                shortDescription = "A unique wetland ecosystem in southern Iraq, home to diverse flora and fauna and traditional Marsh Arab culture.",
+                longDescription = "Hatra is an archaeological site dating back to the 2nd century BCE. It was the capital of the Kingdom of Hatra and is known for its impressive defensive walls, temples, and statues. Despite being damaged by conflicts, many of its structures remain intact, providing insight into ancient Mesopotamian culture and architecture.",
+                images = listOf(
+                    Res.drawable.marshes_1,
+                    Res.drawable.marshes_2,
+                    Res.drawable.marshes_3,
+                )
+            ),
+            TouristPlace(
+                name = "Basra",
+                shortDescription = "A port city in southern Iraq, known for its bustling markets, historic architecture, and cultural heritage.",
+                longDescription = "Basra, situated along the Shatt al-Arab river, is Iraq's second-largest city and a major economic hub. It boasts a vibrant cultural scene, with historic landmarks such as the Basra Grand Mosque, the Corniche al-Basra waterfront promenade, and the Basra Museum. Visitors can experience the city's unique blend of Arab, Persian, and British influences, along with its famous seafood cuisine and lively souks.",
+                images = listOf(
+                    Res.drawable.basra_1,
+                )
+            ),
+            TouristPlace(
+                name = "Samarra",
+                shortDescription = "A historical city on the Tigris River, home to UNESCO-listed archaeological sites and Islamic landmarks.",
+                longDescription = "Samarra is renowned for its well-preserved Abbasid-era architecture and archaeological ruins. The city's most famous attraction is the Great Mosque of Samarra, with its iconic spiral minaret. Other notable sites include the Al-Askari Shrine and the Malwiya Tower. Samarra offers visitors a fascinating glimpse into Iraq's medieval Islamic history and architectural heritage.",
+                images = listOf(
+                    Res.drawable.samarra_1,
+                )
+            ),
+
+            TouristPlace(
+                name = "Najaf",
+                shortDescription = "Najaf is a holy city for Shia Muslims, known for its religious significance and architectural landmarks.",
+                longDescription = "Najaf is located in central Iraq and holds great importance for Shia Muslims worldwide. It is home to the Shrine of Imam Ali, the cousin and son-in-law of the Prophet Muhammad, and the first Imam in Shia Islam. The shrine, one of the holiest sites in Shia Islam, is a magnificent architectural masterpiece adorned with intricate tilework, calligraphy, and gold embellishments. Pilgrims from around the world visit Najaf to pay their respects to Imam Ali and seek spiritual blessings. In addition to the shrine, Najaf features other religious landmarks such as mosques, mausoleums, and religious schools. The city has a rich cultural heritage and a vibrant atmosphere, with bustling markets, traditional bazaars, and historic neighborhoods. Najaf's religious significance, combined with its architectural beauty and cultural heritage, makes it a must-visit destination for travelers interested in exploring Iraq's spiritual and historical legacy.",
+                images = listOf(
+                    Res.drawable.najaf_1,
+                    Res.drawable.najaf_2,
+                )
+            ),
+            TouristPlace(
+                name = "Nimrud",
+                shortDescription = "An ancient Assyrian city with archaeological ruins, including palaces, temples, and artifacts.",
+                longDescription = "Nimrud, also known as Kalhu or Kalakh, was the capital of the Neo-Assyrian Empire. The site is home to the remains of grand palaces, temples, and statues adorned with intricate carvings and reliefs. Visitors can explore the archaeological site and marvel at the artifacts housed in museums around the world, showcasing Nimrud's rich history and cultural significance.",
+                images = listOf(
+                    Res.drawable.nimrud_1,
+                ),
+            ),
+
+            ),
     )
 
 )
