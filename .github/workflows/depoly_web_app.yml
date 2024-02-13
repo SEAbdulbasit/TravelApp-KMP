@@ -20,7 +20,7 @@ jobs:
           java-version: 17
 
       - name: Build Project
-        run: ./gradlew jsBrowserProductionWebpack
+        run: ./gradlew wasmJsBrowserProductionWebpack
 
       - name: Copy Production Executable to Docs
         run: |
