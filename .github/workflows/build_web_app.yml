@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master  # Or the name of your default branch
+    paths-ignore:
+      - 'docs/**'
 
 jobs:
   build-and-deploy:
