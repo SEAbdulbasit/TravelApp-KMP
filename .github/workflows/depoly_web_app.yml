@@ -27,8 +27,8 @@ jobs:
           mkdir -p ./docs
           cp -R ./webApp/build/dist/wasmJs/productionExecutable/* ./docs/
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          branch: ${{ github.ref }}
+          publish_dir: ./docs
