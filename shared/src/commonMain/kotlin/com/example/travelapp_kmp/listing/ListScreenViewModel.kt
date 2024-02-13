@@ -5,6 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 class ListScreenViewModel {
     private val viewModelScope = CoroutineScope(Dispatchers.Main)
@@ -14,11 +15,11 @@ class ListScreenViewModel {
     init {
         viewModelScope.launch(Dispatchers.Main) {
             try {
-                val countriesList = countriesApi.getCountriesList()
+                val countries = getCountriesSorted(countriesApi.getCountriesList())
                 state.emit(
                     ListScreenState.Success(
-                        countriesList = countriesList,
-                        selectedCountry = countriesList.first(),
+                        countriesList = countries,
+                        selectedCountry = countries.first(),
                     )
                 )
             } catch (e: Exception) {
@@ -26,6 +27,16 @@ class ListScreenViewModel {
                 state.emit(ListScreenState.Error(e.message ?: "Something went wrong"))
             }
         }
+    }
+
+    @OptIn(ExperimentalResourceApi::class)
+    fun getCountriesSorted(countries: List<Country>): List<Country> {
+        return countries.sortedBy { it.name }
+            .map { country ->
+                country.copy(
+                    touristPlaces = country.touristPlaces.sortedBy { it.name }
+                )
+            }
     }
 
     fun onAction(actions: ListViewModelActions) {
