@@ -30,7 +30,7 @@ jobs:
           cp -R ./webApp/build/dist/wasmJs/productionExecutable/* ./docs/
 
       - name: Push changes
-        uses: ad-m/github-push-action@v4.0.0
+        uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           branch: ${{ github.ref }}
