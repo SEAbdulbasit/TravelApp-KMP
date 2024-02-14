@@ -77,8 +77,6 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import travelappkmp.shared.generated.resources.Res
 
-//import org.jetbrains.compose.resources.resource
-
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -93,7 +91,9 @@ internal fun MainScreen(
         },
         onCountrySelected = { viewMode.onAction(ListViewModelActions.OnCountrySelected(it)) },
         moveToIndex = { viewMode.onAction(ListViewModelActions.MoveToIndex(it)) },
-        sortInteraction = viewMode
+        sortContent = { sortType ->
+            viewMode.fetchCountries(sortType)
+        }
     )
 }
 
@@ -103,7 +103,7 @@ internal fun MainScreenView(
     onDetailsClicked: (TouristPlace) -> Unit,
     onCountrySelected: (Country) -> Unit,
     moveToIndex: (Int) -> Unit,
-    sortInteraction: SortInteraction
+    sortContent: (SortOrder) -> Unit
 ) {
     when (val result = state.value) {
         is ListScreenState.Error -> {
@@ -124,7 +124,7 @@ internal fun MainScreenView(
                 onDetailsClicked = onDetailsClicked,
                 onCountrySelected = onCountrySelected,
                 moveToIndex = moveToIndex,
-                sortInteraction = sortInteraction
+                sortContent = sortContent
             )
         }
     }
@@ -137,7 +137,7 @@ internal fun RenderListingScreen(
     onDetailsClicked: (TouristPlace) -> Unit,
     onCountrySelected: (Country) -> Unit,
     moveToIndex: (Int) -> Unit,
-    sortInteraction: SortInteraction
+    sortContent: (SortOrder) -> Unit,
 ) {
 
     val listState = rememberLazyListState()
@@ -182,7 +182,7 @@ internal fun RenderListingScreen(
                 ) {
                     WeatherView(state.selectedCountry.touristPlaces[state.selectedItemIndex].images[0])
                     SortDropDownMenu(
-                        interaction = sortInteraction
+                        sortContent = sortContent
                     )
                 }
 
@@ -499,11 +499,11 @@ private fun LazyListState.visibleItemsWithThreshold(percentThreshold: Float): Li
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun SortDropDownMenu(
-    interaction: SortInteraction
+    sortContent: (SortOrder) -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
     var isSortByNameAsc by remember { mutableStateOf(true) }
-    var colorItemEnable =
+
     Box(
         modifier = Modifier.fillMaxWidth()
             .wrapContentSize(Alignment.TopEnd)
@@ -527,7 +527,7 @@ internal fun SortDropDownMenu(
                     if (isSortByNameAsc) Color.Gray.copy(alpha = 0.3F) else Color.Transparent
                 ),
                 onClick = {
-                    interaction.sortByNameAsc()
+                    sortContent(SortOrder.ASCENDING)
                     expanded = false
                     isSortByNameAsc = true
                 }
@@ -542,7 +542,7 @@ internal fun SortDropDownMenu(
                     if (!isSortByNameAsc) Color.Gray.copy(alpha = 0.3F) else Color.Transparent
                 ),
                 onClick = {
-                    interaction.sortByNameDesc()
+                    sortContent(SortOrder.DESCENDING)
                     expanded = false
                     isSortByNameAsc = false
                 }

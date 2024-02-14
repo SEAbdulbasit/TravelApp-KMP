@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
-class ListScreenViewModel : SortInteraction {
+class ListScreenViewModel {
     private val viewModelScope = CoroutineScope(Dispatchers.Main)
     private val countriesApi = CountriesApiImpl()
     val state = MutableStateFlow<ListScreenState>(ListScreenState.Loading)
@@ -16,7 +16,7 @@ class ListScreenViewModel : SortInteraction {
         fetchCountries()
     }
 
-    private fun fetchCountries(sortOrder: SortOrder = SortOrder.ASCENDING) {
+    fun fetchCountries(sortOrder: SortOrder = SortOrder.ASCENDING) {
         viewModelScope.launch(Dispatchers.Main) {
             try {
                 val countries = getCountriesSorted(
@@ -100,13 +100,6 @@ class ListScreenViewModel : SortInteraction {
     }
 
 
-    override fun sortByNameAsc() {
-        fetchCountries(sortOrder = SortOrder.ASCENDING)
-    }
-
-    override fun sortByNameDesc() {
-        fetchCountries(sortOrder = SortOrder.DESCENDING)
-    }
 }
 
 enum class SortOrder {
