@@ -40,18 +40,17 @@ class ListScreenViewModel {
         countries: List<Country>,
         sortOrder: SortOrder
     ): List<Country> {
-        val comparator: Comparator<String> = if (sortOrder == SortOrder.ASCENDING) {
-            compareBy { it }
+        return if (sortOrder == SortOrder.ASCENDING) {
+            countries.sortedBy { it.name }
         } else {
-            compareByDescending { it }
+            countries.sortedByDescending { it.name }
+        }.map { country ->
+            country.copy(
+                touristPlaces = country.touristPlaces.sortedBy { it.name }
+            )
         }
 
-        return countries.sortedWith(compareBy(comparator) { it.name })
-            .map { country ->
-                country.copy(
-                    touristPlaces = country.touristPlaces.sortedWith(compareBy(comparator) { it.name })
-                )
-            }
+
     }
     fun onAction(actions: ListViewModelActions) {
         viewModelScope.launch {
