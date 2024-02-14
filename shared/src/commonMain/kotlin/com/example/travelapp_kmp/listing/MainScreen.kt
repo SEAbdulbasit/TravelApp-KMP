@@ -502,7 +502,8 @@ internal fun SortDropDownMenu(
     interaction: SortInteraction
 ) {
     var expanded by remember { mutableStateOf(false) }
-
+    var isSortByNameAsc by remember { mutableStateOf(true) }
+    var colorItemEnable =
     Box(
         modifier = Modifier.fillMaxWidth()
             .wrapContentSize(Alignment.TopEnd)
@@ -522,9 +523,13 @@ internal fun SortDropDownMenu(
             onDismissRequest = { expanded = false }
         ) {
             DropdownMenuItem(
+                modifier = Modifier.background(
+                    if (isSortByNameAsc) Color.Gray.copy(alpha = 0.3F) else Color.Transparent
+                ),
                 onClick = {
                     interaction.sortByNameAsc()
                     expanded = false
+                    isSortByNameAsc = true
                 }
             ) {
                 Text(
@@ -533,9 +538,13 @@ internal fun SortDropDownMenu(
                 )
             }
             DropdownMenuItem(
+                modifier = Modifier.background(
+                    if (!isSortByNameAsc) Color.Gray.copy(alpha = 0.3F) else Color.Transparent
+                ),
                 onClick = {
                     interaction.sortByNameDesc()
                     expanded = false
+                    isSortByNameAsc = false
                 }
             ) {
                 Text(
