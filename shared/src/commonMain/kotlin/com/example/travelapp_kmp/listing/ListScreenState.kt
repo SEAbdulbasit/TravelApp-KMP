@@ -10,3 +10,8 @@ sealed interface ListScreenState {
         val selectedItemIndex: Int = 0,
     ) : ListScreenState
 }
+
+interface SortInteraction {
+    fun aTz()
+    fun zTa()
+}

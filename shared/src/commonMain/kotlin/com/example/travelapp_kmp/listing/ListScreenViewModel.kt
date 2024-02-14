@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
-class ListScreenViewModel {
+class ListScreenViewModel : SortInteraction {
     private val viewModelScope = CoroutineScope(Dispatchers.Main)
     private val countriesApi = CountriesApiImpl()
     val state = MutableStateFlow<ListScreenState>(ListScreenState.Loading)
@@ -83,6 +83,14 @@ class ListScreenViewModel {
             ListScreenState.Loading -> null
             is ListScreenState.Success -> state
         }
+    }
+
+    override fun aTz() {
+        println("Sort aTz")
+    }
+
+    override fun zTa() {
+        println("Sort zTa")
     }
 }
 
