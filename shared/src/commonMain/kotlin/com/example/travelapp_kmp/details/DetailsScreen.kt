@@ -30,8 +30,10 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -46,6 +48,7 @@ import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import com.example.travelapp_kmp.listing.TouristPlace
 import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
@@ -127,10 +130,23 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                     fontWeight = FontWeight.Medium, color = Color.White
                 ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
             )
+            // Store the drawable resource in a state.
+            var popup: DrawableResource? by remember {
+                mutableStateOf(null)
+            }
+            // If resource state is not null, show the popup.
+            popup?.let {
+                ShowImagePopup(it) {
+                    // On dismiss, clear the stored drawable resource state.
+                    popup = null
+                }
+            }
             ImageGallery(
                 imagesList = touristPlace.images,
                 onDetailsClicked = { backgroundImage.value = it },
-                onDetailsLongClicked = { backgroundImage.value = it })
+                onImageLongClick = {
+                    popup = it
+                })
         }
     }
 }
@@ -177,7 +193,7 @@ internal fun IconWithText() {
 internal fun ImageGallery(
     imagesList: List<DrawableResource>,
     onDetailsClicked: (DrawableResource) -> Unit,
-    onDetailsLongClicked: (DrawableResource) -> Unit
+    onImageLongClick: (DrawableResource) -> Unit
 ) {
     LazyRow(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).fillMaxWidth(),
@@ -198,11 +214,15 @@ internal fun ImageGallery(
                         modifier = Modifier.height(210.dp)
                             .aspectRatio(ratio = (139.0 / 210.0).toFloat())
                             .background(TravelAppColors.SemiWhite)
-                            .clickable(onClick = { onDetailsClicked(imageUrl) })
                             .pointerInput(Unit) {
                                 detectTapGestures(
                                     onLongPress = {
-                                        onDetailsLongClicked(imageUrl)
+                                        // Notify client regarding the long press event.
+                                        onImageLongClick(imageUrl)
+                                    },
+                                    onTap = {
+                                        // Notify client regarding the single click event.
+                                        onDetailsClicked(imageUrl)
                                     }
                                 )
                             },
@@ -213,6 +233,54 @@ internal fun ImageGallery(
         }
     }
 }
+
+/**
+ * Show a image pop using an Dialog instance..
+ *
+ * @param imageResId [DrawableResource] to be shown.
+ * @param onDismiss Notify client about dismiss event.
+ */
+@OptIn(ExperimentalMaterialApi::class, ExperimentalResourceApi::class)
+@Composable
+internal fun ShowImagePopup(
+    imageResId: DrawableResource,
+    onDismiss: () -> Unit = {}
+) {
+    // Create a state to track whether the dialog is visible or not
+    var showDialog by remember { mutableStateOf(true) }
+
+    // Use the Dialog composable to create a popup
+    if (showDialog) {
+        Dialog(
+            onDismissRequest = {
+                /*
+                Set the state to false to dismiss the dialog,
+                and notify client about the dismiss status.
+                 */
+                showDialog = false
+                onDismiss.invoke()
+            }
+        ) {
+            // Create a composable for the dialog content
+            Box(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .background(MaterialTheme.colors.background)
+                    .aspectRatio(ratio = 1F),
+                contentAlignment = Alignment.Center
+            ) {
+                // Display the image using the Image composable
+                Image(
+                    painter = painterResource(imageResId),
+                    null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+        }
+    }
+}
+
 
 
 

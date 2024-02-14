@@ -19,8 +19,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -35,6 +37,7 @@ import com.example.travelapp_kmp.listing.TouristPlace
 import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -89,10 +92,21 @@ internal fun DetailScreenWeb(
                     }
 
                 }
+                // Store the drawable resource in a state.
+                var popup: DrawableResource? by remember {
+                    mutableStateOf(null)
+                }
+                // If resource state is not null, show the popup.
+                popup?.let {
+                    ShowImagePopup(it) {
+                        // On dismiss, clear the stored drawable resource state.
+                        popup = null
+                    }
+                }
                 ImageGallery(
                     imagesList = touristPlace.images,
                     onDetailsClicked = { backgroundImage.value = it },
-                    onDetailsLongClicked = { backgroundImage.value = it })
+                    onImageLongClick = { popup = it })
             }
 
             Column(
