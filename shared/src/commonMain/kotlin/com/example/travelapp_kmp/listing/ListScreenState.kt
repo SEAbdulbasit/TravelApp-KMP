@@ -12,6 +12,6 @@ sealed interface ListScreenState {
 }
 
 interface SortInteraction {
-    fun aTz()
-    fun zTa()
+    fun sortByNameAsc()
+    fun sortByNameDesc()
 }

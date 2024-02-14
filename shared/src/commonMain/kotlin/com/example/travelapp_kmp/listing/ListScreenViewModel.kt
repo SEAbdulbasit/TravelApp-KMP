@@ -13,13 +13,20 @@ class ListScreenViewModel : SortInteraction {
     val state = MutableStateFlow<ListScreenState>(ListScreenState.Loading)
 
     init {
+        fetchCountries()
+    }
+
+    private fun fetchCountries(sortOrder: SortOrder = SortOrder.ASCENDING) {
         viewModelScope.launch(Dispatchers.Main) {
             try {
-                val countries = getCountriesSorted(countriesApi.getCountriesList())
+                val countries = getCountriesSorted(
+                    countriesApi.getCountriesList(),
+                    sortOrder
+                )
                 state.emit(
                     ListScreenState.Success(
                         countriesList = countries,
-                        selectedCountry = countries.first(),
+                        selectedCountry = countries.first()
                     )
                 )
             } catch (e: Exception) {
@@ -28,17 +35,24 @@ class ListScreenViewModel : SortInteraction {
             }
         }
     }
-
     @OptIn(ExperimentalResourceApi::class)
-    fun getCountriesSorted(countries: List<Country>): List<Country> {
-        return countries.sortedBy { it.name }
+    private fun getCountriesSorted(
+        countries: List<Country>,
+        sortOrder: SortOrder
+    ): List<Country> {
+        val comparator: Comparator<String> = if (sortOrder == SortOrder.ASCENDING) {
+            compareBy { it }
+        } else {
+            compareByDescending { it }
+        }
+
+        return countries.sortedWith(compareBy(comparator) { it.name })
             .map { country ->
                 country.copy(
-                    touristPlaces = country.touristPlaces.sortedBy { it.name }
+                    touristPlaces = country.touristPlaces.sortedWith(compareBy(comparator) { it.name })
                 )
             }
     }
-
     fun onAction(actions: ListViewModelActions) {
         viewModelScope.launch {
             when (actions) {
@@ -85,13 +99,19 @@ class ListScreenViewModel : SortInteraction {
         }
     }
 
-    override fun aTz() {
-        println("Sort aTz")
+
+    override fun sortByNameAsc() {
+        fetchCountries(sortOrder = SortOrder.ASCENDING)
     }
 
-    override fun zTa() {
-        println("Sort zTa")
+    override fun sortByNameDesc() {
+        fetchCountries(sortOrder = SortOrder.DESCENDING)
     }
+}
+
+enum class SortOrder {
+    ASCENDING,
+    DESCENDING
 }
 
 

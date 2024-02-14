@@ -523,7 +523,7 @@ internal fun SortDropDownMenu(
         ) {
             DropdownMenuItem(
                 onClick = {
-                    interaction.aTz()
+                    interaction.sortByNameAsc()
                     expanded = false
                 }
             ) {
@@ -534,7 +534,7 @@ internal fun SortDropDownMenu(
             }
             DropdownMenuItem(
                 onClick = {
-                    interaction.zTa()
+                    interaction.sortByNameDesc()
                     expanded = false
                 }
             ) {
