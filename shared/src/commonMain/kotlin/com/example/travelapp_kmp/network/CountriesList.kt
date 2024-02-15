@@ -880,4 +880,4 @@ fun getRestCountriesList() = listOf(
             ),
     )
 
-)
+).sortedBy{it.name}
