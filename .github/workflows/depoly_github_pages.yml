@@ -1,23 +1,25 @@
-name: Deploy GitHub Pages
+name: Build and Deploy
 
 on:
   push:
     branches:
-      - master  # Or the name of your default branch
-    paths:
-      - 'docs/**'
+      - master  # Set a branch to deploy from.
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
 
-      - name: Setup GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
         with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          publish_dir: ./docs
+          fetch-depth: 0
+
+      - name: Build and Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          BRANCH: gh-pages  # The branch the action should deploy to.
+          FOLDER: docs  # The folder the action should deploy.
+          CLEAN: true  # Automatically remove deleted files from the deploy branch
+          COMMIT_MESSAGE: 'Deployed documentation to GitHub Pages'
