@@ -25,6 +25,8 @@ jobs:
 
       - name: Build Project
         run: ./gradlew wasmJsBrowserProductionWebpack
+      - name: Build Project
+        run: ./gradlew wasmJsBrowserProductionExecutableDistributeResources
 
       - name: Copy Production Executable to Docs
         run: |
