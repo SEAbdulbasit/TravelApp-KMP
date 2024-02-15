@@ -159,6 +159,58 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_bandarban_3,
                     Res.drawable.bangladesh_bandarban_4
                 )
+            ), TouristPlace(
+                name = "Lalbagh Fort",
+                shortDescription = "Lalbagh Fort is a fort in the old city of Dhaka, Bangladesh. Its name is derived from its neighborhood Lalbagh, which means Red Garden. The term Lalbagh refers to reddish and pinkish architecture from the Mughal period. The original fort was called Fort Aurangabad.",
+                longDescription = "Lalbagh Fort (Bengali: লালবাগ কেল্লা) is a fort in the old city of Dhaka, Bangladesh. Its name is derived from its neighborhood Lalbagh, which means Red Garden. The term Lalbagh refers to reddish and pinkish architecture from the Mughal period. The original fort was called Fort Aurangabad. Its construction was started by Prince Muhammad Azam Shah, who was the son of Emperor Aurangzeb and a future Mughal emperor himself. After the prince was recalled by his father, the fort's construction was overseen by Shaista Khan. The death of Shaista Khan's daughter Pari Bibi (Fairy Lady) resulted in a halt to the construction process, apparently due to Shaista Khan's superstition that the fort brought bad omen. Pari Bibi was buried inside the fort.\n" +
+                        "\n" +
+                        "Lalbagh Fort was built as the official residence of the governor of the Mughal province of Bengal, Bihar and Orissa. The complex includes the Mughal governor's house, the tomb of Pari Bibi and a mosque. It is covered by lawns, fountains and water channels. Its two south gates were previously grand arches. The original grand complex covered the governor's house and the two archways. The tomb of Pari Bibi was later added. Lalbagh Fort was modelled as a miniature version of great Mughal forts like the Red Fort and Fatehpur Sikri. During the reign of Emperor Aurangzeb, Mughal Bengal became the economic engine of the empire. Emperor Aurangzeb called Bengal the Paradise of Nations. Dhaka grew into an imperial city with one of the richest elites in the Mughal Empire, including members of the imperial family. Mughal artillery guarded the fort. Once located beside the Buriganga River, the river has retreated from the vicinity of the fort. The fort was depicted in European paintings during the 18th and 19th centuries.\n" +
+                        "\n" +
+                        "Today, Lalbagh Fort is one of the most visited sites in Dhaka. Several pieces of artillery are kept inside the fort. The Ambassadors Fund for Cultural Preservation is funding a restoration project for parts of the fort. Lalbagh Fort is one of the most recognized symbols of Mughal rule in Bengal. ",
+                images = listOf(
+                    Res.drawable.bangladesh_lalbagh_1,
+                    Res.drawable.bangladesh_lalbagh_2,
+                    Res.drawable.bangladesh_lalbagh_3,
+                    Res.drawable.bangladesh_lalbagh_4
+                )
+            ), TouristPlace(
+                name = "Ahsan Manzil Museum",
+                shortDescription = "Ahsan Manzil is a palace located in the Kumartoli area of Dhaka, Bangladesh. It was formerly the residence and seat of the Nawab of Dhaka and has been designated an Old Dhaka Heritage Site. It now serves as a museum.",
+                longDescription = "During the Mughal Empire, Sheikh Enayet Ullah, Zamindar of the Jamalpur Porgona district, had a garden house on this property and later added a palace, which he called Rongmohol. He was buried on the northeast corner of the palace yard but his gravesite was ruined at the beginning of the 20th century. His son Sheikh Moti Ullah sold the property to French traders, who erected a trading house beside the property. After changing hands a number of times over the next several centuries, the property was purchased by Khwaja Alimullah in the 1800s. Alimullah renovated the property, turning the trading house into a residence and adding a stable and family mosque. After his death, his son Khwaja Abdul Ghani named the property Ahsan Manzil after his son, Khwaja Ahsanullah. He continued renovations; the old building was renamed Ondor Mohol and the new building was called Rangmahal.\n" +
+                        "\n" +
+                        "On 7 April 1888, a tornado severely damaged Ahsan Manzil and it was temporarily abandoned. With the exception of Rangmahal, which only required repairs, all buildings had to be rebuilt. Abdul Ghani and Ahsanullah continued renovations. What was previously the French trading house was rebuilt as a two-storey building similar to the Rangmahal. A wooden bridge connected the first floors of the two buildings. The palace was repaired again following the 1897 Assam earthquake. After Ahsanullah's death in 1901, the property again changed hands due in part to disagreements within the family. It was a slum for a period before the government acquired it in 1952 under the East Bengal Estate Acquisition Act.\n" +
+                        "\n" +
+                        "The Government of Bangladesh acquired the palace and property in 1985 and began renovating it, taking care to preserve the remaining structure. Renovations were completed in 1992 and ownership was transferred to the Bangladesh National Museum. Part of the northern side of the property was given to the Dhaka City Corporation while half of the Andarmahal and the Nawab residential area were beyond acquisition.[clarification needed] Just under 5 acres (220,000 sq ft) was then used for the museum.",
+                images = listOf(
+                    Res.drawable.bangladesh_ahsan_manjil_1,
+                    Res.drawable.bangladesh_ahsan_manjil_2,
+                    Res.drawable.bangladesh_ahsan_manjil_3
+                )
+            ), TouristPlace(
+                name = "Sajek Valley",
+                shortDescription = "Sajek Valley is one of the most popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District. The valley is 2,000 feet above sea level. Sajek Valley is known as the Queen of Hills & Roof of Rangamati.",
+                longDescription = "Sajek Valley is one of the most popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District. The valley is 2,000 feet (610 m) above sea level. Sajek Valley is known as the Queen of Hills & Roof of Rangamati.",
+                images = listOf(
+                    Res.drawable.bangladesh_sajek_valley_1,
+                    Res.drawable.bangladesh_sajek_valley_2,
+                    Res.drawable.bangladesh_sajek_valley_3,
+                    Res.drawable.bangladesh_sajek_valley_4,
+                )
+            ), TouristPlace(
+                name = "Sundarbans",
+                shortDescription = "Sundarbans is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. Sundarban Reserve Forest of Bangladesh is the largest mangrove forest in the world.",
+                longDescription = "Sundarbans (pronounced /sʌnˈdɑːrbənz/) is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. Sundarban Reserve Forest (SRF) of Bangladesh is the largest mangrove forest in the world. It spans the area from the Baleswar River in Bangladesh's division of Khulna to the Hooghly River in India's state of West Bengal. It comprises closed and open mangrove forests, land used for agricultural purpose, mudflats and barren land, and is intersected by multiple tidal streams and channels. Sundarbans is home to the world's largest area of mangrove forests. Four protected areas in the Sundarbans are enlisted as UNESCO World Heritage Sites, viz. Sundarbans West (Bangladesh), Sundarbans South (Bangladesh), Sundarbans East (Bangladesh) and Sundarbans National Park (India).\n" +
+                        "\n" +
+                        "Despite the protected status, the Indian Sundarbans were considered endangered in a 2020 assessment under the IUCN Red List of Ecosystems framework. The Sundarbans mangrove forest covers an area of about 10,000 km2 (3,900 sq mi), of which forests in Bangladesh's Khulna Division extend over 6,517 km2 (2,516 sq mi) and in West Bengal, they extend over 3,483 km2 (1,345 sq mi) across the South 24 Parganas and North 24 Parganas districts. The most abundant tree species are sundri (Heritiera fomes) and gewa (Excoecaria agallocha). The forests provide habitat to 453 fauna wildlife, including 290 bird, 120 fish, 42 mammal, 35 reptile and eight amphibian species. Despite a total ban on all killing or capture of wildlife other than fish and some invertebrates, there has been a consistent pattern of depleted biodiversity or loss of species in the 20th century, with the ecological quality of the forest declining.\n" +
+                        "\n" +
+                        "Despite preservation commitments from both governments, the Sundarbans are under threat from both natural and human-made causes. In 2007, the landfall of Cyclone Sidr damaged around 40% of the Sundarbans. The forest is also suffering from increased salinity caused by rising sea levels due to climate change and reduced freshwater supply. In May 2009 Cyclone Aila devastated the Sundarbans with massive casualties. At least 100,000 people were affected by this cyclone. The proposed coal-fired Rampal power station situated 14 km (8.7 mi) north of the Sundarbans at Rampal Upazila of Bagerhat District in Khulna, Bangladesh, is anticipated to further damage this unique mangrove forest according to a 2016 report by UNESCO. Climate change is expected to continue to negatively affect both natural systems and human populations in the region, resulting in further ecosystem degradation and climate migration. Experts examining the region recommend further focus on mangrove restoration and management and advocating for adaptation of human populations, through processes like managed retreat and investments in resilient infrastructure.",
+                images = listOf(
+                    Res.drawable.bangladesh_sundarbans_1,
+                    Res.drawable.bangladesh_sundarbans_2,
+                    Res.drawable.bangladesh_sundarbans_3,
+                    Res.drawable.bangladesh_sundarbans_4,
+                    Res.drawable.bangladesh_sundarbans_5,
+                )
             )
         )
     ),
