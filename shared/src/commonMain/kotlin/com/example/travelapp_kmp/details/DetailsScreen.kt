@@ -10,10 +10,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -39,10 +41,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
@@ -67,7 +71,8 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
         Image(
             painter = painterResource(backgroundImage.value),
             null,
-            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi).blur(32.dp),
+            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi)
+                .blur(32.dp),
             contentScale = ContentScale.FillBounds,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale(
@@ -75,41 +80,55 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                 )
             }),
         )
-
-        Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
-
-        Column(
-            modifier = Modifier.widthIn(max = 500.dp).padding(top = 64.dp)
-                .verticalScroll(rememberScrollState())
+        // Custom toolbar containing the back button and title.
+        Row(
+            modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 56.dp),
         ) {
-            Image(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = "back arrow",
-                modifier = Modifier.padding(start = 16.dp).widthIn(max = 500.dp)
-                    .clickable(onClick = {
+            Box(
+                modifier = Modifier.size(56.dp).padding(start = 16.dp),
+                contentAlignment = Alignment.CenterStart,
+            ) {
+                Image(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "back arrow",
+                    modifier = Modifier.clickable {
                         navigationState.value = ScreensState(
                             Screen.MainScreen
                         )
-                    }),
-                colorFilter = ColorFilter.tint(color = Color.White),
+                    },
+                    colorFilter = ColorFilter.tint(color = Color.White),
+                )
+            }
+            Text(
+                text = touristPlace.name,
+                style = MaterialTheme.typography.h6.copy(
+                    fontWeight = FontWeight.Medium, color = Color.White
+                ),
+                modifier = Modifier.padding(16.dp)
             )
+        }
+        Column(
+            modifier = Modifier.widthIn(max = 500.dp).padding(top = 56.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
             Card(
                 elevation = 16.dp,
                 modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
                     .aspectRatio(ratio = 335f / 280f).clip(RoundedCornerShape(15.dp)),
-                contentColor = Color.Transparent,
+                contentColor = Transparent,
             ) {
                 Box {
                     Image(
                         painter = painterResource(backgroundImage.value),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize().onGloballyPositioned {
+
+                        }
                     )
 
                 }
             }
-            PlaceInfo()
             Text(
                 text = touristPlace.name, style = MaterialTheme.typography.h5.copy(
                     fontWeight = FontWeight.Medium, color = Color.White
@@ -205,7 +224,7 @@ internal fun ImageGallery(
                 elevation = 16.dp,
                 modifier = Modifier.height(210.dp).aspectRatio(ratio = (139.0 / 210.0).toFloat())
                     .clip(RoundedCornerShape(16.dp)),
-                contentColor = Color.Transparent,
+                contentColor = Transparent,
             ) {
                 Box {
                     Image(
@@ -254,26 +273,26 @@ internal fun ShowImagePopup(
         Dialog(
             onDismissRequest = {
                 /*
-                Set the state to false to dismiss the dialog,
-                and notify client about the dismiss status.
-                 */
+               Set the state to false to dismiss the dialog,
+               and notify client about the dismiss status.
+               */
                 showDialog = false
                 onDismiss.invoke()
             }
         ) {
-            // Create a composable for the dialog content
-            Box(
+
+            Card(
                 modifier = Modifier
                     .padding(16.dp)
-                    .background(MaterialTheme.colors.background)
-                    .aspectRatio(ratio = 1F),
-                contentAlignment = Alignment.Center
+                    .background(Transparent)
+                    .aspectRatio(ratio = 4 / 3F),
+                shape = RoundedCornerShape(10.dp)
             ) {
                 // Display the image using the Image composable
                 Image(
                     painter = painterResource(imageResId),
                     null,
-                    contentScale = ContentScale.Crop,
+                    contentScale = ContentScale.FillBounds,
                     modifier = Modifier.fillMaxSize()
                 )
             }
