@@ -48,7 +48,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
@@ -63,7 +62,7 @@ import org.jetbrains.compose.resources.painterResource
 import kotlin.random.Random
 
 
-@OptIn(ExperimentalUnitApi::class, ExperimentalResourceApi::class)
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPlace: TouristPlace) {
     Box {
