@@ -878,6 +878,39 @@ fun getRestCountriesList() = listOf(
             ),
 
             ),
+    ),
+    Country(
+        name = "Kenya", flagIcon = Res.drawable.kenya, touristPlaces = listOf(
+            TouristPlace(
+                name = "Maasai Mara",
+                shortDescription = "Maasai Mara is a renowned game reserve in Kenya, famous for its stunning landscapes and abundant wildlife, including the Big Five.",
+                longDescription = "Nestled in southwestern Kenya, Maasai Mara National Reserve is a quintessential African safari destination. Its vast savanna landscapes are dotted with acacia trees, providing a picturesque backdrop for the awe-inspiring array of wildlife that inhabits the region. The Mara is renowned for its role in the Great Migration, a natural spectacle where millions of wildebeest, zebras, and other herbivores traverse the plains in search of fresh grazing grounds, closely followed by predators such as lions, cheetahs, and hyenas. Visitors to Maasai Mara have the opportunity to witness this breathtaking phenomenon firsthand, as well as engage in thrilling game drives, guided walks, and cultural interactions with the Maasai people, who have coexisted with the wildlife for centuries. With its rich biodiversity and unparalleled natural beauty, Maasai Mara is a bucket-list destination for wildlife enthusiasts and adventure seekers alike.",
+                images = listOf(
+                    Res.drawable.kenya_mara_1,
+                    Res.drawable.kenya_mara_2,
+                    Res.drawable.kenya_mara_3,
+                )
+            ),
+            TouristPlace(
+                name = "Lamu Island",
+                shortDescription = "Lamu Island is a charming destination off the coast of Kenya, known for its Swahili architecture, pristine beaches, and vibrant culture.",
+                longDescription = " Lamu Island, located in the Indian Ocean off the northern coast of Kenya, is a unique and enchanting destination steeped in history and culture. Designated as a UNESCO World Heritage Site, Lamu is renowned for its well-preserved Swahili architecture, characterized by intricately carved wooden doors, narrow winding streets, and majestic stone buildings. The island's pristine beaches, with their clear turquoise waters and swaying palm trees, offer idyllic spots for relaxation and water activities such as snorkeling, diving, and dhow sailing. Lamu's vibrant cultural scene is evident in its bustling markets, traditional dhow races, and lively festivals, including the annual Lamu Cultural Festival which showcases the island's rich heritage through music, dance, and art. Visitors can explore historical sites like the Lamu Fort and ancient Swahili settlements such as Lamu Town, Shela, and Matondoni, where time seems to stand still amidst the tranquility of island life. With its timeless charm and authentic Swahili ambiance, Lamu Island offers a captivating escape for those seeking a blend of history, culture, and natural beauty in a tropical paradise.",
+                images = listOf(
+                    Res.drawable.kenya_lamu_1,
+                    Res.drawable.kenya_lamu_2,
+                    Res.drawable.kenya_lamu_3,
+                )
+            ),
+            TouristPlace(
+                name = "Fourteen Falls",
+                shortDescription = "Fourteen Falls is a scenic waterfall located in Thika, Kenya, offering breathtaking views and opportunities for nature exploration and photography.",
+                longDescription = "Fourteen Falls, located near Thika in central Kenya, is a captivating natural wonder renowned for its picturesque beauty and serene ambiance. Named after the 14 distinct cascades formed by the Athi River as it tumbles over the rocky terrain, the waterfall is a popular destination for nature lovers, photographers, and adventure seekers alike. Visitors can marvel at the majestic sight of the cascading water, which creates a mesmerizing spectacle of mist and spray against a backdrop of lush greenery and rocky cliffs. The surrounding landscape is adorned with indigenous flora and fauna, providing opportunities for nature exploration and birdwatching. Adventurous visitors can embark on hikes along the riverbanks or take boat rides to get closer to the falls, while those seeking tranquility can simply relax and enjoy the soothing sounds of rushing water and chirping birds. Fourteen Falls is not only a scenic marvel but also holds cultural significance for the local communities, serving as a gathering place for traditional ceremonies and festivities. Whether it's for a peaceful retreat into nature, an adrenaline-pumping adventure, or simply to admire its natural beauty, Fourteen Falls offers an unforgettable experience for all who visit.",
+                images = listOf(
+                    Res.drawable.kenya_ff_1,
+                    Res.drawable.kenya_ff_2,
+                )
+            ),
+        )
     )
 
 )
