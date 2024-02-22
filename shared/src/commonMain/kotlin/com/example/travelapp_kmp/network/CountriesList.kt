@@ -911,6 +911,42 @@ fun getRestCountriesList() = listOf(
                 )
             ),
         )
+    ),
+    Country(
+        name = "Vietnam",
+        flagIcon = Res.drawable.vietnam,
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Ha Long Bay",
+                shortDescription = "Hạ Long Bay or Halong Bay is a UNESCO World Heritage Site and popular travel destination in Quảng Ninh province, Vietnam.",
+                longDescription = "Hạ Long Bay or Halong Bay is a UNESCO World Heritage Site and popular travel destination in Quảng Ninh province, Vietnam. The name Hạ Long means \"descending dragon\". Administratively, the bay belongs to Hạ Long city, Cẩm Phả city, and is a part of Vân Đồn district. The bay features thousands of limestone karsts and islets in various shapes and sizes. Hạ Long Bay is a center of a larger zone that includes Bai Tu Long Bay to the northeast, and Cát Bà Island to the southwest. These larger zones share a similar geological, geographical, geomorphological, climate, and cultural characters.",
+                images = listOf(
+                    Res.drawable.vietnam_halongbay_1,
+                    Res.drawable.vietnam_halongbay_2,
+                    Res.drawable.vietnam_halongbay_3,
+                )
+            ),
+            TouristPlace(
+                name = "Sơn Đoòng cave",
+                shortDescription = "Sơn Đoòng cave, in Phong Nha-Kẻ Bàng National Park, Bố Trạch District, Quảng Bình Province, Vietnam, is one of the world's largest natural caves.",
+                longDescription = "Sơn Đoòng cave, in Phong Nha-Kẻ Bàng National Park, Bố Trạch District, Quảng Bình Province, Vietnam, is one of the world's largest natural caves. Located near the Laos–Vietnam border, Hang Sơn Đoòng has an internal, fast-flowing subterranean river and the largest cross-section of any cave, worldwide, believed to be twice that of the next-largest passage. It is the largest known cave passage in the world by volume. Its name, Hang Sơn Đoòng, is variously translated from Vietnamese as \"cave of the mountain river\" or \"cave of mountains behind Đoòng [village]\". As a solutional cave, it was formed in soluble limestone and is believed to be between 2 and 5 million years old.",
+                images = listOf(
+                    Res.drawable.vietnam_sondoong_1,
+                    Res.drawable.vietnam_sondoong_2,
+                    Res.drawable.vietnam_sondoong_3,
+                )
+            ),
+            TouristPlace(
+                name = "Phu Quoc",
+                shortDescription = "Phú Quốc is the largest island in Vietnam. Phú Quốc and nearby islands, along with the distant Thổ Chu Islands, are part of Kiên Giang Province as Phú Quốc City.",
+                longDescription = "Phú Quốc is the largest island in Vietnam. Phú Quốc and nearby islands, along with the distant Thổ Chu Islands, are part of Kiên Giang Province as Phú Quốc City. The island has a total area of 574 km2 (222 sq mi) and a permanent population of approximately 179,480 people. Located in the Gulf of Thailand, the island city of Phú Quốc includes the island proper and 21 smaller islets. Dương Đông ward, located on the island's west coast, is the island's administrative centre and largest town. The other ward is An Thới on the southern tip of the island.",
+                images = listOf(
+                    Res.drawable.vietnam_phuquoc_1,
+                    Res.drawable.vietnam_phuquoc_2,
+                    Res.drawable.vietnam_phuquoc_3,
+                )
+            ),
+        ),
     )
 
 )
