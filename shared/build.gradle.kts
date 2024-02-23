@@ -9,6 +9,7 @@ plugins {
 }
 
 version = "1.0"
+val ktorVersion = extra["ktor.version"]
 
 kotlin {
     androidTarget()
@@ -60,32 +61,48 @@ kotlin {
                 implementation(compose.runtime)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                //ktor-client
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$ktorVersion")
             }
         }
 
         androidMain {
             dependencies {
                 implementation("com.google.android.material:material:1.11.0")
+                implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
 
         iosMain {
-
+            dependencies {
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+            }
         }
 
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
+                implementation("io.ktor:ktor-client-java:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3")
             }
         }
 
         jsMain {
             dependencies {
+                implementation("io.ktor:ktor-client-js:$ktorVersion")
             }
         }
 
     }
+
+
 }
 
 android {
