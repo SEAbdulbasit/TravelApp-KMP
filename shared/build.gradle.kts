@@ -72,6 +72,7 @@ kotlin {
 //                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$ktorVersion")
 //                implementation("com.google.code.gson:gson:2.10.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
             }
         }
 

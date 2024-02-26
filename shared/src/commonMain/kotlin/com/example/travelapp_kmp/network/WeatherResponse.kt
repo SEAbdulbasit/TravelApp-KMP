@@ -2,6 +2,7 @@ package com.example.travelapp_kmp.network
 
 
 import com.example.travelapp_kmp.listing.Weather
+import com.example.travelapp_kmp.utils.convertTimestampToDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -10,7 +11,7 @@ data class WeatherResponse(
     @SerialName("weather")
     val weather: List<WeatherDto?>?,
     @SerialName("dt")
-    val dt: Int?,
+    val timestamp: Int?,
 )
 
 @Serializable
@@ -26,6 +27,6 @@ data class WeatherDto(
 )
 
 fun WeatherResponse.toWeather() = Weather(
-    date = dt.toString(),
+    date = timestamp?.let { convertTimestampToDate(it) } ?: "",
     weatherDescription = weather?.first()?.description ?: ""
 )
