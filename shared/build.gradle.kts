@@ -69,14 +69,15 @@ kotlin {
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$ktorVersion")
+                //implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$ktorVersion")
             }
         }
 
         androidMain {
             dependencies {
                 implementation("com.google.android.material:material:1.11.0")
-                implementation("io.ktor:ktor-client-android:$ktorVersion")
+                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+//                implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
 
@@ -123,4 +124,8 @@ android {
 
 compose {
     kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.20")
+}
+
+repositories {
+    maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
 }
