@@ -69,7 +69,9 @@ kotlin {
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                //implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$ktorVersion")
+//                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$ktorVersion")
+//                implementation("com.google.code.gson:gson:2.10.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
             }
         }
 

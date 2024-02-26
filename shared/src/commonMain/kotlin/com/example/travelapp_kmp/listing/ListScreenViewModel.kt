@@ -15,10 +15,12 @@ class ListScreenViewModel {
         viewModelScope.launch(Dispatchers.Main) {
             try {
                 val countriesList = countriesApi.getCountriesList()
+                val weather =  countriesApi.getWeather(countriesList.first().name)
                 state.emit(
                     ListScreenState.Success(
                         countriesList = countriesList,
                         selectedCountry = countriesList.first(),
+                        weatherSelectedCountry = weather
                     )
                 )
             } catch (e: Exception) {
@@ -30,9 +32,11 @@ class ListScreenViewModel {
 
     fun onAction(actions: ListViewModelActions) {
         viewModelScope.launch {
+
             when (actions) {
                 is ListViewModelActions.OnCountrySelected -> {
-                    emitNewState(actions)
+                    emitNewState(actions, countriesApi.getWeather(actions.country.name))
+
                 }
 
                 is ListViewModelActions.OnItemSwiped -> {
@@ -55,12 +59,16 @@ class ListScreenViewModel {
         }
     }
 
-    private suspend fun emitNewState(actions: ListViewModelActions.OnCountrySelected) {
+    private suspend fun emitNewState(
+        actions: ListViewModelActions.OnCountrySelected,
+        weather: Weather
+    ) {
         getStateValueWithEmptyState(state.value)?.run {
             val country = this.countriesList.first { it.name == actions.country.name }
             val latestState = this.copy(
                 selectedCountry = country,
                 selectedItemIndex = 0,
+                weatherSelectedCountry = weather
             )
             state.emit(latestState)
         }

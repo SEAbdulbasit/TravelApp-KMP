@@ -8,5 +8,13 @@ sealed interface ListScreenState {
         val countriesList: List<Country>,
         val selectedCountry: Country,
         val selectedItemIndex: Int = 0,
+        val weatherSelectedCountry: Weather
     ) : ListScreenState
 }
+
+data class WeatherUiState(
+//    val imageUrl:String =
+    val date: String = "Friday, April 15",
+    val weatherDescription: String = "Sunny 32°C",
+)
+
