@@ -49,9 +49,11 @@ class CountriesApiImpl : CountriesApi {
 
     private fun HttpRequestBuilder.openWeather(country: String) {
         url {
-            takeFrom("https://api.openweathermap.org/data/2.5/weather")
+            takeFrom("https://api.openweathermap.org/")
+            path("data/2.5/weather")
             parameter("appid", "")
             parameter("q", country)
+            parameter("units", "metric")
         }
     }
 }

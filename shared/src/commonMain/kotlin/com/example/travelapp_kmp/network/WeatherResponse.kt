@@ -12,6 +12,8 @@ data class WeatherResponse(
     val weather: List<WeatherDto?>?,
     @SerialName("dt")
     val timestamp: Int?,
+    @SerialName("main")
+    val environment: Environment?
 )
 
 @Serializable
@@ -26,8 +28,23 @@ data class WeatherDto(
     val icon: String?
 )
 
+@Serializable
+data class Environment(
+    @SerialName("temp")
+    val temp: Double?,
+    @SerialName("feels_like")
+    val feelsLike: Double?,
+    @SerialName("temp_min")
+    val tempMin: Double?,
+    @SerialName("temp_max")
+    val tempMax: Double?,
+    @SerialName("pressure")
+    val pressure: Int?,
+    @SerialName("humidity")
+    val humidity: Int?,
+)
 fun WeatherResponse.toWeather() = Weather(
     imageUrl = weather?.first()?.icon?.let { "https://openweathermap.org/img/wn/$it@2x.png" } ?: "",
     date = timestamp?.let { convertTimestampToDate(it) } ?: "",
-    weatherDescription = weather?.first()?.description ?: ""
+    weatherDescription = "${weather?.first()?.description}, ${environment?.temp?.toInt()}°C"
 )
