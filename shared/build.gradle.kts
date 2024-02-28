@@ -73,6 +73,11 @@ kotlin {
 //                implementation("com.google.code.gson:gson:2.10.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+
+                val coilVersion = "3.0.0-SNAPSHOT"
+                implementation("io.coil-kt.coil3:coil-compose:$coilVersion")
+                implementation("io.coil-kt.coil3:coil-network-ktor:$coilVersion")
+
             }
         }
 

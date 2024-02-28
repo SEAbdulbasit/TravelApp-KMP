@@ -63,6 +63,7 @@ import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
@@ -71,6 +72,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
 //import org.jetbrains.compose.resources.resource
+
 
 
 @OptIn(ExperimentalResourceApi::class)
@@ -166,7 +168,6 @@ internal fun RenderListingScreen(
             Column {
                 WeatherView(
                     state.weatherSelectedCountry,
-                    state.selectedCountry.touristPlaces[state.selectedItemIndex].images[0]
                 )
                 ListCountryChips(
                     state.countriesList,
@@ -197,23 +198,24 @@ internal fun RenderListingScreen(
 }
 
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun WeatherView(
     state: Weather,
-    drawableResource: DrawableResource
 ) {
     Row(
         Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 64.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        Image(
-            painter = painterResource(drawableResource),
-            contentDescription = null,
+        AsyncImage(
+            model = state.imageUrl,
+            contentDescription = "Image state weather",
             contentScale = ContentScale.Crop,
-            modifier = Modifier.size(48.dp).clip(RoundedCornerShape(16.dp))
+            modifier = Modifier.size(48.dp)
+                .clip(RoundedCornerShape(16.dp))
+                .background(Color.White.copy(alpha = 0.3F))
         )
+
         Column(Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)) {
             Text(
                 state.date,

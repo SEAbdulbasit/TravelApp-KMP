@@ -27,6 +27,7 @@ data class WeatherDto(
 )
 
 fun WeatherResponse.toWeather() = Weather(
+    imageUrl = weather?.first()?.icon?.let { "https://openweathermap.org/img/wn/$it@2x.png" } ?: "",
     date = timestamp?.let { convertTimestampToDate(it) } ?: "",
     weatherDescription = weather?.first()?.description ?: ""
 )
