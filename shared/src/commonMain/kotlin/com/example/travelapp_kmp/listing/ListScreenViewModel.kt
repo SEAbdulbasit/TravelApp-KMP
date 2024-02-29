@@ -5,6 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 class ListScreenViewModel {
     private val viewModelScope = CoroutineScope(Dispatchers.Main)
@@ -12,14 +13,21 @@ class ListScreenViewModel {
     val state = MutableStateFlow<ListScreenState>(ListScreenState.Loading)
 
     init {
+        fetchCountries()
+    }
+
+    fun fetchCountries(sortOrder: SortOrder = SortOrder.ASCENDING) {
         viewModelScope.launch(Dispatchers.Main) {
             try {
-                val countriesList = countriesApi.getCountriesList()
-                val weather =  countriesApi.getWeather(countriesList.first().name)
+                val countries = getCountriesSorted(
+                    countriesApi.getCountriesList(),
+                    sortOrder
+                )
+              val weather =  countriesApi.getWeather(countries.first().name)
                 state.emit(
                     ListScreenState.Success(
-                        countriesList = countriesList,
-                        selectedCountry = countriesList.first(),
+                        countriesList = countries,
+                        selectedCountry = countries.first(),
                         weatherSelectedCountry = weather
                     )
                 )
@@ -29,7 +37,23 @@ class ListScreenViewModel {
             }
         }
     }
+    @OptIn(ExperimentalResourceApi::class)
+    private fun getCountriesSorted(
+        countries: List<Country>,
+        sortOrder: SortOrder
+    ): List<Country> {
+        return if (sortOrder == SortOrder.ASCENDING) {
+            countries.sortedBy { it.name }
+        } else {
+            countries.sortedByDescending { it.name }
+        }.map { country ->
+            country.copy(
+                touristPlaces = country.touristPlaces.sortedBy { it.name }
+            )
+        }
 
+
+    }
     fun onAction(actions: ListViewModelActions) {
         viewModelScope.launch {
 
@@ -81,6 +105,13 @@ class ListScreenViewModel {
             is ListScreenState.Success -> state
         }
     }
+
+
+}
+
+enum class SortOrder {
+    ASCENDING,
+    DESCENDING
 }
 
 

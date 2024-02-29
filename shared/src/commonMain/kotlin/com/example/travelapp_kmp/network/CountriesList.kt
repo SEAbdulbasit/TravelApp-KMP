@@ -159,6 +159,58 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_bandarban_3,
                     Res.drawable.bangladesh_bandarban_4
                 )
+            ), TouristPlace(
+                name = "Lalbagh Fort",
+                shortDescription = "Lalbagh Fort is a fort in the old city of Dhaka, Bangladesh. Its name is derived from its neighborhood Lalbagh, which means Red Garden. The term Lalbagh refers to reddish and pinkish architecture from the Mughal period. The original fort was called Fort Aurangabad.",
+                longDescription = "Lalbagh Fort (Bengali: লালবাগ কেল্লা) is a fort in the old city of Dhaka, Bangladesh. Its name is derived from its neighborhood Lalbagh, which means Red Garden. The term Lalbagh refers to reddish and pinkish architecture from the Mughal period. The original fort was called Fort Aurangabad. Its construction was started by Prince Muhammad Azam Shah, who was the son of Emperor Aurangzeb and a future Mughal emperor himself. After the prince was recalled by his father, the fort's construction was overseen by Shaista Khan. The death of Shaista Khan's daughter Pari Bibi (Fairy Lady) resulted in a halt to the construction process, apparently due to Shaista Khan's superstition that the fort brought bad omen. Pari Bibi was buried inside the fort.\n" +
+                        "\n" +
+                        "Lalbagh Fort was built as the official residence of the governor of the Mughal province of Bengal, Bihar and Orissa. The complex includes the Mughal governor's house, the tomb of Pari Bibi and a mosque. It is covered by lawns, fountains and water channels. Its two south gates were previously grand arches. The original grand complex covered the governor's house and the two archways. The tomb of Pari Bibi was later added. Lalbagh Fort was modelled as a miniature version of great Mughal forts like the Red Fort and Fatehpur Sikri. During the reign of Emperor Aurangzeb, Mughal Bengal became the economic engine of the empire. Emperor Aurangzeb called Bengal the Paradise of Nations. Dhaka grew into an imperial city with one of the richest elites in the Mughal Empire, including members of the imperial family. Mughal artillery guarded the fort. Once located beside the Buriganga River, the river has retreated from the vicinity of the fort. The fort was depicted in European paintings during the 18th and 19th centuries.\n" +
+                        "\n" +
+                        "Today, Lalbagh Fort is one of the most visited sites in Dhaka. Several pieces of artillery are kept inside the fort. The Ambassadors Fund for Cultural Preservation is funding a restoration project for parts of the fort. Lalbagh Fort is one of the most recognized symbols of Mughal rule in Bengal. ",
+                images = listOf(
+                    Res.drawable.bangladesh_lalbagh_1,
+                    Res.drawable.bangladesh_lalbagh_2,
+                    Res.drawable.bangladesh_lalbagh_3,
+                    Res.drawable.bangladesh_lalbagh_4
+                )
+            ), TouristPlace(
+                name = "Ahsan Manzil Museum",
+                shortDescription = "Ahsan Manzil is a palace located in the Kumartoli area of Dhaka, Bangladesh. It was formerly the residence and seat of the Nawab of Dhaka and has been designated an Old Dhaka Heritage Site. It now serves as a museum.",
+                longDescription = "During the Mughal Empire, Sheikh Enayet Ullah, Zamindar of the Jamalpur Porgona district, had a garden house on this property and later added a palace, which he called Rongmohol. He was buried on the northeast corner of the palace yard but his gravesite was ruined at the beginning of the 20th century. His son Sheikh Moti Ullah sold the property to French traders, who erected a trading house beside the property. After changing hands a number of times over the next several centuries, the property was purchased by Khwaja Alimullah in the 1800s. Alimullah renovated the property, turning the trading house into a residence and adding a stable and family mosque. After his death, his son Khwaja Abdul Ghani named the property Ahsan Manzil after his son, Khwaja Ahsanullah. He continued renovations; the old building was renamed Ondor Mohol and the new building was called Rangmahal.\n" +
+                        "\n" +
+                        "On 7 April 1888, a tornado severely damaged Ahsan Manzil and it was temporarily abandoned. With the exception of Rangmahal, which only required repairs, all buildings had to be rebuilt. Abdul Ghani and Ahsanullah continued renovations. What was previously the French trading house was rebuilt as a two-storey building similar to the Rangmahal. A wooden bridge connected the first floors of the two buildings. The palace was repaired again following the 1897 Assam earthquake. After Ahsanullah's death in 1901, the property again changed hands due in part to disagreements within the family. It was a slum for a period before the government acquired it in 1952 under the East Bengal Estate Acquisition Act.\n" +
+                        "\n" +
+                        "The Government of Bangladesh acquired the palace and property in 1985 and began renovating it, taking care to preserve the remaining structure. Renovations were completed in 1992 and ownership was transferred to the Bangladesh National Museum. Part of the northern side of the property was given to the Dhaka City Corporation while half of the Andarmahal and the Nawab residential area were beyond acquisition.[clarification needed] Just under 5 acres (220,000 sq ft) was then used for the museum.",
+                images = listOf(
+                    Res.drawable.bangladesh_ahsan_manjil_1,
+                    Res.drawable.bangladesh_ahsan_manjil_2,
+                    Res.drawable.bangladesh_ahsan_manjil_3
+                )
+            ), TouristPlace(
+                name = "Sajek Valley",
+                shortDescription = "Sajek Valley is one of the most popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District. The valley is 2,000 feet above sea level. Sajek Valley is known as the Queen of Hills & Roof of Rangamati.",
+                longDescription = "Sajek Valley is one of the most popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District. The valley is 2,000 feet (610 m) above sea level. Sajek Valley is known as the Queen of Hills & Roof of Rangamati.",
+                images = listOf(
+                    Res.drawable.bangladesh_sajek_valley_1,
+                    Res.drawable.bangladesh_sajek_valley_2,
+                    Res.drawable.bangladesh_sajek_valley_3,
+                    Res.drawable.bangladesh_sajek_valley_4,
+                )
+            ), TouristPlace(
+                name = "Sundarbans",
+                shortDescription = "Sundarbans is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. Sundarban Reserve Forest of Bangladesh is the largest mangrove forest in the world.",
+                longDescription = "Sundarbans (pronounced /sʌnˈdɑːrbənz/) is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. Sundarban Reserve Forest (SRF) of Bangladesh is the largest mangrove forest in the world. It spans the area from the Baleswar River in Bangladesh's division of Khulna to the Hooghly River in India's state of West Bengal. It comprises closed and open mangrove forests, land used for agricultural purpose, mudflats and barren land, and is intersected by multiple tidal streams and channels. Sundarbans is home to the world's largest area of mangrove forests. Four protected areas in the Sundarbans are enlisted as UNESCO World Heritage Sites, viz. Sundarbans West (Bangladesh), Sundarbans South (Bangladesh), Sundarbans East (Bangladesh) and Sundarbans National Park (India).\n" +
+                        "\n" +
+                        "Despite the protected status, the Indian Sundarbans were considered endangered in a 2020 assessment under the IUCN Red List of Ecosystems framework. The Sundarbans mangrove forest covers an area of about 10,000 km2 (3,900 sq mi), of which forests in Bangladesh's Khulna Division extend over 6,517 km2 (2,516 sq mi) and in West Bengal, they extend over 3,483 km2 (1,345 sq mi) across the South 24 Parganas and North 24 Parganas districts. The most abundant tree species are sundri (Heritiera fomes) and gewa (Excoecaria agallocha). The forests provide habitat to 453 fauna wildlife, including 290 bird, 120 fish, 42 mammal, 35 reptile and eight amphibian species. Despite a total ban on all killing or capture of wildlife other than fish and some invertebrates, there has been a consistent pattern of depleted biodiversity or loss of species in the 20th century, with the ecological quality of the forest declining.\n" +
+                        "\n" +
+                        "Despite preservation commitments from both governments, the Sundarbans are under threat from both natural and human-made causes. In 2007, the landfall of Cyclone Sidr damaged around 40% of the Sundarbans. The forest is also suffering from increased salinity caused by rising sea levels due to climate change and reduced freshwater supply. In May 2009 Cyclone Aila devastated the Sundarbans with massive casualties. At least 100,000 people were affected by this cyclone. The proposed coal-fired Rampal power station situated 14 km (8.7 mi) north of the Sundarbans at Rampal Upazila of Bagerhat District in Khulna, Bangladesh, is anticipated to further damage this unique mangrove forest according to a 2016 report by UNESCO. Climate change is expected to continue to negatively affect both natural systems and human populations in the region, resulting in further ecosystem degradation and climate migration. Experts examining the region recommend further focus on mangrove restoration and management and advocating for adaptation of human populations, through processes like managed retreat and investments in resilient infrastructure.",
+                images = listOf(
+                    Res.drawable.bangladesh_sundarbans_1,
+                    Res.drawable.bangladesh_sundarbans_2,
+                    Res.drawable.bangladesh_sundarbans_3,
+                    Res.drawable.bangladesh_sundarbans_4,
+                    Res.drawable.bangladesh_sundarbans_5,
+                )
             )
         )
     ),
@@ -826,6 +878,75 @@ fun getRestCountriesList() = listOf(
             ),
 
             ),
+    ),
+    Country(
+        name = "Kenya", flagIcon = Res.drawable.kenya, touristPlaces = listOf(
+            TouristPlace(
+                name = "Maasai Mara",
+                shortDescription = "Maasai Mara is a renowned game reserve in Kenya, famous for its stunning landscapes and abundant wildlife, including the Big Five.",
+                longDescription = "Nestled in southwestern Kenya, Maasai Mara National Reserve is a quintessential African safari destination. Its vast savanna landscapes are dotted with acacia trees, providing a picturesque backdrop for the awe-inspiring array of wildlife that inhabits the region. The Mara is renowned for its role in the Great Migration, a natural spectacle where millions of wildebeest, zebras, and other herbivores traverse the plains in search of fresh grazing grounds, closely followed by predators such as lions, cheetahs, and hyenas. Visitors to Maasai Mara have the opportunity to witness this breathtaking phenomenon firsthand, as well as engage in thrilling game drives, guided walks, and cultural interactions with the Maasai people, who have coexisted with the wildlife for centuries. With its rich biodiversity and unparalleled natural beauty, Maasai Mara is a bucket-list destination for wildlife enthusiasts and adventure seekers alike.",
+                images = listOf(
+                    Res.drawable.kenya_mara_1,
+                    Res.drawable.kenya_mara_2,
+                    Res.drawable.kenya_mara_3,
+                )
+            ),
+            TouristPlace(
+                name = "Lamu Island",
+                shortDescription = "Lamu Island is a charming destination off the coast of Kenya, known for its Swahili architecture, pristine beaches, and vibrant culture.",
+                longDescription = " Lamu Island, located in the Indian Ocean off the northern coast of Kenya, is a unique and enchanting destination steeped in history and culture. Designated as a UNESCO World Heritage Site, Lamu is renowned for its well-preserved Swahili architecture, characterized by intricately carved wooden doors, narrow winding streets, and majestic stone buildings. The island's pristine beaches, with their clear turquoise waters and swaying palm trees, offer idyllic spots for relaxation and water activities such as snorkeling, diving, and dhow sailing. Lamu's vibrant cultural scene is evident in its bustling markets, traditional dhow races, and lively festivals, including the annual Lamu Cultural Festival which showcases the island's rich heritage through music, dance, and art. Visitors can explore historical sites like the Lamu Fort and ancient Swahili settlements such as Lamu Town, Shela, and Matondoni, where time seems to stand still amidst the tranquility of island life. With its timeless charm and authentic Swahili ambiance, Lamu Island offers a captivating escape for those seeking a blend of history, culture, and natural beauty in a tropical paradise.",
+                images = listOf(
+                    Res.drawable.kenya_lamu_1,
+                    Res.drawable.kenya_lamu_2,
+                    Res.drawable.kenya_lamu_3,
+                )
+            ),
+            TouristPlace(
+                name = "Fourteen Falls",
+                shortDescription = "Fourteen Falls is a scenic waterfall located in Thika, Kenya, offering breathtaking views and opportunities for nature exploration and photography.",
+                longDescription = "Fourteen Falls, located near Thika in central Kenya, is a captivating natural wonder renowned for its picturesque beauty and serene ambiance. Named after the 14 distinct cascades formed by the Athi River as it tumbles over the rocky terrain, the waterfall is a popular destination for nature lovers, photographers, and adventure seekers alike. Visitors can marvel at the majestic sight of the cascading water, which creates a mesmerizing spectacle of mist and spray against a backdrop of lush greenery and rocky cliffs. The surrounding landscape is adorned with indigenous flora and fauna, providing opportunities for nature exploration and birdwatching. Adventurous visitors can embark on hikes along the riverbanks or take boat rides to get closer to the falls, while those seeking tranquility can simply relax and enjoy the soothing sounds of rushing water and chirping birds. Fourteen Falls is not only a scenic marvel but also holds cultural significance for the local communities, serving as a gathering place for traditional ceremonies and festivities. Whether it's for a peaceful retreat into nature, an adrenaline-pumping adventure, or simply to admire its natural beauty, Fourteen Falls offers an unforgettable experience for all who visit.",
+                images = listOf(
+                    Res.drawable.kenya_ff_1,
+                    Res.drawable.kenya_ff_2,
+                )
+            ),
+        )
+    ),
+    Country(
+        name = "Vietnam",
+        flagIcon = Res.drawable.vietnam,
+        touristPlaces = listOf(
+            TouristPlace(
+                name = "Ha Long Bay",
+                shortDescription = "Hạ Long Bay or Halong Bay is a UNESCO World Heritage Site and popular travel destination in Quảng Ninh province, Vietnam.",
+                longDescription = "Hạ Long Bay or Halong Bay is a UNESCO World Heritage Site and popular travel destination in Quảng Ninh province, Vietnam. The name Hạ Long means \"descending dragon\". Administratively, the bay belongs to Hạ Long city, Cẩm Phả city, and is a part of Vân Đồn district. The bay features thousands of limestone karsts and islets in various shapes and sizes. Hạ Long Bay is a center of a larger zone that includes Bai Tu Long Bay to the northeast, and Cát Bà Island to the southwest. These larger zones share a similar geological, geographical, geomorphological, climate, and cultural characters.",
+                images = listOf(
+                    Res.drawable.vietnam_halongbay_1,
+                    Res.drawable.vietnam_halongbay_2,
+                    Res.drawable.vietnam_halongbay_3,
+                )
+            ),
+            TouristPlace(
+                name = "Sơn Đoòng cave",
+                shortDescription = "Sơn Đoòng cave, in Phong Nha-Kẻ Bàng National Park, Bố Trạch District, Quảng Bình Province, Vietnam, is one of the world's largest natural caves.",
+                longDescription = "Sơn Đoòng cave, in Phong Nha-Kẻ Bàng National Park, Bố Trạch District, Quảng Bình Province, Vietnam, is one of the world's largest natural caves. Located near the Laos–Vietnam border, Hang Sơn Đoòng has an internal, fast-flowing subterranean river and the largest cross-section of any cave, worldwide, believed to be twice that of the next-largest passage. It is the largest known cave passage in the world by volume. Its name, Hang Sơn Đoòng, is variously translated from Vietnamese as \"cave of the mountain river\" or \"cave of mountains behind Đoòng [village]\". As a solutional cave, it was formed in soluble limestone and is believed to be between 2 and 5 million years old.",
+                images = listOf(
+                    Res.drawable.vietnam_sondoong_1,
+                    Res.drawable.vietnam_sondoong_2,
+                    Res.drawable.vietnam_sondoong_3,
+                )
+            ),
+            TouristPlace(
+                name = "Phu Quoc",
+                shortDescription = "Phú Quốc is the largest island in Vietnam. Phú Quốc and nearby islands, along with the distant Thổ Chu Islands, are part of Kiên Giang Province as Phú Quốc City.",
+                longDescription = "Phú Quốc is the largest island in Vietnam. Phú Quốc and nearby islands, along with the distant Thổ Chu Islands, are part of Kiên Giang Province as Phú Quốc City. The island has a total area of 574 km2 (222 sq mi) and a permanent population of approximately 179,480 people. Located in the Gulf of Thailand, the island city of Phú Quốc includes the island proper and 21 smaller islets. Dương Đông ward, located on the island's west coast, is the island's administrative centre and largest town. The other ward is An Thới on the southern tip of the island.",
+                images = listOf(
+                    Res.drawable.vietnam_phuquoc_1,
+                    Res.drawable.vietnam_phuquoc_2,
+                    Res.drawable.vietnam_phuquoc_3,
+                )
+            ),
+        ),
     )
 
 )

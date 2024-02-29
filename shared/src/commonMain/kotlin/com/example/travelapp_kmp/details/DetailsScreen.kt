@@ -1,31 +1,57 @@
 package com.example.travelapp_kmp.details
 
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import com.example.travelapp_kmp.listing.TouristPlace
 import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
@@ -36,7 +62,7 @@ import org.jetbrains.compose.resources.painterResource
 import kotlin.random.Random
 
 
-@OptIn(ExperimentalUnitApi::class, ExperimentalResourceApi::class)
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPlace: TouristPlace) {
     Box {
@@ -44,7 +70,8 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
         Image(
             painter = painterResource(backgroundImage.value),
             null,
-            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi).blur(32.dp),
+            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi)
+                .blur(32.dp),
             contentScale = ContentScale.FillBounds,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale(
@@ -52,41 +79,55 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                 )
             }),
         )
-
-        Box(modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi))
-
-        Column(
-            modifier = Modifier.widthIn(max = 500.dp).padding(top = 64.dp)
-                .verticalScroll(rememberScrollState())
+        // Custom toolbar containing the back button and title.
+        Row(
+            modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 56.dp),
         ) {
-            Image(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = "back arrow",
-                modifier = Modifier.padding(start = 16.dp).widthIn(max = 500.dp)
-                    .clickable(onClick = {
+            Box(
+                modifier = Modifier.size(56.dp).padding(start = 16.dp),
+                contentAlignment = Alignment.CenterStart,
+            ) {
+                Image(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "back arrow",
+                    modifier = Modifier.clickable {
                         navigationState.value = ScreensState(
                             Screen.MainScreen
                         )
-                    }),
-                colorFilter = ColorFilter.tint(color = Color.White),
+                    },
+                    colorFilter = ColorFilter.tint(color = Color.White),
+                )
+            }
+            Text(
+                text = touristPlace.name,
+                style = MaterialTheme.typography.h6.copy(
+                    fontWeight = FontWeight.Medium, color = Color.White
+                ),
+                modifier = Modifier.padding(16.dp)
             )
+        }
+        Column(
+            modifier = Modifier.widthIn(max = 500.dp).padding(top = 56.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
             Card(
                 elevation = 16.dp,
                 modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
                     .aspectRatio(ratio = 335f / 280f).clip(RoundedCornerShape(15.dp)),
-                contentColor = Color.Transparent,
+                contentColor = Transparent,
             ) {
                 Box {
                     Image(
                         painter = painterResource(backgroundImage.value),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize().onGloballyPositioned {
+
+                        }
                     )
 
                 }
             }
-            PlaceInfo()
             Text(
                 text = touristPlace.name, style = MaterialTheme.typography.h5.copy(
                     fontWeight = FontWeight.Medium, color = Color.White
@@ -107,7 +148,23 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                     fontWeight = FontWeight.Medium, color = Color.White
                 ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
             )
-            ImageGallery(touristPlace.images) { backgroundImage.value = it }
+            // Store the drawable resource in a state.
+            var popup: DrawableResource? by remember {
+                mutableStateOf(null)
+            }
+            // If resource state is not null, show the popup.
+            popup?.let {
+                ShowImagePopup(it) {
+                    // On dismiss, clear the stored drawable resource state.
+                    popup = null
+                }
+            }
+            ImageGallery(
+                imagesList = touristPlace.images,
+                onDetailsClicked = { backgroundImage.value = it },
+                onImageLongClick = {
+                    popup = it
+                })
         }
     }
 }
@@ -152,7 +209,9 @@ internal fun IconWithText() {
 @OptIn(ExperimentalMaterialApi::class, ExperimentalResourceApi::class)
 @Composable
 internal fun ImageGallery(
-    imagesList: List<DrawableResource>, onDetailsClicked: (DrawableResource) -> Unit
+    imagesList: List<DrawableResource>,
+    onDetailsClicked: (DrawableResource) -> Unit,
+    onImageLongClick: (DrawableResource) -> Unit
 ) {
     LazyRow(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).fillMaxWidth(),
@@ -164,7 +223,7 @@ internal fun ImageGallery(
                 elevation = 16.dp,
                 modifier = Modifier.height(210.dp).aspectRatio(ratio = (139.0 / 210.0).toFloat())
                     .clip(RoundedCornerShape(16.dp)),
-                contentColor = Color.Transparent,
+                contentColor = Transparent,
             ) {
                 Box {
                     Image(
@@ -173,7 +232,18 @@ internal fun ImageGallery(
                         modifier = Modifier.height(210.dp)
                             .aspectRatio(ratio = (139.0 / 210.0).toFloat())
                             .background(TravelAppColors.SemiWhite)
-                            .clickable(onClick = { onDetailsClicked(imageUrl) }),
+                            .pointerInput(Unit) {
+                                detectTapGestures(
+                                    onLongPress = {
+                                        // Notify client regarding the long press event.
+                                        onImageLongClick(imageUrl)
+                                    },
+                                    onTap = {
+                                        // Notify client regarding the single click event.
+                                        onDetailsClicked(imageUrl)
+                                    }
+                                )
+                            },
                         contentScale = ContentScale.Crop,
                     )
                 }
@@ -181,6 +251,54 @@ internal fun ImageGallery(
         }
     }
 }
+
+/**
+ * Show a image pop using an Dialog instance..
+ *
+ * @param imageResId [DrawableResource] to be shown.
+ * @param onDismiss Notify client about dismiss event.
+ */
+@OptIn(ExperimentalMaterialApi::class, ExperimentalResourceApi::class)
+@Composable
+internal fun ShowImagePopup(
+    imageResId: DrawableResource,
+    onDismiss: () -> Unit = {}
+) {
+    // Create a state to track whether the dialog is visible or not
+    var showDialog by remember { mutableStateOf(true) }
+
+    // Use the Dialog composable to create a popup
+    if (showDialog) {
+        Dialog(
+            onDismissRequest = {
+                /*
+               Set the state to false to dismiss the dialog,
+               and notify client about the dismiss status.
+               */
+                showDialog = false
+                onDismiss.invoke()
+            }
+        ) {
+
+            Card(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .background(Transparent)
+                    .aspectRatio(ratio = 4 / 3F),
+                shape = RoundedCornerShape(10.dp)
+            ) {
+                // Display the image using the Image composable
+                Image(
+                    painter = painterResource(imageResId),
+                    null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+        }
+    }
+}
+
 
 
 
