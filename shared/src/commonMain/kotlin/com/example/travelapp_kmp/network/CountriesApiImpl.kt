@@ -1,6 +1,7 @@
 package com.example.travelapp_kmp.network
 
 import com.example.travelapp_kmp.listing.Country
+import com.example.travelapp_kmp.listing.Location
 import com.example.travelapp_kmp.listing.Weather
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -23,9 +24,9 @@ class CountriesApiImpl : CountriesApi {
         return getRestCountriesList()
     }
 
-    override suspend fun getWeather(county: String): Weather {
+    override suspend fun getWeather(location: Location): Weather {
         return client.get {
-            openWeather(county)
+            openWeather(location)
         }.body<WeatherResponse>().toWeather()
     }
 
@@ -47,12 +48,13 @@ class CountriesApiImpl : CountriesApi {
         }
     }
 
-    private fun HttpRequestBuilder.openWeather(country: String) {
+    private fun HttpRequestBuilder.openWeather(location: Location) {
         url {
             takeFrom("https://api.openweathermap.org/")
             path("data/2.5/weather")
             parameter("appid", "")
-            parameter("q", country)
+            parameter("lat", location.lat)
+            parameter("lon", location.long)
             parameter("units", "metric")
         }
     }

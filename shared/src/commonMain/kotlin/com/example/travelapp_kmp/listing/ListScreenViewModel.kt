@@ -23,7 +23,7 @@ class ListScreenViewModel {
                     countriesApi.getCountriesList(),
                     sortOrder
                 )
-              val weather =  countriesApi.getWeather(countries.first().name)
+                val weather = countriesApi.getWeather(countries.first().touristPlaces[0].location)
                 state.emit(
                     ListScreenState.Success(
                         countriesList = countries,
@@ -59,27 +59,36 @@ class ListScreenViewModel {
 
             when (actions) {
                 is ListViewModelActions.OnCountrySelected -> {
-                    emitNewState(actions, countriesApi.getWeather(actions.country.name))
-
+                    emitNewState(
+                        actions,
+                        countriesApi.getWeather(actions.country.touristPlaces[0].location)
+                    )
                 }
 
                 is ListViewModelActions.OnItemSwiped -> {
-                    state.emit(
-                        (state.value as ListScreenState.Success).copy(
-                            selectedItemIndex = actions.index
-                        )
-                    )
+                    onChangePlaceSelected(actions.index)
                 }
 
                 is ListViewModelActions.MoveToIndex -> {
-                    val previousState = (state.value as ListScreenState.Success)
-                    state.emit(
-                        previousState.copy(
-                            selectedItemIndex = actions.index,
-                        )
-                    )
+                    onChangePlaceSelected(actions.index)
                 }
             }
+        }
+    }
+
+    private suspend fun onChangePlaceSelected(index: Int) {
+        with(state.value as ListScreenState.Success) {
+            selectedCountry.touristPlaces[selectedItemIndex].location.let {
+                countriesApi.getWeather(it)
+            }.let { weather ->
+                state.emit(
+                    this.copy(
+                        selectedItemIndex = index,
+                        weatherSelectedCountry = weather
+                    )
+                )
+            }
+
         }
     }
 

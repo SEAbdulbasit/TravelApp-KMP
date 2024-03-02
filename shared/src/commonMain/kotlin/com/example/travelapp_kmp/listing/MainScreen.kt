@@ -80,7 +80,6 @@ import travelappkmp.shared.generated.resources.Res
 
 
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun MainScreen(
     navigationState: MutableState<ScreensState>, viewMode: ListScreenViewModel
@@ -177,9 +176,15 @@ internal fun RenderListingScreen(
 
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Column {
-                WeatherView(
-                    state.weatherSelectedCountry,
-                )
+                Row {
+                    WeatherView(
+                        state.weatherSelectedCountry,
+                        sortView = {
+                            SortDropDownMenu(sortContent)
+                        }
+                    )
+                }
+
                 ListCountryChips(
                     state.countriesList,
                     state.selectedCountry.name,
@@ -212,9 +217,12 @@ internal fun RenderListingScreen(
 @Composable
 internal fun WeatherView(
     state: Weather,
+    sortView: @Composable() () -> Unit
 ) {
     Row(
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 56.dp),
+
     ) {
 
         AsyncImage(
@@ -240,6 +248,9 @@ internal fun WeatherView(
                 )
             )
         }
+
+        sortView()
+
     }
 }
 
