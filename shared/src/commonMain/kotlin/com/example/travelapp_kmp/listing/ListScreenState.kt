@@ -12,9 +12,3 @@ sealed interface ListScreenState {
     ) : ListScreenState
 }
 
-data class WeatherUiState(
-//    val imageUrl:String =
-    val date: String = "Friday, April 15",
-    val weatherDescription: String = "Sunny 32°C",
-)
-
