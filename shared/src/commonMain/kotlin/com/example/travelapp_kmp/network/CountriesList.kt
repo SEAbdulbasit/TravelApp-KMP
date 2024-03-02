@@ -1,6 +1,7 @@
 package com.example.travelapp_kmp.network
 
 import com.example.travelapp_kmp.listing.Country
+import com.example.travelapp_kmp.listing.Location
 import com.example.travelapp_kmp.listing.TouristPlace
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import travelappkmp.shared.generated.resources.Res
@@ -21,6 +22,10 @@ fun getRestCountriesList() = listOf(
                 images = listOf(
                     Res.drawable.al_azhar_masjid,
                     Res.drawable.al_azhar_masjid_2,
+                ),
+                location = Location(
+                    lat = 30.0459,
+                    long = 31.2627
                 )
             ), TouristPlace(
                 name = "Egyptian pyramids",
@@ -31,6 +36,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.py_2,
                     Res.drawable.py_3,
                     Res.drawable.py_4,
+                ),
+                location = Location(
+                    lat = 29.9792,
+                    long = 31.1342
                 )
             ), TouristPlace(
                 name = "Citadel of Saladin",
@@ -41,6 +50,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.ca_salah_1,
                     Res.drawable.ca_salah_2,
                     Res.drawable.ca_salah_3,
+                ),
+                location = Location(
+                    lat = 30.0287,
+                    long = 31.2597
                 )
             )
         )
@@ -56,6 +69,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.tokyo_skytree_2,
                     Res.drawable.tokyo_skytree_3,
                     Res.drawable.tokyo_skytree_4,
+                ),
+                location = Location(
+                    lat = 35.7101,
+                    long = 139.8107
                 )
             ), TouristPlace(
                 name = "Fushimi Inari Taisha",
@@ -68,6 +85,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.fushimi_inari_taisha_4,
                     Res.drawable.fushimi_inari_taisha_5,
                     Res.drawable.fushimi_inari_taisha_6,
+                ),
+                location = Location(
+                    lat = 34.9677,
+                    long = 135.7792
                 )
             ), TouristPlace(
                 name = "Mount Fuji",
@@ -82,6 +103,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.mount_fuji_6,
                     Res.drawable.mount_fuji_7,
                     Res.drawable.mount_fuji_8
+                ),
+                location = Location(
+                    lat = 35.3606,
+                    long = 138.7274
                 )
             )
         )
@@ -96,6 +121,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.eiffel_tower_2,
                     Res.drawable.eiffel_tower_3,
                     Res.drawable.eiffel_tower_4
+                ),
+                location = Location(
+                    lat = 48.8584,
+                    long = 2.2945
                 )
             ), TouristPlace(
                 name = "Mont Saint Michel",
@@ -108,6 +137,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.mont_saint_michel_4,
                     Res.drawable.mont_saint_michel_5,
                     Res.drawable.mont_saint_michel_6,
+                ),
+                location = Location(
+                    lat = 48.6361,
+                    long = 1.5115
                 )
             )
         )
@@ -124,6 +157,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_coxs_bazar_3,
                     Res.drawable.bangladesh_coxs_bazar_4,
                     Res.drawable.bangladesh_coxs_bazar_5
+                ),
+                location = Location(
+                    lat = 21.4272,
+                    long = 92.0061
                 )
             ), TouristPlace(
                 name = "St. Martin's Island (Saint Martin)",
@@ -138,6 +175,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_saint_martin_6,
                     Res.drawable.bangladesh_saint_martin_7,
                     Res.drawable.bangladesh_saint_martin_8
+                ),
+                location = Location(
+                    lat = 18.0708,
+                    long = 63.0501
                 )
             ), TouristPlace(
                 name = "Rangamati",
@@ -148,6 +189,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_rangamati_2,
                     Res.drawable.bangladesh_rangamati_3,
                     Res.drawable.bangladesh_rangamati_4
+                ),
+                location = Location(
+                    lat = 22.6620,
+                    long = 92.1611
                 )
             ), TouristPlace(
                 name = "Bandarban",
@@ -158,6 +203,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_bandarban_2,
                     Res.drawable.bangladesh_bandarban_3,
                     Res.drawable.bangladesh_bandarban_4
+                ),
+                location = Location(
+                    lat = 22.1961,
+                    long = 92.2176
                 )
             ), TouristPlace(
                 name = "Lalbagh Fort",
@@ -172,6 +221,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_lalbagh_2,
                     Res.drawable.bangladesh_lalbagh_3,
                     Res.drawable.bangladesh_lalbagh_4
+                ),
+                location = Location(
+                    lat = 23.7189,
+                    long = 90.3882
                 )
             ), TouristPlace(
                 name = "Ahsan Manzil Museum",
@@ -185,6 +238,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_ahsan_manjil_1,
                     Res.drawable.bangladesh_ahsan_manjil_2,
                     Res.drawable.bangladesh_ahsan_manjil_3
+                ),
+                location = Location(
+                    lat = 23.7085,
+                    long = 90.4060
                 )
             ), TouristPlace(
                 name = "Sajek Valley",
@@ -195,6 +252,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_sajek_valley_2,
                     Res.drawable.bangladesh_sajek_valley_3,
                     Res.drawable.bangladesh_sajek_valley_4,
+                ),
+                location = Location(
+                    lat = 23.3838,
+                    long = 92.2939
                 )
             ), TouristPlace(
                 name = "Sundarbans",
@@ -210,6 +271,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bangladesh_sundarbans_3,
                     Res.drawable.bangladesh_sundarbans_4,
                     Res.drawable.bangladesh_sundarbans_5,
+                ),
+                location = Location(
+                    lat = 21.9497,
+                    long = 89.1833
                 )
             )
         )
@@ -226,6 +291,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.india_taj_mahal_3,
                     Res.drawable.india_taj_mahal_4,
                     Res.drawable.india_taj_mahal_5
+                ),
+                location = Location(
+                    lat = 27.1751,
+                    long = 78.0421
                 )
             ),
             TouristPlace(
@@ -240,6 +309,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.india_varanasi_5,
                     Res.drawable.india_varanasi_6,
                     Res.drawable.india_varanasi_7,
+                ),
+                location = Location(
+                    lat = 25.3176,
+                    long = 82.9739
                 )
             ),
             TouristPlace(
@@ -254,6 +327,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.india_munnar_5,
                     Res.drawable.india_munnar_6,
                     Res.drawable.india_munnar_7,
+                ),
+                location = Location(
+                    lat = 10.0889,
+                    long = 77.0595
                 )
             ),
             TouristPlace(
@@ -265,6 +342,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.india_amber_palace_2,
                     Res.drawable.india_amber_palace_3,
                     Res.drawable.india_amber_palace_4,
+                ),
+                location = Location(
+                    lat = 26.9855,
+                    long = 75.8513
                 )
             ),
             TouristPlace(
@@ -279,6 +360,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.india_dudhsagar_waterfalls_5,
                     Res.drawable.india_dudhsagar_waterfalls_6,
                     Res.drawable.india_dudhsagar_waterfalls_7,
+                ),
+                location = Location(
+                    lat = 15.3144,
+                    long = 74.3143
                 )
             ),
             TouristPlace(
@@ -295,6 +380,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.india_manali_7,
                     Res.drawable.india_manali_8,
                     Res.drawable.india_manali_9,
+                ),
+                location = Location(
+                    lat = 32.2432,
+                    long = 77.1892
                 )
             ),
             TouristPlace(
@@ -311,6 +400,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.india_darjeeling_7,
                     Res.drawable.india_darjeeling_8,
                     Res.drawable.india_darjeeling_9,
+                ),
+                location = Location(
+                    lat = 27.0410,
+                    long = 88.2663
                 )
             ),
             TouristPlace(
@@ -326,6 +419,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.india_dal_lake_6,
                     Res.drawable.india_dal_lake_7,
                     Res.drawable.india_dal_lake_8,
+                ),
+                location = Location(
+                    lat = 34.1106,
+                    long = 74.8683
                 )
             ),
         )
@@ -340,6 +437,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.pakistan_badshahi_mosque_1,
                     Res.drawable.pakistan_badshahi_mosque_2,
                     Res.drawable.pakistan_badshahi_mosque_3
+                ),
+                location = Location(
+                    lat = 31.5879,
+                    long = 74.3094
                 )
             ),
 
@@ -350,6 +451,10 @@ fun getRestCountriesList() = listOf(
                 images = listOf(
                     Res.drawable.pakistan_shangrila_resort_1,
                     Res.drawable.pakistan_shangrila_resort_2
+                ),
+                location = Location(
+                    lat = 35.4259,
+                    long = 75.4565
                 )
             ),
 
@@ -360,6 +465,10 @@ fun getRestCountriesList() = listOf(
                 images = listOf(
                     Res.drawable.pakistan_hunza_valley_1,
                     Res.drawable.pakistan_hunza_valley_2,
+                ),
+                location = Location(
+                    lat = 36.3167,
+                    long = 74.6500
                 )
             )
         )
@@ -380,6 +489,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.algeria_kasba_6,
                     Res.drawable.algeria_kasba_7,
                     Res.drawable.algeria_kasba_8,
+                ),
+                location = Location(
+                    lat = 36.7904,
+                    long = 3.0732
                 )
             ),
             TouristPlace(
@@ -393,6 +506,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.algeria_timgad_4,
                     Res.drawable.algeria_timgad_5,
                     Res.drawable.algeria_timgad_6,
+                ),
+                location = Location(
+                    lat = 35.4949,
+                    long = 6.4680
                 )
             ),
 
@@ -407,6 +524,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.the_botanical_garden_4,
                     Res.drawable.the_botanical_garden_5,
                     Res.drawable.the_botanical_garden_6
+                ),
+                location = Location(
+                    lat = 36.7484,
+                    long = 3.0758
                 )
             )
         )
@@ -423,6 +544,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.germany_brandenburg_gate_3,
                     Res.drawable.germany_brandenburg_gate_4,
                     Res.drawable.germany_brandenburg_gate_5
+                ),
+                location = Location(
+                    lat = 52.5163,
+                    long = 13.3777
                 )
             ), TouristPlace(
                 name = "Neuschwanstein Castle",
@@ -434,6 +559,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.germany_neuschwanstein_castle_3,
                     Res.drawable.germany_neuschwanstein_castle_4,
                     Res.drawable.germany_neuschwanstein_castle_5,
+                ),
+                location = Location(
+                    lat = 47.5576,
+                    long = 10.7498
                 )
             ), TouristPlace(
                 name = "Cologne Cathedral",
@@ -445,6 +574,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.germany_cologne_cathedral_3,
                     Res.drawable.germany_cologne_cathedral_4,
                     Res.drawable.germany_cologne_cathedral_5,
+                ),
+                location = Location(
+                    lat = 50.9413,
+                    long = 6.9583
                 )
             ), TouristPlace(
                 name = "Berliner Fernsehturm",
@@ -455,7 +588,11 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.germany_berlin_fernsehtrum_2,
                     Res.drawable.germany_berlin_fernsehtrum_3,
 
-                    )
+                    ),
+                location = Location(
+                    lat = 52.5208,
+                    long = 13.4094
+                )
             ), TouristPlace(
                 name = "Zugspitze",
                 shortDescription = "The Zugspitze is Germany's highest peak, soaring 2,962 meters above sea level in the Bavarian Alps. Renowned for its breathtaking panoramas, the mountain offers a unique blend of natural beauty, outdoor adventure, and cultural experiences, making it a premier destination for tourists and mountaineers alike.",
@@ -466,6 +603,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.germany_zugspitzbahn_3,
                     Res.drawable.germany_zugspitzbahn_4,
                     Res.drawable.germany_zugspitsbahn_5,
+                ),
+                location = Location(
+                    lat = 47.4211,
+                    long = 10.9854
                 )
 
             )
@@ -480,6 +621,10 @@ fun getRestCountriesList() = listOf(
                 images = listOf(
                     Res.drawable.uk_tower_of_london,
                     Res.drawable.uk_tower_of_london_2,
+                ),
+                location = Location(
+                    lat = 51.508530,
+                    long = -0.076132
                 )
             ), TouristPlace(
                 name = "Buckingham Palace",
@@ -489,6 +634,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.uk_buckingham_palace,
                     Res.drawable.uk_buckingham_palace_2,
                     Res.drawable.uk_buckingham_palace_3,
+                ),
+                location = Location(
+                    lat = 51.5014,
+                    long = 0.1419
                 )
             ), TouristPlace(
                 name = "Stonehenge",
@@ -499,6 +648,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.uk_stonehenge_2,
                     Res.drawable.uk_stonehenge_3,
                     Res.drawable.uk_stonehenge_4,
+                ),
+                location = Location(
+                    lat = 51.1789,
+                    long = 1.8262
                 )
             )
         )
@@ -513,6 +666,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.swiss_interlaken_1,
                     Res.drawable.swiss_interlaken_2,
                     Res.drawable.swiss_interlaken_3,
+                ),
+                location = Location(
+                    lat = 46.6863,
+                    long = 7.8632
                 )
             ), TouristPlace(
                 name = "Zermatt",
@@ -523,7 +680,11 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.swiss_zermatt_2,
                     Res.drawable.swiss_zermatt_3,
 
-                    )
+                    ),
+                location = Location(
+                    lat = 46.0207,
+                    long = 7.7491
+                )
             ), TouristPlace(
                 name = "Basel",
                 shortDescription = "Basel is Switzerland's oldest university city. Historic landmarks of the city include the large market square with its richly decorated red sandstone town hall and the late Romanesque-Gothic cathedral. During a walk through the old town, past small boutiques, antique book shops but also shops of modern designers, a visit to the \"Läckerli Huus\" to try the traditional Basel honey cake is well worth your while. ",
@@ -532,6 +693,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.swiss_basel_1,
                     Res.drawable.swiss_basel_2,
                     Res.drawable.swiss_basel_3,
+                ),
+                location = Location(
+                    lat = 47.5596,
+                    long = 7.5886
                 )
             )
         )
@@ -547,6 +712,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.cr_san_jose_2,
                     Res.drawable.cr_san_jose_3,
                     Res.drawable.cr_san_jose_4,
+                ),
+                location = Location(
+                    lat = 37.3387,
+                    long = 121.8853
                 )
             ), TouristPlace(
                 name = "Guanacaste Beaches",
@@ -557,6 +726,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.cr_guanacaste_beaches_2,
                     Res.drawable.cr_guanacaste_beaches_3,
                     Res.drawable.cr_guanacaste_beaches_4,
+                ),
+                location = Location(
+                    lat = 10.2992,
+                    long = 85.8396
                 )
             ), TouristPlace(
                 name = "Arenal Volcano",
@@ -566,6 +739,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.cr_arenal_volcano_1,
                     Res.drawable.cr_arenal_volcano_2,
                     Res.drawable.cr_arenal_volcano_3,
+                ),
+                location = Location(
+                    lat = 10.4626,
+                    long = 84.7032
                 )
             ), TouristPlace(
                 name = "Playa Manuel Antonio",
@@ -575,6 +752,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.cr_playa_manuel_antonio_1,
                     Res.drawable.cr_playa_manuel_antonio_2,
                     Res.drawable.cr_playa_manuel_antonio_3,
+                ),
+                location = Location(
+                    lat = 9.3813,
+                    long = 84.1451
                 )
             ), TouristPlace(
                 name = "Monteverde Cloud Reserve Forest",
@@ -585,6 +766,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.cr_monteverde_forest_2,
                     Res.drawable.cr_monteverde_forest_3,
                     Res.drawable.cr_monteverde_forest_4,
+                ),
+                location = Location(
+                    lat = 10.2989,
+                    long = 84.7682
                 )
             ), TouristPlace(
                 name = "Tortuguero",
@@ -601,6 +786,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.cr_tortuguero_8,
                     Res.drawable.cr_tortuguero_9,
                     Res.drawable.cr_tortuguero_10,
+                ),
+                location = Location(
+                    lat = 10.5425,
+                    long = 83.5024
                 )
             ), TouristPlace(
                 name = "Celeste River",
@@ -610,6 +799,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.cr_celeste_river_1,
                     Res.drawable.cr_celeste_river_2,
                     Res.drawable.cr_celeste_river_3,
+                ),
+                location = Location(
+                    lat = 10.658282,
+                    long = -84.971352
                 )
             )
         )
@@ -634,7 +827,11 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.alyemen_sanaa_1,
                     Res.drawable.alyemen_sanaa_2,
 
-                    )
+                    ),
+                location = Location(
+                    lat = 15.3559,
+                    long = 44.2135
+                )
             ), TouristPlace(
                 name = "Socotra Island",
                 shortDescription = " Socotra Island is an ideal tourist destination for nature lovers and adventurers. ",
@@ -657,7 +854,11 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.alyemen_socotra_2,
                     Res.drawable.alyemen_socotra_3,
 
-                    )
+                    ),
+                location = Location(
+                    lat = 12.4634,
+                    long = 53.8237
+                )
             )
 
         )
@@ -677,6 +878,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.li_vilnius_old_town,
                     Res.drawable.li_vilnius_old_town_2,
                     Res.drawable.li_vilnius_old_town_3,
+                ),
+                location = Location(
+                    lat = 54.6784,
+                    long = 25.2865
                 )
             ),
             TouristPlace(
@@ -690,6 +895,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.li_curonian_spit_national_park,
                     Res.drawable.li_curonian_spit_national_park_2,
                     Res.drawable.li_curonian_spit_national_park_3,
+                ),
+                location = Location(
+                    lat = 55.2950,
+                    long = 20.9905
                 )
             ),
 
@@ -703,6 +912,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.li_trakai_island_castle,
                     Res.drawable.li_trakai_island_castle_2,
                     Res.drawable.li_trakai_island_castle_3,
+                ),
+                location = Location(
+                    lat = 54.6523,
+                    long = 24.9336
                 )
             )
 
@@ -720,6 +933,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.indonesia_bali_3,
                     Res.drawable.indonesia_bali_4,
                     Res.drawable.indonesia_bali_5,
+                ),
+                location = Location(
+                    lat = 8.4095,
+                    long = 115.1889
                 )
             ),
             TouristPlace(
@@ -731,6 +948,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.indonesia_comodo_island_2,
                     Res.drawable.indonesia_comodo_island_3,
                     Res.drawable.indonesia_comodo_island_4,
+                ),
+                location = Location(
+                    lat = 8.5850,
+                    long = 119.4411
                 )
             ),
             TouristPlace(
@@ -743,6 +964,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.indonesia_bromo_3,
                     Res.drawable.indonesia_bromo_4,
                     Res.drawable.indonesia_bromo_5,
+                ),
+                location = Location(
+                    lat = 8.6510,
+                    long = 116.3249
                 )
             ),
             TouristPlace(
@@ -754,6 +979,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.indonesia_candi_brob_2,
                     Res.drawable.indonesia_candi_brob_3,
                     Res.drawable.indonesia_candi_brob_4,
+                ),
+                location = Location(
+                    lat = 7.6079,
+                    long = 110.2038
                 )
             ),
             TouristPlace(
@@ -766,6 +995,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.indonesia_raja_ampat_3,
                     Res.drawable.indonesia_raja_ampat_4,
                     Res.drawable.indonesia_raja_ampat_5,
+                ),
+                location = Location(
+                    lat = 1.0915,
+                    long = 130.8779
                 )
             ),
             TouristPlace(
@@ -778,11 +1011,14 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.indonesia_bromo_3,
                     Res.drawable.indonesia_bromo_4,
                     Res.drawable.indonesia_bromo_5,
+                ),
+                location = Location(
+                    lat = -7.942965,
+                    long = 112.9530
                 )
             ),
         )
     ),
-//    marshes_1
     Country(
         name = "Iraq", flagIcon = Res.drawable.iraq,
         touristPlaces = listOf(
@@ -796,6 +1032,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.bagdad_3,
                     Res.drawable.bagdad_4,
                     Res.drawable.bagdad_5,
+                ),
+                location = Location(
+                    lat = 33.3152,
+                    long = 44.3661
                 )
             ),
             TouristPlace(
@@ -806,6 +1046,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.erbil_1,
                     Res.drawable.erbil_2,
                     Res.drawable.erbil_3,
+                ),
+                location = Location(
+                    lat = 36.1912,
+                    long = 44.0094
                 )
             ),
             TouristPlace(
@@ -819,6 +1063,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.karbala_4,
                     Res.drawable.karbala_5,
                     Res.drawable.karbala_6,
+                ),
+                location = Location(
+                    lat = 32.6027,
+                    long = 44.0197
                 )
             ),
 
@@ -830,6 +1078,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.hatra_1,
                     Res.drawable.hatra_2,
                     Res.drawable.hatra_3,
+                ),
+                location = Location(
+                    lat = 35.5759,
+                    long = 42.7345
                 )
             ),
             TouristPlace(
@@ -840,6 +1092,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.marshes_1,
                     Res.drawable.marshes_2,
                     Res.drawable.marshes_3,
+                ),
+                location = Location(
+                    lat = 31.1590,
+                    long = 47.9458
                 )
             ),
             TouristPlace(
@@ -848,6 +1104,10 @@ fun getRestCountriesList() = listOf(
                 longDescription = "Basra, situated along the Shatt al-Arab river, is Iraq's second-largest city and a major economic hub. It boasts a vibrant cultural scene, with historic landmarks such as the Basra Grand Mosque, the Corniche al-Basra waterfront promenade, and the Basra Museum. Visitors can experience the city's unique blend of Arab, Persian, and British influences, along with its famous seafood cuisine and lively souks.",
                 images = listOf(
                     Res.drawable.basra_1,
+                ),
+                location = Location(
+                    lat = 30.5258,
+                    long = 47.7738
                 )
             ),
             TouristPlace(
@@ -856,6 +1116,10 @@ fun getRestCountriesList() = listOf(
                 longDescription = "Samarra is renowned for its well-preserved Abbasid-era architecture and archaeological ruins. The city's most famous attraction is the Great Mosque of Samarra, with its iconic spiral minaret. Other notable sites include the Al-Askari Shrine and the Malwiya Tower. Samarra offers visitors a fascinating glimpse into Iraq's medieval Islamic history and architectural heritage.",
                 images = listOf(
                     Res.drawable.samarra_1,
+                ),
+                location = Location(
+                    lat = 34.1660,
+                    long = 43.9055
                 )
             ),
 
@@ -866,6 +1130,10 @@ fun getRestCountriesList() = listOf(
                 images = listOf(
                     Res.drawable.najaf_1,
                     Res.drawable.najaf_2,
+                ),
+                location = Location(
+                    lat = 32.0107,
+                    long = 44.3265
                 )
             ),
             TouristPlace(
@@ -875,6 +1143,10 @@ fun getRestCountriesList() = listOf(
                 images = listOf(
                     Res.drawable.nimrud_1,
                 ),
+                location = Location(
+                    lat = 36.0933,
+                    long = 43.3211
+                )
             ),
 
             ),
@@ -889,6 +1161,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.kenya_mara_1,
                     Res.drawable.kenya_mara_2,
                     Res.drawable.kenya_mara_3,
+                ),
+                location = Location(
+                    lat = 1.4821,
+                    long = 35.1300
                 )
             ),
             TouristPlace(
@@ -899,6 +1175,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.kenya_lamu_1,
                     Res.drawable.kenya_lamu_2,
                     Res.drawable.kenya_lamu_3,
+                ),
+                location = Location(
+                    lat = 2.2904,
+                    long = 40.8677
                 )
             ),
             TouristPlace(
@@ -908,6 +1188,10 @@ fun getRestCountriesList() = listOf(
                 images = listOf(
                     Res.drawable.kenya_ff_1,
                     Res.drawable.kenya_ff_2,
+                ),
+                location = Location(
+                    lat = -0.9613,
+                    long = 37.1525
                 )
             ),
         )
@@ -924,6 +1208,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.vietnam_halongbay_1,
                     Res.drawable.vietnam_halongbay_2,
                     Res.drawable.vietnam_halongbay_3,
+                ),
+                location = Location(
+                    lat = 20.9101,
+                    long = 107.1839
                 )
             ),
             TouristPlace(
@@ -934,6 +1222,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.vietnam_sondoong_1,
                     Res.drawable.vietnam_sondoong_2,
                     Res.drawable.vietnam_sondoong_3,
+                ),
+                location = Location(
+                    lat = 17.5469,
+                    long = 106.1440
                 )
             ),
             TouristPlace(
@@ -944,6 +1236,10 @@ fun getRestCountriesList() = listOf(
                     Res.drawable.vietnam_phuquoc_1,
                     Res.drawable.vietnam_phuquoc_2,
                     Res.drawable.vietnam_phuquoc_3,
+                ),
+                location = Location(
+                    lat = 10.2899,
+                    long = 103.9840
                 )
             ),
         ),
