@@ -217,12 +217,9 @@ internal fun RenderListingScreen(
 @Composable
 internal fun WeatherView(
     state: Weather,
-    sortView: @Composable() () -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 56.dp),
-
     ) {
 
         AsyncImage(
@@ -248,8 +245,6 @@ internal fun WeatherView(
                 )
             )
         }
-
-        sortView()
 
     }
 }
