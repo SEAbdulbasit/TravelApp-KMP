@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -102,7 +103,7 @@ internal fun MainScreen(
 internal fun MainScreenView(
     state: State<ListScreenState>,
     onDetailsClicked: (TouristPlace) -> Unit,
-    onCountrySelected: (Country) -> Unit,
+    onCountrySelected: (index: Int) -> Unit,
     moveToIndex: (Int) -> Unit,
     sortContent: (SortOrder) -> Unit
 ) {
@@ -136,7 +137,7 @@ internal fun MainScreenView(
 internal fun RenderListingScreen(
     state: ListScreenState.Success,
     onDetailsClicked: (TouristPlace) -> Unit,
-    onCountrySelected: (Country) -> Unit,
+    onCountrySelected: (index: Int) -> Unit,
     moveToIndex: (Int) -> Unit,
     sortContent: (SortOrder) -> Unit,
 ) {
@@ -148,8 +149,8 @@ internal fun RenderListingScreen(
         visibleItems.firstOrNull()?.let { moveToIndex(it) }
     }
 
-    LaunchedEffect(state.selectedItemIndex) {
-        listState.animateScrollToItem(state.selectedItemIndex)
+    LaunchedEffect(state.selectedTouristPlacesIndex) {
+        listState.animateScrollToItem(state.selectedTouristPlacesIndex)
     }
 
     val imageWidth = with(LocalDensity.current) {
@@ -160,7 +161,7 @@ internal fun RenderListingScreen(
 
     Box(modifier = Modifier.fillMaxWidth()) {
         Image(
-            painter = painterResource(state.selectedCountry.touristPlaces[state.selectedItemIndex].images[0]),
+            painter = painterResource(state.getImagePlaceholder()),
             contentDescription = null,
             modifier = Modifier.fillMaxSize().blur(32.dp),
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
@@ -176,37 +177,38 @@ internal fun RenderListingScreen(
 
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Column {
-                Row {
-                    WeatherView(
-                        state.weatherSelectedCountry,
-                        sortView = {
-                            SortDropDownMenu(sortContent)
-                        }
-                    )
+                Row(
+                    modifier = Modifier.fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp, top = 56.dp),
+                ) {
+                    state.getWeather()?.let { data ->
+                        WeatherView(data)
+                    }
+                    SortDropDownMenu(sortContent)
                 }
 
                 ListCountryChips(
                     state.countriesList,
-                    state.selectedCountry.name,
+                    state.nameCountrySelected,
                     onCountrySelected = onCountrySelected
                 )
             }
             ImageSlider(
-                imagesList = state.selectedCountry.touristPlaces,
+                imagesList = state.countriesTouristPlaces,
                 onDetailsClicked = onDetailsClicked,
                 listState = listState,
                 width = (imageWidth.value),
             )
             Column {
                 Counter(
-                    destinationsSize = state.selectedCountry.touristPlaces.size,
-                    selectedDestination = state.selectedItemIndex,
+                    destinationsSize = state.countriesTouristPlaces.size,
+                    selectedDestination = state.selectedTouristPlacesIndex,
                     onItemSwipe = moveToIndex
                 )
                 Line()
                 VisitingPlacesList(
-                    state.selectedCountry.touristPlaces.map { it.name },
-                    state.selectedCountry.touristPlaces[state.selectedItemIndex].name
+                    state.countriesTouristPlaces.map { it.name },
+                    state.nameTouristPlaceSelected
                 )
             }
         }
@@ -252,13 +254,15 @@ internal fun WeatherView(
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun ListCountryChips(
-    list: List<Country>, selectedCountry: String, onCountrySelected: (Country) -> Unit
+    list: List<Country>,
+    selectedCountry: String,
+    onCountrySelected: (Int) -> Unit
 ) {
     LazyRow(contentPadding = PaddingValues(8.dp), modifier = Modifier.padding(8.dp)) {
-        items(items = list) { country ->
+        itemsIndexed(items = list) { index, country ->
             CountryChips(
                 country.name, country.flagIcon, selectedCountry == country.name
-            ) { onCountrySelected(country) }
+            ) { onCountrySelected(index) }
         }
     }
 }
