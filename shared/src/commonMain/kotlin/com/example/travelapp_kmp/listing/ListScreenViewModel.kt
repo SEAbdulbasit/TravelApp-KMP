@@ -95,41 +95,36 @@ class ListScreenViewModel {
     }
 
     @OptIn(ExperimentalResourceApi::class)
+    @OptIn(ExperimentalResourceApi::class)
     private suspend fun updateSelectedIndices(
         selectedCountryIndex: Int,
         selectedTouristPlacesIndex: Int,
     ) {
         with(state.value as ListScreenState.Success) {
-            countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].weather?.let {
+            if (countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].weather != null) {
                 state.emit(
                     this.copy(
                         selectedTouristPlacesIndex = selectedTouristPlacesIndex,
                         selectedCountryIndex = selectedCountryIndex,
                     )
                 )
-            }
-                ?: countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].location.let {
-                countriesApi.getWeather(it)
-            }.let { weather ->
-
-                    val updatedCountriesList = countriesList.toMutableList()
-                    val currentCountry = updatedCountriesList[selectedCountryIndex]
-                    val updatedTouristPlaces = currentCountry.touristPlaces.toMutableList()
-                    updatedTouristPlaces[selectedTouristPlacesIndex] =
-                        updatedTouristPlaces[selectedTouristPlacesIndex].copy(weather = weather)
-                    updatedCountriesList[selectedCountryIndex] =
-                        currentCountry.copy(touristPlaces = updatedTouristPlaces)
-
-                state.emit(
+            } else {
+                val weather =
+                    countriesApi.getWeather(countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].location)
+                countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].copy(
+                    weather = weather
+                )
+                state.update {
                     this.copy(
                         selectedTouristPlacesIndex = selectedTouristPlacesIndex,
                         selectedCountryIndex = selectedCountryIndex,
-                        countriesList = updatedCountriesList,
+                        countriesList = countriesList
                     )
-                )
+                }
             }
         }
     }
+   
 
     private suspend fun emitNewState(
         actions: ListViewModelActions.OnCountrySelected,
