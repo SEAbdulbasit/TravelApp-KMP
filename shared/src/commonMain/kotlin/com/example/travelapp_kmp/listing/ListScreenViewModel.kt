@@ -4,6 +4,7 @@ import com.example.travelapp_kmp.network.CountriesApiImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
@@ -94,7 +95,6 @@ class ListScreenViewModel {
         }
     }
 
-    @OptIn(ExperimentalResourceApi::class)
     @OptIn(ExperimentalResourceApi::class)
     private suspend fun updateSelectedIndices(
         selectedCountryIndex: Int,
