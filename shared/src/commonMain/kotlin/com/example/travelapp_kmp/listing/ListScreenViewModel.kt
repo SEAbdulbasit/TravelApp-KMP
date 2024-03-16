@@ -1,15 +1,16 @@
 package com.example.travelapp_kmp.listing
 
 import com.example.travelapp_kmp.network.CountriesApiImpl
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 class ListScreenViewModel {
-    private val viewModelScope = CoroutineScope(Dispatchers.Unconfined)
+    val coroutineHandlerException = CoroutineExceptionHandler { coroutineContext, throwable ->
+        println("error is ${throwable.message}")
+    }
+    private val viewModelScope = CoroutineScope(Dispatchers.Unconfined + SupervisorJob() + coroutineHandlerException)
     private val countriesApi = CountriesApiImpl()
     val state = MutableStateFlow<ListScreenState>(ListScreenState.Loading)
 
@@ -23,20 +24,19 @@ class ListScreenViewModel {
     }
 
     fun fetchCountries(sortOrder: SortOrder = SortOrder.ASCENDING) {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch {
             try {
                 val countries = getCountriesSorted(countriesApi.getCountriesList(), sortOrder)
                 fetchWeather(countries.first().touristPlaces.first().location)
                 state.emit(ListScreenState.Success(countriesList = countries))
             } catch (e: Exception) {
-                e.printStackTrace()
                 state.emit(ListScreenState.Error(e.message ?: "Something went wrong"))
             }
         }
     }
 
     private fun fetchWeather(location: Location) {
-        viewModelScope.launch(Dispatchers.Unconfined) {
+        viewModelScope.launch(Dispatchers.Main) {
             _weatherState.emit(WeatherState.Loading)
             try {
                 val weatherCache = weatherMap[location]
@@ -49,7 +49,10 @@ class ListScreenViewModel {
                     _weatherState.emit(WeatherState.Success(weatherCache))
                 }
             } catch (e: Exception) {
+                println("Emitting error state")
                 _weatherState.emit(WeatherState.Error(e.message ?: "Something went wrong"))
+            } catch (error: Throwable) {
+                _weatherState.emit(WeatherState.Error("Something went wrong ${error.message}"))
             }
         }
     }
