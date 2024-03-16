@@ -1,9 +1,15 @@
 @file:Suppress("OPT_IN_USAGE")
 
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type
+import com.codingfeline.buildkonfig.gradle.BuildKonfigExtension
+import org.jetbrains.kotlin.konan.properties.Properties
+
+
 plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("com.codingfeline.buildkonfig") version "+"
     kotlin("multiplatform")
     kotlin("plugin.serialization")
 }
@@ -77,6 +83,8 @@ kotlin {
                 implementation("io.coil-kt.coil3:coil-network-ktor:$coilVersion")
 
             }
+
+
         }
 
         androidMain {
@@ -108,9 +116,8 @@ kotlin {
         }
 
     }
-
-
 }
+
 
 android {
     compileSdk = 34
@@ -135,3 +142,23 @@ compose {
 repositories {
     maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
 }
+
+@Suppress("TooGenericExceptionCaught")
+configure<BuildKonfigExtension> {
+    packageName = "com.example.travelapp_kmp"
+    val properties = Properties()
+    file("secret.properties").takeIf { it.exists() }?.let {
+        properties.load(it.inputStream())
+    }
+
+    val apiKey = System.getenv("WEATHER_API_KEY") ?: properties.getProperty("WEATHER_API_KEY", "")
+
+    defaultConfigs {
+        buildConfigField(
+            Type.STRING,
+            "WEATHER_API_KEY",
+            apiKey
+        )
+    }
+}
+

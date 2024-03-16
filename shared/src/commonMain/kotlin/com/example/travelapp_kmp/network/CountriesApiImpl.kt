@@ -1,22 +1,16 @@
 package com.example.travelapp_kmp.network
 
+import com.example.travelapp_kmp.BuildKonfig
 import com.example.travelapp_kmp.listing.Country
 import com.example.travelapp_kmp.listing.Location
 import com.example.travelapp_kmp.listing.Weather
-import io.ktor.client.HttpClient
-import io.ktor.client.call.body
-import io.ktor.client.plugins.DefaultRequest
-import io.ktor.client.plugins.HttpTimeout
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.request.HttpRequestBuilder
-import io.ktor.client.request.get
-import io.ktor.client.request.header
-import io.ktor.client.request.parameter
-import io.ktor.http.ContentType
-import io.ktor.http.HttpHeaders
-import io.ktor.http.path
-import io.ktor.http.takeFrom
-import io.ktor.serialization.kotlinx.json.json
+import io.ktor.client.*
+import io.ktor.client.call.*
+import io.ktor.client.plugins.*
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.request.*
+import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 
 class CountriesApiImpl : CountriesApi {
@@ -52,7 +46,9 @@ class CountriesApiImpl : CountriesApi {
         url {
             takeFrom("https://api.openweathermap.org/")
             path("data/2.5/weather")
-            parameter("appid", "")
+            parameter(
+                "appid", BuildKonfig.WEATHER_API_KEY
+            )
             parameter("lat", location.lat)
             parameter("lon", location.long)
             parameter("units", "metric")
