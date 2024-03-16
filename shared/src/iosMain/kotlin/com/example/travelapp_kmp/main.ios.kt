@@ -1,8 +1,6 @@
-package com.example.travelapp_kmp
 
 import androidx.compose.ui.window.ComposeUIViewController
-import platform.UIKit.UIViewController
+import com.example.travelapp_kmp.AppViewIos
 
-fun MainViewController(): UIViewController = ComposeUIViewController {
-    AppViewIos()
-}
+
+internal fun MainViewController() = ComposeUIViewController { AppViewIos() }
