@@ -1,40 +1,62 @@
 package com.example.travelapp_kmp.listing
 
 import com.example.travelapp_kmp.network.CountriesApiImpl
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.StateFlow
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 class ListScreenViewModel {
-    private val viewModelScope = CoroutineScope(Dispatchers.Main)
+    val coroutineHandlerException = CoroutineExceptionHandler { coroutineContext, throwable ->
+        println("error is ${throwable.message}")
+    }
+    private val viewModelScope = CoroutineScope(Dispatchers.Unconfined + SupervisorJob() + coroutineHandlerException)
     private val countriesApi = CountriesApiImpl()
     val state = MutableStateFlow<ListScreenState>(ListScreenState.Loading)
+
+    private val weatherMap: MutableMap<Location, Weather> = mutableMapOf()
+
+    private val _weatherState = MutableStateFlow<WeatherState>(WeatherState.Loading)
+    val weatherState: StateFlow<WeatherState> = _weatherState
 
     init {
         fetchCountries()
     }
 
     fun fetchCountries(sortOrder: SortOrder = SortOrder.ASCENDING) {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch {
             try {
-                val countries = getCountriesSorted(
-                    countriesApi.getCountriesList(),
-                    sortOrder
-                )
-                state.emit(
-                    ListScreenState.Success(
-                        countriesList = countries,
-                        selectedCountry = countries.first()
-                    )
-                )
+                val countries = getCountriesSorted(countriesApi.getCountriesList(), sortOrder)
+                fetchWeather(countries.first().touristPlaces.first().location)
+                state.emit(ListScreenState.Success(countriesList = countries))
             } catch (e: Exception) {
-                e.printStackTrace()
                 state.emit(ListScreenState.Error(e.message ?: "Something went wrong"))
             }
         }
     }
+
+    private fun fetchWeather(location: Location) {
+        viewModelScope.launch(Dispatchers.Main) {
+            _weatherState.emit(WeatherState.Loading)
+            try {
+                val weatherCache = weatherMap[location]
+                if (weatherCache == null) {
+                    val weather = countriesApi.getWeather(location)
+                    //save in map to retrieve it easily next time
+                    weatherMap[location] = weather
+                    _weatherState.emit(WeatherState.Success(weatherMap[location]!!))
+                } else {
+                    _weatherState.emit(WeatherState.Success(weatherCache))
+                }
+            } catch (e: Exception) {
+                println("Emitting error state")
+                _weatherState.emit(WeatherState.Error(e.message ?: "Something went wrong"))
+            } catch (error: Throwable) {
+                _weatherState.emit(WeatherState.Error("Something went wrong ${error.message}"))
+            }
+        }
+    }
+
     @OptIn(ExperimentalResourceApi::class)
     private fun getCountriesSorted(
         countries: List<Country>,
@@ -49,9 +71,8 @@ class ListScreenViewModel {
                 touristPlaces = country.touristPlaces.sortedBy { it.name }
             )
         }
-
-
     }
+
     fun onAction(actions: ListViewModelActions) {
         viewModelScope.launch {
             when (actions) {
@@ -60,33 +81,49 @@ class ListScreenViewModel {
                 }
 
                 is ListViewModelActions.OnItemSwiped -> {
-                    state.emit(
-                        (state.value as ListScreenState.Success).copy(
-                            selectedItemIndex = actions.index
-                        )
-                    )
+                    onChangePlaceSelected(actions.index)
                 }
 
                 is ListViewModelActions.MoveToIndex -> {
-                    val previousState = (state.value as ListScreenState.Success)
-                    state.emit(
-                        previousState.copy(
-                            selectedItemIndex = actions.index,
-                        )
-                    )
+                    onChangePlaceSelected(actions.index)
                 }
             }
         }
     }
 
-    private suspend fun emitNewState(actions: ListViewModelActions.OnCountrySelected) {
-        getStateValueWithEmptyState(state.value)?.run {
-            val country = this.countriesList.first { it.name == actions.country.name }
-            val latestState = this.copy(
-                selectedCountry = country,
-                selectedItemIndex = 0,
+
+    private suspend fun onChangePlaceSelected(selectedTouristPlacesIndex: Int) {
+        with(state.value as ListScreenState.Success) {
+            updateSelectedIndices(
+                selectedCountryIndex = selectedCountryIndex,
+                selectedTouristPlacesIndex = selectedTouristPlacesIndex
             )
-            state.emit(latestState)
+        }
+    }
+
+    private suspend fun updateSelectedIndices(
+        selectedCountryIndex: Int,
+        selectedTouristPlacesIndex: Int,
+    ) {
+        with(state.value as ListScreenState.Success) {
+            fetchWeather(countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].location)
+            state.emit(
+                this.copy(
+                    selectedTouristPlacesIndex = selectedTouristPlacesIndex,
+                    selectedCountryIndex = selectedCountryIndex,
+                )
+            )
+        }
+    }
+
+    private suspend fun emitNewState(
+        actions: ListViewModelActions.OnCountrySelected,
+    ) {
+        getStateValueWithEmptyState(state.value)?.run {
+            updateSelectedIndices(
+                selectedCountryIndex = actions.indexCountry,
+                selectedTouristPlacesIndex = 0
+            )
         }
     }
 
@@ -97,8 +134,6 @@ class ListScreenViewModel {
             is ListScreenState.Success -> state
         }
     }
-
-
 }
 
 enum class SortOrder {
@@ -108,7 +143,7 @@ enum class SortOrder {
 
 
 sealed interface ListViewModelActions {
-    data class OnCountrySelected(val country: Country) : ListViewModelActions
+    data class OnCountrySelected(val indexCountry: Int) : ListViewModelActions
     data class MoveToIndex(val index: Int) : ListViewModelActions
     data class OnItemSwiped(val touristPlace: TouristPlace, val index: Int) : ListViewModelActions
 }

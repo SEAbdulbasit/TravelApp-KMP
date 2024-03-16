@@ -1,41 +1,10 @@
 package com.example.travelapp_kmp.listing
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Divider
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
@@ -58,17 +27,13 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
@@ -76,16 +41,18 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import travelappkmp.shared.generated.resources.Res
+import travelappkmp.shared.generated.resources.sort_icon
 
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun MainScreen(
     navigationState: MutableState<ScreensState>, viewMode: ListScreenViewModel
 ) {
     val state = viewMode.state.collectAsState()
+    val weather = viewMode.weatherState.collectAsState()
     MainScreenView(
         state = state,
+        weatherState = weather,
         onDetailsClicked = {
             navigationState.value = ScreensState(screen = Screen.DetailScreen(it))
         },
@@ -101,9 +68,10 @@ internal fun MainScreen(
 internal fun MainScreenView(
     state: State<ListScreenState>,
     onDetailsClicked: (TouristPlace) -> Unit,
-    onCountrySelected: (Country) -> Unit,
+    onCountrySelected: (index: Int) -> Unit,
     moveToIndex: (Int) -> Unit,
-    sortContent: (SortOrder) -> Unit
+    sortContent: (SortOrder) -> Unit,
+    weatherState: State<WeatherState>
 ) {
     when (val result = state.value) {
         is ListScreenState.Error -> {
@@ -121,6 +89,7 @@ internal fun MainScreenView(
         is ListScreenState.Success -> {
             RenderListingScreen(
                 state = result,
+                weatherState = weatherState,
                 onDetailsClicked = onDetailsClicked,
                 onCountrySelected = onCountrySelected,
                 moveToIndex = moveToIndex,
@@ -135,9 +104,10 @@ internal fun MainScreenView(
 internal fun RenderListingScreen(
     state: ListScreenState.Success,
     onDetailsClicked: (TouristPlace) -> Unit,
-    onCountrySelected: (Country) -> Unit,
+    onCountrySelected: (index: Int) -> Unit,
     moveToIndex: (Int) -> Unit,
     sortContent: (SortOrder) -> Unit,
+    weatherState: State<WeatherState>,
 ) {
 
     val listState = rememberLazyListState()
@@ -147,8 +117,8 @@ internal fun RenderListingScreen(
         visibleItems.firstOrNull()?.let { moveToIndex(it) }
     }
 
-    LaunchedEffect(state.selectedItemIndex) {
-        listState.animateScrollToItem(state.selectedItemIndex)
+    LaunchedEffect(state.selectedTouristPlacesIndex) {
+        listState.animateScrollToItem(state.selectedTouristPlacesIndex)
     }
 
     val imageWidth = with(LocalDensity.current) {
@@ -159,7 +129,7 @@ internal fun RenderListingScreen(
 
     Box(modifier = Modifier.fillMaxWidth()) {
         Image(
-            painter = painterResource(state.selectedCountry.touristPlaces[state.selectedItemIndex].images[0]),
+            painter = painterResource(state.getImagePlaceholder()),
             contentDescription = null,
             modifier = Modifier.fillMaxSize().blur(32.dp),
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
@@ -176,69 +146,83 @@ internal fun RenderListingScreen(
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Column {
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, end = 16.dp, top = 64.dp),
+                    modifier = Modifier.fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp, top = 56.dp),
                 ) {
-                    WeatherView(state.selectedCountry.touristPlaces[state.selectedItemIndex].images[0])
-                    SortDropDownMenu(
-                        sortContent = sortContent
-                    )
+                    WeatherView(weatherState)
+                    SortDropDownMenu(sortContent)
                 }
 
                 ListCountryChips(
                     state.countriesList,
-                    state.selectedCountry.name,
+                    state.nameCountrySelected,
                     onCountrySelected = onCountrySelected
                 )
             }
             ImageSlider(
-                imagesList = state.selectedCountry.touristPlaces,
+                imagesList = state.countriesTouristPlaces,
                 onDetailsClicked = onDetailsClicked,
                 listState = listState,
                 width = (imageWidth.value),
             )
             Column {
                 Counter(
-                    destinationsSize = state.selectedCountry.touristPlaces.size,
-                    selectedDestination = state.selectedItemIndex,
+                    destinationsSize = state.countriesTouristPlaces.size,
+                    selectedDestination = state.selectedTouristPlacesIndex,
                     onItemSwipe = moveToIndex
                 )
                 Line()
                 VisitingPlacesList(
-                    state.selectedCountry.touristPlaces.map { it.name },
-                    state.selectedCountry.touristPlaces[state.selectedItemIndex].name
+                    state.countriesTouristPlaces.map { it.name },
+                    state.nameTouristPlaceSelected
                 )
             }
         }
     }
 }
 
-
-@OptIn(ExperimentalResourceApi::class)
 @Composable
-internal fun WeatherView(drawableResource: DrawableResource) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically
-    ) {
+internal fun WeatherView(
+    state: State<WeatherState>,
+) {
+    when (val value = state.value) {
+        is WeatherState.Error -> {
+            Text(text = value.message)
+        }
 
-        Image(
-            painter = painterResource(drawableResource),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.size(48.dp).clip(RoundedCornerShape(16.dp))
-        )
-        Column(Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)) {
-            Text(
-                "Friday, April 15", style = MaterialTheme.typography.caption.copy(
-                    color = Color.White, fontWeight = FontWeight.Normal
+        WeatherState.Loading -> {
+            CircularProgressIndicator(modifier = Modifier.size(36.dp))
+        }
+
+        is WeatherState.Success -> {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                AsyncImage(
+                    model = value.weather.imageUrl,
+                    contentDescription = "Image state weather",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.size(48.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(Color.White.copy(alpha = 0.3F))
                 )
-            )
-            Text(
-                "Sunny 32°C", style = MaterialTheme.typography.body2.copy(
-                    color = Color.White, fontWeight = FontWeight.Bold
-                )
-            )
+
+                Column(Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)) {
+                    Text(
+                        value.weather.date,
+                        style = MaterialTheme.typography.caption.copy(
+                            color = Color.White, fontWeight = FontWeight.Normal
+                        )
+                    )
+                    Text(
+                        value.weather.weatherDescription,
+                        style = MaterialTheme.typography.body2.copy(
+                            color = Color.White, fontWeight = FontWeight.Bold
+                        )
+                    )
+                }
+
+            }
         }
     }
 }
@@ -246,13 +230,15 @@ internal fun WeatherView(drawableResource: DrawableResource) {
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun ListCountryChips(
-    list: List<Country>, selectedCountry: String, onCountrySelected: (Country) -> Unit
+    list: List<Country>,
+    selectedCountry: String,
+    onCountrySelected: (Int) -> Unit
 ) {
     LazyRow(contentPadding = PaddingValues(8.dp), modifier = Modifier.padding(8.dp)) {
-        items(items = list) { country ->
+        itemsIndexed(items = list) { index, country ->
             CountryChips(
                 country.name, country.flagIcon, selectedCountry == country.name
-            ) { onCountrySelected(country) }
+            ) { onCountrySelected(index) }
         }
     }
 }
@@ -317,9 +303,11 @@ internal fun ImageSlider(
                 modifier = Modifier
                     .width(width = (width * 0.62).dp)
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
-                    .clip(RoundedCornerShape(20.dp)).clickable { onDetailsClicked(
-                        touristPlace
-                    ) },
+                    .clip(RoundedCornerShape(20.dp)).clickable {
+                        onDetailsClicked(
+                            touristPlace
+                        )
+                    },
                 contentColor = Color.Transparent,
             ) {
                 Box {
@@ -383,20 +371,6 @@ internal fun ImageSlider(
 }
 
 @Composable
-fun TransparentText(text: String, style: TextStyle, height: Int = 25) {
-    val textMeasure = rememberTextMeasurer()
-    Canvas(modifier = Modifier.wrapContentSize().height(height = height.dp), onDraw = {
-        drawText(
-            textMeasurer = textMeasure,
-            text = AnnotatedString(text),
-            style = style,
-            blendMode = androidx.compose.ui.graphics.BlendMode.Xor,
-        )
-    })
-}
-
-@OptIn(ExperimentalUnitApi::class)
-@Composable
 internal fun Counter(destinationsSize: Int, selectedDestination: Int, onItemSwipe: (Int) -> Unit) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -448,7 +422,6 @@ internal fun Line() {
     Divider(
         modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp).fillMaxWidth()
             .background(TravelAppColors.SemiWhite)
-
     )
 }
 
@@ -472,7 +445,6 @@ internal fun VisitingPlacesList(list: List<String>, name: String) {
 
 @Composable
 private fun LazyListState.visibleItemsWithThreshold(percentThreshold: Float): List<Int> {
-
     return remember(this) {
         derivedStateOf {
             val visibleItemsInfo = layoutInfo.visibleItemsInfo
