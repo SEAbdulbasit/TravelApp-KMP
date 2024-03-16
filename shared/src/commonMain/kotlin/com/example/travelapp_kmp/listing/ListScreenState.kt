@@ -13,11 +13,9 @@ sealed interface ListScreenState {
         val selectedCountryIndex: Int = 0,
     ) : ListScreenState {
 
-        val countriesTouristPlaces: List<TouristPlace> =
-            countriesList[selectedCountryIndex].touristPlaces
+        val countriesTouristPlaces: List<TouristPlace> = countriesList[selectedCountryIndex].touristPlaces
 
-        val nameTouristPlaceSelected: String =
-            countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].name
+        val nameTouristPlaceSelected: String = countriesTouristPlaces[selectedTouristPlacesIndex].name
 
         val nameCountrySelected: String = countriesList[selectedCountryIndex].name
 
@@ -25,7 +23,6 @@ sealed interface ListScreenState {
         fun getImagePlaceholder(): DrawableResource {
             return countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].images[0]
         }
-
     }
 }
 
