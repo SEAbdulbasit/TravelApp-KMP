@@ -5,6 +5,7 @@ import com.example.travelapp_kmp.listing.Location
 import com.example.travelapp_kmp.listing.TouristPlace
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import travelappkmp.shared.generated.resources.Res
+import travelappkmp.shared.generated.resources.*
 
 
 /**

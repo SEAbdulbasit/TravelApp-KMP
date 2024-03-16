@@ -15,7 +15,6 @@ data class TouristPlace @OptIn(ExperimentalResourceApi::class) constructor(
     val longDescription: String,
     val location: Location,
     val images: List<DrawableResource>,
-    val weather: Weather? = null
 )
 
 data class Location(

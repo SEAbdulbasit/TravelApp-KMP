@@ -12,9 +12,6 @@ sealed interface ListScreenState {
         val selectedTouristPlacesIndex: Int = 0,
         val selectedCountryIndex: Int = 0,
     ) : ListScreenState {
-        fun getWeather(): Weather? {
-            return countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].weather
-        }
 
         val countriesTouristPlaces: List<TouristPlace> =
             countriesList[selectedCountryIndex].touristPlaces
@@ -32,3 +29,9 @@ sealed interface ListScreenState {
     }
 }
 
+
+sealed interface WeatherState {
+    data object Loading : WeatherState
+    data class Error(val message: String) : WeatherState
+    data class Success(val weather: Weather) : WeatherState
+}
