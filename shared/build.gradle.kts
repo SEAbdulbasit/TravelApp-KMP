@@ -135,23 +135,18 @@ android {
     }
 }
 
-compose {
-    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.20")
-}
-
-repositories {
-    maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
-}
-
 @Suppress("TooGenericExceptionCaught")
 configure<BuildKonfigExtension> {
     packageName = "com.example.travelapp_kmp"
     val properties = Properties()
-    file("secret.properties").takeIf { it.exists() }?.let {
-        properties.load(it.inputStream())
+
+    val rootProjectDir = project.rootProject.rootDir
+    val secretProperties = File(rootProjectDir, "secret.properties")
+    if (secretProperties.exists()) {
+        properties.load(secretProperties.inputStream())
     }
 
-    val apiKey = System.getenv("WEATHER_API_KEY") ?: properties.getProperty("WEATHER_API_KEY", "")
+    val apiKey = properties.getProperty("WEATHER_API_KEY") ?: System.getenv("WEATHER_API_KEY")
 
     defaultConfigs {
         buildConfigField(
