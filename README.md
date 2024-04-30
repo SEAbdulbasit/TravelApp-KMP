@@ -57,7 +57,7 @@ https://user-images.githubusercontent.com/33172684/218650285-2872c54e-e6cf-4888-
 
 ## Web
 
-![image](https://user-images.githubusercontent.com/33172684/220402927-a89e75ae-7ea2-45de-b97f-99a47c1e8b52.png)
+![Screenshot 2024-04-04 at 10 44 34 AM](https://github.com/SEAbdulbasit/TravelApp-KMP/assets/33172684/3898e6fb-35a1-459e-b4e3-513811e19aab)
 
 
 ## How to contribute?
