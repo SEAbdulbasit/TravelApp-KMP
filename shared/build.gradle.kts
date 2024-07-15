@@ -63,7 +63,7 @@ kotlin {
             dependencies {
                 implementation(compose.ui)
                 implementation(compose.foundation)
-                implementation(compose.material)
+                implementation(compose.material3)
                 implementation(compose.runtime)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
@@ -75,8 +75,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0-RC")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
 
                 val coilVersion = "3.0.0-SNAPSHOT"
                 implementation("io.coil-kt.coil3:coil-compose:$coilVersion")
@@ -89,7 +89,7 @@ kotlin {
 
         androidMain {
             dependencies {
-                implementation("com.google.android.material:material:1.11.0")
+                implementation("com.google.android.material:material:1.12.0")
                 implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
 //                implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
@@ -105,7 +105,7 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.common)
                 implementation("io.ktor:ktor-client-java:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.8.1")
             }
         }
 

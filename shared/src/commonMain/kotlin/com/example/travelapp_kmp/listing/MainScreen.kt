@@ -1,13 +1,43 @@
 package com.example.travelapp_kmp.listing
 
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -123,7 +153,7 @@ internal fun RenderListingScreen(
 
     val imageWidth = with(LocalDensity.current) {
         val screenWidth =
-            MaterialTheme.typography.body1.fontSize * 40 // or any other way to get screen width
+            MaterialTheme.typography.bodyMedium.fontSize * 40 // or any other way to get screen width
         (screenWidth * 0.85f)
     }
 
@@ -210,13 +240,13 @@ internal fun WeatherView(
                 Column(Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)) {
                     Text(
                         value.weather.date,
-                        style = MaterialTheme.typography.caption.copy(
+                        style = MaterialTheme.typography.labelLarge.copy(
                             color = Color.White, fontWeight = FontWeight.Normal
                         )
                     )
                     Text(
                         value.weather.weatherDescription,
-                        style = MaterialTheme.typography.body2.copy(
+                        style = MaterialTheme.typography.labelLarge.copy(
                             color = Color.White, fontWeight = FontWeight.Bold
                         )
                     )
@@ -244,7 +274,6 @@ private fun ListCountryChips(
 }
 
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalResourceApi::class)
 @Composable
 private fun CountryChips(
     name: String,
@@ -275,7 +304,7 @@ private fun CountryChips(
             }
             Text(
                 name,
-                style = MaterialTheme.typography.body1.copy(color = Color.Black),
+                style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black),
                 modifier = Modifier.padding(end = 24.dp)
                     .background(Color.Transparent),
             )
@@ -299,7 +328,7 @@ internal fun ImageSlider(
     ) {
         items(items = imagesList, key = { item: TouristPlace -> item.name }) { touristPlace ->
             Card(
-                elevation = 16.dp,
+                elevation = CardDefaults.elevatedCardElevation(),
                 modifier = Modifier
                     .width(width = (width * 0.62).dp)
                     .aspectRatio(ratio = (295.0 / 432.0).toFloat())
@@ -308,7 +337,6 @@ internal fun ImageSlider(
                             touristPlace
                         )
                     },
-                contentColor = Color.Transparent,
             ) {
                 Box {
                     Image(
@@ -326,16 +354,15 @@ internal fun ImageSlider(
                         ).padding(16.dp)
                     ) {
                         Text(
-                            text = touristPlace.name, style = MaterialTheme.typography.h4.copy(
+                            text = touristPlace.name,
+                            style = MaterialTheme.typography.headlineMedium.copy(
                                 color = Color.White, fontWeight = FontWeight.Medium
                             )
                         )
                         Text(
                             text = touristPlace.shortDescription,
-                            style = MaterialTheme.typography.caption.copy(
+                            style = MaterialTheme.typography.bodySmall.copy(
                                 color = Color.White,
-                                letterSpacing = TextUnit(0.1f, TextUnitType.Em),
-                                lineHeight = TextUnit(19f, TextUnitType.Sp)
                             ),
                             maxLines = 3,
                             modifier = Modifier.padding(top = 4.dp),
@@ -349,7 +376,7 @@ internal fun ImageSlider(
                                     )
                                 }),
                                 text = "Discover Place",
-                                style = MaterialTheme.typography.subtitle2.copy(
+                                style = MaterialTheme.typography.labelLarge.copy(
                                     textDecoration = TextDecoration.Underline,
                                     color = Color.White,
                                     fontWeight = FontWeight.SemiBold
@@ -379,7 +406,7 @@ internal fun Counter(destinationsSize: Int, selectedDestination: Int, onItemSwip
         Row(horizontalArrangement = Arrangement.Center) {
             Text(
                 (selectedDestination + 1).toString(),
-                style = MaterialTheme.typography.subtitle2.copy(
+                style = MaterialTheme.typography.labelLarge.copy(
                     color = Color.White, fontSize = TextUnit(
                         24f, TextUnitType.Sp
                     )
@@ -388,7 +415,7 @@ internal fun Counter(destinationsSize: Int, selectedDestination: Int, onItemSwip
             )
             Text(
                 "/$destinationsSize",
-                style = MaterialTheme.typography.subtitle2.copy(color = Color.White),
+                style = MaterialTheme.typography.labelLarge.copy(color = Color.White),
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -419,7 +446,7 @@ internal fun Counter(destinationsSize: Int, selectedDestination: Int, onItemSwip
 
 @Composable
 internal fun Line() {
-    Divider(
+    HorizontalDivider(
         modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp).fillMaxWidth()
             .background(TravelAppColors.SemiWhite)
     )
@@ -431,7 +458,7 @@ internal fun VisitingPlacesList(list: List<String>, name: String) {
         items(list) {
             Text(
                 it,
-                style = MaterialTheme.typography.body1.copy(
+                style = MaterialTheme.typography.bodyMedium.copy(
                     color = if (it == name) Color.White else Color.White.copy(
                         alpha = 0.7f
                     ), fontWeight = if (it == name) FontWeight.SemiBold else FontWeight.Normal
@@ -470,7 +497,6 @@ private fun LazyListState.visibleItemsWithThreshold(percentThreshold: Float): Li
     }.value
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun SortDropDownMenu(
     sortContent: (SortOrder) -> Unit,
@@ -500,32 +526,34 @@ internal fun SortDropDownMenu(
                 modifier = Modifier.background(
                     if (isSortByNameAsc) Color.Gray.copy(alpha = 0.3F) else Color.Transparent
                 ),
+                text = {
+                    Text(
+                        "A-Z",
+                        color = Color.Black,
+                    )
+                },
                 onClick = {
                     sortContent(SortOrder.ASCENDING)
                     expanded = false
                     isSortByNameAsc = true
                 }
-            ) {
-                Text(
-                    "A-Z",
-                    color = Color.Black,
-                )
-            }
+            )
             DropdownMenuItem(
                 modifier = Modifier.background(
                     if (!isSortByNameAsc) Color.Gray.copy(alpha = 0.3F) else Color.Transparent
                 ),
+                text = {
+                    Text(
+                        "Z-A",
+                        color = Color.Black,
+                    )
+                },
                 onClick = {
                     sortContent(SortOrder.DESCENDING)
                     expanded = false
                     isSortByNameAsc = false
                 }
-            ) {
-                Text(
-                    "Z-A",
-                    color = Color.Black,
-                )
-            }
+            )
         }
     }
 }

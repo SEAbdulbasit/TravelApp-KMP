@@ -1,7 +1,6 @@
 package com.example.travelapp_kmp.listing
 
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 
 sealed interface ListScreenState {
@@ -13,13 +12,14 @@ sealed interface ListScreenState {
         val selectedCountryIndex: Int = 0,
     ) : ListScreenState {
 
-        val countriesTouristPlaces: List<TouristPlace> = countriesList[selectedCountryIndex].touristPlaces
+        val countriesTouristPlaces: List<TouristPlace> =
+            countriesList[selectedCountryIndex].touristPlaces
 
-        val nameTouristPlaceSelected: String = countriesTouristPlaces[selectedTouristPlacesIndex].name
+        val nameTouristPlaceSelected: String =
+            countriesTouristPlaces[selectedTouristPlacesIndex].name
 
         val nameCountrySelected: String = countriesList[selectedCountryIndex].name
 
-        @OptIn(ExperimentalResourceApi::class)
         fun getImagePlaceholder(): DrawableResource {
             return countriesList[selectedCountryIndex].touristPlaces[selectedTouristPlacesIndex].images[0]
         }

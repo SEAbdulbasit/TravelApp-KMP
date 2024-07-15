@@ -1,16 +1,22 @@
 package com.example.travelapp_kmp.listing
 
 import com.example.travelapp_kmp.network.CountriesApiImpl
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 class ListScreenViewModel {
-    val coroutineHandlerException = CoroutineExceptionHandler { coroutineContext, throwable ->
-        println("error is ${throwable.message}")
-    }
-    private val viewModelScope = CoroutineScope(Dispatchers.Unconfined + SupervisorJob() + coroutineHandlerException)
+    private val coroutineHandlerException =
+        CoroutineExceptionHandler { coroutineContext, throwable ->
+            println("error is ${throwable.message}")
+        }
+    private val viewModelScope =
+        CoroutineScope(Dispatchers.Unconfined + SupervisorJob() + coroutineHandlerException)
     private val countriesApi = CountriesApiImpl()
     val state = MutableStateFlow<ListScreenState>(ListScreenState.Loading)
 

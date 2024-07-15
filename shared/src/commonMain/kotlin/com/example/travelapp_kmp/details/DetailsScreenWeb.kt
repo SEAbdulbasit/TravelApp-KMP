@@ -12,11 +12,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -29,7 +30,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
@@ -38,13 +38,8 @@ import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
-//import org.jetbrains.compose.resources.resource
-
-
-@OptIn(ExperimentalUnitApi::class, ExperimentalResourceApi::class)
 @Composable
 internal fun DetailScreenWeb(
     navigationState: MutableState<ScreensState>,
@@ -77,10 +72,9 @@ internal fun DetailScreenWeb(
                     colorFilter = ColorFilter.tint(color = Color.White),
                 )
                 Card(
-                    elevation = 16.dp,
+                    elevation = CardDefaults.cardElevation(),
                     modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
                         .aspectRatio(ratio = 335f / 280f).clip(RoundedCornerShape(15.dp)),
-                    contentColor = Color.Transparent,
                 ) {
                     Box {
                         Image(
@@ -113,13 +107,13 @@ internal fun DetailScreenWeb(
                 modifier = Modifier.weight(1f).verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = touristPlace.name, style = MaterialTheme.typography.h5.copy(
+                    text = touristPlace.name, style = MaterialTheme.typography.headlineMedium.copy(
                         fontWeight = FontWeight.Medium, color = Color.White
                     ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
                 )
                 Text(
                     text = touristPlace.longDescription,
-                    style = MaterialTheme.typography.subtitle2.copy(
+                    style = MaterialTheme.typography.bodyMedium.copy(
                         color = Color.White,
                         fontWeight = FontWeight.Normal,
                         letterSpacing = TextUnit(0.1f, TextUnitType.Em),

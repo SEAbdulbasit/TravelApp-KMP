@@ -17,19 +17,20 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.carousel.HorizontalMultiBrowseCarousel
+import androidx.compose.material3.carousel.rememberCarouselState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -57,12 +58,9 @@ import com.example.travelapp_kmp.screennavigation.Screen
 import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
-import kotlin.random.Random
 
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPlace: TouristPlace) {
     Box {
@@ -79,7 +77,6 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                 )
             }),
         )
-        // Custom toolbar containing the back button and title.
         Row(
             modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 56.dp),
         ) {
@@ -100,7 +97,7 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
             }
             Text(
                 text = touristPlace.name,
-                style = MaterialTheme.typography.h6.copy(
+                style = MaterialTheme.typography.headlineMedium.copy(
                     fontWeight = FontWeight.Medium, color = Color.White
                 ),
                 modifier = Modifier.padding(16.dp)
@@ -111,10 +108,9 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                 .verticalScroll(rememberScrollState())
         ) {
             Card(
-                elevation = 16.dp,
+                elevation = CardDefaults.elevatedCardElevation(),
                 modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
                     .aspectRatio(ratio = 335f / 280f).clip(RoundedCornerShape(15.dp)),
-                contentColor = Transparent,
             ) {
                 Box {
                     Image(
@@ -129,13 +125,13 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                 }
             }
             Text(
-                text = touristPlace.name, style = MaterialTheme.typography.h5.copy(
+                text = touristPlace.name, style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.Medium, color = Color.White
                 ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
             )
             Text(
                 text = touristPlace.longDescription,
-                style = MaterialTheme.typography.subtitle2.copy(
+                style = MaterialTheme.typography.bodyMedium.copy(
                     color = Color.White,
                     fontWeight = FontWeight.Normal,
                     letterSpacing = TextUnit(0.1f, TextUnitType.Em),
@@ -144,7 +140,7 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 10.dp)
             )
             Text(
-                text = "Photos", style = MaterialTheme.typography.subtitle1.copy(
+                text = "Photos", style = MaterialTheme.typography.bodySmall.copy(
                     fontWeight = FontWeight.Medium, color = Color.White
                 ), modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
             )
@@ -194,61 +190,54 @@ internal fun IconWithText() {
             text = "4.8",
             modifier = Modifier.weight(1f, false).padding(top = 5.dp)
                 .align(Alignment.CenterHorizontally),
-            style = MaterialTheme.typography.subtitle1.copy(Color.White),
+            style = MaterialTheme.typography.bodySmall.copy(Color.White),
             fontWeight = FontWeight.Medium,
         )
         Text(
             text = "2,500 rvs",
             modifier = Modifier.weight(1f, false).padding(top = 5.dp)
                 .align(Alignment.CenterHorizontally),
-            style = MaterialTheme.typography.caption.copy(color = Color.White),
+            style = MaterialTheme.typography.bodySmall.copy(color = Color.White),
         )
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalResourceApi::class)
+@OptIn(
+    ExperimentalMaterial3Api::class
+)
 @Composable
 internal fun ImageGallery(
     imagesList: List<DrawableResource>,
     onDetailsClicked: (DrawableResource) -> Unit,
     onImageLongClick: (DrawableResource) -> Unit
 ) {
-    LazyRow(
-        modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+
+    HorizontalMultiBrowseCarousel(
+        state = rememberCarouselState { imagesList.size },
+        modifier = Modifier.fillMaxWidth().height(221.dp).padding(16.dp),
+        preferredItemWidth = 186.dp,
+        itemSpacing = 8.dp,
         contentPadding = PaddingValues(horizontal = 16.dp)
-    ) {
-        items(items = imagesList, key = { Random.nextInt() }) { imageUrl ->
-            Card(
-                elevation = 16.dp,
-                modifier = Modifier.height(210.dp).aspectRatio(ratio = (139.0 / 210.0).toFloat())
-                    .clip(RoundedCornerShape(16.dp)),
-                contentColor = Transparent,
-            ) {
-                Box {
-                    Image(
-                        painter = painterResource(imageUrl),
-                        contentDescription = null,
-                        modifier = Modifier.height(210.dp)
-                            .aspectRatio(ratio = (139.0 / 210.0).toFloat())
-                            .background(TravelAppColors.SemiWhite)
-                            .pointerInput(Unit) {
-                                detectTapGestures(
-                                    onLongPress = {
-                                        // Notify client regarding the long press event.
-                                        onImageLongClick(imageUrl)
-                                    },
-                                    onTap = {
-                                        // Notify client regarding the single click event.
-                                        onDetailsClicked(imageUrl)
-                                    }
-                                )
-                            },
-                        contentScale = ContentScale.Crop,
+    ) { i ->
+        val item = imagesList[i]
+        Image(
+            painter = painterResource(item),
+            contentDescription = null,
+            modifier = Modifier.height(210.dp).maskClip(MaterialTheme.shapes.extraLarge)
+                .pointerInput(Unit) {
+                    detectTapGestures(
+                        onLongPress = {
+                            // Notify client regarding the long press event.
+                            onImageLongClick(item)
+                        },
+                        onTap = {
+                            // Notify client regarding the single click event.
+                            onDetailsClicked(item)
+                        }
                     )
-                }
-            }
-        }
+                },
+            contentScale = ContentScale.Crop,
+        )
     }
 }
 
@@ -258,7 +247,6 @@ internal fun ImageGallery(
  * @param imageResId [DrawableResource] to be shown.
  * @param onDismiss Notify client about dismiss event.
  */
-@OptIn(ExperimentalMaterialApi::class, ExperimentalResourceApi::class)
 @Composable
 internal fun ShowImagePopup(
     imageResId: DrawableResource,
