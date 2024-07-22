@@ -7,25 +7,25 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
 }
 
-//val copyJsResources = tasks.create("copyJsResourcesWorkaround", Copy::class.java) {
-//    from(project(":shared").file("src/commonMain/composeResources"))
-//    into("build/processedResources/js/main")
-//}
-//
-//val copyWasmResources = tasks.create("copyWasmResourcesWorkaround", Copy::class.java) {
-//    from(project(":shared").file("src/commonMain/composeResources"))
-//    into("build/processedResources/wasmJs/main")
-//}
-//
-//afterEvaluate {
-//    project.tasks.getByName("jsProcessResources").finalizedBy(copyJsResources)
-//    project.tasks.getByName("wasmJsProcessResources").finalizedBy(copyWasmResources)
+val copyJsResources = tasks.create("copyJsResourcesWorkaround", Copy::class.java) {
+    from(project(":shared").file("src/commonMain/composeResources"))
+    into("build/processedResources/js/main")
+}
+
+val copyWasmResources = tasks.create("copyWasmResourcesWorkaround", Copy::class.java) {
+    from(project(":shared").file("src/commonMain/composeResources"))
+    into("build/processedResources/wasmJs/main")
+}
+
+afterEvaluate {
+    project.tasks.getByName("jsProcessResources").finalizedBy(copyJsResources)
+    project.tasks.getByName("wasmJsProcessResources").finalizedBy(copyWasmResources)
 //    project.tasks.getByName("jsBrowserProductionExecutableDistributeResources").mustRunAfter(copyJsResources)
-//    project.tasks.getByName("jsDevelopmentExecutableCompileSync").mustRunAfter(copyJsResources)
-//    project.tasks.getByName("wasmJsDevelopmentExecutableCompileSync").mustRunAfter(copyWasmResources)
-//    project.tasks.getByName("jsProductionExecutableCompileSync").mustRunAfter(copyJsResources)
-//    project.tasks.getByName("wasmJsProductionExecutableCompileSync").mustRunAfter(copyWasmResources)
-//}
+    project.tasks.getByName("jsDevelopmentExecutableCompileSync").mustRunAfter(copyJsResources)
+    project.tasks.getByName("wasmJsDevelopmentExecutableCompileSync").mustRunAfter(copyWasmResources)
+    project.tasks.getByName("jsProductionExecutableCompileSync").mustRunAfter(copyJsResources)
+    project.tasks.getByName("wasmJsProductionExecutableCompileSync").mustRunAfter(copyWasmResources)
+}
 
 
 kotlin {
