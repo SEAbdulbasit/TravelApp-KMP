@@ -1,0 +1,44 @@
+[versions]
+# ...
+coilVersion = "3.0.0-alpha08"
+kotlin = "2.1.0-dev-875"
+agp = "8.4.2"
+androidx-activityCompose = "1.9.0"
+androidx-ui-tooling = "1.6.8"
+compose-plugin = "1.7.0-alpha01"
+kotlinxCoroutinesSwing = "1.8.1"
+kotlinxDatetime = "0.6.0"
+kotlinxSerializationJson = "1.6.3"
+ktor = "2.3.12"
+coreKtx = "1.13.1"
+ktorClientOkhttp = "3.0.0-wasm2"
+material = "1.12.0"
+navigationCompose = "2.7.0-alpha07"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilVersion" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coilVersion" }
+kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinxCoroutinesSwing" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientOkhttp" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientOkhttp" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktorClientOkhttp" }
+ktor-client-java = { module = "io.ktor:ktor-client-java", version.ref = "ktorClientOkhttp" }
+ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktorClientOkhttp" }
+ktor-client-json = { module = "io.ktor:ktor-client-json", version.ref = "ktorClientOkhttp" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorClientOkhttp" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktorClientOkhttp" }
+ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktorClientOkhttp" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorClientOkhttp" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

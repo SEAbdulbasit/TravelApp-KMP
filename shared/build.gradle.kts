@@ -7,18 +7,19 @@ import org.jetbrains.kotlin.konan.properties.Properties
 
 plugins {
     kotlin("native.cocoapods")
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinxSerialization)
     id("com.android.library")
-    id("org.jetbrains.compose")
     id("com.codingfeline.buildkonfig") version "+"
-    kotlin("multiplatform")
-    kotlin("plugin.serialization")
 }
 
 version = "1.0"
-val ktorVersion = extra["ktor.version"]
 
 kotlin {
     androidTarget()
+
     jvm("desktop")
     iosX64()
     iosArm64()
@@ -69,50 +70,47 @@ kotlin {
                 implementation(compose.components.resources)
 
                 //ktor-client
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("io.ktor:ktor-client-json:$ktorVersion")
-                implementation("io.ktor:ktor-client-logging:$ktorVersion")
-                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.json)
+                implementation(libs.ktor.client.logging)
+                implementation(libs.ktor.client.serialization)
+                implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.kotlinx.serialization.json)
+                implementation(libs.kotlinx.datetime)
 
-                val coilVersion = "3.0.0-SNAPSHOT"
-                implementation("io.coil-kt.coil3:coil-compose:$coilVersion")
-                implementation("io.coil-kt.coil3:coil-network-ktor:$coilVersion")
+                implementation(libs.coil.compose)
+                implementation(libs.coil.network.ktor)
 
                 //compose navigation
-//                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
-
+                implementation(libs.navigation.compose)
             }
         }
 
         androidMain {
             dependencies {
-                implementation("com.google.android.material:material:1.12.0")
-                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+                implementation(libs.material)
+                implementation(libs.ktor.client.okhttp)
             }
         }
 
         iosMain {
             dependencies {
-                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+                implementation(libs.ktor.client.darwin)
             }
         }
 
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
-                implementation("io.ktor:ktor-client-java:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.8.1")
+                implementation(libs.ktor.client.java)
+                implementation(libs.kotlinx.coroutines.swing)
             }
         }
 
         jsMain {
             dependencies {
-                implementation("io.ktor:ktor-client-js:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-io:0.1.16")
+                implementation(libs.ktor.client.js)
             }
         }
     }
