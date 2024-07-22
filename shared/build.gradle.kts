@@ -82,16 +82,16 @@ kotlin {
                 implementation("io.coil-kt.coil3:coil-compose:$coilVersion")
                 implementation("io.coil-kt.coil3:coil-network-ktor:$coilVersion")
 
+                //compose navigation
+                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
+
             }
-
-
         }
 
         androidMain {
             dependencies {
                 implementation("com.google.android.material:material:1.12.0")
                 implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
-//                implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
 
@@ -114,7 +114,6 @@ kotlin {
                 implementation("io.ktor:ktor-client-js:$ktorVersion")
             }
         }
-
     }
 }
 

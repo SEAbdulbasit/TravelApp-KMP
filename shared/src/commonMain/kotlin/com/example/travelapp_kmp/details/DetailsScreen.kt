@@ -9,14 +9,15 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -32,7 +33,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.carousel.HorizontalMultiBrowseCarousel
 import androidx.compose.material3.carousel.rememberCarouselState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,29 +47,26 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.travelapp_kmp.listing.TouristPlace
-import com.example.travelapp_kmp.screennavigation.Screen
-import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
 
 @Composable
-internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPlace: TouristPlace) {
+internal fun DetailScreen(navigateBack: () -> Unit, touristPlace: TouristPlace) {
     Box {
         val backgroundImage = remember { mutableStateOf(touristPlace.images.first()) }
         Image(
             painter = painterResource(backgroundImage.value),
             null,
-            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi)
-                .blur(32.dp),
+            modifier = Modifier.fillMaxSize().background(TravelAppColors.DarkGraySemi).blur(32.dp),
             contentScale = ContentScale.FillBounds,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale(
@@ -77,52 +74,46 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                 )
             }),
         )
-        Row(
-            modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 56.dp),
+        Column(
+            modifier = Modifier.verticalScroll(rememberScrollState())
+                .windowInsetsPadding(WindowInsets.systemBars)
         ) {
-            Box(
-                modifier = Modifier.size(56.dp).padding(start = 16.dp),
-                contentAlignment = Alignment.CenterStart,
+            Row(
+                modifier = Modifier.fillMaxWidth(),
             ) {
-                Image(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "back arrow",
-                    modifier = Modifier.clickable {
-                        navigationState.value = ScreensState(
-                            Screen.MainScreen
-                        )
-                    },
-                    colorFilter = ColorFilter.tint(color = Color.White),
+                Box(
+                    modifier = Modifier.size(56.dp).padding(start = 16.dp),
+                    contentAlignment = Alignment.CenterStart,
+                ) {
+                    Image(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "back arrow",
+                        modifier = Modifier.clickable { navigateBack() },
+                        colorFilter = ColorFilter.tint(color = Color.White),
+                    )
+                }
+                Text(
+                    text = touristPlace.name,
+                    maxLines = 1,
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        fontWeight = FontWeight.Medium, color = Color.White
+                    ),
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.align(Alignment.CenterVertically)
                 )
             }
-            Text(
-                text = touristPlace.name,
-                style = MaterialTheme.typography.headlineMedium.copy(
-                    fontWeight = FontWeight.Medium, color = Color.White
-                ),
-                modifier = Modifier.padding(16.dp)
-            )
-        }
-        Column(
-            modifier = Modifier.widthIn(max = 500.dp).padding(top = 56.dp)
-                .verticalScroll(rememberScrollState())
-        ) {
+
             Card(
                 elevation = CardDefaults.elevatedCardElevation(),
-                modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp)
                     .aspectRatio(ratio = 335f / 280f).clip(RoundedCornerShape(15.dp)),
             ) {
-                Box {
-                    Image(
-                        painter = painterResource(backgroundImage.value),
-                        contentDescription = null,
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize().onGloballyPositioned {
-
-                        }
-                    )
-
-                }
+                Image(
+                    painter = painterResource(backgroundImage.value),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
             }
             Text(
                 text = touristPlace.name, style = MaterialTheme.typography.bodyLarge.copy(
@@ -155,8 +146,7 @@ internal fun DetailScreen(navigationState: MutableState<ScreensState>, touristPl
                     popup = null
                 }
             }
-            ImageGallery(
-                imagesList = touristPlace.images,
+            ImageGallery(imagesList = touristPlace.images,
                 onDetailsClicked = { backgroundImage.value = it },
                 onImageLongClick = {
                     popup = it
@@ -225,16 +215,13 @@ internal fun ImageGallery(
             contentDescription = null,
             modifier = Modifier.height(210.dp).maskClip(MaterialTheme.shapes.extraLarge)
                 .pointerInput(Unit) {
-                    detectTapGestures(
-                        onLongPress = {
-                            // Notify client regarding the long press event.
-                            onImageLongClick(item)
-                        },
-                        onTap = {
-                            // Notify client regarding the single click event.
-                            onDetailsClicked(item)
-                        }
-                    )
+                    detectTapGestures(onLongPress = {
+                        // Notify client regarding the long press event.
+                        onImageLongClick(item)
+                    }, onTap = {
+                        // Notify client regarding the single click event.
+                        onDetailsClicked(item)
+                    })
                 },
             contentScale = ContentScale.Crop,
         )
@@ -249,31 +236,25 @@ internal fun ImageGallery(
  */
 @Composable
 internal fun ShowImagePopup(
-    imageResId: DrawableResource,
-    onDismiss: () -> Unit = {}
+    imageResId: DrawableResource, onDismiss: () -> Unit = {}
 ) {
     // Create a state to track whether the dialog is visible or not
     var showDialog by remember { mutableStateOf(true) }
 
     // Use the Dialog composable to create a popup
     if (showDialog) {
-        Dialog(
-            onDismissRequest = {
-                /*
-               Set the state to false to dismiss the dialog,
-               and notify client about the dismiss status.
-               */
-                showDialog = false
-                onDismiss.invoke()
-            }
-        ) {
+        Dialog(onDismissRequest = {
+            /*
+           Set the state to false to dismiss the dialog,
+           and notify client about the dismiss status.
+           */
+            showDialog = false
+            onDismiss.invoke()
+        }) {
 
             Card(
-                modifier = Modifier
-                    .padding(16.dp)
-                    .background(Transparent)
-                    .aspectRatio(ratio = 4 / 3F),
-                shape = RoundedCornerShape(10.dp)
+                modifier = Modifier.padding(16.dp).background(Transparent)
+                    .aspectRatio(ratio = 4 / 3F), shape = RoundedCornerShape(10.dp)
             ) {
                 // Display the image using the Image composable
                 Image(

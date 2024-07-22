@@ -9,12 +9,15 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
@@ -40,7 +43,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
@@ -64,11 +66,8 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.example.travelapp_kmp.screennavigation.Screen
-import com.example.travelapp_kmp.screennavigation.ScreensState
 import com.example.travelapp_kmp.style.TravelAppColors
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import travelappkmp.shared.generated.resources.Res
 import travelappkmp.shared.generated.resources.sort_icon
@@ -76,7 +75,7 @@ import travelappkmp.shared.generated.resources.sort_icon
 
 @Composable
 internal fun MainScreen(
-    navigationState: MutableState<ScreensState>, viewMode: ListScreenViewModel
+    navigateToDetails: (TouristPlace) -> Unit, viewMode: ListScreenViewModel
 ) {
     val state = viewMode.state.collectAsState()
     val weather = viewMode.weatherState.collectAsState()
@@ -84,7 +83,7 @@ internal fun MainScreen(
         state = state,
         weatherState = weather,
         onDetailsClicked = {
-            navigationState.value = ScreensState(screen = Screen.DetailScreen(it))
+            navigateToDetails(it)
         },
         onCountrySelected = { viewMode.onAction(ListViewModelActions.OnCountrySelected(it)) },
         moveToIndex = { viewMode.onAction(ListViewModelActions.MoveToIndex(it)) },
@@ -129,7 +128,6 @@ internal fun MainScreenView(
     }
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun RenderListingScreen(
     state: ListScreenState.Success,
@@ -173,11 +171,16 @@ internal fun RenderListingScreen(
             contentScale = ContentScale.Crop,
         )
 
-        Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+        Column(
+            modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
+                .windowInsetsPadding(
+                    WindowInsets.systemBars
+                )
+        ) {
             Column {
                 Row(
                     modifier = Modifier.fillMaxWidth()
-                        .padding(start = 16.dp, end = 16.dp, top = 56.dp),
+                        .padding(start = 16.dp, end = 16.dp, top = 16.dp)
                 ) {
                     WeatherView(weatherState)
                     SortDropDownMenu(sortContent)
@@ -257,14 +260,17 @@ internal fun WeatherView(
     }
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun ListCountryChips(
     list: List<Country>,
     selectedCountry: String,
     onCountrySelected: (Int) -> Unit
 ) {
-    LazyRow(contentPadding = PaddingValues(8.dp), modifier = Modifier.padding(8.dp)) {
+    LazyRow(
+        contentPadding = PaddingValues(8.dp),
+        modifier = Modifier.padding(8.dp),
+        state = rememberLazyListState()
+    ) {
         itemsIndexed(items = list) { index, country ->
             CountryChips(
                 country.name, country.flagIcon, selectedCountry == country.name
@@ -312,7 +318,6 @@ private fun CountryChips(
     }
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun ImageSlider(
     imagesList: List<TouristPlace>,
