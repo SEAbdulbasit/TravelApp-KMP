@@ -78,12 +78,14 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
 
-                val coilVersion = "3.0.0-SNAPSHOT"
+                val coilVersion = "3.0.0-alpha08"
                 implementation("io.coil-kt.coil3:coil-compose:$coilVersion")
                 implementation("io.coil-kt.coil3:coil-network-ktor:$coilVersion")
 
                 //compose navigation
 //                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
+
+//                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.5.1")
 
             }
         }
