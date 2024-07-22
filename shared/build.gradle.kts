@@ -83,7 +83,7 @@ kotlin {
                 implementation("io.coil-kt.coil3:coil-network-ktor:$coilVersion")
 
                 //compose navigation
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
+//                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
 
             }
         }
@@ -112,6 +112,7 @@ kotlin {
         jsMain {
             dependencies {
                 implementation("io.ktor:ktor-client-js:$ktorVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-io:0.1.16")
             }
         }
     }
