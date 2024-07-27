@@ -14,6 +14,69 @@ import travelappkmp.shared.generated.resources.*
 
 @OptIn(ExperimentalResourceApi::class)
 fun getRestCountriesList() = listOf(
+    Country(name = "Saudi Arabia", flagIcon = Res.drawable.sa, touristPlaces = listOf(
+        TouristPlace(
+            name = "Mecca",
+            shortDescription = "Mecca, in a desert valley in western Saudi Arabia, is Islam’s holiest city, as it’s the birthplace of the Prophet Muhammad and the faith itself.",
+            longDescription = "Mecca, also spelled Makkah, is one of the most important cities in Saudi Arabia and holds immense historical, religious, and cultural significance. Located in the western part of the country, Mecca is the birthplace of Islam and the Prophet Muhammad. It is the holiest city in Islam and the direction (qibla) towards which Muslims around the world turn in prayer. Masjid al-Haram\n" +
+                    "\n" +
+                    "The Grand Mosque, or Masjid al-Haram, is the largest mosque in the world and surrounds the Kaaba. It covers an area of 356,800 square meters and can accommodate up to four million worshippers during the Hajj season. The mosque complex includes important sites such as the Black Stone, Maqam Ibrahim, and the Zamzam Well.\n" +
+                    "\n" +
+                    "Jabal al-Nour\n" +
+                    "\n" +
+                    "Jabal al-Nour, or the \"Mountain of Light,\" is a significant site where the Prophet Muhammad received his first revelation from Allah through the Angel Gabriel. The cave of Hira, located on the mountain, is a place of spiritual significance for many Muslims.\n" +
+                    "\n" +
+                    "Mina, Arafat, and Muzdalifah\n" +
+                    "\n" +
+                    "These sites are integral to the Hajj pilgrimage rituals. Mina is known for the ritual of the stoning of the devil, Arafat is where pilgrims stand in prayer and reflection on the Day of Arafat, and Muzdalifah is where pilgrims collect pebbles for the stoning ritual.",
+            location = Location(lat = 21.422510, long = 39.826168),
+            images = listOf(
+                Res.drawable.makah,
+                Res.drawable.makkah_2,
+                Res.drawable.arafat,
+                Res.drawable.jabal_al_noor
+            )
+        ),
+        TouristPlace(
+            name = "Madinah",
+            shortDescription = "Medina is a city in western Saudi Arabia. In the city center, the vast Al-Masjid an-Nabawi (Prophet's Mosque) is a major Islamic pilgrimage site. Its striking Green Dome rises above the tombs of the Prophet Muhammad and early Islamic leaders Abu Bakr and Umar.",
+            longDescription = "Medina, also spelled Madinah, is a city of immense historical and religious significance located in the Hejaz region of western Saudi Arabia. It is the second holiest city in Islam after Mecca and serves as the burial place of the Prophet Muhammad. Medina is historically known as Yathrib before the advent of Islam. Medina is situated approximately 400 kilometers north of Mecca and 100 kilometers inland from the Red Sea coast." +
+                    "Al-Masjid an-Nabawi\n" +
+                    "\n" +
+                    "The Prophet's Mosque, or Al-Masjid an-Nabawi, is the centerpiece of Medina. It is the second holiest mosque in Islam, after the Masjid al-Haram in Mecca. The mosque was originally built by the Prophet Muhammad himself and has since been expanded and renovated multiple times. The Green Dome, under which the Prophet's tomb is located, is a prominent feature of the mosque.\n" +
+                    "\n" +
+                    "The Hijra\n" +
+                    "\n" +
+                    "Medina's historical significance is deeply connected to the Hijra, the migration of the Prophet Muhammad and his followers from Mecca to Medina in 622 CE. This event marks the beginning of the Islamic calendar. Upon arrival, Muhammad established the first Muslim community and laid the foundation for the spread of Islam." +
+                    "Quba Mosque\n" +
+                    "\n" +
+                    "The Quba Mosque is the first mosque ever built and holds a special place in Islamic history. It was constructed by the Prophet Muhammad and his companions upon their arrival in Medina. The mosque has been expanded and renovated over the centuries and is a significant destination for pilgrims." +
+                    "Mount Uhud\n" +
+                    "\n" +
+                    "Mount Uhud is the site of the Battle of Uhud, a significant battle in early Islamic history. The battle took place in 625 CE between the early Muslims and the Meccan forces. The mountain and its surrounding area are visited by pilgrims to reflect on the sacrifices and lessons from the battle.",
+            location = Location(lat = 24.470901, long = 39.612236),
+            images = listOf(
+                Res.drawable.madinah,
+                Res.drawable.madinah_2,
+                Res.drawable.masjid_quba,
+                Res.drawable.mount_uhud
+            )
+        ),
+        TouristPlace(
+            name = "The Clock Towers",
+            shortDescription = "The Clock Towers, also known as Abraj Al Bait, is a complex of seven skyscraper hotels in Mecca, Saudi Arabia. It's a prominent landmark and a symbol of modern Saudi Arabia.",
+            longDescription = "The Clock Towers, also known as the Abraj Al Bait Towers, are a prominent landmark in Mecca, Saudi Arabia. This government-owned complex is situated just meters away from the Masjid al-Haram, the holiest site in Islam. The centerpiece of the complex is the Makkah Royal Clock Tower, which stands as the third tallest building and fifth tallest freestanding structure in the world, reaching a height of 601 meters (1,971 feet).\n" +
+                    "\n" +
+                    "The Clock Tower features the world's largest clock face, visible from a distance of up to 25 kilometers (16 miles). The complex includes luxury hotels, residential apartments, a shopping mall, and a conference center, catering to the millions of pilgrims visiting Mecca annually. The Clock Towers' architectural design combines modernity with Islamic elements, symbolizing the city's significance as a religious and cultural epicenter.",
+            location = Location(lat = 24.470901, long = 39.612236),
+            images = listOf(
+                Res.drawable.colck_tower,
+                Res.drawable.colck_tower_2,
+                Res.drawable.colck_tower_3,
+                Res.drawable.colck_tower_4
+            )
+        )
+    )),
     Country(
         name = "Egypt", flagIcon = Res.drawable.eg, touristPlaces = listOf(
             TouristPlace(
