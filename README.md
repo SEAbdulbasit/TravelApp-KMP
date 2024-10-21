@@ -80,6 +80,10 @@ Following is the list of countries that are being added to the app:
 13. Lithuania
 14. Indonesia
 15. Iraq
+16. Kenya
+17. Vietnam
+18. Peru
+19. Saudi Arabia
 
 
 
