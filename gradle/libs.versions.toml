@@ -2,7 +2,7 @@
 # ...
 coilVersion = "3.0.0-alpha08"
 kotlin = "2.1.0-dev-875"
-agp = "8.7.1"
+agp = "8.6.0-alpha07"
 compose-plugin = "1.7.0-rc01"
 kotlinxCoroutinesSwing = "1.8.1"
 kotlinxDatetime = "0.6.0"
