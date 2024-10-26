@@ -144,13 +144,13 @@ configure<BuildKonfigExtension> {
         properties.load(secretProperties.inputStream())
     }
 
-    val apiKey = properties.getProperty("WEATHER_API_KEY") ?: System.getenv("WEATHER_API_KEY")
+//    val apiKey = properties.getProperty("WEATHER_API_KEY") ?: System.getenv("WEATHER_API_KEY")
 
     defaultConfigs {
         buildConfigField(
             Type.STRING,
             "WEATHER_API_KEY",
-            apiKey
+            "90d78fc11f04c530a4e6f6c01cbb66e5"
         )
     }
 }
