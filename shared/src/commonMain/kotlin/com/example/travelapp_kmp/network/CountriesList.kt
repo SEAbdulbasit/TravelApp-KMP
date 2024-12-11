@@ -1354,5 +1354,50 @@ fun getRestCountriesList() = listOf(
             ),
         )
     ),
-
+    Country(
+        name = "United States", flagIcon = Res.drawable.united_states, touristPlaces = listOf(
+            TouristPlace(
+                name = "Machu Picchu",
+                shortDescription = "Machu Picchu is an ancient Incan citadel located in the Andes Mountains of Peru, famous for its breathtaking natural beauty and rich history.",
+                longDescription = "Machu Picchu, also known as the Sacred Valley, is an ancient Incan citadel located in the Andes Mountains of Peru. It is considered one of the most iconic and enduring cultural landmarks in South America, attracting millions of visitors each year. The site is situated on a mountain ridge overlooking the Sacred Valley, which is a vast network of canyons, waterfalls, and other natural wonders. Machu Picchu's unique architecture and stunning natural beauty make it a must-visit destination for travelers seeking a glimpse into the rich history and culture of the Incan civilization. Visitors can explore the site's various temples, palaces, and terraces, marvel at the breathtaking views of the surrounding landscape, and learn about the history and significance of the site through guided tours and educational programs. Machu Picchu is also a popular destination for adventure seekers, offering opportunities for hiking, zip-lining, and other outdoor activities.",
+                images = listOf(
+                    Res.drawable.machu_picchu_1,
+                    Res.drawable.machu_picchu_2,
+                    Res.drawable.machu_picchu_3,
+                ),
+                location = Location(
+                    lat = -13.1630,
+                    long = -72.5451
+                )
+            ),
+            TouristPlace(
+                name = "Rainbow mountain",
+                shortDescription = "Rainbow mountain is a famous mountain in Peru, known for its stunning natural beauty and unique geological formations.",
+                longDescription = "Rainbow Mountain, known locally as Vinicunca, is a stunning geological formation located in the Vilcanota mountain range of the Peruvian Andes, approximately 100 kilometers southeast of Cusco. This natural wonder has gained international fame for its vibrant, multi-colored slopes that resemble a rainbow, showcasing an array of hues including turquoise, lavender, gold, and fuchsia. The mountain stands at an impressive altitude of 5,200 meters (17,060 feet) above sea level, making it one of the highest accessible peaks in the region.",
+                images = listOf(
+                    Res.drawable.colorful_mountain_1,
+                    Res.drawable.colorful_mountain_2,
+                    Res.drawable.colorful_mountain_3,
+                ),
+                location = Location(
+                    lat = -13.8702,
+                    long = -71.3029
+                )
+            ),
+            TouristPlace(
+                name = "Green Coast Lima",
+                shortDescription = "Green Coast Lima is a picturesque coastal town in Peru, known for its stunning natural beauty and vibrant culture.",
+                longDescription = "Green Coast Lima, also known as Puerto Lima, is a picturesque coastal town located in the southern region of Peru, near the Pacific Ocean. It is known for its stunning natural beauty, vibrant culture, and rich history. The town is situated on a limestone coastline, surrounded by lush greenery and crystal-clear waters. Visitors can explore the town's historic center, which features a mix of colonial architecture and modern buildings, as well as its many parks and gardens. The town's vibrant cultural scene is evident in its bustling markets, traditional dance performances, and lively festivals, including the annual Carnival celebration, which takes place in February. Green Coast Lima is also a popular destination for adventure seekers, offering opportunities for hiking, zip-lining, and other outdoor activities.",
+                images = listOf(
+                    Res.drawable.lima_1,
+                    Res.drawable.lima_2,
+                    Res.drawable.lima_3,
+                ),
+                location = Location(
+                    lat = -12.1239,
+                    long = -77.0103
+                )
+            ),
+        )
+    )
 )
