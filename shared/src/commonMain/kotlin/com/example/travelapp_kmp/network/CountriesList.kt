@@ -1357,47 +1357,47 @@ fun getRestCountriesList() = listOf(
     Country(
         name = "United States", flagIcon = Res.drawable.united_states, touristPlaces = listOf(
             TouristPlace(
-                name = "Machu Picchu",
-                shortDescription = "Machu Picchu is an ancient Incan citadel located in the Andes Mountains of Peru, famous for its breathtaking natural beauty and rich history.",
-                longDescription = "Machu Picchu, also known as the Sacred Valley, is an ancient Incan citadel located in the Andes Mountains of Peru. It is considered one of the most iconic and enduring cultural landmarks in South America, attracting millions of visitors each year. The site is situated on a mountain ridge overlooking the Sacred Valley, which is a vast network of canyons, waterfalls, and other natural wonders. Machu Picchu's unique architecture and stunning natural beauty make it a must-visit destination for travelers seeking a glimpse into the rich history and culture of the Incan civilization. Visitors can explore the site's various temples, palaces, and terraces, marvel at the breathtaking views of the surrounding landscape, and learn about the history and significance of the site through guided tours and educational programs. Machu Picchu is also a popular destination for adventure seekers, offering opportunities for hiking, zip-lining, and other outdoor activities.",
+                name = "Lake George",
+                shortDescription = "Lake George is a long, narrow oligotrophic lake located in the northeastern portion of the U.S. state of New York.",
+                longDescription = "Lake George, nicknamed the Queen of American Lakes is a long, narrow oligotrophic lake located at the southeast base of the Adirondack Mountains, in the northeastern portion of the U.S. state of New York. In the fall, Lake George offers a serene escape with activities like scenic boat cruises on the lake and leisurely hikes through vibrant autumn foliage in the peaceful beauty of the Adirondacks.",
                 images = listOf(
-                    Res.drawable.machu_picchu_1,
-                    Res.drawable.machu_picchu_2,
-                    Res.drawable.machu_picchu_3,
+                    Res.drawable.us_ny_lake_george_water,
+                    Res.drawable.us_ny_lake_george_expedition_park,
+                    Res.drawable.us_ny_lake_george_bolton_landing,
+                    Res.drawable.us_ny_lake_george_festive,
                 ),
                 location = Location(
-                    lat = -13.1630,
-                    long = -72.5451
+                    lat = 43.5681,
+                    long = -73.5466
                 )
             ),
             TouristPlace(
-                name = "Rainbow mountain",
-                shortDescription = "Rainbow mountain is a famous mountain in Peru, known for its stunning natural beauty and unique geological formations.",
-                longDescription = "Rainbow Mountain, known locally as Vinicunca, is a stunning geological formation located in the Vilcanota mountain range of the Peruvian Andes, approximately 100 kilometers southeast of Cusco. This natural wonder has gained international fame for its vibrant, multi-colored slopes that resemble a rainbow, showcasing an array of hues including turquoise, lavender, gold, and fuchsia. The mountain stands at an impressive altitude of 5,200 meters (17,060 feet) above sea level, making it one of the highest accessible peaks in the region.",
+                name = "Vesuvio Cafe",
+                shortDescription = "Vesuvio Cafe is a historic bar in San Francisco, California, United States.",
+                longDescription = "Vesuvio Cafe is as rich in history as it is in eclectic decor. The bar was founded in 1948 by Henri Lenoir, and was frequented by a number of Beat Generation celebrities including Jack Kerouac, Allen Ginsberg, Lawrence Ferlinghetti, and Neal Cassady. t's right next to City Lights Bookstore, and they often had Beat poets read there back in the day. The wall has many fun pictures. The drinks are reasonable.",
                 images = listOf(
-                    Res.drawable.colorful_mountain_1,
-                    Res.drawable.colorful_mountain_2,
-                    Res.drawable.colorful_mountain_3,
+                    Res.drawable.us_san_vesuvio_cafe_bar,
+                    Res.drawable.us_san_vesuvio_cafe,
                 ),
                 location = Location(
-                    lat = -13.8702,
-                    long = -71.3029
+                    lat = 37.7977,
+                    long = -122.4064
                 )
             ),
             TouristPlace(
-                name = "Green Coast Lima",
-                shortDescription = "Green Coast Lima is a picturesque coastal town in Peru, known for its stunning natural beauty and vibrant culture.",
-                longDescription = "Green Coast Lima, also known as Puerto Lima, is a picturesque coastal town located in the southern region of Peru, near the Pacific Ocean. It is known for its stunning natural beauty, vibrant culture, and rich history. The town is situated on a limestone coastline, surrounded by lush greenery and crystal-clear waters. Visitors can explore the town's historic center, which features a mix of colonial architecture and modern buildings, as well as its many parks and gardens. The town's vibrant cultural scene is evident in its bustling markets, traditional dance performances, and lively festivals, including the annual Carnival celebration, which takes place in February. Green Coast Lima is also a popular destination for adventure seekers, offering opportunities for hiking, zip-lining, and other outdoor activities.",
+                name = "Lincoln Memorial",
+                shortDescription = "The Lincoln Memorial is a U.S. national memorial that honors the 16th president of the United States, Abraham Lincoln.",
+                longDescription = "The Lincoln Memorial is a marble monument honoring President Abraham Lincoln. It rests across the reflecting pool at the National Monument. Up the steps of the Lincoln Memorial, you’ll find 36 towering marble columns representing the states within the U.S. during Lincoln’s presidency. The 19-foot-tall statue of Lincoln is surrounded by engraved quotes. This includes the entirety of his famous Gettysburg Address speech. Same as other monuments on the National Mall, this one is open 24/7. Visit the Lincoln Memorial in the evening to see spotlights illuminate the monument.",
                 images = listOf(
-                    Res.drawable.lima_1,
-                    Res.drawable.lima_2,
-                    Res.drawable.lima_3,
+                    Res.drawable.us_wdc_lincoln_memorial,
+                    Res.drawable.us_wdc_lincoln_memorial_entrance,
+                    Res.drawable.us_wdc_lincoln_memorial_interior,
                 ),
                 location = Location(
-                    lat = -12.1239,
-                    long = -77.0103
+                    lat = 38.8892,
+                    long = -77.0506
                 )
-            ),
+            )
         )
     )
 )
