@@ -1354,5 +1354,50 @@ fun getRestCountriesList() = listOf(
             ),
         )
     ),
-
+    Country(
+        name = "United States", flagIcon = Res.drawable.united_states, touristPlaces = listOf(
+            TouristPlace(
+                name = "Lake George",
+                shortDescription = "Lake George is a long, narrow oligotrophic lake located in the northeastern portion of the U.S. state of New York.",
+                longDescription = "Lake George, nicknamed the Queen of American Lakes is a long, narrow oligotrophic lake located at the southeast base of the Adirondack Mountains, in the northeastern portion of the U.S. state of New York. In the fall, Lake George offers a serene escape with activities like scenic boat cruises on the lake and leisurely hikes through vibrant autumn foliage in the peaceful beauty of the Adirondacks.",
+                images = listOf(
+                    Res.drawable.us_ny_lake_george_water,
+                    Res.drawable.us_ny_lake_george_expedition_park,
+                    Res.drawable.us_ny_lake_george_bolton_landing,
+                    Res.drawable.us_ny_lake_george_festive,
+                ),
+                location = Location(
+                    lat = 43.5681,
+                    long = -73.5466
+                )
+            ),
+            TouristPlace(
+                name = "Vesuvio Cafe",
+                shortDescription = "Vesuvio Cafe is a historic bar in San Francisco, California, United States.",
+                longDescription = "Vesuvio Cafe is as rich in history as it is in eclectic decor. The bar was founded in 1948 by Henri Lenoir, and was frequented by a number of Beat Generation celebrities including Jack Kerouac, Allen Ginsberg, Lawrence Ferlinghetti, and Neal Cassady. t's right next to City Lights Bookstore, and they often had Beat poets read there back in the day. The wall has many fun pictures. The drinks are reasonable.",
+                images = listOf(
+                    Res.drawable.us_san_vesuvio_cafe_bar,
+                    Res.drawable.us_san_vesuvio_cafe,
+                ),
+                location = Location(
+                    lat = 37.7977,
+                    long = -122.4064
+                )
+            ),
+            TouristPlace(
+                name = "Lincoln Memorial",
+                shortDescription = "The Lincoln Memorial is a U.S. national memorial that honors the 16th president of the United States, Abraham Lincoln.",
+                longDescription = "The Lincoln Memorial is a marble monument honoring President Abraham Lincoln. It rests across the reflecting pool at the National Monument. Up the steps of the Lincoln Memorial, you’ll find 36 towering marble columns representing the states within the U.S. during Lincoln’s presidency. The 19-foot-tall statue of Lincoln is surrounded by engraved quotes. This includes the entirety of his famous Gettysburg Address speech. Same as other monuments on the National Mall, this one is open 24/7. Visit the Lincoln Memorial in the evening to see spotlights illuminate the monument.",
+                images = listOf(
+                    Res.drawable.us_wdc_lincoln_memorial,
+                    Res.drawable.us_wdc_lincoln_memorial_entrance,
+                    Res.drawable.us_wdc_lincoln_memorial_interior,
+                ),
+                location = Location(
+                    lat = 38.8892,
+                    long = -77.0506
+                )
+            )
+        )
+    )
 )
