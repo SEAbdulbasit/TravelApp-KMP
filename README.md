@@ -64,7 +64,7 @@ https://user-images.githubusercontent.com/33172684/218650285-2872c54e-e6cf-4888-
 To add a new country, follow this [guide](https://github.com/SEAbdulbasit/TravelApp-KMP/wiki/How-to-add-a-new-Country)
 
 ## Added countries list
-Following is the list of countries that are being added to the app:
+Following is the list of countries that are added to the app:
 1. Egypt
 2. Japan
 3. France
@@ -84,6 +84,7 @@ Following is the list of countries that are being added to the app:
 17. Vietnam
 18. Peru
 19. Saudi Arabia
+20. United States
 
 
 
